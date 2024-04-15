@@ -3,7 +3,7 @@ import { KillBError } from './helpers';
 
 export class ApiRequest {
   protected config: any;
-  public api: AxiosInstance;
+  protected api: AxiosInstance;
   constructor(input: any) {
     this.config = input;
     this.api = axios.create({
