@@ -1,4 +1,5 @@
-import axios, {AxiosInstance} from 'axios';
+import axios, { AxiosInstance, AxiosError } from 'axios';
+import { KillBError } from './helpers';
 
 export class ApiRequest {
   protected config: any;
@@ -12,6 +13,10 @@ export class ApiRequest {
         'x-api-key': input.credentials.apiKey,
       },
     });
+    this.api.interceptors.response.use(
+      (response) => response,
+      (error: AxiosError) => new KillBError({ path: error.config.url, data: error })
+    );
   }
   get env () {
     return this.config.testEnv ? 'SANDBOX' : 'PRODUCTION';
