@@ -15,7 +15,7 @@ export class ApiRequest {
     });
     this.api.interceptors.response.use(
       (response) => response,
-      (error: AxiosError) => new KillBError({ path: error.config.url, data: error })
+      (error: AxiosError) => new KillBError({ path: error.request.path, data: error })
     );
   }
   get env () {

@@ -2,13 +2,13 @@
   "name": "sdk",
   "version": "1.0.0",
   "description": "KillB sdk",
-  "main": "./lib/cjs/index.js",
+  "main": "lib/cjs/index.js",
   "types": "./lib/cjs/types/index.d.ts",
   "directories": {
-    "lib": "lib"
+    "lib": "src"
   },
   "scripts": {
-    "clean": "rm -rf ./lib",
+    "clean": "rm -rf lib",
     "build": "npm run clean && npm run build:esm && npm run build:cjs",
     "build:esm": "tsc -p ./tsconfig.esm.json && mv lib/esm/index.js lib/esm/index.mjs",
     "build:cjs": "tsc -p ./tsconfig.cjs.json",

@@ -11,6 +11,6 @@
     "allowSyntheticDefaultImports": true
   },
   "files": [
-    "./lib/index.ts"
+    "./src/index.ts"
   ],
 }
