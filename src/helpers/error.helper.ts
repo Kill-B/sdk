@@ -5,7 +5,7 @@ export class KillBError extends Error {
   path: string;
   status?: HttpStatus;
   errorCode?: string;
-  details: any;
+  details?: any;
 
   constructor(input: { path: string, data: unknown, isAuthentic?: boolean}) {
     let message = 'unknown error';
@@ -18,11 +18,9 @@ export class KillBError extends Error {
     if (input.data instanceof AxiosError) {
       const data = input.data as AxiosError<any>;
       const response = data.response?.data;
-      this.status = response?.status;
-      this.errorCode = response?.errorCode;
-      this.message = JSON.stringify(response?.messages || ['unknown error']);
-    } else {
-      this.details = input.data;
+      this.status = data.response?.status;
+      this.errorCode = response?.errorCode || response?.message || 'unknown error';
+      this.details = response?.message || {};
     }
 
 

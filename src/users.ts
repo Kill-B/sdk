@@ -1,5 +1,5 @@
 import { ApiRequest } from './apiRequest';
-import { UserResponse, UserInput, GetUserQueryParams, UserQueryResponse } from './types/users.inteface';
+import { UserInput, UserResponse, UserQueryResponse, GetUserQueryParams } from './types';
 
 /**
  * The Users class extends the ApiRequest class and provides methods for interacting with the User-related endpoints of the API.
@@ -21,7 +21,8 @@ export class Users extends ApiRequest {
    */
   public async create(body: UserInput): Promise<UserResponse> {
     await this.authenticateCheck();
-    return this.api.post('/users', body);
+    const response = await this.api.post('/users', body);
+    return response.data;
   }
 
   /**

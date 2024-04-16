@@ -29,7 +29,7 @@ report.json
 .settings/
 *.sublime-workspace
 
-
+.env
 .env.*
 !.env.example
 !.env.test

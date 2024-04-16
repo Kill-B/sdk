@@ -13,7 +13,7 @@
     "build:esm": "tsc -p ./tsconfig.esm.json && mv lib/esm/index.js lib/esm/index.mjs",
     "build:cjs": "tsc -p ./tsconfig.cjs.json",
     "prepack": "npm run build",
-    "test": "jest",
+    "test": "node -r dotenv/config && jest",
     "semantic-release": "semantic-release"
   },
   "repository": {
@@ -30,8 +30,10 @@
   },
   "homepage": "https://github.com/Kill-B/sdk#readme",
   "devDependencies": {
+    "@faker-js/faker": "^8.4.1",
     "@types/jest": "^29.5.12",
     "@typescript-eslint/eslint-plugin": "^7.7.0",
+    "dotenv": "^16.4.5",
     "eslint": "^8.57.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.1.3",
