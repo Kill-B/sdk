@@ -6,5 +6,6 @@ export interface Config {
     apiKey: string;
     email: string;
     password: string;
+    webhookSecret?: string;
   };
 }
