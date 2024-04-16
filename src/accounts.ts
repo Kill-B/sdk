@@ -1,5 +1,5 @@
 import { ApiRequest } from './apiRequest';
-import { AccountInput, AccountResponse, AccountUpdateInput } from './types/accounts.interface';
+import { AccountInput, AccountResponse, AccountUpdateInput, BankResponse } from './types/accounts.interface';
 
 export class Accounts extends ApiRequest {
 
@@ -25,6 +25,18 @@ export class Accounts extends ApiRequest {
     await this.authenticateCheck();
     const response = await this.api.get(`/accounts/userId/${userId}`);
     return response.data;
+  }
+
+  public async getBanksByCountry(countryCode: string): Promise<BankResponse[]> {
+    await this.authenticateCheck();
+    const response = await this.api.get(`/banks?countryCode=${countryCode}`);
+    return response.data;
+  }
+
+  public async getBankByCountry(countryCode: string, code: string): Promise<BankResponse | undefined> {
+    await this.authenticateCheck();
+    const response = await this.api.get<BankResponse[]>(`/banks?countryCode=${countryCode}`);
+    return response.data.find((bank) => bank.code === code);
   }
 
 }

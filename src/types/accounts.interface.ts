@@ -161,3 +161,15 @@ export interface WalletAccountUpdateInput {
 }
 
 export type AccountUpdateInput = PSEAccountUpdateInput | SPEAccountUpdateInput | WalletAccountUpdateInput;
+
+
+export interface BankResponse {
+  code: string;
+  companyName: string;
+  countryCode: string;
+  tradeName: string;
+  updatedAt: string;
+  createdAt: string;
+  accountTypes: string;
+  id: string;
+}
