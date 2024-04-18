@@ -6,7 +6,6 @@ describe('ApiRequest', () => {
   beforeEach(() => {
     apiRequest = new ApiRequest({
       testEnv: true,
-      timeout: 30000,
       credentials: {
         apiKey: 'test-api-key',
         email: 'test@test.com',
@@ -23,7 +22,6 @@ describe('ApiRequest', () => {
     it('should return PRODUCTION when testEnv is false', () => {
       apiRequest = new ApiRequest({
         testEnv: false,
-        timeout: 30000,
         credentials: {
           apiKey: 'test-api-key',
           email: 'test@test.com',
@@ -39,7 +37,6 @@ describe('ApiRequest', () => {
     it('should return sandbox URL when testEnv is true', () => {
       const apiRequest = new ApiRequest({
         testEnv: true,
-        timeout: 30000,
         credentials: {
           apiKey: 'test-api-key',
           email: 'test@test.com',
@@ -55,7 +52,6 @@ describe('ApiRequest', () => {
     it('should return production URL when testEnv is false', () => {
       const apiRequest = new ApiRequest({
         testEnv: false,
-        timeout: 30000,
         credentials: {
           apiKey: 'test-api-key',
           email: 'test@test.com',
@@ -73,7 +69,6 @@ describe('ApiRequest', () => {
     it('should authenticate and update config when credentials are valid', async () => {
       const apiRequest = new ApiRequest({
         testEnv: true,
-        timeout: 30000,
         credentials: {
           apiKey: 'test-api-key',
           email: 'test@test.com',
@@ -103,7 +98,6 @@ describe('ApiRequest', () => {
     it('should throw an error when credentials are invalid', async () => {
       const apiRequest = new ApiRequest({
         testEnv: true,
-        timeout: 30000,
         credentials: {
           apiKey: 'test-api-key',
           email: 'test@test.com',
@@ -124,7 +118,6 @@ describe('ApiRequest', () => {
     it('should call authenticate when accessToken is missing', async () => {
       const apiRequest = new ApiRequest({
         testEnv: true,
-        timeout: 30000,
         credentials: {
           apiKey: 'test-api-key',
           email: 'test@test.com',
@@ -142,7 +135,6 @@ describe('ApiRequest', () => {
     it('should call authenticate when expiresIn is missing', async () => {
       const apiRequest = new ApiRequest({
         testEnv: true,
-        timeout: 30000,
         credentials: {
           apiKey: 'test-api-key',
           email: 'test@test.com',
@@ -163,7 +155,6 @@ describe('ApiRequest', () => {
     it('should call authenticate when expiresIn is in the past', async () => {
       const apiRequest = new ApiRequest({
         testEnv: true,
-        timeout: 30000,
         credentials: {
           apiKey: 'test-api-key',
           email: 'test@test.com',
@@ -186,7 +177,6 @@ describe('ApiRequest', () => {
     it('should not call authenticate when accessToken and expiresIn are valid', async () => {
       const apiRequest = new ApiRequest({
         testEnv: true,
-        timeout: 30000,
         credentials: {
           apiKey: 'test-api-key',
           email: 'test@test.com',
