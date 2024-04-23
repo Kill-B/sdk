@@ -1,17 +1,17 @@
 import { ApiRequest } from './apiRequest';
-import { WebhookInput, WebhookResponse } from './types';
 import { createHash } from 'crypto';
 import { IncomingHttpHeaders } from 'http';
+import { components } from './types';
 
 export class Webhook extends ApiRequest {
 
-  public async create(body: WebhookInput): Promise<WebhookResponse> {
+  public async create(body: components['schemas']['CreateWebhookDto']): Promise<components['schemas']['CreateWebhookResponseDto']> {
     await this.authenticateCheck();
-    const response = await this.api.post<WebhookResponse>('/webhooks', body);
+    const response = await this.api.post<components['schemas']['CreateWebhookResponseDto']>('/webhooks', body);
     return response.data;
   }
 
-  public async update(body: WebhookInput): Promise<WebhookResponse> {
+  public async update(body: components['schemas']['UpdateWebhookDto']): Promise<components['schemas']['UpdateWebhookResponseDto']> {
     await this.authenticateCheck();
     const response = await this.api.patch(`/webhooks`, body);
     return response.data;
@@ -23,7 +23,7 @@ export class Webhook extends ApiRequest {
     return response.data;
   }
 
-  public async get(): Promise<WebhookResponse> {
+  public async get(): Promise<components['schemas']['GetWebhookResponseDto']> {
     await this.authenticateCheck();
     const response = await this.api.get(`/webhooks`);
     return response.data;

@@ -1,11 +1,11 @@
 import { ApiRequest } from './apiRequest';
-import { QuotationInput, QuotationResponse } from './types';
+import { components } from './types';
 
 export class Quotation extends ApiRequest {
 
-  public async create(body: QuotationInput): Promise<QuotationResponse> {
+  public async create(body: components['schemas']['CreateQuotationDto']): Promise<components['schemas']['CreateQuotationResponseDto']> {
     await this.authenticateCheck();
-    const response = await this.api.post<QuotationResponse>('/quotations', body);
+    const response = await this.api.post<components['schemas']['CreateQuotationResponseDto']>('/quotations', body);
     return response.data;
   }
 }
