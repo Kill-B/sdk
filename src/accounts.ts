@@ -1,5 +1,5 @@
 import { ApiRequest } from './apiRequest';
-import { components, CreateAccountInput } from './types';
+import { components, CreateAccountInput, CreateAccountResponse } from './types';
 
 /**
  * The Accounts class provides methods for managing accounts.
@@ -21,7 +21,7 @@ export class Accounts extends ApiRequest {
    * @param body - The data for the quotation simulation. Should conform to the 'CreateQuotationDto' schema.
    * @returns A promise that resolves to the simulated quotation data, conforming to the 'SimulateQuotationResponseDto' schema.
    */
-  public async create(body: CreateAccountInput): Promise<components['schemas']['CreateAccountResponseDto']> {
+  public async create(body: CreateAccountInput): Promise<CreateAccountResponse> {
     await this.authenticateCheck();
     const response = await this.api.post('/accounts', body);
     return response.data;
