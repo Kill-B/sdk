@@ -37,7 +37,7 @@ This project provides the following services:
 Each service is instantiated with the same configuration object, which is passed to the Client constructor.
 
 ## Contributing
-Contributions are welcome!
+Contributions are welcome.
 
 ## License
 This project is open source and available under the [MIT](LICENSE) License.
