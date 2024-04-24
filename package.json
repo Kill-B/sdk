@@ -13,7 +13,9 @@
     "build:esm": "tsc -p ./tsconfig.esm.json && mv lib/esm/index.js lib/esm/index.mjs",
     "build:cjs": "tsc -p ./tsconfig.cjs.json",
     "prepack": "npm run build",
-    "test": "node -r dotenv/config && jest",
+    "test": "jest --logHeapUsage --runInBand",
+    "test:ci": "npm test -- --coverage --silent --noStackTrace",
+    "test:dev": "npm test --watch",
     "semantic-release": "semantic-release"
   },
   "repository": {
