@@ -1,6 +1,8 @@
 import axios, { AxiosInstance, AxiosError } from 'axios';
 import { KillBError } from './helpers';
 import { Config } from './types';
+let accessToken: string;
+let expiresIn: number;
 
 export class ApiRequest {
   protected config: Config;
@@ -39,7 +41,9 @@ export class ApiRequest {
     });
 
     this.config.accessToken = response.data.accessToken;
+    accessToken = response.data.accessToken;
     this.config.expiresIn = response.data.expiresIn;
+    expiresIn = response.data.expiresIn;
 
     this.api = axios.create({
       baseURL: this.setHost(this.config.testEnv),
@@ -63,7 +67,10 @@ export class ApiRequest {
     if (
       !this.config.accessToken ||
       !this.config.expiresIn ||
-      this.config.expiresIn < new Date().getTime()
+      this.config.expiresIn < new Date().getTime() ||
+      !accessToken ||
+      !expiresIn ||
+      expiresIn < new Date().getTime()
     ) {
       await this.authenticate();
     }

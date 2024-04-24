@@ -1,6 +1,6 @@
 import { Client } from '../../client';
 import { faker } from '@faker-js/faker';
-import { UserInput } from '../../types';
+import { components } from '../../types';
 
 describe('createUser', () => {
   it('should throw an error when the apiKey is invalid', async () => {
@@ -49,7 +49,7 @@ describe('createUser', () => {
       }
     });
 
-    const userInput: UserInput = {
+    const userInput: components['schemas']['CreateUserDto'] = {
       type: 'PERSON',
       data: {
         firstName: 'John',
@@ -68,6 +68,7 @@ describe('createUser', () => {
           type: 'PASSPORT',
           number: faker.number.hex({ min: 9, max: 15}),
           issuedCountryCode: 'CO',
+
         },
       }
     };

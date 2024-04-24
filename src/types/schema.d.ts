@@ -207,21 +207,21 @@ export interface components {
       /** @example CO */
       issuedCountryCode: string;
       /** @example 1992-01-01 */
-      expeditionDate: string;
+      expeditionDate?: string;
       /**
        * @description Required if document type is INE
        * @example 1111111111
        */
-      cic: string;
+      cic?: string;
       /** @description Required if document type is INE */
-      identificadorCiudadano: string;
+      identificadorCiudadano?: string;
       /**
        * @description Required if document type is IFE
        * @example 1111111111
        */
-      ocr: string;
+      ocr?: string;
       /** @description Required if document type is IFE */
-      numeroEmision: string;
+      numeroEmision?: string;
     };
     PSEAccountDto: {
       /** @description Required if companyName is not present */
