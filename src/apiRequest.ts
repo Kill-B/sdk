@@ -52,7 +52,7 @@ export class ApiRequest {
    */
   private setHost(testEnv: boolean): string {
     if(testEnv) {
-      return 'https://sandbox.killb.app/api/v2';
+      return 'https://teste-94u93qnn.uc.gateway.dev';
     }
     return 'https://killb.app/api/v2';
   }

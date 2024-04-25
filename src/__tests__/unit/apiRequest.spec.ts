@@ -46,7 +46,7 @@ describe('ApiRequest', () => {
 
       const result = (apiRequest as any).setHost(true);
 
-      expect(result).toEqual('https://sandbox.killb.app/api/v2');
+      expect(result).toEqual('https://teste-94u93qnn.uc.gateway.dev');
     });
 
     it('should return production URL when testEnv is false', () => {
