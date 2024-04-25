@@ -7,7 +7,7 @@ Welcome to the KillB SDK! This is an open-source project designed to facilitate 
 This project uses npm for package management. To install the project:
 
 ```bash
-npm install
+npm install @killb/sdk
 ```
 ## Quickstart
 Here's a quick guide on how to use the SDK:
@@ -16,12 +16,17 @@ Here's a quick guide on how to use the SDK:
 import { Client, Config } from './src/client';
 
 const config: Config = {
-  // Your configuration here
+  testEnv: true, // Optional. Default is false.
+  credentials: {
+    apiKey: 'your-api-key',
+    email: 'your-email',
+    password: 'your-password',
+  }
 };
 
 const client = new Client(config);
 
-const users = client.users;
+const users = await client.users.create({ ... });
 const accounts = client.accounts;
 // etc.
 ```
@@ -35,6 +40,10 @@ This project provides the following services:
 **Webhook**: Provides access to webhook-related operations.
 **Savings**: Provides access to savings-related operations.
 Each service is instantiated with the same configuration object, which is passed to the Client constructor.
+
+
+## API Reference
+Feel free to take a look at our API docs. You can find them [here](https://killbapi.stoplight.io/docs/killb-v2).
 
 ## Contributing
 Contributions are welcome.
