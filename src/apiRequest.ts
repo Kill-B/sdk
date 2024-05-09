@@ -2,7 +2,7 @@ import axios, { AxiosInstance, AxiosError } from 'axios';
 import { KillBError } from './helpers';
 import { Config } from './types';
 let accessToken: string;
-let expiresIn: number;
+let expiresAt = 0;
 
 /**
  * The `ApiRequest` class is responsible for making HTTP requests to the API.
@@ -25,6 +25,7 @@ export class ApiRequest {
       timeout: 30000,
       headers: {
         'x-api-key': input.credentials.apiKey,
+        ...(accessToken ? { 'Authorization': `Bearer ${accessToken}` } : {}),
       },
     });
     this.api.interceptors.response.use(
@@ -72,17 +73,15 @@ export class ApiRequest {
       password: this.config.credentials.password,
     });
 
-    this.config.accessToken = response.data.accessToken;
     accessToken = response.data.accessToken;
-    this.config.expiresIn = response.data.expiresIn;
-    expiresIn = response.data.expiresIn;
+    expiresAt = response.data.expiresIn + new Date().getTime();
 
     this.api = axios.create({
       baseURL: this.setHost(this.config.testEnv),
       timeout: 30000,
       headers: {
         'x-api-key': this.config.credentials.apiKey,
-        'Authorization': `Bearer ${this.config.accessToken}`,
+        'Authorization': `Bearer ${accessToken}`,
       },
     })
     this.api.interceptors.response.use(
@@ -105,12 +104,9 @@ export class ApiRequest {
    */
   protected async authenticateCheck() {
     if (
-      !this.config.accessToken ||
-      !this.config.expiresIn ||
-      this.config.expiresIn < new Date().getTime() ||
       !accessToken ||
-      !expiresIn ||
-      expiresIn < new Date().getTime()
+      !expiresAt ||
+      expiresAt < new Date().getTime()
     ) {
       await this.authenticate();
     }
