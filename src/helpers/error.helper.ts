@@ -24,6 +24,6 @@ export class KillBError extends Error {
     }
 
 
-    console.error(this);
+    process.env.DEBUG === 'true' && console.error(this);
   }
 }
