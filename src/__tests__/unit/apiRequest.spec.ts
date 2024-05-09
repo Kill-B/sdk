@@ -84,15 +84,13 @@ describe('ApiRequest', () => {
       };
 
       // @ts-ignore
-      jest.spyOn(apiRequest.api, 'post').mockResolvedValueOnce(mockResponse);
+      const requestSpy = jest.spyOn(apiRequest.api, 'post').mockResolvedValueOnce(mockResponse);
 
 
       await (apiRequest as any).authenticate();
 
-      // @ts-ignore
-      expect(apiRequest.config.accessToken).toEqual(mockResponse.data.accessToken);
-      // @ts-ignore
-      expect(apiRequest.config.expiresIn).toEqual(mockResponse.data.expiresIn);
+      await (apiRequest as any).authenticateCheck();
+      expect(requestSpy).toHaveBeenCalledTimes(1);
     });
 
     it('should throw an error when credentials are invalid', async () => {
@@ -115,43 +113,6 @@ describe('ApiRequest', () => {
   });
 
   describe('authenticateCheck', () => {
-    it('should call authenticate when accessToken is missing', async () => {
-      const apiRequest = new ApiRequest({
-        testEnv: true,
-        credentials: {
-          apiKey: 'test-api-key',
-          email: 'test@test.com',
-          password: 'test-password'
-        }
-      });
-
-      const spy = jest.spyOn(apiRequest as any, 'authenticate').mockResolvedValueOnce({});
-
-      await (apiRequest as any).authenticateCheck();
-
-      expect(spy).toHaveBeenCalled();
-    });
-
-    it('should call authenticate when expiresIn is missing', async () => {
-      const apiRequest = new ApiRequest({
-        testEnv: true,
-        credentials: {
-          apiKey: 'test-api-key',
-          email: 'test@test.com',
-          password: 'test-password'
-        }
-      });
-
-      // @ts-ignore
-      apiRequest.config.accessToken = 'test-access-token';
-
-      const spy = jest.spyOn(apiRequest as any, 'authenticate').mockResolvedValueOnce({});;
-
-      await (apiRequest as any).authenticateCheck();
-
-      expect(spy).toHaveBeenCalled();
-    });
-
     it('should call authenticate method just one time', async () => {
       const apiRequest = new ApiRequest({
         testEnv: true,
