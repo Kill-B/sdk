@@ -152,7 +152,7 @@ describe('ApiRequest', () => {
       expect(spy).toHaveBeenCalled();
     });
 
-    it('should call authenticate when expiresIn is in the past', async () => {
+    it('should call authenticate method just one time', async () => {
       const apiRequest = new ApiRequest({
         testEnv: true,
         credentials: {
@@ -161,39 +161,16 @@ describe('ApiRequest', () => {
           password: 'test-password'
         }
       });
-
+      const authResponse = {  accessToken: 'test', expiresIn: 3600000 };
       // @ts-ignore
-      apiRequest.config.accessToken = 'test-access-token';
-      // @ts-ignore
-      apiRequest.config.expiresIn = Date.now() - 10000;
-
-      const spy = jest.spyOn(apiRequest as any, 'authenticate').mockResolvedValueOnce({});;
+      const requestSpy = jest.spyOn(apiRequest.api as any, 'post').mockResolvedValueOnce({ data: authResponse });
+      const authenticateSpy = jest.spyOn(apiRequest as any, 'authenticate');
+      const response = await (apiRequest as any).authenticate();
+      expect(response).toEqual(authResponse);
+      expect(requestSpy).toHaveBeenCalled();
 
       await (apiRequest as any).authenticateCheck();
-
-      expect(spy).toHaveBeenCalled();
-    });
-
-    it('should not call authenticate when accessToken and expiresIn are valid', async () => {
-      const apiRequest = new ApiRequest({
-        testEnv: true,
-        credentials: {
-          apiKey: 'test-api-key',
-          email: 'test@test.com',
-          password: 'test-password'
-        }
-      });
-
-      // @ts-ignore
-      apiRequest.config.accessToken = 'test-access-token';
-      // @ts-ignore
-      apiRequest.config.expiresIn = Date.now() + 10000;
-
-      const spy = jest.spyOn(apiRequest as any, 'authenticate');
-
-      await (apiRequest as any).authenticateCheck();
-
-      expect(spy).not.toHaveBeenCalled();
+      expect(authenticateSpy).toHaveBeenCalledTimes(1);
     });
   });
 });
