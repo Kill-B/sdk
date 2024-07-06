@@ -65,8 +65,47 @@ export class Users extends ApiRequest {
    */
   public async list(query?:  paths["/users"]["get"]['parameters']['query']): Promise<components['schemas']['GetUserQueryResponse']> {
     await this.authenticateCheck();
-    const queryParams = '?' + new URLSearchParams(query as Record<string, string> || {}).toString();
+    const queryParams = '?' + new URLSearchParams(query as Record<string, any> || {}).toString();
     return this.api.get(`/users${queryParams}`);
   }
 
+  /**
+   * Uploads a document for a person user.
+   *
+   * This method is responsible for uploading a document associated with a person user. It constructs a FormData object
+   * to encapsulate the document details, including the user ID, document type, and the document files (front and optionally back).
+   * The FormData is then sent as a POST request to the 'users/person/document' endpoint.
+   *
+   * @param input - An object containing the document upload details. Must conform to the 'UploadPersonDocumentDto' schema.
+   * @returns A promise that resolves when the document upload is successful.
+   */
+  public async uploadPersonDocument(input: components['schemas']['UploadPersonDocumentDto']): Promise<void> {
+    await this.authenticateCheck();
+    const form = new FormData();
+    form.append('userId', input.userId);
+    form.append('documentType', input.documentType);
+    form.append('frontDocument', input.frontDocument);
+    input.backDocument ? form.append('backDocument', input.backDocument) : null;
+    return this.api.post('users/person/document', form)
+  }
+
+  /**
+   * Uploads a document for a person user.
+   *
+   * This method is responsible for uploading a document associated with a person user. It constructs a FormData object
+   * to encapsulate the document details, including the user ID, document type, and the document files (front and optionally back).
+   * The FormData is then sent as a POST request to the 'users/person/document' endpoint.
+   *
+   * @param input - An object containing the document upload details. Must conform to the 'UploadPersonDocumentDto' schema.
+   * @returns A promise that resolves when the document upload is successful.
+   */
+  public async uploadCompanyDocument(input: components['schemas']['UploadBusinessDocumentDto']): Promise<void> {
+    await this.authenticateCheck();
+    const form = new FormData();
+    form.append('userId', input.userId);
+    form.append('documentType', input.documentType);
+    form.append('frontDocument', input.frontDocument);
+    input.backDocument ? form.append('backDocument', input.backDocument) : null;
+    return this.api.post('users/company/document', form)
+  }
 }

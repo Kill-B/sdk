@@ -226,7 +226,7 @@ export interface components {
     PSEAccountDto: {
       /** @description Required if companyName is not present */
       firstName: string;
-      middleName?: string;
+      middleName: string;
       /** @description Required if companyName is not present */
       lastName: string;
       /** @description Required if firstName is not present */
@@ -272,10 +272,55 @@ export interface components {
       network: string;
       address: string;
     };
+    AccountAddressDto: {
+      street1: string;
+      street2: string;
+      zipCode: string;
+      city: string;
+      stateCode: string;
+      countryCode: string;
+    };
+    AccountDocumentDto: {
+      number: string;
+      type: string;
+      issuedCountryCode: string;
+      firstName: string;
+      lastName: string;
+    };
+    ACHAccountDto: {
+      /** @description Required if companyName is not present */
+      firstName: string;
+      middleName: string;
+      /** @description Required if companyName is not present */
+      lastName: string;
+      /** @description Required if firstName is not present */
+      companyName: string;
+      bankName: string;
+      routingNumber: string;
+      accountNumber: string;
+      type: string;
+      address: components["schemas"]["AccountAddressDto"];
+      document: components["schemas"]["AccountDocumentDto"];
+    };
+    WIREAccountDto: {
+      /** @description Required if companyName is not present */
+      firstName: string;
+      middleName: string;
+      /** @description Required if companyName is not present */
+      lastName: string;
+      /** @description Required if firstName is not present */
+      companyName: string;
+      accountNumber: string;
+      routingNumber: string;
+      address: components["schemas"]["AccountAddressDto"];
+      bankName: string;
+      bankAddress: components["schemas"]["AccountAddressDto"];
+      document: components["schemas"]["AccountDocumentDto"];
+    };
     CreateAccountDto: {
       type: string;
       userId: string;
-      data: components["schemas"]["PSEAccountDto"] | components["schemas"]["SpeiAccountDto"] | components["schemas"]["WalletAccountDto"];
+      data: components["schemas"]["PSEAccountDto"] | components["schemas"]["SpeiAccountDto"] | components["schemas"]["WalletAccountDto"] | components["schemas"]["WIREAccountDto"] | components["schemas"]["ACHAccountDto"];
       /** @description A unique identifier used to identify your existing user. */
       externalId: string;
     };
@@ -434,6 +479,78 @@ export interface components {
       /** @example CO */
       countryCode: string;
     };
+    InvestmentProfile: {
+      /**
+       * @example EMPLOYMENT
+       * @enum {string}
+       */
+      primarySourceOfFunds: "EMPLOYMENT" | "SAVINGS" | "WINNINGS" | "MARITAL" | "REAL_ESTATE" | "TRUST" | "INVESTMENT" | "OTHER" | "COMPANY" | "COMPANY_CAPITAL" | "LOAN" | "PRIVATE_CAPITAL" | "GRANT";
+      /** @example I work at Google */
+      primarySourceOfFundsDescription: string;
+      /**
+       * @example UPTO_10K
+       * @enum {string}
+       */
+      totalAssets: "UPTO_10K" | "TEN_TO_100K" | "ONEHUNDREDK_TO_1M" | "ONE_TO_10M" | "TEN_TO_50M" | "FIFTY_TO_250M" | "MORE_THAN_250M";
+      /**
+       * @example UPTO_10K
+       * @enum {string}
+       */
+      usdValueOfFiat: "UPTO_10K" | "TEN_TO_100K" | "ONEHUNDREDK_TO_1M" | "ONE_TO_10M" | "TEN_TO_50M" | "FIFTY_TO_250M" | "MORE_THAN_250M";
+      /**
+       * @example UPTO_5
+       * @enum {string}
+       */
+      monthlyDeposits: "UPTO_5" | "FIVE_TO_10" | "TEN_TO_25" | "MORE_THAN_25";
+      /**
+       * @example UPTO_5
+       * @enum {string}
+       */
+      monthlyWithdrawals: "UPTO_5" | "FIVE_TO_10" | "TEN_TO_25" | "MORE_THAN_25";
+      /**
+       * @example UPTO_1K
+       * @enum {string}
+       */
+      monthlyInvestmentDeposit: "UPTO_1K" | "ONE_TO_100K" | "ONEHUNDREDK_TO_1M" | "MILLION_TO_5M" | "MORE_THAN_5M";
+      /**
+       * @example UPTO_1K
+       * @enum {string}
+       */
+      monthlyInvestmentWithdrawal: "UPTO_1K" | "ONE_TO_100K" | "ONEHUNDREDK_TO_1M" | "MILLION_TO_5M" | "MORE_THAN_5M";
+      /**
+       * @example UPTO_1K
+       * @enum {string}
+       */
+      usdValueOfCrypto: "UPTO_1K" | "ONE_TO_100K" | "ONEHUNDREDK_TO_1M" | "MILLION_TO_5M" | "MORE_THAN_5M";
+      /**
+       * @example UPTO_5
+       * @enum {string}
+       */
+      monthlyCryptoDeposits: "UPTO_5" | "FIVE_TO_10" | "TEN_TO_25" | "MORE_THAN_25";
+      /**
+       * @example UPTO_5
+       * @enum {string}
+       */
+      monthlyCryptoWithdrawals: "UPTO_5" | "FIVE_TO_10" | "TEN_TO_25" | "MORE_THAN_25";
+      /**
+       * @example UPTO_1K
+       * @enum {string}
+       */
+      monthlyCryptoInvestmentDeposit: "UPTO_1K" | "ONE_TO_100K" | "ONEHUNDREDK_TO_1M" | "MILLION_TO_5M" | "MORE_THAN_5M";
+      /**
+       * @example UPTO_1K
+       * @enum {string}
+       */
+      monthlyCryptoInvestmentWithdrawal: "UPTO_1K" | "ONE_TO_100K" | "ONEHUNDREDK_TO_1M" | "MILLION_TO_5M" | "MORE_THAN_5M";
+    };
+    KycProfile: {
+      fundsSendReceiveJurisdictions: string[];
+      /**
+       * @example NONE
+       * @enum {string}
+       */
+      engageInActivities: "NONE" | "ADULT_ENTERTAINMENT" | "DRUGS" | "FIREARMS" | "GAMBLING" | "MARIJUANA" | "TUMBLING";
+    };
     CreatePersonUserDto: {
       /** @example John */
       firstName: string;
@@ -449,13 +566,33 @@ export interface components {
       phone: string;
       address: components["schemas"]["UserAddressDto"];
       document: components["schemas"]["PersonUserDocumentDto"];
+      /** @example CO */
+      nationality?: string;
+      /** @example CO */
+      citizenship?: string;
+      /**
+       * @example EMPLOYEE
+       * @enum {string}
+       */
+      employmentStatus?: "EMPLOYEE" | "SELF_EMPLOYED" | "RETIRED" | "UNEMPLOYED" | "OTHER";
+      /** @example Software Engineer */
+      employmentDescription?: string;
+      /** @example Google */
+      employerName?: string;
+      /** @example Software Engineer */
+      occupation?: string;
+      investmentProfile?: components["schemas"]["InvestmentProfile"];
+      kycProfile?: components["schemas"]["KycProfile"];
     };
     CreateCompanyUserDto: {
       /** @example Gerlach, Baumbach and Bernhard */
       companyName: string;
       /** @example Babbleopia */
       tradeName?: string;
-      legalStructure?: string;
+      /** @example 123456 */
+      registeredNumber?: string;
+      /** @enum {string} */
+      legalStructure?: "C_CORP_PRIVATE" | "C_CORP_PUBLIC" | "HNWI" | "LLC" | "LLP" | "LP" | "S_CORP" | "SOLE_PROP" | "TRUST" | "NON_PROFIT" | "OTHER";
       description?: string;
       establishedOn?: string;
       phone?: string;
@@ -466,6 +603,8 @@ export interface components {
       naics?: string;
       naicsDescription?: string;
       document: components["schemas"]["CompanyUserDocumentDto"];
+      investmentProfile?: components["schemas"]["InvestmentProfile"];
+      kycProfile?: components["schemas"]["KycProfile"];
     };
     CreateUserDto: {
       /**
@@ -495,13 +634,33 @@ export interface components {
       phone: string;
       address: components["schemas"]["UserAddressDto"];
       document: components["schemas"]["PersonUserDocumentDto"];
+      /** @example CO */
+      nationality?: string;
+      /** @example CO */
+      citizenship?: string;
+      /**
+       * @example EMPLOYEE
+       * @enum {string}
+       */
+      employmentStatus?: "EMPLOYEE" | "SELF_EMPLOYED" | "RETIRED" | "UNEMPLOYED" | "OTHER";
+      /** @example Software Engineer */
+      employmentDescription?: string;
+      /** @example Google */
+      employerName?: string;
+      /** @example Software Engineer */
+      occupation?: string;
+      investmentProfile?: components["schemas"]["InvestmentProfile"];
+      kycProfile?: components["schemas"]["KycProfile"];
     };
     CompanyUserDto: {
       /** @example Gerlach, Baumbach and Bernhard */
       companyName: string;
       /** @example Babbleopia */
       tradeName?: string;
-      legalStructure?: string;
+      /** @example 123456 */
+      registeredNumber?: string;
+      /** @enum {string} */
+      legalStructure?: "C_CORP_PRIVATE" | "C_CORP_PUBLIC" | "HNWI" | "LLC" | "LLP" | "LP" | "S_CORP" | "SOLE_PROP" | "TRUST" | "NON_PROFIT" | "OTHER";
       description?: string;
       establishedOn?: string;
       phone?: string;
@@ -512,6 +671,8 @@ export interface components {
       naics?: string;
       naicsDescription?: string;
       document: components["schemas"]["CompanyUserDocumentDto"];
+      investmentProfile?: components["schemas"]["InvestmentProfile"];
+      kycProfile?: components["schemas"]["KycProfile"];
     };
     CreateUserResponseDto: {
       /** @example 4d23aa52-1b40-4584-a8ea-58aba6099c5c */
@@ -553,12 +714,13 @@ export interface components {
       totalPage: number;
     };
     UploadPersonDocumentDto: {
+      /** Format: uuid */
       userId: string;
       /**
-       * @example SOURCE_OF_FUNDS
+       * @example CURP
        * @enum {string}
        */
-      documentType: "SOURCE_OF_FUNDS";
+      documentType: "SOURCE_OF_FUNDS" | "PASSPORT" | "DRIVER_LICENSE" | "NUIP" | "RFC" | "SSN" | "CURP" | "CPF" | "INE" | "IFE";
       /**
        * Format: binary
        * @description Front document file
@@ -568,11 +730,16 @@ export interface components {
        * Format: binary
        * @description Back document file
        */
-      backDocument: string;
+      backDocument?: string;
     };
     UploadBusinessDocumentDto: {
+      /** Format: uuid */
       userId: string;
-      documentType: string;
+      /**
+       * @example NIT
+       * @enum {string}
+       */
+      documentType: "PROOF_OF_ADDRESS" | "PROOF_OF_COMPANY_FORMATION" | "NIT" | "OTHER" | "SOURCE_OF_FUNDS";
       /**
        * Format: binary
        * @description Front document file
@@ -582,7 +749,7 @@ export interface components {
        * Format: binary
        * @description Back document file
        */
-      backDocument: string;
+      backDocument?: string;
     };
     ILevelUpdateInput: Record<string, never>;
     ILevelDowngradeInput: Record<string, never>;
@@ -767,12 +934,35 @@ export interface components {
       /** @enum {string} */
       cashOutMethod: "SPEI" | "POLYGON" | "ERC20" | "PSE";
     };
+    RefundInstructions: {
+      /** @example POLYGON */
+      network: string;
+      /** @example Ox */
+      address: string;
+      /**
+       * @example USDC
+       * @enum {string}
+       */
+      asset: "USDC";
+      clabe: string;
+      /** @example Bruce Wayne */
+      beneficiary: string;
+    };
     CreateRampInputDto: {
       quotationId: string;
       userId: string;
       accountId: string;
+      refundInstructions: components["schemas"]["RefundInstructions"];
     };
-    IFiatPaymentInfo: {
+    ISPEIPaymentInfo: {
+      network: string;
+      Bank: string;
+      Beneficiary: string;
+      CLABE: string;
+      /** @description This code needs to be sent for KillB be able to identify the payment */
+      concepto: string;
+    };
+    ICOPPaymentInfo: {
       url: string;
     };
     ICryptoPaymentInfo: {
@@ -798,7 +988,7 @@ export interface components {
       /** @enum {string} */
       status: "CREATED" | "CASH_IN_REQUEST" | "CONVERSION_REQUEST" | "CASH_OUT_REQUEST" | "CASH_IN_REQUESTED" | "CONVERSION_REQUESTED" | "CASH_OUT_REQUESTED" | "CASH_IN_PENDING" | "CONVERSION_PENDING" | "CASH_OUT_PENDING" | "CASH_IN_PROCESSING" | "CONVERSION_PROCESSING" | "CASH_OUT_PROCESSING" | "CASH_IN_COMPLETED" | "CONVERSION_COMPLETED" | "CASH_OUT_COMPLETED" | "COMPLETED" | "CANCELED" | "FAILED" | "REJECTED" | "ERROR";
       isPreFunded?: boolean;
-      paymentInfo?: (components["schemas"]["IFiatPaymentInfo"] | components["schemas"]["ICryptoPaymentInfo"])[];
+      paymentInfo?: (components["schemas"]["ISPEIPaymentInfo"] | components["schemas"]["ICOPPaymentInfo"] | components["schemas"]["ICryptoPaymentInfo"])[];
       /** @description complement information about a transfer, like: Code error */
       details?: string;
       /** @description Proof of transfer, like: TxHash, url, etc. */
@@ -1138,7 +1328,7 @@ export interface operations {
   /** Get users */
   UserController_get: {
     parameters: {
-      query?: {
+      query: {
         limit?: number;
         page?: number;
         id?: string;
@@ -1158,6 +1348,8 @@ export interface operations {
         ownerUsers?: string[];
         naics?: string;
         naicsDescription?: string;
+        /** @example PERSON */
+        type: "PERSON" | "COMPANY";
       };
     };
     responses: {
