@@ -112,8 +112,8 @@ export class Users extends ApiRequest {
     const form = new FormData();
     form.append('userId', input.userId);
     form.append('documentType', input.documentType);
-    form.append('frontDocument', input.frontDocument);
-    input.backDocument ? form.append('backDocument', input.backDocument) : null;
+    form.append('frontDocument', input.frontDocument, { filename: 'frontDocument.png', contentType: 'image/png' });
+    input.backDocument ? form.append('backDocument', input.backDocument, { filename: 'backDocument.png', contentType: 'image/png' }) : null;
 
     const headers = {
       ...form.getHeaders(),
