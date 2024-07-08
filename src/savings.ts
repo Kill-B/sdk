@@ -28,7 +28,8 @@ export class Savings extends ApiRequest {
    */
   public async get(id: string): Promise<components['schemas']['SavingsAccountResponseDto']> {
     await this.authenticateCheck();
-    return this.api.get(`/savings/${id}`);
+    const response = await this.api.get(`/savings/${id}`);
+    return response.data
   }
 
   /**
@@ -41,7 +42,8 @@ export class Savings extends ApiRequest {
    */
   public async getBalance(id: string): Promise<components['schemas']['GetBalanceReturn']> {
     await this.authenticateCheck();
-    return this.api.get(`/savings/${id}/balances`);
+    const response = await this.api.get(`/savings/${id}/balances`);
+    return response.data;
   }
 
   /**
@@ -70,7 +72,8 @@ export class Savings extends ApiRequest {
   public async getTransactions(query?: paths["/savings/transactions"]["get"]['parameters']['query']): Promise<components['schemas']['getTransactionsReturn']> {
     await this.authenticateCheck();
     const queryParams = '?' + new URLSearchParams(query as Record<string, string> || {}).toString();
-    return this.api.get(`/savings/transactions${queryParams}`);
+    const response = await this.api.get(`/savings/transactions${queryParams}`);
+    return response.data
   }
 
   /**
@@ -84,7 +87,8 @@ export class Savings extends ApiRequest {
    */
   public async getBankingDepositInstructions(id: string, method: 'ACH' | 'WIRE'): Promise<components['schemas']['GetDepositInstructionsACHReturn'] | components['schemas']['GetDepositInstructionsWireReturn']> {
     await this.authenticateCheck();
-    return this.api.get(`/savings/${id}/deposit-instructions/${method}`);
+    const response = await this.api.get(`/savings/${id}/deposit-instructions/${method}`);
+    return response.data;
   }
 
   /**
@@ -97,6 +101,7 @@ export class Savings extends ApiRequest {
    */
   public async getCryptoDepositInstructions(id: string): Promise<components['schemas']['GetCryptoDepositInstructionsReturn']> {
     await this.authenticateCheck();
-    return this.api.get(`/savings/${id}/crypto-deposit-instructions`);
+    const response = await this.api.get(`/savings/${id}/crypto-deposit-instructions`);
+    return response.data;
   }
 }

@@ -1,5 +1,7 @@
 import { ApiRequest } from './apiRequest';
 import { components, paths } from './types';
+import FormData from 'form-data';
+import * as fs from "fs";
 
 /**
  * The Users class provides methods for managing users.
@@ -66,7 +68,8 @@ export class Users extends ApiRequest {
   public async list(query?:  paths["/users"]["get"]['parameters']['query']): Promise<components['schemas']['GetUserQueryResponse']> {
     await this.authenticateCheck();
     const queryParams = '?' + new URLSearchParams(query as Record<string, any> || {}).toString();
-    return this.api.get(`/users${queryParams}`);
+    const response = await this.api.get(`/users${queryParams}`);
+    return response.data;
   }
 
   /**
@@ -84,9 +87,14 @@ export class Users extends ApiRequest {
     const form = new FormData();
     form.append('userId', input.userId);
     form.append('documentType', input.documentType);
-    form.append('frontDocument', input.frontDocument);
-    input.backDocument ? form.append('backDocument', input.backDocument) : null;
-    return this.api.post('users/person/document', form)
+    form.append('frontDocument', input.frontDocument, { filename: 'frontDocument.png', contentType: 'image/png' });
+    input.backDocument ? form.append('backDocument', input.backDocument, { filename: 'backDocument.png', contentType: 'image/png' }) : null;
+
+    const headers = {
+      ...form.getHeaders(),
+    };
+
+    await this.api.post('users/person/document', form, { headers })
   }
 
   /**
@@ -106,6 +114,11 @@ export class Users extends ApiRequest {
     form.append('documentType', input.documentType);
     form.append('frontDocument', input.frontDocument);
     input.backDocument ? form.append('backDocument', input.backDocument) : null;
-    return this.api.post('users/company/document', form)
+
+    const headers = {
+      ...form.getHeaders(),
+    };
+
+    await this.api.post('users/company/document', form, { headers })
   }
 }
