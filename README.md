@@ -4,7 +4,7 @@ Welcome to the KillB SDK! This is an open-source project designed to facilitate 
 
 ## Installation
 
-This project uses npm for package management. To install the project:
+This project uses npm for package management. To install the project: 
 
 ```bash
 npm install @killb/sdk
