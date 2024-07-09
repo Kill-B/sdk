@@ -55,7 +55,7 @@ export class Savings extends ApiRequest {
    */
   public async createWithdrawal(body: components['schemas']['CreateWithdrawalDto']): Promise<components['schemas']['WithdrawalSavingsReturn']> {
     await this.authenticateCheck();
-    const response = await this.api.post('/savings/withdrawals', body);
+    const response = await this.api.post('/savings/withdrawal', body);
     return response.data;
   }
 

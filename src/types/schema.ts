@@ -280,13 +280,6 @@ export interface components {
       stateCode: string;
       countryCode: string;
     };
-    AccountDocumentDto: {
-      number: string;
-      type: string;
-      issuedCountryCode: string;
-      firstName: string;
-      lastName: string;
-    };
     ACHAccountDto: {
       /** @description Required if companyName is not present */
       firstName: string;
@@ -300,7 +293,7 @@ export interface components {
       accountNumber: string;
       type: string;
       address: components["schemas"]["AccountAddressDto"];
-      document: components["schemas"]["AccountDocumentDto"];
+      document: components["schemas"]["CompanyUserDocumentDto"] | components["schemas"]["PersonUserDocumentDto"];
     };
     WIREAccountDto: {
       /** @description Required if companyName is not present */
@@ -315,7 +308,7 @@ export interface components {
       address: components["schemas"]["AccountAddressDto"];
       bankName: string;
       bankAddress: components["schemas"]["AccountAddressDto"];
-      document: components["schemas"]["AccountDocumentDto"];
+      document: components["schemas"]["CompanyUserDocumentDto"] | components["schemas"]["PersonUserDocumentDto"];
     };
     CreateAccountDto: {
       type: string;
@@ -720,7 +713,7 @@ export interface components {
        * @example CURP
        * @enum {string}
        */
-      documentType: "SOURCE_OF_FUNDS" | "PASSPORT" | "DRIVER_LICENSE" | "NUIP" | "RFC" | "SSN" | "CURP" | "CPF" | "INE" | "IFE";
+      documentType: "PROVE_OF_ADDRESS_BANK_STATEMENT" | "PROVE_OF_ADDRESS_UTILITY_BILL" | "PROVE_OF_ADDRESS_LEASE_AGREEMENT" | "SOURCE_OF_FUNDS_BANK_STATEMENT" | "SOURCE_OF_FUNDS_PAYSLIP" | "PASSPORT" | "DRIVER_LICENSE" | "NUIP" | "RFC" | "SSN" | "CURP" | "CPF" | "INE" | "IFE";
       /**
        * Format: binary
        * @description Front document file
@@ -739,7 +732,7 @@ export interface components {
        * @example NIT
        * @enum {string}
        */
-      documentType: "PROOF_OF_ADDRESS" | "PROOF_OF_COMPANY_FORMATION" | "NIT" | "OTHER" | "SOURCE_OF_FUNDS";
+      documentType: "PROVE_OF_ADDRESS_BANK_STATEMENT" | "PROVE_OF_ADDRESS_UTILITY_BILL" | "PROVE_OF_ADDRESS_LEASE_AGREEMENT" | "SOURCE_OF_FUNDS_BANK_STATEMENT" | "SOURCE_OF_FUNDS_PAYSLIP" | "PROOF_OF_COMPANY_FORMATION" | "NIT" | "OTHER";
       /**
        * Format: binary
        * @description Front document file
@@ -1089,7 +1082,7 @@ export interface operations {
       query?: {
         /** @example 7f0a8ad6-29a1-4a66-a6c4-8bb398eb78d1 */
         userId?: string;
-        type?: "PSE" | "ACH" | "WIRE" | "WALLET" | "INTERNATIONAL_WIRE" | "COELSA" | "SPEI" | "CUSTODIAL";
+        type?: "PSE" | "ACH" | "WIRE" | "WALLET" | "COELSA" | "SPEI" | "CUSTODIAL";
         /** @example 001134412 */
         accountNumber?: string;
         /** @example 1231312 */

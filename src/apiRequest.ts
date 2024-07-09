@@ -109,6 +109,8 @@ export class ApiRequest {
       expiresAt < new Date().getTime()
     ) {
       await this.authenticate();
+      return;
     }
+    this.api.defaults.headers['Authorization'] = `Bearer ${accessToken}`;
   }
 }
