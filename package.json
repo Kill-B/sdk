@@ -1,6 +1,6 @@
 {
   "name": "@killb/sdk",
-  "version": "1.2.2",
+  "version": "1.2.4",
   "description": "KillB sdk",
   "main": "lib/cjs/index.js",
   "types": "./lib/cjs/types/index.d.ts",
