@@ -41,7 +41,8 @@ export class Users extends ApiRequest {
    */
   public async update(id: string, body: components['schemas']['CreatePersonUserDto'] | components['schemas']['CreateCompanyUserDto']): Promise<components['schemas']['CreateUserResponseDto']> {
     await this.authenticateCheck();
-    return this.api.patch(`/users/${id}`, body);
+    const response = await  this.api.patch(`/users/${id}`, body);
+    return response.data;
   }
 
   /**
@@ -54,7 +55,7 @@ export class Users extends ApiRequest {
    */
   public async delete(id: string): Promise<void> {
     await this.authenticateCheck();
-    return this.api.delete(`/users/${id}`);
+    await this.api.delete(`/users/${id}`);
   }
 
   /**
