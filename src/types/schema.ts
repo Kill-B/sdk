@@ -8,29 +8,54 @@ export interface paths {
   "/auth/login": {
     /**
      * Generate an access token
-     * @description Guide for the Auth can be found in [Auths](/docs/Auths.md)
+     * @description Guide for the Auth can be found in [Auths](https://killbapi.stoplight.io/docs/killb-v2/92fb466bf5e4b). This endpoint is throttled to 20 requests per 10 minutes
      */
     post: operations["AuthController_login"];
+    /**
+     * Options
+     * @description Options method
+     */
+    options: operations["options0"];
   };
   "/customers/balances": {
     /** Get customer balances */
     get: operations["CustomerController_getBalances"];
+    /**
+     * Options
+     * @description Options method
+     */
+    options: operations["options1"];
   };
   "/accounts": {
     /** Get Accounts */
     get: operations["AccountController_queryAccount"];
     /** Create Account */
     post: operations["AccountController_create"];
+    /**
+     * Options
+     * @description Options method
+     */
+    options: operations["options2"];
   };
   "/accounts/{id}": {
     /** Get Account by id */
     get: operations["AccountController_getOne"];
+    /**
+     * Options
+     * @description Options method
+     */
+    options: operations["options3"];
     /** Update Account */
     patch: operations["AccountController_update"];
   };
   "/accounts/userId/{userId}": {
     /** Get Accounts by UserId */
     get: operations["AccountController_getByUserId"];
+    /**
+     * Options
+     * @description Options method
+     */
+    options: operations["options4"];
   };
   "/webhooks": {
     /**
@@ -49,6 +74,11 @@ export interface paths {
      */
     delete: operations["WebhookController_delete"];
     /**
+     * Options
+     * @description Options method
+     */
+    options: operations["options5"];
+    /**
      * Update webhook config
      * @description Endpoint responsible for UPDATE webhook config. For more information, examples and how works see here: [Webhook Documentation](/docs/Webhooks.md)
      */
@@ -59,48 +89,105 @@ export interface paths {
     get: operations["UserController_get"];
     /** Create a user */
     post: operations["UserController_create"];
+    /**
+     * Options
+     * @description Options method
+     */
+    options: operations["options6"];
   };
   "/users/{id}": {
+    /** Get users */
+    get: operations["UserController_getById"];
     /** Delete user */
     delete: operations["UserController_delete"];
+    /**
+     * Options
+     * @description Options method
+     */
+    options: operations["options7"];
     /** Update user */
     patch: operations["UserController_update"];
   };
   "/users/person/document": {
     /** Add person user document */
     post: operations["UserController_uploadDocumentPerson"];
+    /**
+     * Options
+     * @description Options method
+     */
+    options: operations["options8"];
   };
   "/users/company/document": {
     /** Add company user document */
     post: operations["UserController_uploadDocumentBusiness"];
+    /**
+     * Options
+     * @description Options method
+     */
+    options: operations["options9"];
   };
   "/savings": {
     /** Create savings account */
     post: operations["SavingsController_onboard"];
-  };
-  "/savings/{id}": {
-    /** Get savings account */
-    get: operations["SavingsController_getOnboard"];
-  };
-  "/savings/withdrawal": {
-    /** Create withdrawal */
-    post: operations["SavingsController_withdrawal"];
+    /**
+     * Options
+     * @description Options method
+     */
+    options: operations["options10"];
   };
   "/savings/transactions": {
     /** Get transactions */
     get: operations["SavingsController_getTransactions"];
+    /**
+     * Options
+     * @description Options method
+     */
+    options: operations["options11"];
+  };
+  "/savings/{id}": {
+    /** Get savings account */
+    get: operations["SavingsController_getOnboard"];
+    /**
+     * Options
+     * @description Options method
+     */
+    options: operations["options12"];
+  };
+  "/savings/withdrawal": {
+    /** Create withdrawal */
+    post: operations["SavingsController_withdrawal"];
+    /**
+     * Options
+     * @description Options method
+     */
+    options: operations["options13"];
   };
   "/savings/{id}/balance": {
     /** Get balance */
     get: operations["SavingsController_getBalance"];
+    /**
+     * Options
+     * @description Options method
+     */
+    options: operations["options14"];
   };
   "/savings/{id}/deposit-instructions/{type}": {
     /** Get banking deposit instructions */
     get: operations["SavingsController_getDepositInstructions"];
+    /**
+     * Options
+     * @description Options method
+     */
+    options: operations["options15"];
   };
   "/savings/{id}/crypto-deposit-instructions": {
     /** Get crypto deposit instructions */
     get: operations["SavingsController_getWalletAddress"];
+    /**
+     * Options
+     * @description Options method
+     */
+    options: operations["options16"];
   };
   "/quotations": {
     /**
@@ -108,10 +195,32 @@ export interface paths {
      * @description Endpoint responsible for create Quotation.
      */
     post: operations["QuotationController_create"];
+    /**
+     * Options
+     * @description Options method
+     */
+    options: operations["options17"];
   };
   "/quotations/simulation": {
     /** Simulate a Quotation */
     post: operations["QuotationController_simulation"];
+    /**
+     * Options
+     * @description Options method
+     */
+    options: operations["options18"];
+  };
+  "/quotations/{id}": {
+    /**
+     * Get Quotation
+     * @description Endpoint responsible for get Quotation.
+     */
+    get: operations["QuotationController_getById"];
+    /**
+     * Options
+     * @description Options method
+     */
+    options: operations["options19"];
   };
   "/ramps": {
     /**
@@ -124,10 +233,32 @@ export interface paths {
      * @description This endpoint is responsible for executing the Ramp (On or/and Off). For more details about this endpoint, see here [Ramps](/docs/Ramps.md)
      */
     post: operations["RampsController_create"];
+    /**
+     * Options
+     * @description Options method
+     */
+    options: operations["options20"];
+  };
+  "/ramps/{id}": {
+    /**
+     * Get ramp status history
+     * @description This endpoint is responsible for getting the result of the Ramp. For more details about this endpoint, see here [Ramps](/docs/Ramps.md)
+     */
+    get: operations["RampsController_getStatusHistoryById"];
+    /**
+     * Options
+     * @description Options method
+     */
+    options: operations["options21"];
   };
   "/banks": {
     /** Get Bank list by countryCode */
     get: operations["BankController_get"];
+    /**
+     * Options
+     * @description Options method
+     */
+    options: operations["options22"];
   };
 }
 
@@ -226,7 +357,7 @@ export interface components {
     PSEAccountDto: {
       /** @description Required if companyName is not present */
       firstName: string;
-      middleName: string;
+      middleName?: string;
       /** @description Required if companyName is not present */
       lastName: string;
       /** @description Required if firstName is not present */
@@ -236,7 +367,8 @@ export interface components {
       accountNumber: string;
       /** @description You can find the code on the bank list endpoint */
       bankCode: string;
-      type: string;
+      /** @enum {string} */
+      type: "savings" | "checking";
       countryCode: string;
       document: components["schemas"]["CompanyUserDocumentDto"] | components["schemas"]["PersonUserDocumentDto"];
     };
@@ -252,9 +384,13 @@ export interface components {
       email: string;
       document: components["schemas"]["CompanyUserDocumentDto"] | components["schemas"]["PersonUserDocumentDto"];
       clabe: string;
-      clabeType: string;
-      /** @description You can find the code on the bank list endpoint */
-      bankCode: string;
+      /**
+       * @description ClabeType is necessary only for clabes with format PHONE_NUMBER, CREDIT_CARD
+       * @enum {string}
+       */
+      clabeType?: "CLABE" | "CREDIT_CARD" | "PHONE_NUMBER";
+      /** @description You can find the code on the bank list endpoint. BankCode is required only for the following clabe types: PHONE_NUMBER, CREDIT_CARD */
+      bankCode?: string;
       countryCode: string;
     };
     WalletAccountDto: {
@@ -311,7 +447,8 @@ export interface components {
       document: components["schemas"]["CompanyUserDocumentDto"] | components["schemas"]["PersonUserDocumentDto"];
     };
     CreateAccountDto: {
-      type: string;
+      /** @enum {string} */
+      type: "PSE" | "ACH" | "WIRE" | "WALLET" | "COELSA" | "SPEI" | "CUSTODIAL";
       userId: string;
       data: components["schemas"]["PSEAccountDto"] | components["schemas"]["SpeiAccountDto"] | components["schemas"]["WalletAccountDto"] | components["schemas"]["WIREAccountDto"] | components["schemas"]["ACHAccountDto"];
       /** @description A unique identifier used to identify your existing user. */
@@ -384,7 +521,7 @@ export interface components {
       url: string;
       /** @example GJD6cyf6xbc@bvx6rvu */
       secret: string;
-      events: ("RAMP" | "USER" | "TRANSACTION" | "ACCOUNT")[];
+      events: ("RAMP" | "USER" | "TRANSACTION" | "ACCOUNT" | "CUSTODIAL_ACCOUNT")[];
     };
     CreateWebhookResponseDto: {
       /** @example 4d23aa52-1b40-4584-a8ea-58aba6099c5c */
@@ -393,7 +530,7 @@ export interface components {
       customerId: string;
       /** @example https://mywebhook.com */
       url: string;
-      events: ("RAMP" | "USER" | "TRANSACTION" | "ACCOUNT")[];
+      events: ("RAMP" | "USER" | "TRANSACTION" | "ACCOUNT" | "CUSTODIAL_ACCOUNT")[];
       /** @example true */
       active: boolean;
       /**
@@ -413,7 +550,7 @@ export interface components {
       active: boolean;
       /** @example GJD6cyf6xbc@bvx6rvu */
       secret: string;
-      events: ("RAMP" | "USER" | "TRANSACTION" | "ACCOUNT")[];
+      events: ("RAMP" | "USER" | "TRANSACTION" | "ACCOUNT" | "CUSTODIAL_ACCOUNT")[];
     };
     UpdateWebhookResponseDto: {
       /** @example 4d23aa52-1b40-4584-a8ea-58aba6099c5c */
@@ -422,7 +559,7 @@ export interface components {
       customerId: string;
       /** @example https://mywebhook.com */
       url: string;
-      events: ("RAMP" | "USER" | "TRANSACTION" | "ACCOUNT")[];
+      events: ("RAMP" | "USER" | "TRANSACTION" | "ACCOUNT" | "CUSTODIAL_ACCOUNT")[];
       /** @example true */
       active: boolean;
       /**
@@ -443,7 +580,7 @@ export interface components {
       customerId: string;
       /** @example https://mywebhook.com */
       url: string;
-      events: ("RAMP" | "USER" | "TRANSACTION" | "ACCOUNT")[];
+      events: ("RAMP" | "USER" | "TRANSACTION" | "ACCOUNT" | "CUSTODIAL_ACCOUNT")[];
       /** @example true */
       active: boolean;
       /**
@@ -537,12 +674,9 @@ export interface components {
       monthlyCryptoInvestmentWithdrawal: "UPTO_1K" | "ONE_TO_100K" | "ONEHUNDREDK_TO_1M" | "MILLION_TO_5M" | "MORE_THAN_5M";
     };
     KycProfile: {
-      fundsSendReceiveJurisdictions: string[];
-      /**
-       * @example NONE
-       * @enum {string}
-       */
-      engageInActivities: "NONE" | "ADULT_ENTERTAINMENT" | "DRUGS" | "FIREARMS" | "GAMBLING" | "MARIJUANA" | "TUMBLING";
+      fundsSendReceiveJurisdictions: unknown[][];
+      /** @example NONE */
+      engageInActivities: ("NONE" | "ADULT_ENTERTAINMENT" | "DRUGS" | "FIREARMS" | "GAMBLING" | "MARIJUANA" | "TUMBLING")[];
     };
     CreatePersonUserDto: {
       /** @example John */
@@ -577,6 +711,18 @@ export interface components {
       investmentProfile?: components["schemas"]["InvestmentProfile"];
       kycProfile?: components["schemas"]["KycProfile"];
     };
+    CompanyKycProfile: {
+      fundsSendReceiveJurisdictions: unknown[][];
+      /** @example NONE */
+      engageInActivities: ("NONE" | "ADULT_ENTERTAINMENT" | "DRUGS" | "FIREARMS" | "GAMBLING" | "MARIJUANA" | "TUMBLING")[];
+      /**
+       * @example NONE
+       * @enum {string}
+       */
+      regulatedStatus: "REGULATED" | "REGISTERED" | "LICENSED" | "NONE" | "NOT_REQUIRED";
+      /** @example Electronic sales */
+      descriptionOfBusinessNature: string;
+    };
     CreateCompanyUserDto: {
       /** @example Gerlach, Baumbach and Bernhard */
       companyName: string;
@@ -597,7 +743,7 @@ export interface components {
       naicsDescription?: string;
       document: components["schemas"]["CompanyUserDocumentDto"];
       investmentProfile?: components["schemas"]["InvestmentProfile"];
-      kycProfile?: components["schemas"]["KycProfile"];
+      kycProfile?: components["schemas"]["CompanyKycProfile"];
     };
     CreateUserDto: {
       /**
@@ -665,7 +811,7 @@ export interface components {
       naicsDescription?: string;
       document: components["schemas"]["CompanyUserDocumentDto"];
       investmentProfile?: components["schemas"]["InvestmentProfile"];
-      kycProfile?: components["schemas"]["KycProfile"];
+      kycProfile?: components["schemas"]["CompanyKycProfile"];
     };
     CreateUserResponseDto: {
       /** @example 4d23aa52-1b40-4584-a8ea-58aba6099c5c */
@@ -732,7 +878,7 @@ export interface components {
        * @example NIT
        * @enum {string}
        */
-      documentType: "PROVE_OF_ADDRESS_BANK_STATEMENT" | "PROVE_OF_ADDRESS_UTILITY_BILL" | "PROVE_OF_ADDRESS_LEASE_AGREEMENT" | "SOURCE_OF_FUNDS_BANK_STATEMENT" | "SOURCE_OF_FUNDS_PAYSLIP" | "PROOF_OF_COMPANY_FORMATION" | "NIT" | "OTHER";
+      documentType: "PROVE_OF_ADDRESS_BANK_STATEMENT" | "PROVE_OF_ADDRESS_UTILITY_BILL" | "PROVE_OF_ADDRESS_LEASE_AGREEMENT" | "SOURCE_OF_FUNDS_BANK_STATEMENT" | "SOURCE_OF_FUNDS_PAYSLIP" | "PROOF_OF_COMPANY_FORMATION" | "ARTICLES_OF_INCORPORATION" | "INCORPORATION_DOCUMENTS" | "NIT" | "OTHER";
       /**
        * Format: binary
        * @description Front document file
@@ -749,6 +895,8 @@ export interface components {
     SavingsCustodialAccountDto: {
       /** Format: UUID */
       userId: string;
+      /** @description Accept terms and conditions */
+      acceptedTermsAndConditions: boolean;
     };
     SavingsAccountResponseDto: {
       /** Format: uuid */
@@ -757,44 +905,6 @@ export interface components {
       userId: string;
       /** @enum {string} */
       status: "PENDING" | "COMPLETED" | "REJECTED";
-      /** Format: date-time */
-      createdAt: string;
-      /** Format: date-time */
-      updatedAt: string;
-    };
-    SourceDataDto: {
-      savingsAccountId: string;
-    };
-    DestinationDataDto: {
-      savingsAccountId: string;
-      externalAccountId: string;
-    };
-    CreateWithdrawalDto: {
-      source: components["schemas"]["SourceDataDto"];
-      destination: components["schemas"]["DestinationDataDto"];
-      amount: number;
-      comment: string;
-    };
-    Source: {
-      currency: string;
-      custodialAccountId: string;
-    };
-    Destination: {
-      currency: string;
-      externalAccountId: string;
-    };
-    WithdrawalSavingsReturn: {
-      /** Format: uuid */
-      id: string;
-      /** @enum {string} */
-      status: "CREATED" | "PENDING" | "PROCESSING" | "CONFIRMED" | "REFUNDED" | "COMPLETED" | "CANCELED" | "EXPIRED" | "FAILED" | "ERROR" | "REJECTED";
-      amount: number;
-      /** Format: uuid */
-      userId: string;
-      /** @enum {string} */
-      type: "DEPOSIT" | "WITHDRAWAL";
-      source: components["schemas"]["Source"];
-      destination: components["schemas"]["Destination"];
       /** Format: date-time */
       createdAt: string;
       /** Format: date-time */
@@ -836,48 +946,82 @@ export interface components {
       /** @example 1 */
       totalPage: number;
     };
+    SourceDataDto: {
+      savingsAccountId: string;
+    };
+    DestinationDataDto: {
+      savingsAccountId: string;
+      externalAccountId: string;
+    };
+    CreateWithdrawalDto: {
+      source: components["schemas"]["SourceDataDto"];
+      destination: components["schemas"]["DestinationDataDto"];
+      amount: number;
+      comment: string;
+    };
+    Source: {
+      currency: string;
+      custodialAccountId: string;
+    };
+    Destination: {
+      currency: string;
+      externalAccountId: string;
+    };
+    WithdrawalSavingsReturn: {
+      /** Format: uuid */
+      id: string;
+      /** @enum {string} */
+      status: "CREATED" | "PENDING" | "PROCESSING" | "CONFIRMED" | "REFUNDED" | "COMPLETED" | "CANCELED" | "EXPIRED" | "FAILED" | "ERROR" | "REJECTED";
+      amount: number;
+      /** Format: uuid */
+      userId: string;
+      /** @enum {string} */
+      type: "DEPOSIT" | "WITHDRAWAL";
+      source: components["schemas"]["Source"];
+      destination: components["schemas"]["Destination"];
+      /** Format: date-time */
+      createdAt: string;
+      /** Format: date-time */
+      updatedAt: string;
+    };
     GetBalanceReturn: {
       /** @example USD */
       currency: string;
       amount: number;
     };
-    GetDepositInstructionsACHReturn: {
-      /**
-       * @example ACH
-       * @enum {string}
-       */
-      type: "ACH" | "WIRE";
-      /** @example USD */
-      currency: string;
-      /** @example Test Bank Name */
-      bankName: string;
-      /** @example 10 Main St., New York, NY 11111 */
-      bankAddress: string;
-      /** @example 111111111 */
-      routingNumber: string;
-      /** @example 111111111111 */
-      accountNumber: string;
+    InstitutionAddressDto: {
+      /** @example Main Street1 */
+      street1: string;
+      /** @example New York */
+      city: string;
+      /** @example NJ */
+      state: string;
+      /** @example 12345 */
+      postalCode: string;
+      /** @example US */
+      countryCode: string;
     };
-    GetDepositInstructionsWireReturn: {
+    GetDepositInstructionsReturn: {
       /**
        * @example ACH
        * @enum {string}
        */
       type: "ACH" | "WIRE";
       /** @example USD */
-      currency: string;
-      /** @example Test Bank Name */
-      bankName: string;
-      /** @example 10 Main St., New York, NY 11111 */
-      bankAddress: string;
-      /** @example 111111111 */
-      routingNumber: string;
+      currency?: string;
+      /** @example Bank Name */
+      accountHolderName: string;
       /** @example 111111111111 */
       accountNumber: string;
+      /** @example 222222222 */
+      routingNumber: string;
+      /** @example A1AABCD */
+      memo?: string;
+      bankAddress?: components["schemas"]["InstitutionAddressDto"];
       /** @example AABBCC3311DZEF */
-      depositMessage: string;
+      depositMessage?: string;
       /** @example KillB Bank Name */
-      bankBeneficiaryName: string;
+      bankBeneficiaryName?: string;
     };
     GetCryptoDepositInstructionsReturn: {
       /** @example 0x */
@@ -1030,7 +1174,7 @@ export interface operations {
 
   /**
    * Generate an access token
-   * @description Guide for the Auth can be found in [Auths](/docs/Auths.md)
+   * @description Guide for the Auth can be found in [Auths](https://killbapi.stoplight.io/docs/killb-v2/92fb466bf5e4b). This endpoint is throttled to 20 requests per 10 minutes
    */
   AuthController_login: {
     requestBody: {
@@ -1056,12 +1200,24 @@ export interface operations {
       };
     };
   };
+  /**
+   * Options
+   * @description Options method
+   */
+  options0: {
+    responses: {
+      /** @description Successful response */
+      200: {
+        content: never;
+      };
+    };
+  };
   /** Get customer balances */
   CustomerController_getBalances: {
     responses: {
       200: {
         content: {
-          "application/json": components["schemas"]["GetBalancesResponseDto"];
+          "application/json": components["schemas"]["GetBalancesResponseDto"][];
         };
       };
       400: {
@@ -1073,6 +1229,18 @@ export interface operations {
         content: {
           "application/json": components["schemas"]["InternalServerErrorResponse"];
         };
+      };
+    };
+  };
+  /**
+   * Options
+   * @description Options method
+   */
+  options1: {
+    responses: {
+      /** @description Successful response */
+      200: {
+        content: never;
       };
     };
   };
@@ -1138,6 +1306,18 @@ export interface operations {
       };
     };
   };
+  /**
+   * Options
+   * @description Options method
+   */
+  options2: {
+    responses: {
+      /** @description Successful response */
+      200: {
+        content: never;
+      };
+    };
+  };
   /** Get Account by id */
   AccountController_getOne: {
     parameters: {
@@ -1160,6 +1340,23 @@ export interface operations {
         content: {
           "application/json": components["schemas"]["InternalServerErrorResponse"];
         };
+      };
+    };
+  };
+  /**
+   * Options
+   * @description Options method
+   */
+  options3: {
+    parameters: {
+      path: {
+        id: string;
+      };
+    };
+    responses: {
+      /** @description Successful response */
+      200: {
+        content: never;
       };
     };
   };
@@ -1215,6 +1412,23 @@ export interface operations {
         content: {
           "application/json": components["schemas"]["InternalServerErrorResponse"];
         };
+      };
+    };
+  };
+  /**
+   * Options
+   * @description Options method
+   */
+  options4: {
+    parameters: {
+      path: {
+        userId: string;
+      };
+    };
+    responses: {
+      /** @description Successful response */
+      200: {
+        content: never;
       };
     };
   };
@@ -1291,6 +1505,18 @@ export interface operations {
     };
   };
   /**
+   * Options
+   * @description Options method
+   */
+  options5: {
+    responses: {
+      /** @description Successful response */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
    * Update webhook config
    * @description Endpoint responsible for UPDATE webhook config. For more information, examples and how works see here: [Webhook Documentation](/docs/Webhooks.md)
    */
@@ -1341,6 +1567,7 @@ export interface operations {
         ownerUsers?: string[];
         naics?: string;
         naicsDescription?: string;
+        customerId?: string;
         /** @example PERSON */
         type: "PERSON" | "COMPANY";
       };
@@ -1388,6 +1615,43 @@ export interface operations {
       };
     };
   };
+  /**
+   * Options
+   * @description Options method
+   */
+  options6: {
+    responses: {
+      /** @description Successful response */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /** Get users */
+  UserController_getById: {
+    parameters: {
+      path: {
+        id: string;
+      };
+    };
+    responses: {
+      200: {
+        content: {
+          "application/json": components["schemas"]["GetUserQueryResponse"];
+        };
+      };
+      400: {
+        content: {
+          "application/json": components["schemas"]["BadRequestResponse"];
+        };
+      };
+      500: {
+        content: {
+          "application/json": components["schemas"]["InternalServerErrorResponse"];
+        };
+      };
+    };
+  };
   /** Delete user */
   UserController_delete: {
     parameters: {
@@ -1408,6 +1672,23 @@ export interface operations {
         content: {
           "application/json": components["schemas"]["InternalServerErrorResponse"];
         };
+      };
+    };
+  };
+  /**
+   * Options
+   * @description Options method
+   */
+  options7: {
+    parameters: {
+      path: {
+        id: string;
+      };
+    };
+    responses: {
+      /** @description Successful response */
+      200: {
+        content: never;
       };
     };
   };
@@ -1464,6 +1745,18 @@ export interface operations {
       };
     };
   };
+  /**
+   * Options
+   * @description Options method
+   */
+  options8: {
+    responses: {
+      /** @description Successful response */
+      200: {
+        content: never;
+      };
+    };
+  };
   /** Add company user document */
   UserController_uploadDocumentBusiness: {
     requestBody: {
@@ -1484,6 +1777,18 @@ export interface operations {
         content: {
           "application/json": components["schemas"]["InternalServerErrorResponse"];
         };
+      };
+    };
+  };
+  /**
+   * Options
+   * @description Options method
+   */
+  options9: {
+    responses: {
+      /** @description Successful response */
+      200: {
+        content: never;
       };
     };
   };
@@ -1512,53 +1817,15 @@ export interface operations {
       };
     };
   };
-  /** Get savings account */
-  SavingsController_getOnboard: {
-    parameters: {
-      path: {
-        id: string;
-      };
-    };
+  /**
+   * Options
+   * @description Options method
+   */
+  options10: {
     responses: {
-      201: {
-        content: {
-          "application/json": components["schemas"]["SavingsAccountResponseDto"];
-        };
-      };
-      400: {
-        content: {
-          "application/json": components["schemas"]["BadRequestResponse"];
-        };
-      };
-      500: {
-        content: {
-          "application/json": components["schemas"]["InternalServerErrorResponse"];
-        };
-      };
-    };
-  };
-  /** Create withdrawal */
-  SavingsController_withdrawal: {
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["CreateWithdrawalDto"];
-      };
-    };
-    responses: {
-      201: {
-        content: {
-          "application/json": components["schemas"]["WithdrawalSavingsReturn"];
-        };
-      };
-      400: {
-        content: {
-          "application/json": components["schemas"]["BadRequestResponse"];
-        };
-      };
-      500: {
-        content: {
-          "application/json": components["schemas"]["InternalServerErrorResponse"];
-        };
+      /** @description Successful response */
+      200: {
+        content: never;
       };
     };
   };
@@ -1600,6 +1867,115 @@ export interface operations {
       };
     };
   };
+  /**
+   * Options
+   * @description Options method
+   */
+  options11: {
+    parameters: {
+      query?: {
+        /** @example 1 */
+        limit?: number;
+        /** @example 10 */
+        page?: number;
+        /** @example 70bb2b47-1d79-4071-bfdb-a0b6a18b043b */
+        id?: string;
+        /** @example 1f3f8ec8-53a6-422b-82af-71bb9c7bd3a0 */
+        destinationAccountId?: string;
+        /** @example f4f49acb-c413-48b2-99b5-d5de57c34165 */
+        originAccountId?: string;
+        /** @example 474a6f7c-9b61-417d-ba0c-11cde75d4599 */
+        userId?: string;
+        /** @example DEPOSIT */
+        type?: string;
+      };
+    };
+    responses: {
+      /** @description Successful response */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /** Get savings account */
+  SavingsController_getOnboard: {
+    parameters: {
+      path: {
+        id: string;
+      };
+    };
+    responses: {
+      201: {
+        content: {
+          "application/json": components["schemas"]["SavingsAccountResponseDto"];
+        };
+      };
+      400: {
+        content: {
+          "application/json": components["schemas"]["BadRequestResponse"];
+        };
+      };
+      500: {
+        content: {
+          "application/json": components["schemas"]["InternalServerErrorResponse"];
+        };
+      };
+    };
+  };
+  /**
+   * Options
+   * @description Options method
+   */
+  options12: {
+    parameters: {
+      path: {
+        id: string;
+      };
+    };
+    responses: {
+      /** @description Successful response */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /** Create withdrawal */
+  SavingsController_withdrawal: {
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["CreateWithdrawalDto"];
+      };
+    };
+    responses: {
+      201: {
+        content: {
+          "application/json": components["schemas"]["WithdrawalSavingsReturn"];
+        };
+      };
+      400: {
+        content: {
+          "application/json": components["schemas"]["BadRequestResponse"];
+        };
+      };
+      500: {
+        content: {
+          "application/json": components["schemas"]["InternalServerErrorResponse"];
+        };
+      };
+    };
+  };
+  /**
+   * Options
+   * @description Options method
+   */
+  options13: {
+    responses: {
+      /** @description Successful response */
+      200: {
+        content: never;
+      };
+    };
+  };
   /** Get balance */
   SavingsController_getBalance: {
     parameters: {
@@ -1625,6 +2001,23 @@ export interface operations {
       };
     };
   };
+  /**
+   * Options
+   * @description Options method
+   */
+  options14: {
+    parameters: {
+      path: {
+        id: string;
+      };
+    };
+    responses: {
+      /** @description Successful response */
+      200: {
+        content: never;
+      };
+    };
+  };
   /** Get banking deposit instructions */
   SavingsController_getDepositInstructions: {
     parameters: {
@@ -1635,12 +2028,12 @@ export interface operations {
         type: "ACH" | "WIRE";
       };
     };
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["GetDepositInstructionsACHReturn"] | components["schemas"]["GetDepositInstructionsWireReturn"];
-      };
-    };
     responses: {
+      200: {
+        content: {
+          "application/json": components["schemas"]["GetDepositInstructionsReturn"];
+        };
+      };
       400: {
         content: {
           "application/json": components["schemas"]["BadRequestResponse"];
@@ -1650,6 +2043,26 @@ export interface operations {
         content: {
           "application/json": components["schemas"]["InternalServerErrorResponse"];
         };
+      };
+    };
+  };
+  /**
+   * Options
+   * @description Options method
+   */
+  options15: {
+    parameters: {
+      path: {
+        /** @example 449b31b4-fca5-465e-99ea-7b7b28cfbccb */
+        id: string;
+        /** @example ACH */
+        type: "ACH" | "WIRE";
+      };
+    };
+    responses: {
+      /** @description Successful response */
+      200: {
+        content: never;
       };
     };
   };
@@ -1675,6 +2088,23 @@ export interface operations {
         content: {
           "application/json": components["schemas"]["InternalServerErrorResponse"];
         };
+      };
+    };
+  };
+  /**
+   * Options
+   * @description Options method
+   */
+  options16: {
+    parameters: {
+      path: {
+        id: string;
+      };
+    };
+    responses: {
+      /** @description Successful response */
+      200: {
+        content: never;
       };
     };
   };
@@ -1706,6 +2136,18 @@ export interface operations {
       };
     };
   };
+  /**
+   * Options
+   * @description Options method
+   */
+  options17: {
+    responses: {
+      /** @description Successful response */
+      200: {
+        content: never;
+      };
+    };
+  };
   /** Simulate a Quotation */
   QuotationController_simulation: {
     requestBody: {
@@ -1728,6 +2170,63 @@ export interface operations {
         content: {
           "application/json": components["schemas"]["InternalServerErrorResponse"];
         };
+      };
+    };
+  };
+  /**
+   * Options
+   * @description Options method
+   */
+  options18: {
+    responses: {
+      /** @description Successful response */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
+   * Get Quotation
+   * @description Endpoint responsible for get Quotation.
+   */
+  QuotationController_getById: {
+    parameters: {
+      path: {
+        id: string;
+      };
+    };
+    responses: {
+      201: {
+        content: {
+          "application/json": components["schemas"]["CreateQuotationResponseDto"];
+        };
+      };
+      400: {
+        content: {
+          "application/json": components["schemas"]["BadRequestResponse"];
+        };
+      };
+      500: {
+        content: {
+          "application/json": components["schemas"]["InternalServerErrorResponse"];
+        };
+      };
+    };
+  };
+  /**
+   * Options
+   * @description Options method
+   */
+  options19: {
+    parameters: {
+      path: {
+        id: string;
+      };
+    };
+    responses: {
+      /** @description Successful response */
+      200: {
+        content: never;
       };
     };
   };
@@ -1792,6 +2291,63 @@ export interface operations {
       };
     };
   };
+  /**
+   * Options
+   * @description Options method
+   */
+  options20: {
+    responses: {
+      /** @description Successful response */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
+   * Get ramp status history
+   * @description This endpoint is responsible for getting the result of the Ramp. For more details about this endpoint, see here [Ramps](/docs/Ramps.md)
+   */
+  RampsController_getStatusHistoryById: {
+    parameters: {
+      path: {
+        id: string;
+      };
+    };
+    responses: {
+      200: {
+        content: {
+          "application/json": components["schemas"]["GetRampQueryResponseDto"];
+        };
+      };
+      400: {
+        content: {
+          "application/json": components["schemas"]["BadRequestResponse"];
+        };
+      };
+      500: {
+        content: {
+          "application/json": components["schemas"]["InternalServerErrorResponse"];
+        };
+      };
+    };
+  };
+  /**
+   * Options
+   * @description Options method
+   */
+  options21: {
+    parameters: {
+      path: {
+        id: string;
+      };
+    };
+    responses: {
+      /** @description Successful response */
+      200: {
+        content: never;
+      };
+    };
+  };
   /** Get Bank list by countryCode */
   BankController_get: {
     parameters: {
@@ -1814,6 +2370,23 @@ export interface operations {
         content: {
           "application/json": components["schemas"]["InternalServerErrorResponse"];
         };
+      };
+    };
+  };
+  /**
+   * Options
+   * @description Options method
+   */
+  options22: {
+    parameters: {
+      query: {
+        countryCode: string;
+      };
+    };
+    responses: {
+      /** @description Successful response */
+      200: {
+        content: never;
       };
     };
   };

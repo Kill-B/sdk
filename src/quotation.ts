@@ -41,4 +41,20 @@ export class Quotation extends ApiRequest {
     const response = await this.api.post<components['schemas']['SimulateQuotationResponseDto']>('/quotations/simulation', body);
     return response.data;
   }
+
+  /**
+   * Retrieves a quotation by its ID.
+   *
+   * This method sends a GET request to the '/quotations/{id}' endpoint to fetch the details of a specific quotation.
+   * The ID of the quotation is passed as a parameter.
+   * The response contains the quotation details conforming to the 'CreateQuotationResponseDto' schema.
+   *
+   * @param {string} id - The ID of the quotation to retrieve.
+   * @returns {Promise<components['schemas']['CreateQuotationResponseDto']>} A promise that resolves to the quotation details.
+   */
+  public async getById(id: string): Promise<components['schemas']['CreateQuotationResponseDto']> {
+    await this.authenticateCheck();
+    const response = await this.api.get<components['schemas']['CreateQuotationResponseDto']>(`/quotations/${id}`);
+    return response.data;
+  }
 }

@@ -41,4 +41,20 @@ export class Ramps extends ApiRequest {
     const response = await this.api.get<components['schemas']['GetRampQueryResponseDto']>(`/ramps${queryParams}`);
     return response.data;
   }
+
+  /**
+   * Retrieves a ramp by its ID.
+   *
+   * This method sends a GET request to the '/ramps/{id}' endpoint to fetch the details of a specific ramp.
+   * The ID of the ramp is passed as a parameter.
+   * The response contains the ramp details conforming to the 'CreateRampResponseDto' schema.
+   *
+   * @param {string} id - The ID of the ramp to retrieve.
+   * @returns {Promise<components['schemas']['CreateRampResponseDto']>} A promise that resolves to the ramp details.
+   */
+  public async getById(id: string): Promise<components['schemas']['CreateRampResponseDto']> {
+    await this.authenticateCheck();
+    const response = await this.api.get<components['schemas']['CreateRampResponseDto']>(`/ramps/${id}`);
+    return response.data;
+  }
 }
