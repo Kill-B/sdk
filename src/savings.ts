@@ -82,7 +82,7 @@ export class Savings extends ApiRequest {
    * @param method - The deposit method. Can be either 'ACH' or 'WIRE'.
    * @returns A promise that resolves to the deposit instructions data of the savings account, conforming to either the 'GetDepositInstructionsACHReturn' or 'GetDepositInstructionsWireReturn' schema, depending on the method.
    */
-  public async getBankingDepositInstructions(id: string, method: 'ACH' | 'WIRE'): Promise<components['schemas']['GetDepositInstructionsACHReturn'] | components['schemas']['GetDepositInstructionsWireReturn']> {
+  public async getBankingDepositInstructions(id: string, method: 'ACH' | 'WIRE'): Promise<components['schemas']['GetDepositInstructionsReturn']> {
     await this.authenticateCheck();
     return this.api.get(`/savings/${id}/deposit-instructions/${method}`);
   }
