@@ -10,7 +10,7 @@ This project uses npm for package management. To install the project:
 npm install @killb/sdk
 ```
 ## Quickstart
-Here's a quick guide on how to use the SDK:
+Here's a quick guide on how to use the SDK: 
 
 ```typescript
 import { Client, Config } from './src/client';
