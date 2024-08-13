@@ -49,7 +49,7 @@ export class Quotation extends ApiRequest {
    * The ID of the quotation is passed as a parameter.
    * The response contains the quotation details conforming to the 'CreateQuotationResponseDto' schema.
    *
-   * @param {string} id - The ID of the quotation to retrieve.
+   * @param {string} id - The ID of the quotation to retrieve
    * @returns {Promise<components['schemas']['CreateQuotationResponseDto']>} A promise that resolves to the quotation details.
    */
   public async getById(id: string): Promise<components['schemas']['CreateQuotationResponseDto']> {
