@@ -8,7 +8,7 @@ export interface paths {
   "/auth/login": {
     /**
      * Generate an access token
-     * @description Guide for the Auth can be found in [Auths](https://killbapi.stoplight.io/docs/killb-v2/92fb466bf5e4b). This endpoint is throttled to 20 requests per 10 minutes
+     * @description Guide for the Auth can be found in [Auths](https://killbapi.stoplight.io/docs/killb-v2/92fb466bf5e4b).
      */
     post: operations["AuthController_login"];
     /**
@@ -17,6 +17,18 @@ export interface paths {
      */
     options: operations["options0"];
   };
+  "/auth/refresh": {
+    /**
+     * Refresh an access token
+     * @description Guide for the Auth can be found in [Auths](https://killbapi.stoplight.io/docs/killb-v2/92fb466bf5e4b).
+     */
+    post: operations["AuthController_refresh"];
+    /**
+     * Options
+     * @description Options method
+     */
+    options: operations["options1"];
+  };
   "/customers/balances": {
     /** Get customer balances */
     get: operations["CustomerController_getBalances"];
@@ -24,7 +36,25 @@ export interface paths {
      * Options
      * @description Options method
      */
-    options: operations["options1"];
+    options: operations["options2"];
+  };
+  "/customers/pre-fund/create": {
+    /** Create a pre-fund wallet */
+    post: operations["CustomerController_createPreFundAccount"];
+    /**
+     * Options
+     * @description Options method
+     */
+    options: operations["options3"];
+  };
+  "/customers/liquidities": {
+    /** Get customer liquidities */
+    get: operations["CustomerController_getLiquidity"];
+    /**
+     * Options
+     * @description Options method
+     */
+    options: operations["options4"];
   };
   "/accounts": {
     /** Get Accounts */
@@ -35,7 +65,7 @@ export interface paths {
      * Options
      * @description Options method
      */
-    options: operations["options2"];
+    options: operations["options5"];
   };
   "/accounts/{id}": {
     /** Get Account by id */
@@ -44,7 +74,7 @@ export interface paths {
      * Options
      * @description Options method
      */
-    options: operations["options3"];
+    options: operations["options6"];
     /** Update Account */
     patch: operations["AccountController_update"];
   };
@@ -55,7 +85,7 @@ export interface paths {
      * Options
      * @description Options method
      */
-    options: operations["options4"];
+    options: operations["options7"];
   };
   "/webhooks": {
     /**
@@ -77,7 +107,7 @@ export interface paths {
      * Options
      * @description Options method
      */
-    options: operations["options5"];
+    options: operations["options8"];
     /**
      * Update webhook config
      * @description Endpoint responsible for UPDATE webhook config. For more information, examples and how works see here: [Webhook Documentation](/docs/Webhooks.md)
@@ -93,10 +123,10 @@ export interface paths {
      * Options
      * @description Options method
      */
-    options: operations["options6"];
+    options: operations["options9"];
   };
   "/users/{id}": {
-    /** Get users */
+    /** Get users by ID */
     get: operations["UserController_getById"];
     /** Delete user */
     delete: operations["UserController_delete"];
@@ -104,7 +134,7 @@ export interface paths {
      * Options
      * @description Options method
      */
-    options: operations["options7"];
+    options: operations["options10"];
     /** Update user */
     patch: operations["UserController_update"];
   };
@@ -115,7 +145,7 @@ export interface paths {
      * Options
      * @description Options method
      */
-    options: operations["options8"];
+    options: operations["options11"];
   };
   "/users/company/document": {
     /** Add company user document */
@@ -124,7 +154,7 @@ export interface paths {
      * Options
      * @description Options method
      */
-    options: operations["options9"];
+    options: operations["options12"];
   };
   "/savings": {
     /** Create savings account */
@@ -133,7 +163,7 @@ export interface paths {
      * Options
      * @description Options method
      */
-    options: operations["options10"];
+    options: operations["options13"];
   };
   "/savings/transactions": {
     /** Get transactions */
@@ -142,7 +172,7 @@ export interface paths {
      * Options
      * @description Options method
      */
-    options: operations["options11"];
+    options: operations["options14"];
   };
   "/savings/{id}": {
     /** Get savings account */
@@ -151,7 +181,7 @@ export interface paths {
      * Options
      * @description Options method
      */
-    options: operations["options12"];
+    options: operations["options15"];
   };
   "/savings/withdrawal": {
     /** Create withdrawal */
@@ -160,7 +190,7 @@ export interface paths {
      * Options
      * @description Options method
      */
-    options: operations["options13"];
+    options: operations["options16"];
   };
   "/savings/{id}/balance": {
     /** Get balance */
@@ -169,7 +199,7 @@ export interface paths {
      * Options
      * @description Options method
      */
-    options: operations["options14"];
+    options: operations["options17"];
   };
   "/savings/{id}/deposit-instructions/{type}": {
     /** Get banking deposit instructions */
@@ -178,7 +208,7 @@ export interface paths {
      * Options
      * @description Options method
      */
-    options: operations["options15"];
+    options: operations["options18"];
   };
   "/savings/{id}/crypto-deposit-instructions": {
     /** Get crypto deposit instructions */
@@ -187,69 +217,84 @@ export interface paths {
      * Options
      * @description Options method
      */
-    options: operations["options16"];
+    options: operations["options19"];
   };
   "/quotations": {
     /**
      * Create Quotation
-     * @description Endpoint responsible for create Quotation.
+     * @description Create a new quotation
      */
     post: operations["QuotationController_create"];
     /**
      * Options
      * @description Options method
      */
-    options: operations["options17"];
+    options: operations["options20"];
   };
   "/quotations/simulation": {
-    /** Simulate a Quotation */
+    /**
+     * Simulate a Quotation
+     * @description Generate just a simulation of a quote
+     */
     post: operations["QuotationController_simulation"];
     /**
      * Options
      * @description Options method
      */
-    options: operations["options18"];
+    options: operations["options21"];
   };
   "/quotations/{id}": {
     /**
      * Get Quotation
-     * @description Endpoint responsible for get Quotation.
+     * @description Get a quotation by id
      */
     get: operations["QuotationController_getById"];
     /**
      * Options
      * @description Options method
      */
-    options: operations["options19"];
+    options: operations["options22"];
   };
   "/ramps": {
     /**
-     * Get Ramps
-     * @description This endpoint is responsible for getting the result of the Ramp. For more details about this endpoint, see here [Ramps](/docs/Ramps.md)
+     * Query Ramps
+     * @description This endpoint is responsible for getting the Ramp list. For more details about this endpoint, see here [Ramps](https://killbapi.stoplight.io/docs/killb-v2/71722efcded7f)
      */
-    get: operations["RampsController_preFundReport"];
+    get: operations["RampsController_getQuery"];
     /**
      * Create Ramps
-     * @description This endpoint is responsible for executing the Ramp (On or/and Off). For more details about this endpoint, see here [Ramps](/docs/Ramps.md)
+     * @description This endpoint is responsible for executing the Ramp (On or/and Off). For more details about this endpoint, see here [Ramps](https://killbapi.stoplight.io/docs/killb-v2/71722efcded7f)
      */
     post: operations["RampsController_create"];
     /**
      * Options
      * @description Options method
      */
-    options: operations["options20"];
+    options: operations["options23"];
   };
   "/ramps/{id}": {
     /**
+     * Get Ramp by id
+     * @description This endpoint is responsible for getting the Ramp by id. For more details about this endpoint, see here [Ramps](https://killbapi.stoplight.io/docs/killb-v2/71722efcded7f)
+     */
+    get: operations["RampsController_getById"];
+    /**
+     * Options
+     * @description Options method
+     */
+    options: operations["options24"];
+  };
+  "/ramps/{id}/status-history": {
+    /**
      * Get ramp status history
-     * @description This endpoint is responsible for getting the result of the Ramp. For more details about this endpoint, see here [Ramps](/docs/Ramps.md)
+     * @description This endpoint is responsible for getting the Ramp status history. For more details about this endpoint, see here [Ramps](https://killbapi.stoplight.io/docs/killb-v2/71722efcded7f)
      */
     get: operations["RampsController_getStatusHistoryById"];
     /**
      * Options
      * @description Options method
      */
-    options: operations["options21"];
+    options: operations["options25"];
   };
   "/banks": {
     /** Get Bank list by countryCode */
@@ -258,7 +303,43 @@ export interface paths {
      * Options
      * @description Options method
      */
-    options: operations["options22"];
+    options: operations["options26"];
+  };
+  "/faker/cash-in": {
+    /**
+     * Fake cash-in (SANDBOX)
+     * @description This endpoint is responsible for faking a cash-in.
+     */
+    post: operations["FakerController_fakeMxnCashIn"];
+    /**
+     * Options
+     * @description Options method
+     */
+    options: operations["options27"];
+  };
+  "/faker/cash-out": {
+    /**
+     * Fake refund simulation (SANDBOX)
+     * @description This endpoint is responsible for faking a refund process.
+     */
+    post: operations["FakerController_fakeRefund"];
+    /**
+     * Options
+     * @description Options method
+     */
+    options: operations["options28"];
+  };
+  "/open-api-json": {
+    /**
+     * Open API JSON
+     * @description API JSON schema with all endpoints
+     */
+    get: operations["getApiJson"];
+    /**
+     * Options
+     * @description Options method
+     */
+    options: operations["options29"];
   };
 }
 
@@ -273,6 +354,7 @@ export interface components {
     LoginResponseDto: {
       accessToken: string;
       expiresIn: number;
+      refreshToken: string;
     };
     BadRequestArgument: {
       /** @example email */
@@ -304,6 +386,14 @@ export interface components {
        */
       message: unknown[][];
     };
+    RefreshDto: {
+      refreshToken: string;
+    };
+    RefreshResponseDto: {
+      refreshToken: string;
+      accessToken: string;
+      expiresIn: number;
+    };
     GetBalancesResponseDto: {
       id: string;
       customerId: string;
@@ -315,6 +405,48 @@ export interface components {
       createdAt: string;
       /** Format: date-time */
       updatedAt: string;
+    };
+    CreatePreFundAccountDto: {
+      /**
+       * @example USDC
+       * @enum {string}
+       */
+      currency: "USDC" | "USDT";
+      /**
+       * @example POLYGON
+       * @enum {string}
+       */
+      network: "POLYGON" | "ERC20" | "SOLANA" | "TRON" | "ARBITRUM";
+    };
+    CreatePreFundAccountResponseDto: {
+      /**
+       * Format: uuid
+       * @example 123e4567-e89b-12d3-a456-426614174000
+       */
+      id: string;
+      /** @example PRE_FUND */
+      type: string;
+      /** @description A wallet address */
+      address: string;
+      /**
+       * @example USDC
+       * @enum {string}
+       */
+      currency: "USDC" | "USDT";
+      /**
+       * @example POLYGON
+       * @enum {string}
+       */
+      network: "POLYGON" | "ERC20" | "SOLANA" | "TRON" | "ARBITRUM";
+      active: boolean;
+      /** Format: date-time */
+      createdAt: string;
+      /** Format: date-time */
+      updatedAt: string;
+    };
+    GetCustomerLiquidityResponseDto: {
+      currency: string;
+      amount: number;
     };
     CompanyUserDocumentDto: {
       /**
@@ -333,7 +465,10 @@ export interface components {
        * @enum {string}
        */
       type: "PASSPORT" | "DRIVER_LICENSE" | "NUIP" | "RFC" | "SSN" | "CURP" | "CPF" | "INE" | "IFE";
-      /** @example GE04292393 */
+      /**
+       * Format: alphanumeric
+       * @example GE04292393
+       */
       number: string;
       /** @example CO */
       issuedCountryCode: string;
@@ -385,11 +520,11 @@ export interface components {
       document: components["schemas"]["CompanyUserDocumentDto"] | components["schemas"]["PersonUserDocumentDto"];
       clabe: string;
       /**
-       * @description ClabeType is necessary only for clabes with format PHONE_NUMBER, CREDIT_CARD
+       * @description ClabeType is necessary only for clabes with format PHONE_NUMBER, DEBIT_CARD
        * @enum {string}
        */
-      clabeType?: "CLABE" | "CREDIT_CARD" | "PHONE_NUMBER";
-      /** @description You can find the code on the bank list endpoint. BankCode is required only for the following clabe types: PHONE_NUMBER, CREDIT_CARD */
+      clabeType?: "CLABE" | "DEBIT_CARD" | "PHONE_NUMBER";
+      /** @description You can find the code on the bank list endpoint. BankCode is required only for the following clabe types: PHONE_NUMBER, DEBIT_CARD */
       bankCode?: string;
       countryCode: string;
     };
@@ -852,6 +987,40 @@ export interface components {
       /** @example 1 */
       totalPage: number;
     };
+    GetUserByIdResponse: {
+      /** @example 4d23aa52-1b40-4584-a8ea-58aba6099c5c */
+      id: string;
+      /** @example 8ffce092-b97a-48bd-9efa-24c66ac7fe13 */
+      customerId: string;
+      /**
+       * @example PERSON
+       * @enum {string}
+       */
+      type: "PERSON" | "COMPANY";
+      data: components["schemas"]["PersonUserDto"] | components["schemas"]["CompanyUserDto"];
+      /**
+       * @description A unique identifier used to identify your existing user.
+       * @example d00e4f43-2022-42f3-ba1c-dcf4c1dcd934
+       */
+      externalId?: string;
+      /**
+       * @example L0
+       * @enum {string}
+       */
+      accessLevel: "L0" | "L1" | "L2" | "L3" | "L4";
+      /** @example true */
+      active: boolean;
+      /**
+       * Format: date-time
+       * @example 2024-02-06T00:03:30.791Z
+       */
+      createdAt: string;
+      /**
+       * Format: date-time
+       * @example 2024-02-06T00:03:30.791Z
+       */
+      updatedAt: string;
+    };
     UploadPersonDocumentDto: {
       /** Format: uuid */
       userId: string;
@@ -859,7 +1028,7 @@ export interface components {
        * @example CURP
        * @enum {string}
        */
-      documentType: "PROVE_OF_ADDRESS_BANK_STATEMENT" | "PROVE_OF_ADDRESS_UTILITY_BILL" | "PROVE_OF_ADDRESS_LEASE_AGREEMENT" | "SOURCE_OF_FUNDS_BANK_STATEMENT" | "SOURCE_OF_FUNDS_PAYSLIP" | "PASSPORT" | "DRIVER_LICENSE" | "NUIP" | "RFC" | "SSN" | "CURP" | "CPF" | "INE" | "IFE";
+      documentType: "PROVE_OF_ADDRESS_BANK_STATEMENT" | "PROVE_OF_ADDRESS_UTILITY_BILL" | "PROVE_OF_ADDRESS_LEASE_AGREEMENT" | "SOURCE_OF_FUNDS_BANK_STATEMENT" | "SOURCE_OF_FUNDS_PAYSLIP" | "KYC_REPORT" | "PASSPORT" | "DRIVER_LICENSE" | "NUIP" | "RFC" | "SSN" | "CURP" | "CPF" | "INE" | "IFE";
       /**
        * Format: binary
        * @description Front document file
@@ -1039,7 +1208,7 @@ export interface components {
       amount: number;
       amountIsToCurrency: boolean;
       /** @enum {string} */
-      cashInMethod: "SPEI" | "POLYGON" | "ERC20" | "PSE" | "PRE_FUND";
+      cashInMethod: "SPEI" | "POLYGON" | "ERC20" | "PSE" | "PRE_FUND" | "PRE_FUND_POLYGON" | "PRE_FUND_ERC20" | "PRE_FUND_SOLANA" | "PRE_FUND_TRON" | "PRE_FUND_ARBITRUM";
       /** @enum {string} */
       cashOutMethod: "SPEI" | "POLYGON" | "ERC20" | "PSE";
     };
@@ -1054,7 +1223,7 @@ export interface components {
       rate: number;
       expiresAt: number;
       /** @enum {string} */
-      cashInMethod: "SPEI" | "POLYGON" | "ERC20" | "PSE" | "PRE_FUND";
+      cashInMethod: "SPEI" | "POLYGON" | "ERC20" | "PSE" | "PRE_FUND" | "PRE_FUND_POLYGON" | "PRE_FUND_ERC20" | "PRE_FUND_SOLANA" | "PRE_FUND_TRON" | "PRE_FUND_ARBITRUM";
       /** @enum {string} */
       cashOutMethod: "SPEI" | "POLYGON" | "ERC20" | "PSE";
     };
@@ -1067,7 +1236,19 @@ export interface components {
       toAmount: number;
       rate: number;
       /** @enum {string} */
-      cashInMethod: "SPEI" | "POLYGON" | "ERC20" | "PSE" | "PRE_FUND";
+      cashInMethod: "SPEI" | "POLYGON" | "ERC20" | "PSE" | "PRE_FUND" | "PRE_FUND_POLYGON" | "PRE_FUND_ERC20" | "PRE_FUND_SOLANA" | "PRE_FUND_TRON" | "PRE_FUND_ARBITRUM";
+      /** @enum {string} */
+      cashOutMethod: "SPEI" | "POLYGON" | "ERC20" | "PSE";
+    };
+    GetQuotationResponseDto: {
+      /** @enum {string} */
+      fromCurrency: "MXN" | "COP" | "USDC" | "USDT";
+      /** @enum {string} */
+      toCurrency: "MXN" | "COP" | "USDC" | "USDT";
+      amount: number;
+      amountIsToCurrency: boolean;
+      /** @enum {string} */
+      cashInMethod: "SPEI" | "POLYGON" | "ERC20" | "PSE" | "PRE_FUND" | "PRE_FUND_POLYGON" | "PRE_FUND_ERC20" | "PRE_FUND_SOLANA" | "PRE_FUND_TRON" | "PRE_FUND_ARBITRUM";
       /** @enum {string} */
       cashOutMethod: "SPEI" | "POLYGON" | "ERC20" | "PSE";
     };
@@ -1118,7 +1299,7 @@ export interface components {
       quotationId: string;
       userId: string;
       /** @enum {string} */
-      cashInMethod: "SPEI" | "POLYGON" | "ERC20" | "PSE" | "PRE_FUND";
+      cashInMethod: "SPEI" | "POLYGON" | "ERC20" | "PSE" | "PRE_FUND" | "PRE_FUND_POLYGON" | "PRE_FUND_ERC20" | "PRE_FUND_SOLANA" | "PRE_FUND_TRON" | "PRE_FUND_ARBITRUM";
       /** @enum {string} */
       cashOutMethod: "SPEI" | "POLYGON" | "ERC20" | "PSE";
       accountId: string;
@@ -1141,6 +1322,39 @@ export interface components {
       ramps: components["schemas"]["CreateRampResponseDto"][];
       totalPage: number;
     };
+    GetRampByIdResponseDto: {
+      id: string;
+      active: boolean;
+      /** @enum {string} */
+      fromCurrency: "MXN" | "COP" | "USDC" | "USDT";
+      /** @enum {string} */
+      toCurrency: "MXN" | "COP" | "USDC" | "USDT";
+      fromAmount: number;
+      toAmount: number;
+      quotationId: string;
+      userId: string;
+      /** @enum {string} */
+      cashInMethod: "SPEI" | "POLYGON" | "ERC20" | "PSE" | "PRE_FUND" | "PRE_FUND_POLYGON" | "PRE_FUND_ERC20" | "PRE_FUND_SOLANA" | "PRE_FUND_TRON" | "PRE_FUND_ARBITRUM";
+      /** @enum {string} */
+      cashOutMethod: "SPEI" | "POLYGON" | "ERC20" | "PSE";
+      accountId: string;
+      /** @enum {string} */
+      status: "CREATED" | "CASH_IN_REQUEST" | "CONVERSION_REQUEST" | "CASH_OUT_REQUEST" | "CASH_IN_REQUESTED" | "CONVERSION_REQUESTED" | "CASH_OUT_REQUESTED" | "CASH_IN_PENDING" | "CONVERSION_PENDING" | "CASH_OUT_PENDING" | "CASH_IN_PROCESSING" | "CONVERSION_PROCESSING" | "CASH_OUT_PROCESSING" | "CASH_IN_COMPLETED" | "CONVERSION_COMPLETED" | "CASH_OUT_COMPLETED" | "COMPLETED" | "CANCELED" | "FAILED" | "REJECTED" | "ERROR";
+      isPreFunded?: boolean;
+      paymentInfo?: (components["schemas"]["ISPEIPaymentInfo"] | components["schemas"]["ICOPPaymentInfo"] | components["schemas"]["ICryptoPaymentInfo"])[];
+      /** @description complement information about a transfer, like: Code error */
+      details?: string;
+      /** @description Proof of transfer, like: TxHash, url, etc. */
+      transferProof?: string;
+      /** @enum {string} */
+      type: "ON" | "OFF";
+      /** Format: date-time */
+      createdAt: string;
+      /** Format: date-time */
+      updatedAt: string;
+    };
+    GetRampStatusResponseDto: Record<string, never>;
+    BackOfficeBatchFileCreate: Record<string, never>;
     GetBanksResponseDto: {
       /** @example 0001 */
       code: string;
@@ -1158,6 +1372,14 @@ export interface components {
       /** Format: uuid */
       id: string;
     };
+    FakerCashInDto: {
+      /** Format: uuid */
+      rampId: string;
+    };
+    FakerCashOutDto: {
+      /** Format: uuid */
+      rampId: string;
+    };
   };
   responses: never;
   parameters: never;
@@ -1174,7 +1396,7 @@ export interface operations {
 
   /**
    * Generate an access token
-   * @description Guide for the Auth can be found in [Auths](https://killbapi.stoplight.io/docs/killb-v2/92fb466bf5e4b). This endpoint is throttled to 20 requests per 10 minutes
+   * @description Guide for the Auth can be found in [Auths](https://killbapi.stoplight.io/docs/killb-v2/92fb466bf5e4b).
    */
   AuthController_login: {
     requestBody: {
@@ -1212,6 +1434,46 @@ export interface operations {
       };
     };
   };
+  /**
+   * Refresh an access token
+   * @description Guide for the Auth can be found in [Auths](https://killbapi.stoplight.io/docs/killb-v2/92fb466bf5e4b).
+   */
+  AuthController_refresh: {
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["RefreshDto"];
+      };
+    };
+    responses: {
+      201: {
+        content: {
+          "application/json": components["schemas"]["RefreshResponseDto"];
+        };
+      };
+      400: {
+        content: {
+          "application/json": components["schemas"]["BadRequestResponse"];
+        };
+      };
+      500: {
+        content: {
+          "application/json": components["schemas"]["InternalServerErrorResponse"];
+        };
+      };
+    };
+  };
+  /**
+   * Options
+   * @description Options method
+   */
+  options1: {
+    responses: {
+      /** @description Successful response */
+      200: {
+        content: never;
+      };
+    };
+  };
   /** Get customer balances */
   CustomerController_getBalances: {
     responses: {
@@ -1236,7 +1498,76 @@ export interface operations {
    * Options
    * @description Options method
    */
-  options1: {
+  options2: {
+    responses: {
+      /** @description Successful response */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /** Create a pre-fund wallet */
+  CustomerController_createPreFundAccount: {
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["CreatePreFundAccountDto"];
+      };
+    };
+    responses: {
+      201: {
+        content: {
+          "application/json": components["schemas"]["CreatePreFundAccountResponseDto"];
+        };
+      };
+      400: {
+        content: {
+          "application/json": components["schemas"]["BadRequestResponse"];
+        };
+      };
+      500: {
+        content: {
+          "application/json": components["schemas"]["InternalServerErrorResponse"];
+        };
+      };
+    };
+  };
+  /**
+   * Options
+   * @description Options method
+   */
+  options3: {
+    responses: {
+      /** @description Successful response */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /** Get customer liquidities */
+  CustomerController_getLiquidity: {
+    responses: {
+      200: {
+        content: {
+          "application/json": components["schemas"]["GetCustomerLiquidityResponseDto"][];
+        };
+      };
+      400: {
+        content: {
+          "application/json": components["schemas"]["BadRequestResponse"];
+        };
+      };
+      500: {
+        content: {
+          "application/json": components["schemas"]["InternalServerErrorResponse"];
+        };
+      };
+    };
+  };
+  /**
+   * Options
+   * @description Options method
+   */
+  options4: {
     responses: {
       /** @description Successful response */
       200: {
@@ -1310,7 +1641,7 @@ export interface operations {
    * Options
    * @description Options method
    */
-  options2: {
+  options5: {
     responses: {
       /** @description Successful response */
       200: {
@@ -1347,7 +1678,7 @@ export interface operations {
    * Options
    * @description Options method
    */
-  options3: {
+  options6: {
     parameters: {
       path: {
         id: string;
@@ -1419,7 +1750,7 @@ export interface operations {
    * Options
    * @description Options method
    */
-  options4: {
+  options7: {
     parameters: {
       path: {
         userId: string;
@@ -1508,7 +1839,7 @@ export interface operations {
    * Options
    * @description Options method
    */
-  options5: {
+  options8: {
     responses: {
       /** @description Successful response */
       200: {
@@ -1619,7 +1950,7 @@ export interface operations {
    * Options
    * @description Options method
    */
-  options6: {
+  options9: {
     responses: {
       /** @description Successful response */
       200: {
@@ -1627,7 +1958,7 @@ export interface operations {
       };
     };
   };
-  /** Get users */
+  /** Get users by ID */
   UserController_getById: {
     parameters: {
       path: {
@@ -1637,7 +1968,7 @@ export interface operations {
     responses: {
       200: {
         content: {
-          "application/json": components["schemas"]["GetUserQueryResponse"];
+          "application/json": components["schemas"]["GetUserByIdResponse"];
         };
       };
       400: {
@@ -1679,7 +2010,7 @@ export interface operations {
    * Options
    * @description Options method
    */
-  options7: {
+  options10: {
     parameters: {
       path: {
         id: string;
@@ -1749,7 +2080,7 @@ export interface operations {
    * Options
    * @description Options method
    */
-  options8: {
+  options11: {
     responses: {
       /** @description Successful response */
       200: {
@@ -1784,7 +2115,7 @@ export interface operations {
    * Options
    * @description Options method
    */
-  options9: {
+  options12: {
     responses: {
       /** @description Successful response */
       200: {
@@ -1821,7 +2152,7 @@ export interface operations {
    * Options
    * @description Options method
    */
-  options10: {
+  options13: {
     responses: {
       /** @description Successful response */
       200: {
@@ -1871,7 +2202,7 @@ export interface operations {
    * Options
    * @description Options method
    */
-  options11: {
+  options14: {
     parameters: {
       query?: {
         /** @example 1 */
@@ -1926,7 +2257,7 @@ export interface operations {
    * Options
    * @description Options method
    */
-  options12: {
+  options15: {
     parameters: {
       path: {
         id: string;
@@ -1968,7 +2299,7 @@ export interface operations {
    * Options
    * @description Options method
    */
-  options13: {
+  options16: {
     responses: {
       /** @description Successful response */
       200: {
@@ -2005,7 +2336,7 @@ export interface operations {
    * Options
    * @description Options method
    */
-  options14: {
+  options17: {
     parameters: {
       path: {
         id: string;
@@ -2050,7 +2381,7 @@ export interface operations {
    * Options
    * @description Options method
    */
-  options15: {
+  options18: {
     parameters: {
       path: {
         /** @example 449b31b4-fca5-465e-99ea-7b7b28cfbccb */
@@ -2095,7 +2426,7 @@ export interface operations {
    * Options
    * @description Options method
    */
-  options16: {
+  options19: {
     parameters: {
       path: {
         id: string;
@@ -2110,7 +2441,7 @@ export interface operations {
   };
   /**
    * Create Quotation
-   * @description Endpoint responsible for create Quotation.
+   * @description Create a new quotation
    */
   QuotationController_create: {
     requestBody: {
@@ -2140,7 +2471,7 @@ export interface operations {
    * Options
    * @description Options method
    */
-  options17: {
+  options20: {
     responses: {
       /** @description Successful response */
       200: {
@@ -2148,7 +2479,10 @@ export interface operations {
       };
     };
   };
-  /** Simulate a Quotation */
+  /**
+   * Simulate a Quotation
+   * @description Generate just a simulation of a quote
+   */
   QuotationController_simulation: {
     requestBody: {
       content: {
@@ -2177,7 +2511,7 @@ export interface operations {
    * Options
    * @description Options method
    */
-  options18: {
+  options21: {
     responses: {
       /** @description Successful response */
       200: {
@@ -2187,7 +2521,7 @@ export interface operations {
   };
   /**
    * Get Quotation
-   * @description Endpoint responsible for get Quotation.
+   * @description Get a quotation by id
    */
   QuotationController_getById: {
     parameters: {
@@ -2198,7 +2532,7 @@ export interface operations {
     responses: {
       201: {
         content: {
-          "application/json": components["schemas"]["CreateQuotationResponseDto"];
+          "application/json": components["schemas"]["GetQuotationResponseDto"];
         };
       };
       400: {
@@ -2217,7 +2551,7 @@ export interface operations {
    * Options
    * @description Options method
    */
-  options19: {
+  options22: {
     parameters: {
       path: {
         id: string;
@@ -2231,10 +2565,10 @@ export interface operations {
     };
   };
   /**
-   * Get Ramps
-   * @description This endpoint is responsible for getting the result of the Ramp. For more details about this endpoint, see here [Ramps](/docs/Ramps.md)
+   * Query Ramps
+   * @description This endpoint is responsible for getting the Ramp list. For more details about this endpoint, see here [Ramps](https://killbapi.stoplight.io/docs/killb-v2/71722efcded7f)
    */
-  RampsController_preFundReport: {
+  RampsController_getQuery: {
     parameters: {
       query?: {
         limit?: number;
@@ -2265,7 +2599,7 @@ export interface operations {
   };
   /**
    * Create Ramps
-   * @description This endpoint is responsible for executing the Ramp (On or/and Off). For more details about this endpoint, see here [Ramps](/docs/Ramps.md)
+   * @description This endpoint is responsible for executing the Ramp (On or/and Off). For more details about this endpoint, see here [Ramps](https://killbapi.stoplight.io/docs/killb-v2/71722efcded7f)
    */
   RampsController_create: {
     requestBody: {
@@ -2295,7 +2629,7 @@ export interface operations {
    * Options
    * @description Options method
    */
-  options20: {
+  options23: {
     responses: {
       /** @description Successful response */
       200: {
@@ -2304,10 +2638,10 @@ export interface operations {
     };
   };
   /**
-   * Get ramp status history
-   * @description This endpoint is responsible for getting the result of the Ramp. For more details about this endpoint, see here [Ramps](/docs/Ramps.md)
+   * Get Ramp by id
+   * @description This endpoint is responsible for getting the Ramp by id. For more details about this endpoint, see here [Ramps](https://killbapi.stoplight.io/docs/killb-v2/71722efcded7f)
    */
-  RampsController_getStatusHistoryById: {
+  RampsController_getById: {
     parameters: {
       path: {
         id: string;
@@ -2316,7 +2650,7 @@ export interface operations {
     responses: {
       200: {
         content: {
-          "application/json": components["schemas"]["GetRampQueryResponseDto"];
+          "application/json": components["schemas"]["GetRampByIdResponseDto"];
         };
       };
       400: {
@@ -2335,7 +2669,52 @@ export interface operations {
    * Options
    * @description Options method
    */
-  options21: {
+  options24: {
+    parameters: {
+      path: {
+        id: string;
+      };
+    };
+    responses: {
+      /** @description Successful response */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
+   * Get ramp status history
+   * @description This endpoint is responsible for getting the Ramp status history. For more details about this endpoint, see here [Ramps](https://killbapi.stoplight.io/docs/killb-v2/71722efcded7f)
+   */
+  RampsController_getStatusHistoryById: {
+    parameters: {
+      path: {
+        id: string;
+      };
+    };
+    responses: {
+      200: {
+        content: {
+          "application/json": components["schemas"]["GetRampStatusResponseDto"];
+        };
+      };
+      400: {
+        content: {
+          "application/json": components["schemas"]["BadRequestResponse"];
+        };
+      };
+      500: {
+        content: {
+          "application/json": components["schemas"]["InternalServerErrorResponse"];
+        };
+      };
+    };
+  };
+  /**
+   * Options
+   * @description Options method
+   */
+  options25: {
     parameters: {
       path: {
         id: string;
@@ -2377,12 +2756,114 @@ export interface operations {
    * Options
    * @description Options method
    */
-  options22: {
+  options26: {
     parameters: {
       query: {
         countryCode: string;
       };
     };
+    responses: {
+      /** @description Successful response */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
+   * Fake cash-in (SANDBOX)
+   * @description This endpoint is responsible for faking a cash-in.
+   */
+  FakerController_fakeMxnCashIn: {
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["FakerCashInDto"];
+      };
+    };
+    responses: {
+      201: {
+        content: never;
+      };
+      400: {
+        content: {
+          "application/json": components["schemas"]["BadRequestResponse"];
+        };
+      };
+      500: {
+        content: {
+          "application/json": components["schemas"]["InternalServerErrorResponse"];
+        };
+      };
+    };
+  };
+  /**
+   * Options
+   * @description Options method
+   */
+  options27: {
+    responses: {
+      /** @description Successful response */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
+   * Fake refund simulation (SANDBOX)
+   * @description This endpoint is responsible for faking a refund process.
+   */
+  FakerController_fakeRefund: {
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["FakerCashOutDto"];
+      };
+    };
+    responses: {
+      201: {
+        content: never;
+      };
+      400: {
+        content: {
+          "application/json": components["schemas"]["BadRequestResponse"];
+        };
+      };
+      500: {
+        content: {
+          "application/json": components["schemas"]["InternalServerErrorResponse"];
+        };
+      };
+    };
+  };
+  /**
+   * Options
+   * @description Options method
+   */
+  options28: {
+    responses: {
+      /** @description Successful response */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
+   * Open API JSON
+   * @description API JSON schema with all endpoints
+   */
+  getApiJson: {
+    responses: {
+      /** @description Return the OpenAPI JSON */
+      200: {
+        content: {
+          "application/json": Record<string, never>;
+        };
+      };
+    };
+  };
+  /**
+   * Options
+   * @description Options method
+   */
+  options29: {
     responses: {
       /** @description Successful response */
       200: {
