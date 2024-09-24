@@ -1271,6 +1271,8 @@ export interface components {
       userId: string;
       accountId: string;
       refundInstructions: components["schemas"]["RefundInstructions"];
+      /** @description You can send an external id to avoid duplicate ramps */
+      externalId: string;
     };
     ISPEIPaymentInfo: {
       network: string;
@@ -1311,6 +1313,8 @@ export interface components {
       details?: string;
       /** @description Proof of transfer, like: TxHash, url, etc. */
       transferProof?: string;
+      /** @description External id to avoid duplicate ramps */
+      externalId?: string;
       /** @enum {string} */
       type: "ON" | "OFF";
       /** Format: date-time */
@@ -1346,6 +1350,8 @@ export interface components {
       details?: string;
       /** @description Proof of transfer, like: TxHash, url, etc. */
       transferProof?: string;
+      /** @description External id to avoid duplicate ramps */
+      externalId?: string;
       /** @enum {string} */
       type: "ON" | "OFF";
       /** Format: date-time */
