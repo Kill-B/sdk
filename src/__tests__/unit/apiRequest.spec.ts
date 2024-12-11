@@ -61,7 +61,7 @@ describe('ApiRequest', () => {
 
       const result = (apiRequest as any).setHost(false);
 
-      expect(result).toEqual('https://killb.app/api/v2');
+      expect(result).toEqual('https://killb.app');
     });
   });
 
