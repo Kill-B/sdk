@@ -55,7 +55,7 @@ export class ApiRequest {
     if(testEnv) {
       return 'https://teste-94u93qnn.uc.gateway.dev';
     }
-    return 'https://killb.app/api/v2';
+    return 'https://killb.app';
   }
 
   /**

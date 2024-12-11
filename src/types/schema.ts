@@ -5,7 +5,7 @@
 
 
 export interface paths {
-  "/auth/login": {
+  "/api/v2/auth/login": {
     /**
      * Generate an access token
      * @description Guide for the Auth can be found in [Auths](https://killbapi.stoplight.io/docs/killb-v2/92fb466bf5e4b).
@@ -17,7 +17,7 @@ export interface paths {
      */
     options: operations["options0"];
   };
-  "/auth/refresh": {
+  "/api/v2/auth/refresh": {
     /**
      * Refresh an access token
      * @description Guide for the Auth can be found in [Auths](https://killbapi.stoplight.io/docs/killb-v2/92fb466bf5e4b).
@@ -29,7 +29,7 @@ export interface paths {
      */
     options: operations["options1"];
   };
-  "/customers/balances": {
+  "/api/v2/customers/balances": {
     /** Get customer balances */
     get: operations["CustomerController_getBalances"];
     /**
@@ -38,7 +38,7 @@ export interface paths {
      */
     options: operations["options2"];
   };
-  "/customers/pre-fund/create": {
+  "/api/v2/customers/pre-fund/create": {
     /** Create a pre-fund wallet */
     post: operations["CustomerController_createPreFundAccount"];
     /**
@@ -47,7 +47,7 @@ export interface paths {
      */
     options: operations["options3"];
   };
-  "/customers/liquidities": {
+  "/api/v2/customers/liquidities": {
     /** Get customer liquidities */
     get: operations["CustomerController_getLiquidity"];
     /**
@@ -56,7 +56,7 @@ export interface paths {
      */
     options: operations["options4"];
   };
-  "/accounts": {
+  "/api/v2/accounts": {
     /** Get Accounts */
     get: operations["AccountController_queryAccount"];
     /** Create Account */
@@ -67,7 +67,7 @@ export interface paths {
      */
     options: operations["options5"];
   };
-  "/accounts/{id}": {
+  "/api/v2/accounts/{id}": {
     /** Get Account by id */
     get: operations["AccountController_getOne"];
     /**
@@ -78,7 +78,7 @@ export interface paths {
     /** Update Account */
     patch: operations["AccountController_update"];
   };
-  "/accounts/userId/{userId}": {
+  "/api/v2/accounts/userId/{userId}": {
     /** Get Accounts by UserId */
     get: operations["AccountController_getByUserId"];
     /**
@@ -87,7 +87,7 @@ export interface paths {
      */
     options: operations["options7"];
   };
-  "/webhooks": {
+  "/api/v2/webhooks": {
     /**
      * Get webhook config
      * @description Endpoint responsible for return a webhook config configured. For more information, examples and how works see here: [Webhook Documentation](/docs/Webhooks.md)
@@ -114,7 +114,7 @@ export interface paths {
      */
     patch: operations["WebhookController_update"];
   };
-  "/users": {
+  "/api/v2/users": {
     /** Get users */
     get: operations["UserController_get"];
     /** Create a user */
@@ -125,7 +125,7 @@ export interface paths {
      */
     options: operations["options9"];
   };
-  "/users/{id}": {
+  "/api/v2/users/{id}": {
     /** Get users by ID */
     get: operations["UserController_getById"];
     /** Delete user */
@@ -138,7 +138,7 @@ export interface paths {
     /** Update user */
     patch: operations["UserController_update"];
   };
-  "/users/person/document": {
+  "/api/v2/users/person/document": {
     /** Add person user document */
     post: operations["UserController_uploadDocumentPerson"];
     /**
@@ -147,7 +147,7 @@ export interface paths {
      */
     options: operations["options11"];
   };
-  "/users/company/document": {
+  "/api/v2/users/company/document": {
     /** Add company user document */
     post: operations["UserController_uploadDocumentBusiness"];
     /**
@@ -156,7 +156,7 @@ export interface paths {
      */
     options: operations["options12"];
   };
-  "/savings": {
+  "/api/v2/savings": {
     /** Create savings account */
     post: operations["SavingsController_onboard"];
     /**
@@ -165,7 +165,7 @@ export interface paths {
      */
     options: operations["options13"];
   };
-  "/savings/transactions": {
+  "/api/v2/savings/transactions": {
     /** Get transactions */
     get: operations["SavingsController_getTransactions"];
     /**
@@ -174,7 +174,7 @@ export interface paths {
      */
     options: operations["options14"];
   };
-  "/savings/{id}": {
+  "/api/v2/savings/{id}": {
     /** Get savings account */
     get: operations["SavingsController_getOnboard"];
     /**
@@ -183,7 +183,7 @@ export interface paths {
      */
     options: operations["options15"];
   };
-  "/savings/withdrawal": {
+  "/api/v2/savings/withdrawal": {
     /** Create withdrawal */
     post: operations["SavingsController_withdrawal"];
     /**
@@ -192,7 +192,7 @@ export interface paths {
      */
     options: operations["options16"];
   };
-  "/savings/{id}/balance": {
+  "/api/v2/savings/{id}/balance": {
     /** Get balance */
     get: operations["SavingsController_getBalance"];
     /**
@@ -201,7 +201,7 @@ export interface paths {
      */
     options: operations["options17"];
   };
-  "/savings/{id}/deposit-instructions/{type}": {
+  "/api/v2/savings/{id}/deposit-instructions/{type}": {
     /** Get banking deposit instructions */
     get: operations["SavingsController_getDepositInstructions"];
     /**
@@ -210,7 +210,7 @@ export interface paths {
      */
     options: operations["options18"];
   };
-  "/savings/{id}/crypto-deposit-instructions": {
+  "/api/v2/savings/{id}/crypto-deposit-instructions": {
     /** Get crypto deposit instructions */
     get: operations["SavingsController_getWalletAddress"];
     /**
@@ -219,7 +219,7 @@ export interface paths {
      */
     options: operations["options19"];
   };
-  "/quotations": {
+  "/api/v2/quotations": {
     /**
      * Create Quotation
      * @description Create a new quotation
@@ -231,7 +231,7 @@ export interface paths {
      */
     options: operations["options20"];
   };
-  "/quotations/simulation": {
+  "/api/v2/quotations/simulation": {
     /**
      * Simulate a Quotation
      * @description Generate just a simulation of a quote
@@ -243,7 +243,7 @@ export interface paths {
      */
     options: operations["options21"];
   };
-  "/quotations/{id}": {
+  "/api/v2/quotations/{id}": {
     /**
      * Get Quotation
      * @description Get a quotation by id
@@ -255,7 +255,7 @@ export interface paths {
      */
     options: operations["options22"];
   };
-  "/ramps": {
+  "/api/v2/ramps": {
     /**
      * Query Ramps
      * @description This endpoint is responsible for getting the Ramp list. For more details about this endpoint, see here [Ramps](https://killbapi.stoplight.io/docs/killb-v2/71722efcded7f)
@@ -272,7 +272,7 @@ export interface paths {
      */
     options: operations["options23"];
   };
-  "/ramps/{id}": {
+  "/api/v2/ramps/{id}": {
     /**
      * Get Ramp by id
      * @description This endpoint is responsible for getting the Ramp by id. For more details about this endpoint, see here [Ramps](https://killbapi.stoplight.io/docs/killb-v2/71722efcded7f)
@@ -284,7 +284,7 @@ export interface paths {
      */
     options: operations["options24"];
   };
-  "/ramps/{id}/status-history": {
+  "/api/v2/ramps/{id}/status-history": {
     /**
      * Get ramp status history
      * @description This endpoint is responsible for getting the Ramp status history. For more details about this endpoint, see here [Ramps](https://killbapi.stoplight.io/docs/killb-v2/71722efcded7f)
@@ -296,7 +296,7 @@ export interface paths {
      */
     options: operations["options25"];
   };
-  "/banks": {
+  "/api/v2/banks": {
     /** Get Bank list by countryCode */
     get: operations["BankController_get"];
     /**
@@ -305,7 +305,7 @@ export interface paths {
      */
     options: operations["options26"];
   };
-  "/faker/cash-in": {
+  "/api/v2/faker/cash-in": {
     /**
      * Fake cash-in (SANDBOX)
      * @description This endpoint is responsible for faking a cash-in.
@@ -317,7 +317,7 @@ export interface paths {
      */
     options: operations["options27"];
   };
-  "/faker/cash-out": {
+  "/api/v2/faker/cash-out": {
     /**
      * Fake refund simulation (SANDBOX)
      * @description This endpoint is responsible for faking a refund process.
@@ -329,7 +329,7 @@ export interface paths {
      */
     options: operations["options28"];
   };
-  "/open-api-json": {
+  "/api/v2/open-api-json": {
     /**
      * Open API JSON
      * @description API JSON schema with all endpoints
@@ -597,6 +597,7 @@ export interface components {
       data: components["schemas"]["PSEAccountDto"] | components["schemas"]["SpeiAccountDto"] | components["schemas"]["WalletAccountDto"];
       /** @description A unique identifier used to identify your existing user. */
       externalId: string;
+      complianceUrl: string;
       /** Format: date-time */
       createdAt: string;
       /** Format: date-time */
@@ -872,7 +873,7 @@ export interface components {
       phone?: string;
       email?: string;
       address: components["schemas"]["UserAddressDto"];
-      mainOwnerUser: string;
+      mainOwnerUser?: string;
       ownerUsers?: string[];
       naics?: string;
       naicsDescription?: string;
@@ -940,7 +941,7 @@ export interface components {
       phone?: string;
       email?: string;
       address: components["schemas"]["UserAddressDto"];
-      mainOwnerUser: string;
+      mainOwnerUser?: string;
       ownerUsers?: string[];
       naics?: string;
       naicsDescription?: string;
@@ -964,6 +965,8 @@ export interface components {
        * @example d00e4f43-2022-42f3-ba1c-dcf4c1dcd934
        */
       externalId?: string;
+      /** @example https://kyc.example.com */
+      complianceUrl: string;
       /**
        * @example L0
        * @enum {string}
@@ -1003,6 +1006,8 @@ export interface components {
        * @example d00e4f43-2022-42f3-ba1c-dcf4c1dcd934
        */
       externalId?: string;
+      /** @example https://kyc.example.com */
+      complianceUrl: string;
       /**
        * @example L0
        * @enum {string}
@@ -1585,14 +1590,10 @@ export interface operations {
   AccountController_queryAccount: {
     parameters: {
       query?: {
-        /** @example 7f0a8ad6-29a1-4a66-a6c4-8bb398eb78d1 */
         userId?: string;
         type?: "PSE" | "ACH" | "WIRE" | "WALLET" | "COELSA" | "SPEI" | "CUSTODIAL";
-        /** @example 001134412 */
         accountNumber?: string;
-        /** @example 1231312 */
         routingNumber?: string;
-        /** @example 0x */
         address?: string;
         clabe?: string;
         cvu?: string;
@@ -1905,7 +1906,6 @@ export interface operations {
         naics?: string;
         naicsDescription?: string;
         customerId?: string;
-        /** @example PERSON */
         type: "PERSON" | "COMPANY";
       };
     };
@@ -2170,19 +2170,12 @@ export interface operations {
   SavingsController_getTransactions: {
     parameters: {
       query?: {
-        /** @example 1 */
         limit?: number;
-        /** @example 10 */
         page?: number;
-        /** @example 70bb2b47-1d79-4071-bfdb-a0b6a18b043b */
         id?: string;
-        /** @example 1f3f8ec8-53a6-422b-82af-71bb9c7bd3a0 */
         destinationAccountId?: string;
-        /** @example f4f49acb-c413-48b2-99b5-d5de57c34165 */
         originAccountId?: string;
-        /** @example 474a6f7c-9b61-417d-ba0c-11cde75d4599 */
         userId?: string;
-        /** @example DEPOSIT */
         type?: string;
       };
     };
@@ -2211,19 +2204,12 @@ export interface operations {
   options14: {
     parameters: {
       query?: {
-        /** @example 1 */
         limit?: number;
-        /** @example 10 */
         page?: number;
-        /** @example 70bb2b47-1d79-4071-bfdb-a0b6a18b043b */
         id?: string;
-        /** @example 1f3f8ec8-53a6-422b-82af-71bb9c7bd3a0 */
         destinationAccountId?: string;
-        /** @example f4f49acb-c413-48b2-99b5-d5de57c34165 */
         originAccountId?: string;
-        /** @example 474a6f7c-9b61-417d-ba0c-11cde75d4599 */
         userId?: string;
-        /** @example DEPOSIT */
         type?: string;
       };
     };
@@ -2359,9 +2345,7 @@ export interface operations {
   SavingsController_getDepositInstructions: {
     parameters: {
       path: {
-        /** @example 449b31b4-fca5-465e-99ea-7b7b28cfbccb */
         id: string;
-        /** @example ACH */
         type: "ACH" | "WIRE";
       };
     };
@@ -2390,9 +2374,7 @@ export interface operations {
   options18: {
     parameters: {
       path: {
-        /** @example 449b31b4-fca5-465e-99ea-7b7b28cfbccb */
         id: string;
-        /** @example ACH */
         type: "ACH" | "WIRE";
       };
     };
