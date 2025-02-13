@@ -23,7 +23,7 @@ export class Users extends ApiRequest {
    */
   public async create(body: components['schemas']['CreateUserDto']): Promise<components['schemas']['CreateUserResponseDto']> {
     await this.authenticateCheck();
-    const response = await this.api.post<components['schemas']['CreateUserResponseDto']>('/users', body);
+    const response = await this.api.post<components['schemas']['CreateUserResponseDto']>('api/v2/users', body);
     return response.data;
   }
 
@@ -39,7 +39,7 @@ export class Users extends ApiRequest {
    */
   public async update(id: string, body: components['schemas']['CreatePersonUserDto'] | components['schemas']['CreateCompanyUserDto']): Promise<components['schemas']['CreateUserResponseDto']> {
     await this.authenticateCheck();
-    const response = await  this.api.patch(`/users/${id}`, body);
+    const response = await  this.api.patch(`api/v2/users/${id}`, body);
     return response.data;
   }
 
@@ -53,7 +53,7 @@ export class Users extends ApiRequest {
    */
   public async delete(id: string): Promise<void> {
     await this.authenticateCheck();
-    await this.api.delete(`/users/${id}`);
+    await this.api.delete(`api/v2/users/${id}`);
   }
 
   /**
@@ -64,10 +64,10 @@ export class Users extends ApiRequest {
    * @param query - The query parameters for the GET request. Optional.
    * @returns A promise that resolves to the list of users, conforming to the 'GetUserQueryResponse' schema.
    */
-  public async list(query?:  paths["/users"]["get"]['parameters']['query']): Promise<components['schemas']['GetUserQueryResponse']> {
+  public async list(query?:  paths["/api/v2/users"]["get"]['parameters']['query']): Promise<components['schemas']['GetUserQueryResponse']> {
     await this.authenticateCheck();
     const queryParams = '?' + new URLSearchParams(query as Record<string, any> || {}).toString();
-    return this.api.get(`/users${queryParams}`);
+    return this.api.get(`api/v2/users${queryParams}`);
   }
 
   /**
@@ -87,7 +87,7 @@ export class Users extends ApiRequest {
     form.append('documentType', input.documentType);
     form.append('frontDocument', input.frontDocument);
     input.backDocument ? form.append('backDocument', input.backDocument) : null;
-    return this.api.post('users/person/document', form)
+    return this.api.post('api/v2/users/person/document', form)
   }
 
   /**
@@ -107,6 +107,6 @@ export class Users extends ApiRequest {
     form.append('documentType', input.documentType);
     form.append('frontDocument', input.frontDocument);
     input.backDocument ? form.append('backDocument', input.backDocument) : null;
-    return this.api.post('users/company/document', form)
+    return this.api.post('api/v2/users/company/document', form)
   }
 }

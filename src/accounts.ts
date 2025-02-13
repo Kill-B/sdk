@@ -23,7 +23,7 @@ export class Accounts extends ApiRequest {
    */
   public async create(body: CreateAccountInput): Promise<CreateAccountResponse> {
     await this.authenticateCheck();
-    const response = await this.api.post('/accounts', body);
+    const response = await this.api.post('api/v2/accounts', body);
     return response.data;
   }
 
@@ -39,7 +39,7 @@ export class Accounts extends ApiRequest {
    */
   public async update(id: string, body: components['schemas']['UpdateAccountResponseDto']): Promise<components['schemas']['CreateAccountResponseDto']> {
     await this.authenticateCheck();
-    const response = await this.api.patch(`/accounts/${id}`, body);
+    const response = await this.api.patch(`api/v2/accounts/${id}`, body);
     return response.data;
   }
 
@@ -53,7 +53,7 @@ export class Accounts extends ApiRequest {
    */
   public async getById(id: string): Promise<components['schemas']['CreateAccountResponseDto']> {
     await this.authenticateCheck();
-    const response = await this.api.get(`/accounts/${id}`);
+    const response = await this.api.get(`api/v2/accounts/${id}`);
     return response.data;
   }
 
@@ -67,7 +67,7 @@ export class Accounts extends ApiRequest {
    */
   public async getByUserId(userId: string): Promise<components['schemas']['CreateAccountResponseDto'][]> {
     await this.authenticateCheck();
-    const response = await this.api.get(`/accounts/userId/${userId}`);
+    const response = await this.api.get(`api/v2/accounts/userId/${userId}`);
     return response.data;
   }
 
@@ -81,7 +81,7 @@ export class Accounts extends ApiRequest {
    */
   public async getBanksByCountry(countryCode: string): Promise<components['schemas']['GetBanksResponseDto'][]> {
     await this.authenticateCheck();
-    const response = await this.api.get(`/banks?countryCode=${countryCode}`);
+    const response = await this.api.get(`api/v2/banks?countryCode=${countryCode}`);
     return response.data;
   }
 
@@ -97,7 +97,7 @@ export class Accounts extends ApiRequest {
    */
   public async getBankByCountry(countryCode: string, code: string): Promise<components['schemas']['GetBanksResponseDto'] | undefined> {
     await this.authenticateCheck();
-    const response = await this.api.get<components['schemas']['GetBanksResponseDto'][]>(`/banks?countryCode=${countryCode}`);
+    const response = await this.api.get<components['schemas']['GetBanksResponseDto'][]>(`api/v2/banks?countryCode=${countryCode}`);
     return response.data.find((bank) => bank.code === code);
   }
 

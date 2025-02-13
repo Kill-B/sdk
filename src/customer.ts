@@ -13,7 +13,7 @@ export class Customer extends ApiRequest {
    */
   public async getBalances() {
     await this.authenticateCheck();
-    const response = await this.api.post<components['schemas']['GetBalancesResponseDto'][]>('/customers/balances');
+    const response = await this.api.post<components['schemas']['GetBalancesResponseDto'][]>('api/v2/customers/balances');
     return response.data;
   }
 }

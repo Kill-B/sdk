@@ -68,7 +68,7 @@ export class ApiRequest {
    * @throws Will throw an error if the server responds with an error.
    */
   private async authenticate() {
-    const response = await this.api.post('/auth/login', {
+    const response = await this.api.post('api/v2/auth/login', {
       email: this.config.credentials.email,
       password: this.config.credentials.password,
     });
