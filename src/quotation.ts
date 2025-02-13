@@ -23,7 +23,7 @@ export class Quotation extends ApiRequest {
    */
   public async create(body: components['schemas']['CreateQuotationDto']): Promise<components['schemas']['CreateQuotationResponseDto']> {
     await this.authenticateCheck();
-    const response = await this.api.post<components['schemas']['CreateQuotationResponseDto']>('/quotations', body);
+    const response = await this.api.post<components['schemas']['CreateQuotationResponseDto']>('api/v2/quotations', body);
     return response.data;
   }
 
@@ -38,7 +38,7 @@ export class Quotation extends ApiRequest {
    */
   public async simulation(body: components['schemas']['CreateQuotationDto']): Promise<components['schemas']['SimulateQuotationResponseDto']> {
     await this.authenticateCheck();
-    const response = await this.api.post<components['schemas']['SimulateQuotationResponseDto']>('/quotations/simulation', body);
+    const response = await this.api.post<components['schemas']['SimulateQuotationResponseDto']>('api/v2/quotations/simulation', body);
     return response.data;
   }
 
@@ -54,7 +54,7 @@ export class Quotation extends ApiRequest {
    */
   public async getById(id: string): Promise<components['schemas']['CreateQuotationResponseDto']> {
     await this.authenticateCheck();
-    const response = await this.api.get<components['schemas']['CreateQuotationResponseDto']>(`/quotations/${id}`);
+    const response = await this.api.get<components['schemas']['CreateQuotationResponseDto']>(`api/v2/quotations/${id}`);
     return response.data;
   }
 }

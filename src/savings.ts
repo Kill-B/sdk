@@ -14,7 +14,7 @@ export class Savings extends ApiRequest {
    */
   public async create(body: components['schemas']['SavingsCustodialAccountDto']): Promise<components['schemas']['SavingsAccountResponseDto']> {
     await this.authenticateCheck();
-    const response = await this.api.post('/savings', body);
+    const response = await this.api.post('api/v2/savings', body);
     return response.data;
   }
 
@@ -28,7 +28,7 @@ export class Savings extends ApiRequest {
    */
   public async get(id: string): Promise<components['schemas']['SavingsAccountResponseDto']> {
     await this.authenticateCheck();
-    return this.api.get(`/savings/${id}`);
+    return this.api.get(`api/v2/savings/${id}`);
   }
 
   /**
@@ -41,7 +41,7 @@ export class Savings extends ApiRequest {
    */
   public async getBalance(id: string): Promise<components['schemas']['GetBalanceReturn']> {
     await this.authenticateCheck();
-    return this.api.get(`/savings/${id}/balances`);
+    return this.api.get(`api/v2/savings/${id}/balances`);
   }
 
   /**
@@ -55,7 +55,7 @@ export class Savings extends ApiRequest {
    */
   public async createWithdrawal(body: components['schemas']['CreateWithdrawalDto']): Promise<components['schemas']['WithdrawalSavingsReturn']> {
     await this.authenticateCheck();
-    const response = await this.api.post('/savings/withdrawal', body);
+    const response = await this.api.post('api/v2/savings/withdrawal', body);
     return response.data;
   }
 
@@ -67,10 +67,10 @@ export class Savings extends ApiRequest {
    * @param query - The query parameters for the GET request. Optional.
    * @returns A promise that resolves to the transactions data of the savings account, conforming to the 'getTransactionsReturn' schema.
    */
-  public async getTransactions(query?: paths["/savings/transactions"]["get"]['parameters']['query']): Promise<components['schemas']['getTransactionsReturn']> {
+  public async getTransactions(query?: paths["/api/v2/savings/transactions"]["get"]['parameters']['query']): Promise<components['schemas']['getTransactionsReturn']> {
     await this.authenticateCheck();
     const queryParams = '?' + new URLSearchParams(query as Record<string, string> || {}).toString();
-    return this.api.get(`/savings/transactions${queryParams}`);
+    return this.api.get(`api/v2/savings/transactions${queryParams}`);
   }
 
   /**
@@ -84,7 +84,7 @@ export class Savings extends ApiRequest {
    */
   public async getBankingDepositInstructions(id: string, method: 'ACH' | 'WIRE'): Promise<components['schemas']['GetDepositInstructionsReturn']> {
     await this.authenticateCheck();
-    return this.api.get(`/savings/${id}/deposit-instructions/${method}`);
+    return this.api.get(`api/v2/savings/${id}/deposit-instructions/${method}`);
   }
 
   /**
@@ -97,6 +97,6 @@ export class Savings extends ApiRequest {
    */
   public async getCryptoDepositInstructions(id: string): Promise<components['schemas']['GetCryptoDepositInstructionsReturn']> {
     await this.authenticateCheck();
-    return this.api.get(`/savings/${id}/crypto-deposit-instructions`);
+    return this.api.get(`api/v2/savings/${id}/crypto-deposit-instructions`);
   }
 }

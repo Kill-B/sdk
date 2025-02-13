@@ -22,7 +22,7 @@ export class Webhook extends ApiRequest {
    */
   public async create(body: components['schemas']['CreateWebhookDto']): Promise<components['schemas']['CreateWebhookResponseDto']> {
     await this.authenticateCheck();
-    const response = await this.api.post<components['schemas']['CreateWebhookResponseDto']>('/webhooks', body);
+    const response = await this.api.post<components['schemas']['CreateWebhookResponseDto']>('api/v2/webhooks', body);
     return response.data;
   }
 
@@ -37,7 +37,7 @@ export class Webhook extends ApiRequest {
    */
   public async update(body: components['schemas']['UpdateWebhookDto']): Promise<components['schemas']['UpdateWebhookResponseDto']> {
     await this.authenticateCheck();
-    const response = await this.api.patch(`/webhooks`, body);
+    const response = await this.api.patch(`api/v2/webhooks`, body);
     return response.data;
   }
 
@@ -50,7 +50,7 @@ export class Webhook extends ApiRequest {
    */
   public async delete(): Promise<void> {
     await this.authenticateCheck();
-    const response = await this.api.delete(`/webhooks`);
+    const response = await this.api.delete(`api/v2/webhooks`);
     return response.data;
   }
 
@@ -63,7 +63,7 @@ export class Webhook extends ApiRequest {
    */
   public async get(): Promise<components['schemas']['GetWebhookResponseDto']> {
     await this.authenticateCheck();
-    const response = await this.api.get(`/webhooks`);
+    const response = await this.api.get(`api/v2/webhooks`);
     return response.data;
   }
 
