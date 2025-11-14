@@ -29,6 +29,15 @@ export interface paths {
      */
     options: operations["options1"];
   };
+  "/api/v2/auth/verify-otp": {
+    /** Verify a otp */
+    post: operations["AuthController_verifyOtp"];
+    /**
+     * Options
+     * @description Options method
+     */
+    options: operations["options2"];
+  };
   "/api/v2/customers/balances": {
     /** Get customer balances */
     get: operations["CustomerController_getBalances"];
@@ -36,7 +45,7 @@ export interface paths {
      * Options
      * @description Options method
      */
-    options: operations["options2"];
+    options: operations["options3"];
   };
   "/api/v2/customers/pre-fund/create": {
     /** Create a pre-fund wallet */
@@ -45,7 +54,7 @@ export interface paths {
      * Options
      * @description Options method
      */
-    options: operations["options3"];
+    options: operations["options4"];
   };
   "/api/v2/customers/liquidities": {
     /** Get customer liquidities */
@@ -54,7 +63,61 @@ export interface paths {
      * Options
      * @description Options method
      */
-    options: operations["options4"];
+    options: operations["options5"];
+  };
+  "/api/v2/customers/pairs": {
+    /** Get all available pairs and options */
+    get: operations["CustomerController_getPairs"];
+    /**
+     * Options
+     * @description Options method
+     */
+    options: operations["options6"];
+  };
+  "/api/v2/documents": {
+    /** Get all documents for a customer */
+    get: operations["ClickAndSignController_findAll"];
+    /**
+     * Options
+     * @description Options method
+     */
+    options: operations["options7"];
+  };
+  "/api/v2/documents/{id}": {
+    /** Get a document by id */
+    get: operations["ClickAndSignController_findOne"];
+    /**
+     * Options
+     * @description Options method
+     */
+    options: operations["options8"];
+  };
+  "/api/v2/documents/sign/bulk": {
+    /** Sign multiple documents */
+    post: operations["ClickAndSignController_signMultiple"];
+    /**
+     * Options
+     * @description Options method
+     */
+    options: operations["options9"];
+  };
+  "/api/v2/documents/sign/{id}": {
+    /** Sign a document */
+    post: operations["ClickAndSignController_sign"];
+    /**
+     * Options
+     * @description Options method
+     */
+    options: operations["options10"];
+  };
+  "/api/v2/documents/generate/{customerId}": {
+    /** Generate transfer report document for customer signature */
+    post: operations["ClickAndSignController_generateTransactionDocument"];
+    /**
+     * Options
+     * @description Options method
+     */
+    options: operations["options11"];
   };
   "/api/v2/accounts": {
     /** Get Accounts */
@@ -65,16 +128,18 @@ export interface paths {
      * Options
      * @description Options method
      */
-    options: operations["options5"];
+    options: operations["options12"];
   };
   "/api/v2/accounts/{id}": {
     /** Get Account by id */
     get: operations["AccountController_getOne"];
+    /** Delete Account */
+    delete: operations["AccountController_delete"];
     /**
      * Options
      * @description Options method
      */
-    options: operations["options6"];
+    options: operations["options13"];
     /** Update Account */
     patch: operations["AccountController_update"];
   };
@@ -85,7 +150,7 @@ export interface paths {
      * Options
      * @description Options method
      */
-    options: operations["options7"];
+    options: operations["options14"];
   };
   "/api/v2/webhooks": {
     /**
@@ -107,7 +172,7 @@ export interface paths {
      * Options
      * @description Options method
      */
-    options: operations["options8"];
+    options: operations["options15"];
     /**
      * Update webhook config
      * @description Endpoint responsible for UPDATE webhook config. For more information, examples and how works see here: [Webhook Documentation](/docs/Webhooks.md)
@@ -123,7 +188,7 @@ export interface paths {
      * Options
      * @description Options method
      */
-    options: operations["options9"];
+    options: operations["options16"];
   };
   "/api/v2/users/{id}": {
     /** Get users by ID */
@@ -134,7 +199,7 @@ export interface paths {
      * Options
      * @description Options method
      */
-    options: operations["options10"];
+    options: operations["options17"];
     /** Update user */
     patch: operations["UserController_update"];
   };
@@ -145,7 +210,7 @@ export interface paths {
      * Options
      * @description Options method
      */
-    options: operations["options11"];
+    options: operations["options18"];
   };
   "/api/v2/users/company/document": {
     /** Add company user document */
@@ -154,7 +219,7 @@ export interface paths {
      * Options
      * @description Options method
      */
-    options: operations["options12"];
+    options: operations["options19"];
   };
   "/api/v2/savings": {
     /** Create savings account */
@@ -163,7 +228,7 @@ export interface paths {
      * Options
      * @description Options method
      */
-    options: operations["options13"];
+    options: operations["options20"];
   };
   "/api/v2/savings/transactions": {
     /** Get transactions */
@@ -172,7 +237,7 @@ export interface paths {
      * Options
      * @description Options method
      */
-    options: operations["options14"];
+    options: operations["options21"];
   };
   "/api/v2/savings/{id}": {
     /** Get savings account */
@@ -181,7 +246,7 @@ export interface paths {
      * Options
      * @description Options method
      */
-    options: operations["options15"];
+    options: operations["options22"];
   };
   "/api/v2/savings/withdrawal": {
     /** Create withdrawal */
@@ -190,7 +255,7 @@ export interface paths {
      * Options
      * @description Options method
      */
-    options: operations["options16"];
+    options: operations["options23"];
   };
   "/api/v2/savings/{id}/balance": {
     /** Get balance */
@@ -199,7 +264,7 @@ export interface paths {
      * Options
      * @description Options method
      */
-    options: operations["options17"];
+    options: operations["options24"];
   };
   "/api/v2/savings/{id}/deposit-instructions/{type}": {
     /** Get banking deposit instructions */
@@ -208,7 +273,7 @@ export interface paths {
      * Options
      * @description Options method
      */
-    options: operations["options18"];
+    options: operations["options25"];
   };
   "/api/v2/savings/{id}/crypto-deposit-instructions": {
     /** Get crypto deposit instructions */
@@ -217,7 +282,7 @@ export interface paths {
      * Options
      * @description Options method
      */
-    options: operations["options19"];
+    options: operations["options26"];
   };
   "/api/v2/quotations": {
     /**
@@ -229,19 +294,7 @@ export interface paths {
      * Options
      * @description Options method
      */
-    options: operations["options20"];
-  };
-  "/api/v2/quotations/simulation": {
-    /**
-     * Simulate a Quotation
-     * @description Generate just a simulation of a quote
-     */
-    post: operations["QuotationController_simulation"];
-    /**
-     * Options
-     * @description Options method
-     */
-    options: operations["options21"];
+    options: operations["options27"];
   };
   "/api/v2/quotations/{id}": {
     /**
@@ -253,7 +306,24 @@ export interface paths {
      * Options
      * @description Options method
      */
-    options: operations["options22"];
+    options: operations["options28"];
+    /**
+     * Update Quotation
+     * @description Update a new quotation
+     */
+    patch: operations["QuotationController_update"];
+  };
+  "/api/v2/quotations/simulation": {
+    /**
+     * Simulate a Quotation
+     * @description Generate just a simulation of a quote
+     */
+    post: operations["QuotationController_simulation"];
+    /**
+     * Options
+     * @description Options method
+     */
+    options: operations["options29"];
   };
   "/api/v2/ramps": {
     /**
@@ -270,7 +340,7 @@ export interface paths {
      * Options
      * @description Options method
      */
-    options: operations["options23"];
+    options: operations["options30"];
   };
   "/api/v2/ramps/{id}": {
     /**
@@ -282,7 +352,24 @@ export interface paths {
      * Options
      * @description Options method
      */
-    options: operations["options24"];
+    options: operations["options31"];
+    /**
+     * Update Ramp
+     * @description This endpoint is responsible for executing the Ramp (On or/and Off). For more details about this endpoint, see here [Ramps](https://killbapi.stoplight.io/docs/killb-v2/71722efcded7f)
+     */
+    patch: operations["RampsController_update"];
+  };
+  "/api/v2/ramps/{id}/documents": {
+    /**
+     * Upload ramp document
+     * @description Attach a PDF document to an existing ramp transfer.
+     */
+    post: operations["RampsController_uploadDocument"];
+    /**
+     * Options
+     * @description Options method
+     */
+    options: operations["options32"];
   };
   "/api/v2/ramps/{id}/status-history": {
     /**
@@ -294,7 +381,43 @@ export interface paths {
      * Options
      * @description Options method
      */
-    options: operations["options25"];
+    options: operations["options33"];
+  };
+  "/api/v2/ramps/{id}/receipt": {
+    /**
+     * Get Ramp Receipt in HTML
+     * @description This endpoint is return an HTML receipt for the Ramp.
+     */
+    get: operations["RampsController_getReceipt"];
+    /**
+     * Options
+     * @description Options method
+     */
+    options: operations["options34"];
+  };
+  "/api/v2/ramps/{id}/receipt-json": {
+    /**
+     * Get Ramp Receipt in JSON
+     * @description This endpoint is return an JSON receipt for the Ramp.
+     */
+    get: operations["RampsController_getJsonReceipt"];
+    /**
+     * Options
+     * @description Options method
+     */
+    options: operations["options35"];
+  };
+  "/api/v2/ramps/{id}/receipt/file": {
+    /**
+     * Get Ramp Receipt in PDF format
+     * @description This endpoint is return a receipt in PDF format.
+     */
+    get: operations["RampsController_getFile"];
+    /**
+     * Options
+     * @description Options method
+     */
+    options: operations["options36"];
   };
   "/api/v2/banks": {
     /** Get Bank list by countryCode */
@@ -303,7 +426,7 @@ export interface paths {
      * Options
      * @description Options method
      */
-    options: operations["options26"];
+    options: operations["options37"];
   };
   "/api/v2/faker/cash-in": {
     /**
@@ -315,19 +438,59 @@ export interface paths {
      * Options
      * @description Options method
      */
-    options: operations["options27"];
+    options: operations["options38"];
   };
   "/api/v2/faker/cash-out": {
     /**
-     * Fake refund simulation (SANDBOX)
-     * @description This endpoint is responsible for faking a refund process.
+     * Fake cash-out confirmation (SANDBOX)
+     * @description This endpoint is responsible for faking a cash-out confirmation.
      */
-    post: operations["FakerController_fakeRefund"];
+    post: operations["FakerController_fakeCashOut"];
     /**
      * Options
      * @description Options method
      */
-    options: operations["options28"];
+    options: operations["options39"];
+  };
+  "/api/v2/virtual-accounts": {
+    /** Get all virtual accounts */
+    get: operations["VirtualAccountsController_getVirtualAccounts"];
+    /** Create virtual account */
+    post: operations["VirtualAccountsController_createVirtualAccount"];
+    /**
+     * Options
+     * @description Options method
+     */
+    options: operations["options40"];
+  };
+  "/api/v2/virtual-accounts/{id}/withdrawals": {
+    /** Get withdrawals from virtual account */
+    get: operations["VirtualAccountsController_getWithdrawals"];
+    /** Create withdrawal from virtual account */
+    post: operations["VirtualAccountsController_createWithdrawal"];
+    /**
+     * Options
+     * @description Options method
+     */
+    options: operations["options41"];
+  };
+  "/api/v2/virtual-accounts/withdrawals": {
+    /** Get all withdrawals from all virtual accounts */
+    get: operations["VirtualAccountsController_getAllWithdrawals"];
+    /**
+     * Options
+     * @description Options method
+     */
+    options: operations["options42"];
+  };
+  "/api/v2/compliance/access-token": {
+    /** Generate Sumsub access token */
+    post: operations["ComplianceController_generateAccessToken"];
+    /**
+     * Options
+     * @description Options method
+     */
+    options: operations["options43"];
   };
   "/api/v2/open-api-json": {
     /**
@@ -339,7 +502,7 @@ export interface paths {
      * Options
      * @description Options method
      */
-    options: operations["options29"];
+    options: operations["options44"];
   };
 }
 
@@ -353,6 +516,10 @@ export interface components {
     };
     LoginResponseDto: {
       accessToken: string;
+      /**
+       * @description Number in milliseconds
+       * @example 3600000
+       */
       expiresIn: number;
       refreshToken: string;
     };
@@ -372,7 +539,7 @@ export interface components {
        *   "Account not found"
        * ]
        */
-      message: unknown[][];
+      message: string[];
       /** @example 400 */
       statusCode: string;
     };
@@ -384,7 +551,7 @@ export interface components {
        *   "Internal server error"
        * ]
        */
-      message: unknown[][];
+      message: string[];
     };
     RefreshDto: {
       refreshToken: string;
@@ -392,7 +559,17 @@ export interface components {
     RefreshResponseDto: {
       refreshToken: string;
       accessToken: string;
+      /**
+       * @description Number in milliseconds
+       * @example 3600000
+       */
       expiresIn: number;
+    };
+    VerifyOtpDto: {
+      /** @description The otp to verify */
+      otp: string;
+      /** @description Email */
+      email: string;
     };
     GetBalancesResponseDto: {
       id: string;
@@ -411,12 +588,12 @@ export interface components {
        * @example USDC
        * @enum {string}
        */
-      currency: "USDC" | "USDT";
+      currency: "USD" | "USDC" | "USDT";
       /**
        * @example POLYGON
        * @enum {string}
        */
-      network: "POLYGON" | "ERC20" | "SOLANA" | "TRON" | "ARBITRUM";
+      network: "POLYGON" | "ERC20" | "SOLANA" | "TRON" | "ARBITRUM" | "BSC";
     };
     CreatePreFundAccountResponseDto: {
       /**
@@ -432,12 +609,12 @@ export interface components {
        * @example USDC
        * @enum {string}
        */
-      currency: "USDC" | "USDT";
+      currency: "USD" | "USDC" | "USDT";
       /**
        * @example POLYGON
        * @enum {string}
        */
-      network: "POLYGON" | "ERC20" | "SOLANA" | "TRON" | "ARBITRUM";
+      network: "POLYGON" | "ERC20" | "SOLANA" | "TRON" | "ARBITRUM" | "BSC";
       active: boolean;
       /** Format: date-time */
       createdAt: string;
@@ -448,12 +625,143 @@ export interface components {
       currency: string;
       amount: number;
     };
+    GetPairsResponseDto: {
+      /** @description Available trading pairs */
+      availableProducts: string[];
+      /** @description Available trading pairs */
+      pairs: string[];
+      /**
+       * @description Available options for each currency
+       * @example {
+       *   "USDC": {
+       *     "regular": [
+       *       "POLYGON",
+       *       "SOLANA",
+       *       "TRON"
+       *     ],
+       *     "preFund": [
+       *       "PRE_FUND_POLYGON",
+       *       "PRE_FUND_SOLANA",
+       *       "PRE_FUND_TRON"
+       *     ]
+       *   },
+       *   "USDT": {
+       *     "regular": [
+       *       "POLYGON",
+       *       "SOLANA",
+       *       "TRON"
+       *     ],
+       *     "preFund": [
+       *       "PRE_FUND_POLYGON",
+       *       "PRE_FUND_SOLANA",
+       *       "PRE_FUND_TRON"
+       *     ]
+       *   },
+       *   "USD": {
+       *     "regular": [
+       *       "WIRE",
+       *       "SWIFT"
+       *     ],
+       *     "preFund": [
+       *       "PRE_FUND"
+       *     ]
+       *   },
+       *   "COP": {
+       *     "regular": [
+       *       "PSE",
+       *       "BANK_TRANSFER"
+       *     ],
+       *     "preFund": [
+       *       "PRE_FUND"
+       *     ]
+       *   },
+       *   "MXN": {
+       *     "regular": [
+       *       "SPEI"
+       *     ],
+       *     "preFund": [
+       *       "PRE_FUND"
+       *     ]
+       *   }
+       * }
+       */
+      options: {
+        [key: string]: {
+          regular?: string[];
+          preFund?: string[];
+        };
+      };
+    };
+    FindOneDocumentResponseDto: {
+      /** @example 4d23aa52-1b40-4584-a8ea-58aba6099c5c */
+      id: string;
+      /** @example Document Report */
+      title: string;
+      /** @example TRANSACTION_REPORT */
+      type: string;
+      /** @example PENDING */
+      status: string;
+      /**
+       * Format: date-time
+       * @example 2021-01-01T00:00:00.000Z
+       */
+      createdAt: string;
+      /**
+       * Format: date-time
+       * @example 2021-01-01T00:00:00.000Z
+       */
+      updatedAt: string;
+      /** @example https://example.com/document.pdf */
+      documentUrl: string;
+    };
+    FindingAllDocumentsResponseDto: {
+      documents: components["schemas"]["FindOneDocumentResponseDto"][];
+    };
+    SignMultipleDocumentsResponseDto: {
+      /** @example Documents signed successfully */
+      message: string;
+      /**
+       * @example [
+       *   "4d23aa52-1b40-4584-a8ea-58aba6099c5c"
+       * ]
+       */
+      documentsSigned: string[];
+      /**
+       * @example [
+       *   {
+       *     "id": "4d23aa52-1b40-4584-a8ea-58aba6099c5c",
+       *     "reason": "Document not found"
+       *   }
+       * ]
+       */
+      documentAlreadySignedOrNotFound: string[];
+    };
+    SignDocumentResponseDto: {
+      /** @example Document signed successfully */
+      message: string;
+      /** @example 4d23aa52-1b40-4584-a8ea-58aba6099c5c */
+      documentId: string;
+      /** @example https://example.com/document.pdf */
+      documentUrl: string;
+      /** @example PENDING */
+      status: string;
+    };
+    GenerateDocumentResponseDto: {
+      /** @example Documents generated successfully */
+      message: string;
+      /**
+       * @example [
+       *   "4d23aa52-1b40-4584-a8ea-58aba6099c5c"
+       * ]
+       */
+      documents: string[];
+    };
     CompanyUserDocumentDto: {
       /**
        * @example NIT
        * @enum {string}
        */
-      type: "NIT" | "EIN" | "CNPJ";
+      type: "NIT" | "EIN" | "CNPJ" | "RFC" | "CUIT" | "USCC" | "RUT";
       /** @example 123456 */
       number: string;
       /** @example CO */
@@ -464,7 +772,7 @@ export interface components {
        * @example PASSPORT
        * @enum {string}
        */
-      type: "PASSPORT" | "DRIVER_LICENSE" | "NUIP" | "RFC" | "SSN" | "CURP" | "CPF" | "INE" | "IFE";
+      type: "PASSPORT" | "DRIVER_LICENSE" | "NUIP" | "RFC" | "SSN" | "CURP" | "CPF" | "INE" | "IFE" | "DNI" | "DUI" | "NIT" | "RUT" | "CHINESE_ID" | "BOLIVIAN_ID";
       /**
        * Format: alphanumeric
        * @example GE04292393
@@ -510,7 +818,7 @@ export interface components {
     SpeiAccountDto: {
       /** @description Required if companyName is not present */
       firstName: string;
-      middleName: string;
+      middleName?: string;
       /** @description Required if companyName is not present */
       lastName: string;
       /** @description Required if firstName is not present */
@@ -531,7 +839,7 @@ export interface components {
     WalletAccountDto: {
       /** @description Required if companyName is not present */
       firstName: string;
-      middleName: string;
+      middleName?: string;
       /** @description Required if companyName is not present */
       lastName: string;
       /** @description Required if firstName is not present */
@@ -542,6 +850,24 @@ export interface components {
       currency: string;
       network: string;
       address: string;
+      countryCode: string;
+    };
+    ACHAccountDto: {
+      /** @description Required if companyName is not present */
+      firstName: string;
+      middleName?: string;
+      /** @description Required if companyName is not present */
+      lastName: string;
+      /** @description Required if firstName is not present */
+      companyName: string;
+      email: string;
+      phone: string;
+      bankName: string;
+      routingNumber: string;
+      accountNumber: string;
+      type: string;
+      document: components["schemas"]["CompanyUserDocumentDto"] | components["schemas"]["PersonUserDocumentDto"];
+      countryCode: string;
     };
     AccountAddressDto: {
       street1: string;
@@ -551,41 +877,62 @@ export interface components {
       stateCode: string;
       countryCode: string;
     };
-    ACHAccountDto: {
-      /** @description Required if companyName is not present */
-      firstName: string;
-      middleName: string;
-      /** @description Required if companyName is not present */
-      lastName: string;
-      /** @description Required if firstName is not present */
-      companyName: string;
-      bankName: string;
-      routingNumber: string;
-      accountNumber: string;
-      type: string;
-      address: components["schemas"]["AccountAddressDto"];
-      document: components["schemas"]["CompanyUserDocumentDto"] | components["schemas"]["PersonUserDocumentDto"];
-    };
     WIREAccountDto: {
       /** @description Required if companyName is not present */
       firstName: string;
-      middleName: string;
+      middleName?: string;
       /** @description Required if companyName is not present */
       lastName: string;
       /** @description Required if firstName is not present */
       companyName: string;
+      email: string;
+      phone: string;
       accountNumber: string;
       routingNumber: string;
-      address: components["schemas"]["AccountAddressDto"];
       bankName: string;
       bankAddress: components["schemas"]["AccountAddressDto"];
       document: components["schemas"]["CompanyUserDocumentDto"] | components["schemas"]["PersonUserDocumentDto"];
+      countryCode: string;
+    };
+    TransfiyaAccountDto: {
+      /** @description Required if companyName is not present */
+      firstName: string;
+      middleName?: string;
+      /** @description Required if companyName is not present */
+      lastName: string;
+      /** @description Required if firstName is not present */
+      companyName: string;
+      email: string;
+      phone: string;
+      account: string;
+      /** @enum {string} */
+      type: "PHONE_NUMBER" | "WALLET";
+      countryCode: string;
+      document: components["schemas"]["CompanyUserDocumentDto"] | components["schemas"]["PersonUserDocumentDto"];
+    };
+    SwiftAccountDto: {
+      /** @description Required if companyName is not present */
+      firstName: string;
+      middleName?: string;
+      /** @description Required if companyName is not present */
+      lastName: string;
+      /** @description Required if firstName is not present */
+      companyName: string;
+      email: string;
+      phone: string;
+      accountNumber: string;
+      bankName: string;
+      /** @description SWIFT code (8-11 characters) */
+      swiftCode: string;
+      bankAddress: components["schemas"]["AccountAddressDto"];
+      document: components["schemas"]["CompanyUserDocumentDto"] | components["schemas"]["PersonUserDocumentDto"];
+      countryCode: string;
     };
     CreateAccountDto: {
       /** @enum {string} */
-      type: "PSE" | "ACH" | "WIRE" | "WALLET" | "COELSA" | "SPEI" | "CUSTODIAL";
+      type: "PSE" | "ACH" | "WIRE" | "WALLET" | "COELSA" | "SPEI" | "CUSTODIAL" | "TRANSFIYA" | "SWIFT";
       userId: string;
-      data: components["schemas"]["PSEAccountDto"] | components["schemas"]["SpeiAccountDto"] | components["schemas"]["WalletAccountDto"] | components["schemas"]["WIREAccountDto"] | components["schemas"]["ACHAccountDto"];
+      data: components["schemas"]["PSEAccountDto"] | components["schemas"]["SpeiAccountDto"] | components["schemas"]["WalletAccountDto"] | components["schemas"]["WIREAccountDto"] | components["schemas"]["ACHAccountDto"] | components["schemas"]["TransfiyaAccountDto"] | components["schemas"]["SwiftAccountDto"];
       /** @description A unique identifier used to identify your existing user. */
       externalId: string;
     };
@@ -594,7 +941,7 @@ export interface components {
       userId: string;
       type: string;
       status: string;
-      data: components["schemas"]["PSEAccountDto"] | components["schemas"]["SpeiAccountDto"] | components["schemas"]["WalletAccountDto"];
+      data: components["schemas"]["PSEAccountDto"] | components["schemas"]["SpeiAccountDto"] | components["schemas"]["WalletAccountDto"] | components["schemas"]["WIREAccountDto"] | components["schemas"]["ACHAccountDto"] | components["schemas"]["SwiftAccountDto"];
       /** @description A unique identifier used to identify your existing user. */
       externalId: string;
       complianceUrl: string;
@@ -604,32 +951,40 @@ export interface components {
       updatedAt: string;
     };
     PSEUpdateAccountDto: {
-      accountNumber: string;
-      bankCode: string;
-      type: string;
+      accountNumber?: string;
+      bankCode?: string;
+      type?: string;
       document?: components["schemas"]["CompanyUserDocumentDto"] | components["schemas"]["PersonUserDocumentDto"];
     };
     SPEIUpdateAccountDto: {
       document?: components["schemas"]["CompanyUserDocumentDto"] | components["schemas"]["PersonUserDocumentDto"];
-      clabe: string;
-      clabeType: string;
+      clabe?: string;
+      clabeType?: string;
     };
     WALLETUpdateAccountDto: {
       document?: components["schemas"]["CompanyUserDocumentDto"] | components["schemas"]["PersonUserDocumentDto"];
-      currency: string;
-      network: string;
-      address: string;
+      currency?: string;
+      network?: string;
+      address?: string;
+    };
+    SwiftUpdateAccountDto: {
+      document?: components["schemas"]["CompanyUserDocumentDto"] | components["schemas"]["PersonUserDocumentDto"];
+      accountNumber?: string;
+      /** @description SWIFT code (8-11 characters) */
+      swiftCode?: string;
+      bankName?: string;
+      bankAddress?: components["schemas"]["AccountAddressDto"];
     };
     UpdateAccountDto: {
       type: string;
-      data: components["schemas"]["PSEUpdateAccountDto"] | components["schemas"]["SPEIUpdateAccountDto"] | components["schemas"]["WALLETUpdateAccountDto"];
+      data: components["schemas"]["PSEUpdateAccountDto"] | components["schemas"]["SPEIUpdateAccountDto"] | components["schemas"]["WALLETUpdateAccountDto"] | components["schemas"]["SwiftUpdateAccountDto"];
     };
     UpdateAccountResponseDto: {
       id: string;
       userId: string;
       type: string;
       status: string;
-      data: components["schemas"]["PSEAccountDto"] | components["schemas"]["SpeiAccountDto"] | components["schemas"]["WalletAccountDto"];
+      data: components["schemas"]["PSEAccountDto"] | components["schemas"]["SpeiAccountDto"] | components["schemas"]["WalletAccountDto"] | components["schemas"]["SwiftAccountDto"];
       /** @description A unique identifier used to identify your existing user. */
       externalId: string;
       /** Format: date-time */
@@ -642,7 +997,7 @@ export interface components {
       userId: string;
       type: string;
       status: string;
-      data: components["schemas"]["PSEAccountDto"] | components["schemas"]["SpeiAccountDto"] | components["schemas"]["WalletAccountDto"];
+      data: components["schemas"]["PSEAccountDto"] | components["schemas"]["SpeiAccountDto"] | components["schemas"]["WalletAccountDto"] | components["schemas"]["SwiftAccountDto"];
       /** Format: date-time */
       createdAt: string;
       /** Format: date-time */
@@ -810,7 +1165,7 @@ export interface components {
       monthlyCryptoInvestmentWithdrawal: "UPTO_1K" | "ONE_TO_100K" | "ONEHUNDREDK_TO_1M" | "MILLION_TO_5M" | "MORE_THAN_5M";
     };
     KycProfile: {
-      fundsSendReceiveJurisdictions: unknown[][];
+      fundsSendReceiveJurisdictions: string[];
       /** @example NONE */
       engageInActivities: ("NONE" | "ADULT_ENTERTAINMENT" | "DRUGS" | "FIREARMS" | "GAMBLING" | "MARIJUANA" | "TUMBLING")[];
     };
@@ -848,7 +1203,7 @@ export interface components {
       kycProfile?: components["schemas"]["KycProfile"];
     };
     CompanyKycProfile: {
-      fundsSendReceiveJurisdictions: unknown[][];
+      fundsSendReceiveJurisdictions: string[];
       /** @example NONE */
       engageInActivities: ("NONE" | "ADULT_ENTERTAINMENT" | "DRUGS" | "FIREARMS" | "GAMBLING" | "MARIJUANA" | "TUMBLING")[];
       /**
@@ -952,6 +1307,11 @@ export interface components {
     CreateUserResponseDto: {
       /** @example 4d23aa52-1b40-4584-a8ea-58aba6099c5c */
       id: string;
+      /**
+       * @example ACTIVE
+       * @enum {string}
+       */
+      status: "ACTIVE" | "PENDING" | "REJECTED";
       /** @example 8ffce092-b97a-48bd-9efa-24c66ac7fe13 */
       customerId: string;
       /**
@@ -972,6 +1332,8 @@ export interface components {
        * @enum {string}
        */
       accessLevel: "L0" | "L1" | "L2" | "L3" | "L4";
+      /** @description give you details about the compliance process */
+      note: string;
       /** @example true */
       active: boolean;
       /**
@@ -993,6 +1355,11 @@ export interface components {
     GetUserByIdResponse: {
       /** @example 4d23aa52-1b40-4584-a8ea-58aba6099c5c */
       id: string;
+      /**
+       * @example ACTIVE
+       * @enum {string}
+       */
+      status: "ACTIVE" | "PENDING" | "REJECTED";
       /** @example 8ffce092-b97a-48bd-9efa-24c66ac7fe13 */
       customerId: string;
       /**
@@ -1013,6 +1380,8 @@ export interface components {
        * @enum {string}
        */
       accessLevel: "L0" | "L1" | "L2" | "L3" | "L4";
+      /** @description give you details about the compliance process */
+      note: string;
       /** @example true */
       active: boolean;
       /**
@@ -1033,7 +1402,7 @@ export interface components {
        * @example CURP
        * @enum {string}
        */
-      documentType: "PROVE_OF_ADDRESS_BANK_STATEMENT" | "PROVE_OF_ADDRESS_UTILITY_BILL" | "PROVE_OF_ADDRESS_LEASE_AGREEMENT" | "SOURCE_OF_FUNDS_BANK_STATEMENT" | "SOURCE_OF_FUNDS_PAYSLIP" | "KYC_REPORT" | "PASSPORT" | "DRIVER_LICENSE" | "NUIP" | "RFC" | "SSN" | "CURP" | "CPF" | "INE" | "IFE";
+      documentType: "PROVE_OF_ADDRESS_BANK_STATEMENT" | "PROVE_OF_ADDRESS_UTILITY_BILL" | "PROVE_OF_ADDRESS_LEASE_AGREEMENT" | "SOURCE_OF_FUNDS_BANK_STATEMENT" | "SOURCE_OF_FUNDS_PAYSLIP" | "KYC_REPORT" | "PASSPORT" | "DRIVER_LICENSE" | "NUIP" | "RFC" | "SSN" | "CURP" | "CPF" | "INE" | "IFE" | "DNI" | "DUI" | "CHINESE_ID" | "BOLIVIAN_ID";
       /**
        * Format: binary
        * @description Front document file
@@ -1052,7 +1421,7 @@ export interface components {
        * @example NIT
        * @enum {string}
        */
-      documentType: "PROVE_OF_ADDRESS_BANK_STATEMENT" | "PROVE_OF_ADDRESS_UTILITY_BILL" | "PROVE_OF_ADDRESS_LEASE_AGREEMENT" | "SOURCE_OF_FUNDS_BANK_STATEMENT" | "SOURCE_OF_FUNDS_PAYSLIP" | "PROOF_OF_COMPANY_FORMATION" | "ARTICLES_OF_INCORPORATION" | "INCORPORATION_DOCUMENTS" | "NIT" | "OTHER";
+      documentType: "PROVE_OF_ADDRESS_BANK_STATEMENT" | "PROVE_OF_ADDRESS_UTILITY_BILL" | "PROVE_OF_ADDRESS_LEASE_AGREEMENT" | "SOURCE_OF_FUNDS_BANK_STATEMENT" | "SOURCE_OF_FUNDS_PAYSLIP" | "PROOF_OF_COMPANY_FORMATION" | "ARTICLES_OF_INCORPORATION" | "INCORPORATION_DOCUMENTS" | "KYB_REPORT" | "NIT" | "RUT" | "OTHER" | "USCC";
       /**
        * Format: binary
        * @description Front document file
@@ -1115,7 +1484,7 @@ export interface components {
        */
       updatedAt: string;
     };
-    getTransactionsReturn: {
+    IGetTransactionsReturn: {
       transactions: components["schemas"]["TransactionsDataReturn"][];
       /** @example 1 */
       totalPage: number;
@@ -1207,77 +1576,112 @@ export interface components {
     };
     CreateQuotationDto: {
       /** @enum {string} */
-      fromCurrency: "MXN" | "COP" | "USDC" | "USDT";
+      fromCurrency: "MXN" | "COP" | "USD" | "USDC" | "USDT";
       /** @enum {string} */
-      toCurrency: "MXN" | "COP" | "USDC" | "USDT";
+      toCurrency: "MXN" | "COP" | "USDC" | "USDT" | "HKD" | "EUR" | "USD" | "PEN";
       amount: number;
       amountIsToCurrency: boolean;
       /** @enum {string} */
-      cashInMethod: "SPEI" | "POLYGON" | "ERC20" | "PSE" | "PRE_FUND" | "PRE_FUND_POLYGON" | "PRE_FUND_ERC20" | "PRE_FUND_SOLANA" | "PRE_FUND_TRON" | "PRE_FUND_ARBITRUM";
+      cashInMethod: "SPEI" | "POLYGON" | "ERC20" | "PSE" | "PRE_FUND" | "PRE_FUND_POLYGON" | "PRE_FUND_ERC20" | "PRE_FUND_SOLANA" | "PRE_FUND_TRON" | "PRE_FUND_ARBITRUM" | "TRANSFIYA" | "SOLANA" | "BSC" | "TRON";
       /** @enum {string} */
-      cashOutMethod: "SPEI" | "POLYGON" | "ERC20" | "PSE";
+      cashOutMethod: "SPEI" | "POLYGON" | "ERC20" | "PSE" | "TRANSFIYA" | "SOLANA" | "BSC" | "TRON" | "WIRE" | "ACH" | "CCI" | "SWIFT";
+      /**
+       * @description Flag to indicate if this is a fast pay quotation
+       * @default false
+       */
+      isFastPay: boolean;
     };
     CreateQuotationResponseDto: {
       id: string;
       /** @enum {string} */
-      fromCurrency: "MXN" | "COP" | "USDC" | "USDT";
+      fromCurrency: "MXN" | "COP" | "USD" | "USDC" | "USDT";
       /** @enum {string} */
-      toCurrency: "MXN" | "COP" | "USDC" | "USDT";
+      toCurrency: "MXN" | "COP" | "USDC" | "USDT" | "HKD" | "EUR" | "USD" | "PEN";
       fromAmount: number;
       toAmount: number;
       rate: number;
+      spotPrice: number;
       expiresAt: number;
       /** @enum {string} */
-      cashInMethod: "SPEI" | "POLYGON" | "ERC20" | "PSE" | "PRE_FUND" | "PRE_FUND_POLYGON" | "PRE_FUND_ERC20" | "PRE_FUND_SOLANA" | "PRE_FUND_TRON" | "PRE_FUND_ARBITRUM";
+      cashInMethod: "SPEI" | "POLYGON" | "ERC20" | "PSE" | "PRE_FUND" | "PRE_FUND_POLYGON" | "PRE_FUND_ERC20" | "PRE_FUND_SOLANA" | "PRE_FUND_TRON" | "PRE_FUND_ARBITRUM" | "TRANSFIYA" | "SOLANA" | "BSC" | "TRON";
       /** @enum {string} */
-      cashOutMethod: "SPEI" | "POLYGON" | "ERC20" | "PSE";
+      cashOutMethod: "SPEI" | "POLYGON" | "ERC20" | "PSE" | "TRANSFIYA" | "SOLANA" | "BSC" | "TRON" | "WIRE" | "ACH" | "CCI" | "SWIFT";
+      /** @description Flag to indicate if this is a fast pay quotation */
+      isFastPay: boolean;
+    };
+    UpdateQuotationDto: {
+      fromAmount: number;
+      toAmount: number;
     };
     SimulateQuotationResponseDto: {
       /** @enum {string} */
-      fromCurrency: "MXN" | "COP" | "USDC" | "USDT";
+      fromCurrency: "MXN" | "COP" | "USD" | "USDC" | "USDT";
       /** @enum {string} */
-      toCurrency: "MXN" | "COP" | "USDC" | "USDT";
+      toCurrency: "MXN" | "COP" | "USDC" | "USDT" | "HKD" | "EUR" | "USD" | "PEN";
       fromAmount: number;
       toAmount: number;
       rate: number;
       /** @enum {string} */
-      cashInMethod: "SPEI" | "POLYGON" | "ERC20" | "PSE" | "PRE_FUND" | "PRE_FUND_POLYGON" | "PRE_FUND_ERC20" | "PRE_FUND_SOLANA" | "PRE_FUND_TRON" | "PRE_FUND_ARBITRUM";
+      cashInMethod: "SPEI" | "POLYGON" | "ERC20" | "PSE" | "PRE_FUND" | "PRE_FUND_POLYGON" | "PRE_FUND_ERC20" | "PRE_FUND_SOLANA" | "PRE_FUND_TRON" | "PRE_FUND_ARBITRUM" | "TRANSFIYA" | "SOLANA" | "BSC" | "TRON";
       /** @enum {string} */
-      cashOutMethod: "SPEI" | "POLYGON" | "ERC20" | "PSE";
+      cashOutMethod: "SPEI" | "POLYGON" | "ERC20" | "PSE" | "TRANSFIYA" | "SOLANA" | "BSC" | "TRON" | "WIRE" | "ACH" | "CCI" | "SWIFT";
     };
     GetQuotationResponseDto: {
       /** @enum {string} */
-      fromCurrency: "MXN" | "COP" | "USDC" | "USDT";
+      fromCurrency: "MXN" | "COP" | "USD" | "USDC" | "USDT";
       /** @enum {string} */
-      toCurrency: "MXN" | "COP" | "USDC" | "USDT";
+      toCurrency: "MXN" | "COP" | "USDC" | "USDT" | "HKD" | "EUR" | "USD" | "PEN";
       amount: number;
       amountIsToCurrency: boolean;
       /** @enum {string} */
-      cashInMethod: "SPEI" | "POLYGON" | "ERC20" | "PSE" | "PRE_FUND" | "PRE_FUND_POLYGON" | "PRE_FUND_ERC20" | "PRE_FUND_SOLANA" | "PRE_FUND_TRON" | "PRE_FUND_ARBITRUM";
+      cashInMethod: "SPEI" | "POLYGON" | "ERC20" | "PSE" | "PRE_FUND" | "PRE_FUND_POLYGON" | "PRE_FUND_ERC20" | "PRE_FUND_SOLANA" | "PRE_FUND_TRON" | "PRE_FUND_ARBITRUM" | "TRANSFIYA" | "SOLANA" | "BSC" | "TRON";
       /** @enum {string} */
-      cashOutMethod: "SPEI" | "POLYGON" | "ERC20" | "PSE";
+      cashOutMethod: "SPEI" | "POLYGON" | "ERC20" | "PSE" | "TRANSFIYA" | "SOLANA" | "BSC" | "TRON" | "WIRE" | "ACH" | "CCI" | "SWIFT";
+      /**
+       * @description Flag to indicate if this is a fast pay quotation
+       * @default false
+       */
+      isFastPay: boolean;
     };
-    RefundInstructions: {
-      /** @example POLYGON */
-      network: string;
+    SPEIRefundInstruction: {
+      clabe: string;
+      /** @example Bruce Wayne */
+      beneficiary: string;
+    };
+    CryptoRefundInstruction: {
+      /**
+       * @example POLYGON
+       * @enum {string}
+       */
+      network: "POLYGON" | "SOLANA" | "BSC" | "TRON";
       /** @example Ox */
       address: string;
       /**
        * @example USDC
        * @enum {string}
        */
-      asset: "USDC";
-      clabe: string;
-      /** @example Bruce Wayne */
-      beneficiary: string;
+      asset: "USDC" | "USDT";
+    };
+    CreateRampAccount: {
+      id: string;
+      amount: number;
+    };
+    CashInDetails: {
+      transfiyaAccount?: string;
+    };
+    RampDetails: {
+      cashIn?: components["schemas"]["CashInDetails"];
     };
     CreateRampInputDto: {
       quotationId: string;
       userId: string;
-      accountId: string;
-      refundInstructions: components["schemas"]["RefundInstructions"];
+      accountId?: string;
+      accounts?: components["schemas"]["CreateRampAccount"][];
+      /** @description You have to use the same method used in the quotation for the deposit */
+      refundInstructions?: components["schemas"]["SPEIRefundInstruction"] | components["schemas"]["CryptoRefundInstruction"];
       /** @description You can send an external id to avoid duplicate ramps */
-      externalId: string;
+      externalId?: string;
+      details?: components["schemas"]["RampDetails"];
     };
     ISPEIPaymentInfo: {
       network: string;
@@ -1294,22 +1698,30 @@ export interface components {
       network: string;
       address: string;
     };
+    RampDocumentResponseDto: {
+      documentType: string;
+      /** @description Path of the file stored in Google Cloud Storage */
+      filePath: string;
+      /** Format: date-time */
+      uploadedAt: string;
+    };
     CreateRampResponseDto: {
       id: string;
       active: boolean;
       /** @enum {string} */
-      fromCurrency: "MXN" | "COP" | "USDC" | "USDT";
+      fromCurrency: "MXN" | "COP" | "USD" | "USDC" | "USDT";
       /** @enum {string} */
-      toCurrency: "MXN" | "COP" | "USDC" | "USDT";
+      toCurrency: "MXN" | "COP" | "USDC" | "USDT" | "HKD" | "EUR" | "USD" | "PEN";
       fromAmount: number;
       toAmount: number;
       quotationId: string;
       userId: string;
       /** @enum {string} */
-      cashInMethod: "SPEI" | "POLYGON" | "ERC20" | "PSE" | "PRE_FUND" | "PRE_FUND_POLYGON" | "PRE_FUND_ERC20" | "PRE_FUND_SOLANA" | "PRE_FUND_TRON" | "PRE_FUND_ARBITRUM";
+      cashInMethod: "SPEI" | "POLYGON" | "ERC20" | "PSE" | "PRE_FUND" | "PRE_FUND_POLYGON" | "PRE_FUND_ERC20" | "PRE_FUND_SOLANA" | "PRE_FUND_TRON" | "PRE_FUND_ARBITRUM" | "TRANSFIYA" | "SOLANA" | "BSC" | "TRON";
       /** @enum {string} */
-      cashOutMethod: "SPEI" | "POLYGON" | "ERC20" | "PSE";
+      cashOutMethod: "SPEI" | "POLYGON" | "ERC20" | "PSE" | "TRANSFIYA" | "SOLANA" | "BSC" | "TRON" | "WIRE" | "ACH" | "CCI" | "SWIFT";
       accountId: string;
+      accounts?: components["schemas"]["CreateRampAccount"][];
       /** @enum {string} */
       status: "CREATED" | "CASH_IN_REQUEST" | "CONVERSION_REQUEST" | "CASH_OUT_REQUEST" | "CASH_IN_REQUESTED" | "CONVERSION_REQUESTED" | "CASH_OUT_REQUESTED" | "CASH_IN_PENDING" | "CONVERSION_PENDING" | "CASH_OUT_PENDING" | "CASH_IN_PROCESSING" | "CONVERSION_PROCESSING" | "CASH_OUT_PROCESSING" | "CASH_IN_COMPLETED" | "CONVERSION_COMPLETED" | "CASH_OUT_COMPLETED" | "COMPLETED" | "CANCELED" | "FAILED" | "REJECTED" | "ERROR";
       isPreFunded?: boolean;
@@ -1320,12 +1732,17 @@ export interface components {
       transferProof?: string;
       /** @description External id to avoid duplicate ramps */
       externalId?: string;
+      isFastPay?: boolean;
       /** @enum {string} */
       type: "ON" | "OFF";
+      documents?: components["schemas"]["RampDocumentResponseDto"][];
       /** Format: date-time */
       createdAt: string;
       /** Format: date-time */
       updatedAt: string;
+    };
+    PatchRampInputDto: {
+      accounts?: components["schemas"]["CreateRampAccount"][];
     };
     GetRampQueryResponseDto: {
       ramps: components["schemas"]["CreateRampResponseDto"][];
@@ -1335,18 +1752,19 @@ export interface components {
       id: string;
       active: boolean;
       /** @enum {string} */
-      fromCurrency: "MXN" | "COP" | "USDC" | "USDT";
+      fromCurrency: "MXN" | "COP" | "USD" | "USDC" | "USDT";
       /** @enum {string} */
-      toCurrency: "MXN" | "COP" | "USDC" | "USDT";
+      toCurrency: "MXN" | "COP" | "USDC" | "USDT" | "HKD" | "EUR" | "USD" | "PEN";
       fromAmount: number;
       toAmount: number;
       quotationId: string;
       userId: string;
       /** @enum {string} */
-      cashInMethod: "SPEI" | "POLYGON" | "ERC20" | "PSE" | "PRE_FUND" | "PRE_FUND_POLYGON" | "PRE_FUND_ERC20" | "PRE_FUND_SOLANA" | "PRE_FUND_TRON" | "PRE_FUND_ARBITRUM";
+      cashInMethod: "SPEI" | "POLYGON" | "ERC20" | "PSE" | "PRE_FUND" | "PRE_FUND_POLYGON" | "PRE_FUND_ERC20" | "PRE_FUND_SOLANA" | "PRE_FUND_TRON" | "PRE_FUND_ARBITRUM" | "TRANSFIYA" | "SOLANA" | "BSC" | "TRON";
       /** @enum {string} */
-      cashOutMethod: "SPEI" | "POLYGON" | "ERC20" | "PSE";
+      cashOutMethod: "SPEI" | "POLYGON" | "ERC20" | "PSE" | "TRANSFIYA" | "SOLANA" | "BSC" | "TRON" | "WIRE" | "ACH" | "CCI" | "SWIFT";
       accountId: string;
+      accounts?: components["schemas"]["CreateRampAccount"][];
       /** @enum {string} */
       status: "CREATED" | "CASH_IN_REQUEST" | "CONVERSION_REQUEST" | "CASH_OUT_REQUEST" | "CASH_IN_REQUESTED" | "CONVERSION_REQUESTED" | "CASH_OUT_REQUESTED" | "CASH_IN_PENDING" | "CONVERSION_PENDING" | "CASH_OUT_PENDING" | "CASH_IN_PROCESSING" | "CONVERSION_PROCESSING" | "CASH_OUT_PROCESSING" | "CASH_IN_COMPLETED" | "CONVERSION_COMPLETED" | "CASH_OUT_COMPLETED" | "COMPLETED" | "CANCELED" | "FAILED" | "REJECTED" | "ERROR";
       isPreFunded?: boolean;
@@ -1357,8 +1775,10 @@ export interface components {
       transferProof?: string;
       /** @description External id to avoid duplicate ramps */
       externalId?: string;
+      isFastPay?: boolean;
       /** @enum {string} */
       type: "ON" | "OFF";
+      documents?: components["schemas"]["RampDocumentResponseDto"][];
       /** Format: date-time */
       createdAt: string;
       /** Format: date-time */
@@ -1390,6 +1810,226 @@ export interface components {
     FakerCashOutDto: {
       /** Format: uuid */
       rampId: string;
+    };
+    VirtualAccountItemDto: {
+      /**
+       * Format: uuid
+       * @example 123e4567-e89b-12d3-a456-426614174000
+       */
+      id: string;
+      /**
+       * Format: uuid
+       * @example 123e4567-e89b-12d3-a456-426614174000
+       */
+      customerId: string;
+      /**
+       * Format: uuid
+       * @example 123e4567-e89b-12d3-a456-426614174000
+       */
+      userId?: string;
+      /** @example WALLET */
+      type: string;
+      /** @example PRE_FUND */
+      subtype: string;
+      /**
+       * @example ACTIVE
+       * @enum {string}
+       */
+      status: "ACTIVE" | "PENDING" | "REJECTED" | "PROCESSING";
+      /** @description Wallet address */
+      address: string;
+      /**
+       * @example USDC
+       * @enum {string}
+       */
+      currency: "USD" | "USDC" | "USDT";
+      /**
+       * @example POLYGON
+       * @enum {string}
+       */
+      network: "POLYGON" | "ERC20" | "SOLANA" | "TRON" | "ARBITRUM" | "BSC";
+      /** @example true */
+      active: boolean;
+      /**
+       * Format: date-time
+       * @example 2024-01-01T00:00:00.000Z
+       */
+      createdAt: string;
+      /**
+       * Format: date-time
+       * @example 2024-01-01T00:00:00.000Z
+       */
+      updatedAt: string;
+    };
+    GetVirtualAccountsResponseDto: {
+      virtualAccounts: components["schemas"]["VirtualAccountItemDto"][];
+      /**
+       * @description Total number of virtual accounts
+       * @example 100
+       */
+      total: number;
+      /**
+       * @description Current page number
+       * @example 1
+       */
+      page: number;
+      /**
+       * @description Items per page
+       * @example 10
+       */
+      limit: number;
+      /**
+       * @description Total number of pages
+       * @example 10
+       */
+      totalPages: number;
+    };
+    CreatePreFundVirtualAccountDto: {
+      /**
+       * Format: uuid
+       * @example 123e4567-e89b-12d3-a456-426614174000
+       */
+      userId: string;
+      /**
+       * @example POLYGON
+       * @enum {string}
+       */
+      network: "POLYGON" | "ERC20" | "SOLANA" | "TRON" | "ARBITRUM" | "BSC";
+      /**
+       * @example USDC
+       * @enum {string}
+       */
+      currency: "USD" | "USDC" | "USDT";
+    };
+    CreatePreFundVirtualAccountResponseDto: {
+      /**
+       * Format: uuid
+       * @example 123e4567-e89b-12d3-a456-426614174000
+       */
+      id: string;
+      /** @example PRE_FUND */
+      type: string;
+      /** @description A wallet address */
+      address: string;
+      /**
+       * @example USDC
+       * @enum {string}
+       */
+      currency: "USD" | "USDC" | "USDT";
+      /**
+       * @example POLYGON
+       * @enum {string}
+       */
+      network: "POLYGON" | "ERC20" | "SOLANA" | "TRON" | "ARBITRUM" | "BSC";
+      active: boolean;
+      /**
+       * Format: date-time
+       * @example 2021-09-01T00:00:00.000Z
+       */
+      createdAt: string;
+      /**
+       * Format: date-time
+       * @example 2021-09-01T00:00:00.000Z
+       */
+      updatedAt: string;
+    };
+    CreateVirtualAccountWithdrawalDto: {
+      /**
+       * @description Amount to withdraw
+       * @example 100
+       */
+      amount: number;
+      /**
+       * Format: uuid
+       * @description Destination account ID
+       * @example 4d23aa52-1b40-4584-a8ea-58aba6099c5c
+       */
+      accountId: string;
+    };
+    VirtualAccountWithdrawalResponseDto: {
+      /** Format: uuid */
+      id: string;
+      /** Format: uuid */
+      virtualAccountId: string;
+      /** Format: uuid */
+      customerId: string;
+      /** Format: uuid */
+      userId: string;
+      amount: number;
+      currency: string;
+      network: string;
+      address: string;
+      /** @enum {string} */
+      status: "PENDING" | "PROCESSING" | "COMPLETED" | "FAILED" | "REJECTED";
+      transferId?: string;
+      transferProof?: string;
+      metadata: Record<string, never>;
+      active: boolean;
+      /** Format: date-time */
+      createdAt: string;
+      /** Format: date-time */
+      updatedAt: string;
+    };
+    WithdrawalItemDto: {
+      /** Format: uuid */
+      id: string;
+      /** Format: uuid */
+      virtualAccountId: string;
+      /** Format: uuid */
+      customerId: string;
+      /** Format: uuid */
+      userId: string;
+      amount: number;
+      currency: string;
+      network: string;
+      address: string;
+      /** @enum {string} */
+      status: "PENDING" | "PROCESSING" | "COMPLETED" | "FAILED" | "REJECTED";
+      transferId?: string;
+      transferProof?: string;
+      metadata: Record<string, never>;
+      /** Format: date-time */
+      createdAt: string;
+      /** Format: date-time */
+      updatedAt: string;
+    };
+    GetWithdrawalsResponseDto: {
+      withdrawals: components["schemas"]["WithdrawalItemDto"][];
+      total: number;
+      page: number;
+      limit: number;
+      totalPages: number;
+    };
+    GenerateAccessTokenRequestDto: {
+      /**
+       * @description User ID or Account ID
+       * @example 550e8400-e29b-41d4-a716-446655440000
+       */
+      id: string;
+      /**
+       * @description Type of ID provided (userId or accountId)
+       * @default userId
+       * @example userId
+       * @enum {string}
+       */
+      idType?: "userId" | "accountId";
+      /**
+       * @description Sumsub level name
+       * @example basic-kyc-level
+       */
+      levelName?: string;
+      /**
+       * @description Time to live in seconds
+       * @example 600
+       */
+      ttlInSecs?: number;
+    };
+    GenerateAccessTokenResponseDto: {
+      /**
+       * @description Access token for Sumsub SDK
+       * @example _act-b8ebfb63-5f24-4b89-9c08-000000000000
+       */
+      token: string;
     };
   };
   responses: never;
@@ -1485,6 +2125,38 @@ export interface operations {
       };
     };
   };
+  /** Verify a otp */
+  AuthController_verifyOtp: {
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["VerifyOtpDto"];
+      };
+    };
+    responses: {
+      400: {
+        content: {
+          "application/json": components["schemas"]["BadRequestResponse"];
+        };
+      };
+      500: {
+        content: {
+          "application/json": components["schemas"]["InternalServerErrorResponse"];
+        };
+      };
+    };
+  };
+  /**
+   * Options
+   * @description Options method
+   */
+  options2: {
+    responses: {
+      /** @description Successful response */
+      200: {
+        content: never;
+      };
+    };
+  };
   /** Get customer balances */
   CustomerController_getBalances: {
     responses: {
@@ -1509,7 +2181,7 @@ export interface operations {
    * Options
    * @description Options method
    */
-  options2: {
+  options3: {
     responses: {
       /** @description Successful response */
       200: {
@@ -1546,7 +2218,7 @@ export interface operations {
    * Options
    * @description Options method
    */
-  options3: {
+  options4: {
     responses: {
       /** @description Successful response */
       200: {
@@ -1578,7 +2250,250 @@ export interface operations {
    * Options
    * @description Options method
    */
-  options4: {
+  options5: {
+    responses: {
+      /** @description Successful response */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /** Get all available pairs and options */
+  CustomerController_getPairs: {
+    responses: {
+      200: {
+        content: {
+          "application/json": components["schemas"]["GetPairsResponseDto"];
+        };
+      };
+      400: {
+        content: {
+          "application/json": components["schemas"]["BadRequestResponse"];
+        };
+      };
+      500: {
+        content: {
+          "application/json": components["schemas"]["InternalServerErrorResponse"];
+        };
+      };
+    };
+  };
+  /**
+   * Options
+   * @description Options method
+   */
+  options6: {
+    responses: {
+      /** @description Successful response */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /** Get all documents for a customer */
+  ClickAndSignController_findAll: {
+    parameters: {
+      query: {
+        customerId: string;
+      };
+    };
+    responses: {
+      201: {
+        content: {
+          "application/json": components["schemas"]["FindingAllDocumentsResponseDto"];
+        };
+      };
+      400: {
+        content: {
+          "application/json": components["schemas"]["BadRequestResponse"];
+        };
+      };
+      500: {
+        content: {
+          "application/json": components["schemas"]["InternalServerErrorResponse"];
+        };
+      };
+    };
+  };
+  /**
+   * Options
+   * @description Options method
+   */
+  options7: {
+    parameters: {
+      query: {
+        customerId: string;
+      };
+    };
+    responses: {
+      /** @description Successful response */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /** Get a document by id */
+  ClickAndSignController_findOne: {
+    parameters: {
+      query: {
+        customerId: string;
+      };
+      path: {
+        id: string;
+      };
+    };
+    responses: {
+      201: {
+        content: {
+          "application/json": components["schemas"]["FindOneDocumentResponseDto"];
+        };
+      };
+      400: {
+        content: {
+          "application/json": components["schemas"]["BadRequestResponse"];
+        };
+      };
+      500: {
+        content: {
+          "application/json": components["schemas"]["InternalServerErrorResponse"];
+        };
+      };
+    };
+  };
+  /**
+   * Options
+   * @description Options method
+   */
+  options8: {
+    parameters: {
+      query: {
+        customerId: string;
+      };
+      path: {
+        id: string;
+      };
+    };
+    responses: {
+      /** @description Successful response */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /** Sign multiple documents */
+  ClickAndSignController_signMultiple: {
+    responses: {
+      201: {
+        content: {
+          "application/json": components["schemas"]["SignMultipleDocumentsResponseDto"];
+        };
+      };
+      400: {
+        content: {
+          "application/json": components["schemas"]["BadRequestResponse"];
+        };
+      };
+      500: {
+        content: {
+          "application/json": components["schemas"]["InternalServerErrorResponse"];
+        };
+      };
+    };
+  };
+  /**
+   * Options
+   * @description Options method
+   */
+  options9: {
+    responses: {
+      /** @description Successful response */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /** Sign a document */
+  ClickAndSignController_sign: {
+    parameters: {
+      path: {
+        id: string;
+      };
+    };
+    responses: {
+      /** @description Document signed successfully */
+      200: {
+        content: never;
+      };
+      201: {
+        content: {
+          "application/json": components["schemas"]["SignDocumentResponseDto"];
+        };
+      };
+      400: {
+        content: {
+          "application/json": components["schemas"]["BadRequestResponse"];
+        };
+      };
+      500: {
+        content: {
+          "application/json": components["schemas"]["InternalServerErrorResponse"];
+        };
+      };
+    };
+  };
+  /**
+   * Options
+   * @description Options method
+   */
+  options10: {
+    parameters: {
+      path: {
+        id: string;
+      };
+    };
+    responses: {
+      /** @description Successful response */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /** Generate transfer report document for customer signature */
+  ClickAndSignController_generateTransactionDocument: {
+    parameters: {
+      path: {
+        customerId: string;
+      };
+    };
+    responses: {
+      /** @description Document generated successfully */
+      201: {
+        content: {
+          "application/json": components["schemas"]["GenerateDocumentResponseDto"];
+        };
+      };
+      400: {
+        content: {
+          "application/json": components["schemas"]["BadRequestResponse"];
+        };
+      };
+      500: {
+        content: {
+          "application/json": components["schemas"]["InternalServerErrorResponse"];
+        };
+      };
+    };
+  };
+  /**
+   * Options
+   * @description Options method
+   */
+  options11: {
+    parameters: {
+      path: {
+        customerId: string;
+      };
+    };
     responses: {
       /** @description Successful response */
       200: {
@@ -1590,13 +2505,24 @@ export interface operations {
   AccountController_queryAccount: {
     parameters: {
       query?: {
+        ids?: string;
         userId?: string;
-        type?: "PSE" | "ACH" | "WIRE" | "WALLET" | "COELSA" | "SPEI" | "CUSTODIAL";
+        type?: "PSE" | "ACH" | "WIRE" | "WALLET" | "COELSA" | "SPEI" | "CUSTODIAL" | "TRANSFIYA" | "SWIFT";
         accountNumber?: string;
         routingNumber?: string;
         address?: string;
         clabe?: string;
         cvu?: string;
+        /** @description Filter by first name */
+        firstName?: string;
+        /** @description Filter by middle name */
+        middleName?: string;
+        /** @description Filter by last name */
+        lastName?: string;
+        /** @description Filter by company name */
+        companyName?: string;
+        /** @description Filter by email */
+        email?: string;
         limit?: number;
         page?: number;
       };
@@ -1648,7 +2574,7 @@ export interface operations {
    * Options
    * @description Options method
    */
-  options5: {
+  options12: {
     responses: {
       /** @description Successful response */
       200: {
@@ -1681,11 +2607,34 @@ export interface operations {
       };
     };
   };
+  /** Delete Account */
+  AccountController_delete: {
+    parameters: {
+      path: {
+        id: string;
+      };
+    };
+    responses: {
+      200: {
+        content: never;
+      };
+      400: {
+        content: {
+          "application/json": components["schemas"]["BadRequestResponse"];
+        };
+      };
+      500: {
+        content: {
+          "application/json": components["schemas"]["InternalServerErrorResponse"];
+        };
+      };
+    };
+  };
   /**
    * Options
    * @description Options method
    */
-  options6: {
+  options13: {
     parameters: {
       path: {
         id: string;
@@ -1757,7 +2706,7 @@ export interface operations {
    * Options
    * @description Options method
    */
-  options7: {
+  options14: {
     parameters: {
       path: {
         userId: string;
@@ -1846,7 +2795,7 @@ export interface operations {
    * Options
    * @description Options method
    */
-  options8: {
+  options15: {
     responses: {
       /** @description Successful response */
       200: {
@@ -1956,7 +2905,7 @@ export interface operations {
    * Options
    * @description Options method
    */
-  options9: {
+  options16: {
     responses: {
       /** @description Successful response */
       200: {
@@ -2016,7 +2965,7 @@ export interface operations {
    * Options
    * @description Options method
    */
-  options10: {
+  options17: {
     parameters: {
       path: {
         id: string;
@@ -2086,7 +3035,7 @@ export interface operations {
    * Options
    * @description Options method
    */
-  options11: {
+  options18: {
     responses: {
       /** @description Successful response */
       200: {
@@ -2121,7 +3070,7 @@ export interface operations {
    * Options
    * @description Options method
    */
-  options12: {
+  options19: {
     responses: {
       /** @description Successful response */
       200: {
@@ -2158,7 +3107,7 @@ export interface operations {
    * Options
    * @description Options method
    */
-  options13: {
+  options20: {
     responses: {
       /** @description Successful response */
       200: {
@@ -2182,7 +3131,7 @@ export interface operations {
     responses: {
       200: {
         content: {
-          "application/json": components["schemas"]["getTransactionsReturn"];
+          "application/json": components["schemas"]["IGetTransactionsReturn"];
         };
       };
       400: {
@@ -2201,7 +3150,7 @@ export interface operations {
    * Options
    * @description Options method
    */
-  options14: {
+  options21: {
     parameters: {
       query?: {
         limit?: number;
@@ -2249,7 +3198,7 @@ export interface operations {
    * Options
    * @description Options method
    */
-  options15: {
+  options22: {
     parameters: {
       path: {
         id: string;
@@ -2291,7 +3240,7 @@ export interface operations {
    * Options
    * @description Options method
    */
-  options16: {
+  options23: {
     responses: {
       /** @description Successful response */
       200: {
@@ -2328,7 +3277,7 @@ export interface operations {
    * Options
    * @description Options method
    */
-  options17: {
+  options24: {
     parameters: {
       path: {
         id: string;
@@ -2371,7 +3320,7 @@ export interface operations {
    * Options
    * @description Options method
    */
-  options18: {
+  options25: {
     parameters: {
       path: {
         id: string;
@@ -2414,7 +3363,7 @@ export interface operations {
    * Options
    * @description Options method
    */
-  options19: {
+  options26: {
     parameters: {
       path: {
         id: string;
@@ -2459,47 +3408,7 @@ export interface operations {
    * Options
    * @description Options method
    */
-  options20: {
-    responses: {
-      /** @description Successful response */
-      200: {
-        content: never;
-      };
-    };
-  };
-  /**
-   * Simulate a Quotation
-   * @description Generate just a simulation of a quote
-   */
-  QuotationController_simulation: {
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["CreateQuotationDto"];
-      };
-    };
-    responses: {
-      201: {
-        content: {
-          "application/json": components["schemas"]["SimulateQuotationResponseDto"];
-        };
-      };
-      400: {
-        content: {
-          "application/json": components["schemas"]["BadRequestResponse"];
-        };
-      };
-      500: {
-        content: {
-          "application/json": components["schemas"]["InternalServerErrorResponse"];
-        };
-      };
-    };
-  };
-  /**
-   * Options
-   * @description Options method
-   */
-  options21: {
+  options27: {
     responses: {
       /** @description Successful response */
       200: {
@@ -2539,12 +3448,85 @@ export interface operations {
    * Options
    * @description Options method
    */
-  options22: {
+  options28: {
     parameters: {
       path: {
         id: string;
       };
     };
+    responses: {
+      /** @description Successful response */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
+   * Update Quotation
+   * @description Update a new quotation
+   */
+  QuotationController_update: {
+    parameters: {
+      path: {
+        id: string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["UpdateQuotationDto"];
+      };
+    };
+    responses: {
+      201: {
+        content: {
+          "application/json": components["schemas"]["CreateQuotationResponseDto"];
+        };
+      };
+      400: {
+        content: {
+          "application/json": components["schemas"]["BadRequestResponse"];
+        };
+      };
+      500: {
+        content: {
+          "application/json": components["schemas"]["InternalServerErrorResponse"];
+        };
+      };
+    };
+  };
+  /**
+   * Simulate a Quotation
+   * @description Generate just a simulation of a quote
+   */
+  QuotationController_simulation: {
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["CreateQuotationDto"];
+      };
+    };
+    responses: {
+      201: {
+        content: {
+          "application/json": components["schemas"]["SimulateQuotationResponseDto"];
+        };
+      };
+      400: {
+        content: {
+          "application/json": components["schemas"]["BadRequestResponse"];
+        };
+      };
+      500: {
+        content: {
+          "application/json": components["schemas"]["InternalServerErrorResponse"];
+        };
+      };
+    };
+  };
+  /**
+   * Options
+   * @description Options method
+   */
+  options29: {
     responses: {
       /** @description Successful response */
       200: {
@@ -2617,7 +3599,7 @@ export interface operations {
    * Options
    * @description Options method
    */
-  options23: {
+  options30: {
     responses: {
       /** @description Successful response */
       200: {
@@ -2657,7 +3639,94 @@ export interface operations {
    * Options
    * @description Options method
    */
-  options24: {
+  options31: {
+    parameters: {
+      path: {
+        id: string;
+      };
+    };
+    responses: {
+      /** @description Successful response */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
+   * Update Ramp
+   * @description This endpoint is responsible for executing the Ramp (On or/and Off). For more details about this endpoint, see here [Ramps](https://killbapi.stoplight.io/docs/killb-v2/71722efcded7f)
+   */
+  RampsController_update: {
+    parameters: {
+      path: {
+        id: string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["PatchRampInputDto"];
+      };
+    };
+    responses: {
+      201: {
+        content: {
+          "application/json": components["schemas"]["CreateRampResponseDto"];
+        };
+      };
+      400: {
+        content: {
+          "application/json": components["schemas"]["BadRequestResponse"];
+        };
+      };
+      500: {
+        content: {
+          "application/json": components["schemas"]["InternalServerErrorResponse"];
+        };
+      };
+    };
+  };
+  /**
+   * Upload ramp document
+   * @description Attach a PDF document to an existing ramp transfer.
+   */
+  RampsController_uploadDocument: {
+    parameters: {
+      path: {
+        id: string;
+      };
+    };
+    requestBody: {
+      content: {
+        "multipart/form-data": {
+          documentType: string;
+          /** Format: binary */
+          file: string;
+        };
+      };
+    };
+    responses: {
+      201: {
+        content: {
+          "application/json": components["schemas"]["RampDocumentResponseDto"];
+        };
+      };
+      400: {
+        content: {
+          "application/json": components["schemas"]["BadRequestResponse"];
+        };
+      };
+      500: {
+        content: {
+          "application/json": components["schemas"]["InternalServerErrorResponse"];
+        };
+      };
+    };
+  };
+  /**
+   * Options
+   * @description Options method
+   */
+  options32: {
     parameters: {
       path: {
         id: string;
@@ -2702,7 +3771,106 @@ export interface operations {
    * Options
    * @description Options method
    */
-  options25: {
+  options33: {
+    parameters: {
+      path: {
+        id: string;
+      };
+    };
+    responses: {
+      /** @description Successful response */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
+   * Get Ramp Receipt in HTML
+   * @description This endpoint is return an HTML receipt for the Ramp.
+   */
+  RampsController_getReceipt: {
+    parameters: {
+      path: {
+        id: string;
+      };
+    };
+    responses: {
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
+   * Options
+   * @description Options method
+   */
+  options34: {
+    parameters: {
+      path: {
+        id: string;
+      };
+    };
+    responses: {
+      /** @description Successful response */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
+   * Get Ramp Receipt in JSON
+   * @description This endpoint is return an JSON receipt for the Ramp.
+   */
+  RampsController_getJsonReceipt: {
+    parameters: {
+      path: {
+        id: string;
+      };
+    };
+    responses: {
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
+   * Options
+   * @description Options method
+   */
+  options35: {
+    parameters: {
+      path: {
+        id: string;
+      };
+    };
+    responses: {
+      /** @description Successful response */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
+   * Get Ramp Receipt in PDF format
+   * @description This endpoint is return a receipt in PDF format.
+   */
+  RampsController_getFile: {
+    parameters: {
+      path: {
+        id: string;
+      };
+    };
+    responses: {
+      200: {
+        content: never;
+      };
+    };
+  };
+  /**
+   * Options
+   * @description Options method
+   */
+  options36: {
     parameters: {
       path: {
         id: string;
@@ -2744,7 +3912,7 @@ export interface operations {
    * Options
    * @description Options method
    */
-  options26: {
+  options37: {
     parameters: {
       query: {
         countryCode: string;
@@ -2787,7 +3955,7 @@ export interface operations {
    * Options
    * @description Options method
    */
-  options27: {
+  options38: {
     responses: {
       /** @description Successful response */
       200: {
@@ -2796,10 +3964,10 @@ export interface operations {
     };
   };
   /**
-   * Fake refund simulation (SANDBOX)
-   * @description This endpoint is responsible for faking a refund process.
+   * Fake cash-out confirmation (SANDBOX)
+   * @description This endpoint is responsible for faking a cash-out confirmation.
    */
-  FakerController_fakeRefund: {
+  FakerController_fakeCashOut: {
     requestBody: {
       content: {
         "application/json": components["schemas"]["FakerCashOutDto"];
@@ -2825,7 +3993,293 @@ export interface operations {
    * Options
    * @description Options method
    */
-  options28: {
+  options39: {
+    responses: {
+      /** @description Successful response */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /** Get all virtual accounts */
+  VirtualAccountsController_getVirtualAccounts: {
+    parameters: {
+      query?: {
+        /** @description Page number */
+        page?: number;
+        /** @description Items per page */
+        limit?: number;
+        /** @description Filter by account status */
+        status?: "ACTIVE" | "PENDING" | "REJECTED" | "PROCESSING";
+        /** @description Filter by network */
+        network?: "POLYGON" | "ERC20" | "SOLANA" | "TRON" | "ARBITRUM" | "BSC";
+        /** @description Filter by currency */
+        currency?: "USD" | "USDC" | "USDT";
+        /** @description Filter by user ID */
+        userId?: string;
+        /** @description Filter by start date */
+        startDate?: string;
+        /** @description Filter by end date */
+        endDate?: string;
+      };
+    };
+    responses: {
+      200: {
+        content: {
+          "application/json": components["schemas"]["GetVirtualAccountsResponseDto"];
+        };
+      };
+      400: {
+        content: {
+          "application/json": components["schemas"]["BadRequestResponse"];
+        };
+      };
+      500: {
+        content: {
+          "application/json": components["schemas"]["InternalServerErrorResponse"];
+        };
+      };
+    };
+  };
+  /** Create virtual account */
+  VirtualAccountsController_createVirtualAccount: {
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["CreatePreFundVirtualAccountDto"];
+      };
+    };
+    responses: {
+      201: {
+        content: {
+          "application/json": components["schemas"]["CreatePreFundVirtualAccountResponseDto"];
+        };
+      };
+      400: {
+        content: {
+          "application/json": components["schemas"]["BadRequestResponse"];
+        };
+      };
+      500: {
+        content: {
+          "application/json": components["schemas"]["InternalServerErrorResponse"];
+        };
+      };
+    };
+  };
+  /**
+   * Options
+   * @description Options method
+   */
+  options40: {
+    parameters: {
+      query?: {
+        /** @description Page number */
+        page?: number;
+        /** @description Items per page */
+        limit?: number;
+        /** @description Filter by account status */
+        status?: "ACTIVE" | "PENDING" | "REJECTED" | "PROCESSING";
+        /** @description Filter by network */
+        network?: "POLYGON" | "ERC20" | "SOLANA" | "TRON" | "ARBITRUM" | "BSC";
+        /** @description Filter by currency */
+        currency?: "USD" | "USDC" | "USDT";
+        /** @description Filter by user ID */
+        userId?: string;
+        /** @description Filter by start date */
+        startDate?: string;
+        /** @description Filter by end date */
+        endDate?: string;
+      };
+    };
+    responses: {
+      /** @description Successful response */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /** Get withdrawals from virtual account */
+  VirtualAccountsController_getWithdrawals: {
+    parameters: {
+      query?: {
+        /** @description Withdrawal status filter */
+        status?: "PENDING" | "PROCESSING" | "COMPLETED" | "FAILED" | "REJECTED";
+        /** @description Filter by start date */
+        startDate?: string;
+        /** @description Filter by end date */
+        endDate?: string;
+        /** @description Page number */
+        page?: number;
+        /** @description Items per page */
+        limit?: number;
+      };
+      path: {
+        id: string;
+      };
+    };
+    responses: {
+      200: {
+        content: {
+          "application/json": components["schemas"]["GetWithdrawalsResponseDto"];
+        };
+      };
+      400: {
+        content: {
+          "application/json": components["schemas"]["BadRequestResponse"];
+        };
+      };
+      /** @description Virtual account not found */
+      404: {
+        content: never;
+      };
+      500: {
+        content: {
+          "application/json": components["schemas"]["InternalServerErrorResponse"];
+        };
+      };
+    };
+  };
+  /** Create withdrawal from virtual account */
+  VirtualAccountsController_createWithdrawal: {
+    parameters: {
+      path: {
+        id: string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["CreateVirtualAccountWithdrawalDto"];
+      };
+    };
+    responses: {
+      201: {
+        content: {
+          "application/json": components["schemas"]["VirtualAccountWithdrawalResponseDto"];
+        };
+      };
+      400: {
+        content: {
+          "application/json": components["schemas"]["BadRequestResponse"];
+        };
+      };
+      /** @description Virtual account not found */
+      404: {
+        content: never;
+      };
+      500: {
+        content: {
+          "application/json": components["schemas"]["InternalServerErrorResponse"];
+        };
+      };
+    };
+  };
+  /**
+   * Options
+   * @description Options method
+   */
+  options41: {
+    parameters: {
+      path: {
+        id: string;
+      };
+    };
+    responses: {
+      /** @description Successful response */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /** Get all withdrawals from all virtual accounts */
+  VirtualAccountsController_getAllWithdrawals: {
+    parameters: {
+      query?: {
+        /** @description Withdrawal status filter */
+        status?: "PENDING" | "PROCESSING" | "COMPLETED" | "FAILED" | "REJECTED";
+        /** @description Filter by start date */
+        startDate?: string;
+        /** @description Filter by end date */
+        endDate?: string;
+        /** @description Page number */
+        page?: number;
+        /** @description Items per page */
+        limit?: number;
+      };
+    };
+    responses: {
+      200: {
+        content: {
+          "application/json": components["schemas"]["GetWithdrawalsResponseDto"];
+        };
+      };
+      400: {
+        content: {
+          "application/json": components["schemas"]["BadRequestResponse"];
+        };
+      };
+      500: {
+        content: {
+          "application/json": components["schemas"]["InternalServerErrorResponse"];
+        };
+      };
+    };
+  };
+  /**
+   * Options
+   * @description Options method
+   */
+  options42: {
+    parameters: {
+      query?: {
+        /** @description Withdrawal status filter */
+        status?: "PENDING" | "PROCESSING" | "COMPLETED" | "FAILED" | "REJECTED";
+        /** @description Filter by start date */
+        startDate?: string;
+        /** @description Filter by end date */
+        endDate?: string;
+        /** @description Page number */
+        page?: number;
+        /** @description Items per page */
+        limit?: number;
+      };
+    };
+    responses: {
+      /** @description Successful response */
+      200: {
+        content: never;
+      };
+    };
+  };
+  /** Generate Sumsub access token */
+  ComplianceController_generateAccessToken: {
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["GenerateAccessTokenRequestDto"];
+      };
+    };
+    responses: {
+      201: {
+        content: {
+          "application/json": components["schemas"]["GenerateAccessTokenResponseDto"];
+        };
+      };
+      400: {
+        content: {
+          "application/json": components["schemas"]["BadRequestResponse"];
+        };
+      };
+      500: {
+        content: {
+          "application/json": components["schemas"]["InternalServerErrorResponse"];
+        };
+      };
+    };
+  };
+  /**
+   * Options
+   * @description Options method
+   */
+  options43: {
     responses: {
       /** @description Successful response */
       200: {
@@ -2851,7 +4305,7 @@ export interface operations {
    * Options
    * @description Options method
    */
-  options29: {
+  options44: {
     responses: {
       /** @description Successful response */
       200: {

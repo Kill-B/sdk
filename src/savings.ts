@@ -67,7 +67,7 @@ export class Savings extends ApiRequest {
    * @param query - The query parameters for the GET request. Optional.
    * @returns A promise that resolves to the transactions data of the savings account, conforming to the 'getTransactionsReturn' schema.
    */
-  public async getTransactions(query?: paths["/api/v2/savings/transactions"]["get"]['parameters']['query']): Promise<components['schemas']['getTransactionsReturn']> {
+  public async getTransactions(query?: paths["/api/v2/savings/transactions"]["get"]['parameters']['query']): Promise<any> {
     await this.authenticateCheck();
     const queryParams = '?' + new URLSearchParams(query as Record<string, string> || {}).toString();
     return this.api.get(`api/v2/savings/transactions${queryParams}`);
