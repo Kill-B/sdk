@@ -49,4 +49,4 @@ Feel free to take a look at our API docs. You can find them [here](https://killb
 Contributions are welcome.
 
 ## License
-This project is open source and available under the [MIT](LICENSE) License.
+This project is open source and available under the [MIT](LICENSE) License
