@@ -3,29 +3,12 @@ import { faker } from '@faker-js/faker';
 import { components } from '../../types';
 
 describe('createUser', () => {
-  it('should throw an error when the apiKey is invalid', async () => {
-    const userInput = { name: 'John Doe', email: 'john.doe@example.com' } as any;
-
-    const client = new Client({
-      testEnv: true,
-      credentials: {
-        apiKey: 'invalid-api-key',
-        email: 'invalid_email@killb.com',
-        password: 'invalid_password',
-      }
-    });
-    const users = client.users;
-
-    await expect(users.create(userInput)).rejects.toHaveProperty('errorCode', 'INVALID_ARGUMENT: API key not valid. Please pass a valid API key.');
-  });
-
   it('should throw an error when the user credentials is invalid', async () => {
     const userInput = { name: 'John Doe', email: 'john.doe@example.com' } as any;
 
     const client = new Client({
       testEnv: true,
       credentials: {
-        apiKey: process.env.API_KEY as string,
         email: 'invalid_email@killb.com',
         password: 'invalid_password',
       }
@@ -43,7 +26,6 @@ describe('createUser', () => {
     const client = new Client({
       testEnv: true,
       credentials: {
-        apiKey: process.env.API_KEY as string,
         email: process.env.EMAIL as string,
         password: process.env.PASSWORD as string,
       }

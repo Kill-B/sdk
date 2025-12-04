@@ -24,7 +24,6 @@ export class ApiRequest {
       baseURL: this.setHost(input.testEnv),
       timeout: 30000,
       headers: {
-        'x-api-key': input.credentials.apiKey,
         ...(accessToken ? { 'Authorization': `Bearer ${accessToken}` } : {}),
       },
     });
@@ -80,7 +79,6 @@ export class ApiRequest {
       baseURL: this.setHost(this.config.testEnv),
       timeout: 30000,
       headers: {
-        'x-api-key': this.config.credentials.apiKey,
         'Authorization': `Bearer ${accessToken}`,
       },
     })
