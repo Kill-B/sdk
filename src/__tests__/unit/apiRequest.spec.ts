@@ -7,7 +7,6 @@ describe('ApiRequest', () => {
     apiRequest = new ApiRequest({
       testEnv: true,
       credentials: {
-        apiKey: 'test-api-key',
         email: 'test@test.com',
         password: 'test-password'
       }
@@ -23,7 +22,6 @@ describe('ApiRequest', () => {
       apiRequest = new ApiRequest({
         testEnv: false,
         credentials: {
-          apiKey: 'test-api-key',
           email: 'test@test.com',
           password: 'test-password'
         }
@@ -38,7 +36,6 @@ describe('ApiRequest', () => {
       const apiRequest = new ApiRequest({
         testEnv: true,
         credentials: {
-          apiKey: 'test-api-key',
           email: 'test@test.com',
           password: 'test-password'
         }
@@ -53,7 +50,6 @@ describe('ApiRequest', () => {
       const apiRequest = new ApiRequest({
         testEnv: false,
         credentials: {
-          apiKey: 'test-api-key',
           email: 'test@test.com',
           password: 'test-password'
         }
@@ -70,7 +66,6 @@ describe('ApiRequest', () => {
       const apiRequest = new ApiRequest({
         testEnv: true,
         credentials: {
-          apiKey: 'test-api-key',
           email: 'test@test.com',
           password: 'test-password'
         }
@@ -97,7 +92,6 @@ describe('ApiRequest', () => {
       const apiRequest = new ApiRequest({
         testEnv: true,
         credentials: {
-          apiKey: 'test-api-key',
           email: 'test@test.com',
           password: 'wrong-password'
         }
@@ -117,7 +111,6 @@ describe('ApiRequest', () => {
       const apiRequest = new ApiRequest({
         testEnv: true,
         credentials: {
-          apiKey: 'test-api-key',
           email: 'test@test.com',
           password: 'test-password'
         }

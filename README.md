@@ -18,7 +18,6 @@ import { Client, Config } from './src/client';
 const config: Config = {
   testEnv: true, // Optional. Default is false.
   credentials: {
-    apiKey: 'your-api-key',
     email: 'your-email',
     password: 'your-password',
   }
