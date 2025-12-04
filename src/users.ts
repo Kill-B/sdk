@@ -67,7 +67,8 @@ export class Users extends ApiRequest {
   public async list(query?:  paths["/api/v2/users"]["get"]['parameters']['query']): Promise<components['schemas']['GetUserQueryResponse']> {
     await this.authenticateCheck();
     const queryParams = '?' + new URLSearchParams(query as Record<string, any> || {}).toString();
-    return this.api.get(`api/v2/users${queryParams}`);
+    const response = await  this.api.get(`api/v2/users${queryParams}`);
+    return response.data;
   }
 
   /**
@@ -78,7 +79,8 @@ export class Users extends ApiRequest {
    */
   public async getById(id: paths["/api/v2/users/{id}"]["get"]['parameters']['path']['id']): Promise<components['schemas']['GetUserByIdResponse']> {
     await this.authenticateCheck();
-    return this.api.get(`api/v2/users/${id}`);
+    const response = await this.api.get(`api/v2/users/${id}`);
+    return response.data;
   }
 
   /**
@@ -98,7 +100,8 @@ export class Users extends ApiRequest {
     form.append('documentType', input.documentType);
     form.append('frontDocument', input.frontDocument);
     input.backDocument ? form.append('backDocument', input.backDocument) : null;
-    return this.api.post('api/v2/users/person/document', form)
+    const response =  await this.api.post('api/v2/users/person/document', form);
+    return response.data;
   }
 
   /**
@@ -118,6 +121,7 @@ export class Users extends ApiRequest {
     form.append('documentType', input.documentType);
     form.append('frontDocument', input.frontDocument);
     input.backDocument ? form.append('backDocument', input.backDocument) : null;
-    return this.api.post('api/v2/users/company/document', form)
+    const response = await this.api.post('api/v2/users/company/document', form);
+    return response.data;
   }
 }
