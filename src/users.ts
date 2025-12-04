@@ -71,6 +71,17 @@ export class Users extends ApiRequest {
   }
 
   /**
+   * Retrieves user information by their unique identifier.
+   *
+   * @param {paths["/api/v2/users/{id}"]["get"]['parameters']['path']['id']} id - The unique identifier of the user.
+   * @return {Promise<components['schemas']['GetUserByIdResponse']>} A promise resolving to the user's information.
+   */
+  public async getById(id: paths["/api/v2/users/{id}"]["get"]['parameters']['path']['id']): Promise<components['schemas']['GetUserByIdResponse']> {
+    await this.authenticateCheck();
+    return this.api.get(`api/v2/users/${id}`);
+  }
+
+  /**
    * Uploads a document for a person user.
    *
    * This method is responsible for uploading a document associated with a person user. It constructs a FormData object
