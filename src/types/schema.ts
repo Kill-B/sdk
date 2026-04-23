@@ -3,4314 +3,10649 @@
  * Do not make direct changes to the file.
  */
 
-
 export interface paths {
-  "/api/v2/auth/login": {
-    /**
-     * Generate an access token
-     * @description Guide for the Auth can be found in [Auths](https://killbapi.stoplight.io/docs/killb-v2/92fb466bf5e4b).
-     */
-    post: operations["AuthController_login"];
-    /**
-     * Options
-     * @description Options method
-     */
-    options: operations["options0"];
-  };
-  "/api/v2/auth/refresh": {
-    /**
-     * Refresh an access token
-     * @description Guide for the Auth can be found in [Auths](https://killbapi.stoplight.io/docs/killb-v2/92fb466bf5e4b).
-     */
-    post: operations["AuthController_refresh"];
-    /**
-     * Options
-     * @description Options method
-     */
-    options: operations["options1"];
-  };
-  "/api/v2/auth/verify-otp": {
-    /** Verify a otp */
-    post: operations["AuthController_verifyOtp"];
-    /**
-     * Options
-     * @description Options method
-     */
-    options: operations["options2"];
-  };
-  "/api/v2/customers/balances": {
-    /** Get customer balances */
-    get: operations["CustomerController_getBalances"];
-    /**
-     * Options
-     * @description Options method
-     */
-    options: operations["options3"];
-  };
-  "/api/v2/customers/pre-fund/create": {
-    /** Create a pre-fund wallet */
-    post: operations["CustomerController_createPreFundAccount"];
-    /**
-     * Options
-     * @description Options method
-     */
-    options: operations["options4"];
-  };
-  "/api/v2/customers/liquidities": {
-    /** Get customer liquidities */
-    get: operations["CustomerController_getLiquidity"];
-    /**
-     * Options
-     * @description Options method
-     */
-    options: operations["options5"];
-  };
-  "/api/v2/customers/pairs": {
-    /** Get all available pairs and options */
-    get: operations["CustomerController_getPairs"];
-    /**
-     * Options
-     * @description Options method
-     */
-    options: operations["options6"];
-  };
-  "/api/v2/documents": {
-    /** Get all documents for a customer */
-    get: operations["ClickAndSignController_findAll"];
-    /**
-     * Options
-     * @description Options method
-     */
-    options: operations["options7"];
-  };
-  "/api/v2/documents/{id}": {
-    /** Get a document by id */
-    get: operations["ClickAndSignController_findOne"];
-    /**
-     * Options
-     * @description Options method
-     */
-    options: operations["options8"];
-  };
-  "/api/v2/documents/sign/bulk": {
-    /** Sign multiple documents */
-    post: operations["ClickAndSignController_signMultiple"];
-    /**
-     * Options
-     * @description Options method
-     */
-    options: operations["options9"];
-  };
-  "/api/v2/documents/sign/{id}": {
-    /** Sign a document */
-    post: operations["ClickAndSignController_sign"];
-    /**
-     * Options
-     * @description Options method
-     */
-    options: operations["options10"];
-  };
-  "/api/v2/documents/generate/{customerId}": {
-    /** Generate transfer report document for customer signature */
-    post: operations["ClickAndSignController_generateTransactionDocument"];
-    /**
-     * Options
-     * @description Options method
-     */
-    options: operations["options11"];
-  };
-  "/api/v2/accounts": {
-    /** Get Accounts */
-    get: operations["AccountController_queryAccount"];
-    /** Create Account */
-    post: operations["AccountController_create"];
-    /**
-     * Options
-     * @description Options method
-     */
-    options: operations["options12"];
-  };
-  "/api/v2/accounts/{id}": {
-    /** Get Account by id */
-    get: operations["AccountController_getOne"];
-    /** Delete Account */
-    delete: operations["AccountController_delete"];
-    /**
-     * Options
-     * @description Options method
-     */
-    options: operations["options13"];
-    /** Update Account */
-    patch: operations["AccountController_update"];
-  };
-  "/api/v2/accounts/userId/{userId}": {
-    /** Get Accounts by UserId */
-    get: operations["AccountController_getByUserId"];
-    /**
-     * Options
-     * @description Options method
-     */
-    options: operations["options14"];
-  };
-  "/api/v2/webhooks": {
-    /**
-     * Get webhook config
-     * @description Endpoint responsible for return a webhook config configured. For more information, examples and how works see here: [Webhook Documentation](/docs/Webhooks.md)
-     */
-    get: operations["WebhookController_get"];
-    /**
-     * Create a webhook config.
-     * @description Create a webhook config. For more information, examples and how works see here: [Webhook Documentation](/docs/Webhooks.md)
-     */
-    post: operations["WebhookController_create"];
-    /**
-     * Delete webhook config
-     * @description Endpoint responsible for REMOVE the webhook config. For more information, examples and how works see here: [Webhook Documentation](/docs/Webhooks.md)
-     */
-    delete: operations["WebhookController_delete"];
-    /**
-     * Options
-     * @description Options method
-     */
-    options: operations["options15"];
-    /**
-     * Update webhook config
-     * @description Endpoint responsible for UPDATE webhook config. For more information, examples and how works see here: [Webhook Documentation](/docs/Webhooks.md)
-     */
-    patch: operations["WebhookController_update"];
-  };
-  "/api/v2/users": {
-    /** Get users */
-    get: operations["UserController_get"];
-    /** Create a user */
-    post: operations["UserController_create"];
-    /**
-     * Options
-     * @description Options method
-     */
-    options: operations["options16"];
-  };
-  "/api/v2/users/{id}": {
-    /** Get users by ID */
-    get: operations["UserController_getById"];
-    /** Delete user */
-    delete: operations["UserController_delete"];
-    /**
-     * Options
-     * @description Options method
-     */
-    options: operations["options17"];
-    /** Update user */
-    patch: operations["UserController_update"];
-  };
-  "/api/v2/users/person/document": {
-    /** Add person user document */
-    post: operations["UserController_uploadDocumentPerson"];
-    /**
-     * Options
-     * @description Options method
-     */
-    options: operations["options18"];
-  };
-  "/api/v2/users/company/document": {
-    /** Add company user document */
-    post: operations["UserController_uploadDocumentBusiness"];
-    /**
-     * Options
-     * @description Options method
-     */
-    options: operations["options19"];
-  };
-  "/api/v2/savings": {
-    /** Create savings account */
-    post: operations["SavingsController_onboard"];
-    /**
-     * Options
-     * @description Options method
-     */
-    options: operations["options20"];
-  };
-  "/api/v2/savings/transactions": {
-    /** Get transactions */
-    get: operations["SavingsController_getTransactions"];
-    /**
-     * Options
-     * @description Options method
-     */
-    options: operations["options21"];
-  };
-  "/api/v2/savings/{id}": {
-    /** Get savings account */
-    get: operations["SavingsController_getOnboard"];
-    /**
-     * Options
-     * @description Options method
-     */
-    options: operations["options22"];
-  };
-  "/api/v2/savings/withdrawal": {
-    /** Create withdrawal */
-    post: operations["SavingsController_withdrawal"];
-    /**
-     * Options
-     * @description Options method
-     */
-    options: operations["options23"];
-  };
-  "/api/v2/savings/{id}/balance": {
-    /** Get balance */
-    get: operations["SavingsController_getBalance"];
-    /**
-     * Options
-     * @description Options method
-     */
-    options: operations["options24"];
-  };
-  "/api/v2/savings/{id}/deposit-instructions/{type}": {
-    /** Get banking deposit instructions */
-    get: operations["SavingsController_getDepositInstructions"];
-    /**
-     * Options
-     * @description Options method
-     */
-    options: operations["options25"];
-  };
-  "/api/v2/savings/{id}/crypto-deposit-instructions": {
-    /** Get crypto deposit instructions */
-    get: operations["SavingsController_getWalletAddress"];
-    /**
-     * Options
-     * @description Options method
-     */
-    options: operations["options26"];
-  };
-  "/api/v2/quotations": {
-    /**
-     * Create Quotation
-     * @description Create a new quotation
-     */
-    post: operations["QuotationController_create"];
-    /**
-     * Options
-     * @description Options method
-     */
-    options: operations["options27"];
-  };
-  "/api/v2/quotations/{id}": {
-    /**
-     * Get Quotation
-     * @description Get a quotation by id
-     */
-    get: operations["QuotationController_getById"];
-    /**
-     * Options
-     * @description Options method
-     */
-    options: operations["options28"];
-    /**
-     * Update Quotation
-     * @description Update a new quotation
-     */
-    patch: operations["QuotationController_update"];
-  };
-  "/api/v2/quotations/simulation": {
-    /**
-     * Simulate a Quotation
-     * @description Generate just a simulation of a quote
-     */
-    post: operations["QuotationController_simulation"];
-    /**
-     * Options
-     * @description Options method
-     */
-    options: operations["options29"];
-  };
-  "/api/v2/ramps": {
-    /**
-     * Query Ramps
-     * @description This endpoint is responsible for getting the Ramp list. For more details about this endpoint, see here [Ramps](https://killbapi.stoplight.io/docs/killb-v2/71722efcded7f)
-     */
-    get: operations["RampsController_getQuery"];
-    /**
-     * Create Ramps
-     * @description This endpoint is responsible for executing the Ramp (On or/and Off). For more details about this endpoint, see here [Ramps](https://killbapi.stoplight.io/docs/killb-v2/71722efcded7f)
-     */
-    post: operations["RampsController_create"];
-    /**
-     * Options
-     * @description Options method
-     */
-    options: operations["options30"];
-  };
-  "/api/v2/ramps/{id}": {
-    /**
-     * Get Ramp by id
-     * @description This endpoint is responsible for getting the Ramp by id. For more details about this endpoint, see here [Ramps](https://killbapi.stoplight.io/docs/killb-v2/71722efcded7f)
-     */
-    get: operations["RampsController_getById"];
-    /**
-     * Options
-     * @description Options method
-     */
-    options: operations["options31"];
-    /**
-     * Update Ramp
-     * @description This endpoint is responsible for executing the Ramp (On or/and Off). For more details about this endpoint, see here [Ramps](https://killbapi.stoplight.io/docs/killb-v2/71722efcded7f)
-     */
-    patch: operations["RampsController_update"];
-  };
-  "/api/v2/ramps/{id}/documents": {
-    /**
-     * Upload ramp document
-     * @description Attach a PDF document to an existing ramp transfer.
-     */
-    post: operations["RampsController_uploadDocument"];
-    /**
-     * Options
-     * @description Options method
-     */
-    options: operations["options32"];
-  };
-  "/api/v2/ramps/{id}/status-history": {
-    /**
-     * Get ramp status history
-     * @description This endpoint is responsible for getting the Ramp status history. For more details about this endpoint, see here [Ramps](https://killbapi.stoplight.io/docs/killb-v2/71722efcded7f)
-     */
-    get: operations["RampsController_getStatusHistoryById"];
-    /**
-     * Options
-     * @description Options method
-     */
-    options: operations["options33"];
-  };
-  "/api/v2/ramps/{id}/receipt": {
-    /**
-     * Get Ramp Receipt in HTML
-     * @description This endpoint is return an HTML receipt for the Ramp.
-     */
-    get: operations["RampsController_getReceipt"];
-    /**
-     * Options
-     * @description Options method
-     */
-    options: operations["options34"];
-  };
-  "/api/v2/ramps/{id}/receipt-json": {
-    /**
-     * Get Ramp Receipt in JSON
-     * @description This endpoint is return an JSON receipt for the Ramp.
-     */
-    get: operations["RampsController_getJsonReceipt"];
-    /**
-     * Options
-     * @description Options method
-     */
-    options: operations["options35"];
-  };
-  "/api/v2/ramps/{id}/receipt/file": {
-    /**
-     * Get Ramp Receipt in PDF format
-     * @description This endpoint is return a receipt in PDF format.
-     */
-    get: operations["RampsController_getFile"];
-    /**
-     * Options
-     * @description Options method
-     */
-    options: operations["options36"];
-  };
-  "/api/v2/banks": {
-    /** Get Bank list by countryCode */
-    get: operations["BankController_get"];
-    /**
-     * Options
-     * @description Options method
-     */
-    options: operations["options37"];
-  };
-  "/api/v2/faker/cash-in": {
-    /**
-     * Fake cash-in (SANDBOX)
-     * @description This endpoint is responsible for faking a cash-in.
-     */
-    post: operations["FakerController_fakeMxnCashIn"];
-    /**
-     * Options
-     * @description Options method
-     */
-    options: operations["options38"];
-  };
-  "/api/v2/faker/cash-out": {
-    /**
-     * Fake cash-out confirmation (SANDBOX)
-     * @description This endpoint is responsible for faking a cash-out confirmation.
-     */
-    post: operations["FakerController_fakeCashOut"];
-    /**
-     * Options
-     * @description Options method
-     */
-    options: operations["options39"];
-  };
-  "/api/v2/virtual-accounts": {
-    /** Get all virtual accounts */
-    get: operations["VirtualAccountsController_getVirtualAccounts"];
-    /** Create virtual account */
-    post: operations["VirtualAccountsController_createVirtualAccount"];
-    /**
-     * Options
-     * @description Options method
-     */
-    options: operations["options40"];
-  };
-  "/api/v2/virtual-accounts/{id}/withdrawals": {
-    /** Get withdrawals from virtual account */
-    get: operations["VirtualAccountsController_getWithdrawals"];
-    /** Create withdrawal from virtual account */
-    post: operations["VirtualAccountsController_createWithdrawal"];
-    /**
-     * Options
-     * @description Options method
-     */
-    options: operations["options41"];
-  };
-  "/api/v2/virtual-accounts/withdrawals": {
-    /** Get all withdrawals from all virtual accounts */
-    get: operations["VirtualAccountsController_getAllWithdrawals"];
-    /**
-     * Options
-     * @description Options method
-     */
-    options: operations["options42"];
-  };
-  "/api/v2/compliance/access-token": {
-    /** Generate Sumsub access token */
-    post: operations["ComplianceController_generateAccessToken"];
-    /**
-     * Options
-     * @description Options method
-     */
-    options: operations["options43"];
-  };
-  "/api/v2/open-api-json": {
-    /**
-     * Open API JSON
-     * @description API JSON schema with all endpoints
-     */
-    get: operations["getApiJson"];
-    /**
-     * Options
-     * @description Options method
-     */
-    options: operations["options44"];
-  };
+    "/api/v2/auth/signup": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Public signup */
+        post: operations["AuthController_publicSignup"];
+        delete?: never;
+        /**
+         * Options
+         * @description Options method
+         */
+        options: operations["options0"];
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v2/auth/login": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Generate an access token */
+        post: operations["AuthController_login"];
+        delete?: never;
+        /**
+         * Options
+         * @description Options method
+         */
+        options: operations["options1"];
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v2/auth/refresh": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Refresh an access token
+         * @description For OTC origin, refresh token may be sent in the refreshToken cookie (request with credentials); body may be omitted.
+         */
+        post: operations["AuthController_refresh"];
+        delete?: never;
+        /**
+         * Options
+         * @description Options method
+         */
+        options: operations["options2"];
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v2/auth/me": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Return decoded JWT data for the authenticated user */
+        get: operations["AuthController_me"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        /**
+         * Options
+         * @description Options method
+         */
+        options: operations["options3"];
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v2/auth/login/otp": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Complete login with OTP code (for OTC origin with 2FA enabled) */
+        post: operations["AuthController_loginWithOtp"];
+        delete?: never;
+        /**
+         * Options
+         * @description Options method
+         */
+        options: operations["options4"];
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v2/auth/confirm-email": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Confirm email */
+        get: operations["AuthController_confirmEmail"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        /**
+         * Options
+         * @description Options method
+         */
+        options: operations["options5"];
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v2/auth/2fa/enable": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Enable 2FA/OTP */
+        post: operations["AuthController_enableTwoFactor"];
+        delete?: never;
+        /**
+         * Options
+         * @description Options method
+         */
+        options: operations["options6"];
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v2/auth/2fa/verify": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Verify 2FA/OTP and enable */
+        post: operations["AuthController_verifyTwoFactor"];
+        delete?: never;
+        /**
+         * Options
+         * @description Options method
+         */
+        options: operations["options7"];
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v2/auth/2fa/disable/request-email": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Request email confirmation token to disable 2FA */
+        post: operations["AuthController_requestDisableTwoFactorEmail"];
+        delete?: never;
+        /**
+         * Options
+         * @description Options method
+         */
+        options: operations["options8"];
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v2/auth/2fa/disable": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Disable 2FA/OTP using OTP code or email confirmation token */
+        post: operations["AuthController_disableTwoFactor"];
+        delete?: never;
+        /**
+         * Options
+         * @description Options method
+         */
+        options: operations["options9"];
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v2/auth/password/reset/request": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Request password reset via email */
+        post: operations["AuthController_requestPasswordReset"];
+        delete?: never;
+        /**
+         * Options
+         * @description Options method
+         */
+        options: operations["options10"];
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v2/auth/password/reset": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Reset password using OTP code or email confirmation token */
+        post: operations["AuthController_resetPassword"];
+        delete?: never;
+        /**
+         * Options
+         * @description Options method
+         */
+        options: operations["options11"];
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v2/auth/password/change": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Change password
+         * @description Change password for authenticated user. If 2FA is enabled, OTP code is required.
+         */
+        post: operations["AuthController_changePassword"];
+        delete?: never;
+        /**
+         * Options
+         * @description Options method
+         */
+        options: operations["options12"];
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v2/auth/invite": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** List all invited users and their status */
+        get: operations["AuthController_listInvitedUsers"];
+        put?: never;
+        /** Invite a new user to join the same customer context */
+        post: operations["AuthController_inviteUser"];
+        delete?: never;
+        /**
+         * Options
+         * @description Options method
+         */
+        options: operations["options13"];
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v2/auth/logout": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Logout and invalidate current session */
+        post: operations["AuthController_logout"];
+        delete?: never;
+        /**
+         * Options
+         * @description Options method
+         */
+        options: operations["options14"];
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v2/customers": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Create a customer */
+        post: operations["CustomerController_create"];
+        delete?: never;
+        /**
+         * Options
+         * @description Options method
+         */
+        options: operations["options15"];
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v2/customers/profile": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get customer profile */
+        get: operations["CustomerController_getProfile"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        /**
+         * Options
+         * @description Options method
+         */
+        options: operations["options16"];
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v2/customers/balances": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get customer balances */
+        get: operations["CustomerController_getBalances"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        /**
+         * Options
+         * @description Options method
+         */
+        options: operations["options17"];
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v2/customers/pre-fund/create": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Create a pre-fund wallet */
+        post: operations["CustomerController_createPreFundAccount"];
+        delete?: never;
+        /**
+         * Options
+         * @description Options method
+         */
+        options: operations["options18"];
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v2/customers/liquidities": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get customer liquidities */
+        get: operations["CustomerController_getLiquidity"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        /**
+         * Options
+         * @description Options method
+         */
+        options: operations["options19"];
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v2/customers/pairs": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get all available pairs and options */
+        get: operations["CustomerController_getPairs"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        /**
+         * Options
+         * @description Options method
+         */
+        options: operations["options20"];
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v2/customers/pairs/configure": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Configure a currency pair and payment method */
+        post: operations["CustomerController_configurePair"];
+        delete?: never;
+        /**
+         * Options
+         * @description Options method
+         */
+        options: operations["options21"];
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v2/documents": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get all documents for a customer */
+        get: operations["ClickAndSignController_findAll"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        /**
+         * Options
+         * @description Options method
+         */
+        options: operations["options22"];
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v2/documents/{id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get a document by id */
+        get: operations["ClickAndSignController_findOne"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        /**
+         * Options
+         * @description Options method
+         */
+        options: operations["options23"];
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v2/documents/sign/bulk": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Sign multiple documents */
+        post: operations["ClickAndSignController_signMultiple"];
+        delete?: never;
+        /**
+         * Options
+         * @description Options method
+         */
+        options: operations["options24"];
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v2/documents/sign/{id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Sign a document */
+        post: operations["ClickAndSignController_sign"];
+        delete?: never;
+        /**
+         * Options
+         * @description Options method
+         */
+        options: operations["options25"];
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v2/documents/generate/{customerId}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Generate transfer report document for customer signature */
+        post: operations["ClickAndSignController_generateTransactionDocument"];
+        delete?: never;
+        /**
+         * Options
+         * @description Options method
+         */
+        options: operations["options26"];
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v2/users": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get users */
+        get: operations["UserController_get"];
+        put?: never;
+        /** Create a user */
+        post: operations["UserController_create"];
+        delete?: never;
+        /**
+         * Options
+         * @description Options method
+         */
+        options: operations["options27"];
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v2/users/favorite": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get favorite user for customer */
+        get: operations["UserController_getFavoriteUser"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        /**
+         * Options
+         * @description Options method
+         */
+        options: operations["options28"];
+        head?: never;
+        /** Set favorite user for customer */
+        patch: operations["UserController_setFavoriteUser"];
+        trace?: never;
+    };
+    "/api/v2/users/{id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get users by ID */
+        get: operations["UserController_getById"];
+        put?: never;
+        post?: never;
+        /** Delete user */
+        delete: operations["UserController_delete"];
+        /**
+         * Options
+         * @description Options method
+         */
+        options: operations["options29"];
+        head?: never;
+        /** Update user */
+        patch: operations["UserController_update"];
+        trace?: never;
+    };
+    "/api/v2/users/person/document": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Add person user document */
+        post: operations["UserController_uploadDocumentPerson"];
+        delete?: never;
+        /**
+         * Options
+         * @description Options method
+         */
+        options: operations["options30"];
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v2/users/company/document": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Add company user document */
+        post: operations["UserController_uploadDocumentBusiness"];
+        delete?: never;
+        /**
+         * Options
+         * @description Options method
+         */
+        options: operations["options31"];
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v2/webhooks": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Get webhook config
+         * @description Endpoint responsible for return a webhook config configured. For more information, examples and how works see here: [Webhook Documentation](/docs/Webhooks.md)
+         */
+        get: operations["WebhookController_get"];
+        put?: never;
+        /**
+         * Create a webhook config.
+         * @description Create a webhook config. For more information, examples and how works see here: [Webhook Documentation](/docs/Webhooks.md)
+         */
+        post: operations["WebhookController_create"];
+        /**
+         * Delete webhook config
+         * @description Endpoint responsible for REMOVE the webhook config. For more information, examples and how works see here: [Webhook Documentation](/docs/Webhooks.md)
+         */
+        delete: operations["WebhookController_delete"];
+        /**
+         * Options
+         * @description Options method
+         */
+        options: operations["options32"];
+        head?: never;
+        /**
+         * Update webhook config
+         * @description Endpoint responsible for UPDATE webhook config. For more information, examples and how works see here: [Webhook Documentation](/docs/Webhooks.md)
+         */
+        patch: operations["WebhookController_update"];
+        trace?: never;
+    };
+    "/api/v2/accounts": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get Accounts */
+        get: operations["AccountController_queryAccount"];
+        put?: never;
+        /** Create Account */
+        post: operations["AccountController_create"];
+        delete?: never;
+        /**
+         * Options
+         * @description Options method
+         */
+        options: operations["options33"];
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v2/accounts/{id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get Account by id */
+        get: operations["AccountController_getOne"];
+        put?: never;
+        post?: never;
+        /** Delete Account */
+        delete: operations["AccountController_delete"];
+        /**
+         * Options
+         * @description Options method
+         */
+        options: operations["options34"];
+        head?: never;
+        /** Update Account */
+        patch: operations["AccountController_update"];
+        trace?: never;
+    };
+    "/api/v2/accounts/userId/{userId}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get Accounts by UserId */
+        get: operations["AccountController_getByUserId"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        /**
+         * Options
+         * @description Options method
+         */
+        options: operations["options35"];
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v2/accounts/export": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Export Accounts to XLSX
+         * @description Downloads accounts as XLSX file with filters. Only ACTIVE accounts are included. Maximum 10,000 records.
+         */
+        get: operations["AccountController_exportAccounts"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        /**
+         * Options
+         * @description Options method
+         */
+        options: operations["options36"];
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v2/accounts/bulk/template": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Download Bulk Beneficiary Template
+         * @description Downloads an Excel template for bulk beneficiary creation with dynamic dropdowns
+         */
+        get: operations["AccountController_downloadTemplate"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        /**
+         * Options
+         * @description Options method
+         */
+        options: operations["options37"];
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v2/accounts/bulk/upload": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Upload Bulk Beneficiaries
+         * @description Uploads an Excel file with beneficiary data and returns a job ID for tracking
+         */
+        post: operations["AccountController_uploadBulkBeneficiaries"];
+        delete?: never;
+        /**
+         * Options
+         * @description Options method
+         */
+        options: operations["options38"];
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v2/accounts/bulk/status/{jobId}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Get Bulk Upload Job Status
+         * @description Returns the status and results of a bulk beneficiary upload job
+         */
+        get: operations["AccountController_getBulkUploadStatus"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        /**
+         * Options
+         * @description Options method
+         */
+        options: operations["options39"];
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v2/backoffice/roles": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** List all roles */
+        get: operations["RoleController_findAll"];
+        put?: never;
+        /** Create a new role */
+        post: operations["RoleController_create"];
+        delete?: never;
+        /**
+         * Options
+         * @description Options method
+         */
+        options: operations["options40"];
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v2/backoffice/roles/{id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get a role by ID */
+        get: operations["RoleController_findOne"];
+        /** Update a role */
+        put: operations["RoleController_update"];
+        post?: never;
+        /** Delete a role (soft delete) */
+        delete: operations["RoleController_delete"];
+        /**
+         * Options
+         * @description Options method
+         */
+        options: operations["options41"];
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v2/backoffice/roles/{id}/permissions": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get all permissions for a role */
+        get: operations["RoleController_getRolePermissions"];
+        put?: never;
+        /** Assign permissions to a role */
+        post: operations["RoleController_assignPermissions"];
+        /** Remove permissions from a role */
+        delete: operations["RoleController_removePermissions"];
+        /**
+         * Options
+         * @description Options method
+         */
+        options: operations["options42"];
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v2/backoffice/permissions": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** List all permissions */
+        get: operations["PermissionController_findAll"];
+        put?: never;
+        /** Create a new permission */
+        post: operations["PermissionController_create"];
+        delete?: never;
+        /**
+         * Options
+         * @description Options method
+         */
+        options: operations["options43"];
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v2/backoffice/permissions/{id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get a permission by ID */
+        get: operations["PermissionController_findOne"];
+        /** Update a permission */
+        put: operations["PermissionController_update"];
+        post?: never;
+        /** Delete a permission (soft delete) */
+        delete: operations["PermissionController_delete"];
+        /**
+         * Options
+         * @description Options method
+         */
+        options: operations["options44"];
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v2/backoffice/permissions/resource/{resource}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get all permissions for a resource */
+        get: operations["PermissionController_findByResource"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        /**
+         * Options
+         * @description Options method
+         */
+        options: operations["options45"];
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v2/backoffice/role-snapshots/role/{roleId}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get snapshots for a role */
+        get: operations["RoleSnapshotController_getSnapshotsByRole"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        /**
+         * Options
+         * @description Options method
+         */
+        options: operations["options46"];
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v2/backoffice/role-snapshots/{id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get a specific snapshot */
+        get: operations["RoleSnapshotController_getSnapshot"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        /**
+         * Options
+         * @description Options method
+         */
+        options: operations["options47"];
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v2/backoffice/role-snapshots": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Manually create a snapshot for a role */
+        post: operations["RoleSnapshotController_createSnapshot"];
+        delete?: never;
+        /**
+         * Options
+         * @description Options method
+         */
+        options: operations["options48"];
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v2/savings": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Create savings account */
+        post: operations["SavingsController_onboard"];
+        delete?: never;
+        /**
+         * Options
+         * @description Options method
+         */
+        options: operations["options49"];
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v2/savings/transactions": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get transactions */
+        get: operations["SavingsController_getTransactions"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        /**
+         * Options
+         * @description Options method
+         */
+        options: operations["options50"];
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v2/savings/{id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get savings account */
+        get: operations["SavingsController_getOnboard"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        /**
+         * Options
+         * @description Options method
+         */
+        options: operations["options51"];
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v2/savings/withdrawal": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Create withdrawal */
+        post: operations["SavingsController_withdrawal"];
+        delete?: never;
+        /**
+         * Options
+         * @description Options method
+         */
+        options: operations["options52"];
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v2/savings/{id}/balance": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get balance */
+        get: operations["SavingsController_getBalance"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        /**
+         * Options
+         * @description Options method
+         */
+        options: operations["options53"];
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v2/savings/{id}/deposit-instructions/{type}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get banking deposit instructions */
+        get: operations["SavingsController_getDepositInstructions"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        /**
+         * Options
+         * @description Options method
+         */
+        options: operations["options54"];
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v2/savings/{id}/crypto-deposit-instructions": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get crypto deposit instructions */
+        get: operations["SavingsController_getWalletAddress"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        /**
+         * Options
+         * @description Options method
+         */
+        options: operations["options55"];
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v2/quotations": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Create Quotation
+         * @description Create a new quotation
+         */
+        post: operations["QuotationController_create"];
+        delete?: never;
+        /**
+         * Options
+         * @description Options method
+         */
+        options: operations["options56"];
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v2/quotations/{id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Get Quotation
+         * @description Get a quotation by id
+         */
+        get: operations["QuotationController_getById"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        /**
+         * Options
+         * @description Options method
+         */
+        options: operations["options57"];
+        head?: never;
+        /**
+         * Update Quotation
+         * @description Update a new quotation
+         */
+        patch: operations["QuotationController_update"];
+        trace?: never;
+    };
+    "/api/v2/quotations/simulation": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Simulate a Quotation
+         * @description Generate just a simulation of a quote
+         */
+        post: operations["QuotationController_simulation"];
+        delete?: never;
+        /**
+         * Options
+         * @description Options method
+         */
+        options: operations["options58"];
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v2/ramps": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Query Ramps
+         * @description This endpoint is responsible for getting the Ramp list. For more details about this endpoint, see here [Ramps](https://killbapi.stoplight.io/docs/killb-v2/71722efcded7f)
+         */
+        get: operations["RampsController_getQuery"];
+        put?: never;
+        /**
+         * Create Ramps
+         * @description This endpoint is responsible for executing the Ramp (On or/and Off). For more details about this endpoint, see here [Ramps](https://killbapi.stoplight.io/docs/killb-v2/71722efcded7f)
+         */
+        post: operations["RampsController_create"];
+        delete?: never;
+        /**
+         * Options
+         * @description Options method
+         */
+        options: operations["options59"];
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v2/ramps/{id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Get Ramp by id
+         * @description This endpoint is responsible for getting the Ramp by id. For more details about this endpoint, see here [Ramps](https://killbapi.stoplight.io/docs/killb-v2/71722efcded7f)
+         */
+        get: operations["RampsController_getById"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        /**
+         * Options
+         * @description Options method
+         */
+        options: operations["options60"];
+        head?: never;
+        /**
+         * Update Ramp
+         * @description This endpoint is responsible for executing the Ramp (On or/and Off). For more details about this endpoint, see here [Ramps](https://killbapi.stoplight.io/docs/killb-v2/71722efcded7f)
+         */
+        patch: operations["RampsController_update"];
+        trace?: never;
+    };
+    "/api/v2/ramps/{id}/documents": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Upload ramp document
+         * @description Attach a PDF document to an existing ramp transfer.
+         */
+        post: operations["RampsController_uploadDocument"];
+        delete?: never;
+        /**
+         * Options
+         * @description Options method
+         */
+        options: operations["options61"];
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v2/ramps/{id}/status-history": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Get ramp status history
+         * @description This endpoint is responsible for getting the Ramp status history. For more details about this endpoint, see here [Ramps](https://killbapi.stoplight.io/docs/killb-v2/71722efcded7f)
+         */
+        get: operations["RampsController_getStatusHistoryById"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        /**
+         * Options
+         * @description Options method
+         */
+        options: operations["options62"];
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v2/ramps/{id}/receipt-json": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Get Ramp Receipt in JSON
+         * @description This endpoint is return an JSON receipt for the Ramp.
+         */
+        get: operations["RampsController_getJsonReceipt"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        /**
+         * Options
+         * @description Options method
+         */
+        options: operations["options63"];
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v2/banks": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get Bank list by countryCode */
+        get: operations["BankController_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        /**
+         * Options
+         * @description Options method
+         */
+        options: operations["options64"];
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v2/faker/cash-in": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Fake cash-in (SANDBOX)
+         * @description This endpoint is responsible for faking a cash-in.
+         */
+        post: operations["FakerController_fakeMxnCashIn"];
+        delete?: never;
+        /**
+         * Options
+         * @description Options method
+         */
+        options: operations["options65"];
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v2/faker/cash-out": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Fake cash-out confirmation (SANDBOX)
+         * @description This endpoint is responsible for faking a cash-out confirmation.
+         */
+        post: operations["FakerController_fakeCashOut"];
+        delete?: never;
+        /**
+         * Options
+         * @description Options method
+         */
+        options: operations["options66"];
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v2/virtual-accounts": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get all virtual accounts */
+        get: operations["VirtualAccountsController_getVirtualAccounts"];
+        put?: never;
+        /** Create virtual account */
+        post: operations["VirtualAccountsController_createVirtualAccount"];
+        delete?: never;
+        /**
+         * Options
+         * @description Options method
+         */
+        options: operations["options67"];
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v2/virtual-accounts/{id}/withdrawals": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get withdrawals from virtual account */
+        get: operations["VirtualAccountsController_getWithdrawals"];
+        put?: never;
+        /** Create withdrawal from virtual account */
+        post: operations["VirtualAccountsController_createWithdrawal"];
+        delete?: never;
+        /**
+         * Options
+         * @description Options method
+         */
+        options: operations["options68"];
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v2/virtual-accounts/withdrawals": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get all withdrawals from all virtual accounts */
+        get: operations["VirtualAccountsController_getAllWithdrawals"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        /**
+         * Options
+         * @description Options method
+         */
+        options: operations["options69"];
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v2/compliance/access-token": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Generate Sumsub access token */
+        post: operations["ComplianceController_generateAccessToken"];
+        delete?: never;
+        /**
+         * Options
+         * @description Options method
+         */
+        options: operations["options70"];
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v2/payouts": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List Payouts
+         * @description Returns a paginated list of payouts for the authenticated customer.
+         */
+        get: operations["PayoutController_getQuery"];
+        put?: never;
+        /**
+         * Create Payouts
+         * @description This endpoint is responsible for creating a payout.
+         */
+        post: operations["PayoutController_create"];
+        delete?: never;
+        /**
+         * Options
+         * @description Options method
+         */
+        options: operations["options71"];
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v2/payouts/{id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Get Payout by ID
+         * @description Returns a single payout by ID for the authenticated customer.
+         */
+        get: operations["PayoutController_getById"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        /**
+         * Options
+         * @description Options method
+         */
+        options: operations["options72"];
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v2/open-api-json": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Open API JSON
+         * @description API JSON schema with all endpoints
+         */
+        get: operations["getApiJson"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        /**
+         * Options
+         * @description Options method
+         */
+        options: operations["options73"];
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
 }
-
 export type webhooks = Record<string, never>;
-
 export interface components {
-  schemas: {
-    LoginDto: {
-      email: string;
-      password: string;
-    };
-    LoginResponseDto: {
-      accessToken: string;
-      /**
-       * @description Number in milliseconds
-       * @example 3600000
-       */
-      expiresIn: number;
-      refreshToken: string;
-    };
-    BadRequestArgument: {
-      /** @example email */
-      key: string;
-      /** @example invalid@email.com */
-      value: string;
-    };
-    BadRequestResponse: {
-      /** @example API_USER.0001 */
-      errorCode: string;
-      arguments: components["schemas"]["BadRequestArgument"][];
-      /**
-       * @example [
-       *   "User not found",
-       *   "Account not found"
-       * ]
-       */
-      message: string[];
-      /** @example 400 */
-      statusCode: string;
-    };
-    InternalServerErrorResponse: {
-      /** @example 500 */
-      statusCode: string;
-      /**
-       * @example [
-       *   "Internal server error"
-       * ]
-       */
-      message: string[];
-    };
-    RefreshDto: {
-      refreshToken: string;
-    };
-    RefreshResponseDto: {
-      refreshToken: string;
-      accessToken: string;
-      /**
-       * @description Number in milliseconds
-       * @example 3600000
-       */
-      expiresIn: number;
-    };
-    VerifyOtpDto: {
-      /** @description The otp to verify */
-      otp: string;
-      /** @description Email */
-      email: string;
-    };
-    GetBalancesResponseDto: {
-      id: string;
-      customerId: string;
-      accountId: string;
-      currency: string;
-      amount: string;
-      active: boolean;
-      /** Format: date-time */
-      createdAt: string;
-      /** Format: date-time */
-      updatedAt: string;
-    };
-    CreatePreFundAccountDto: {
-      /**
-       * @example USDC
-       * @enum {string}
-       */
-      currency: "USD" | "USDC" | "USDT";
-      /**
-       * @example POLYGON
-       * @enum {string}
-       */
-      network: "POLYGON" | "ERC20" | "SOLANA" | "TRON" | "ARBITRUM" | "BSC";
-    };
-    CreatePreFundAccountResponseDto: {
-      /**
-       * Format: uuid
-       * @example 123e4567-e89b-12d3-a456-426614174000
-       */
-      id: string;
-      /** @example PRE_FUND */
-      type: string;
-      /** @description A wallet address */
-      address: string;
-      /**
-       * @example USDC
-       * @enum {string}
-       */
-      currency: "USD" | "USDC" | "USDT";
-      /**
-       * @example POLYGON
-       * @enum {string}
-       */
-      network: "POLYGON" | "ERC20" | "SOLANA" | "TRON" | "ARBITRUM" | "BSC";
-      active: boolean;
-      /** Format: date-time */
-      createdAt: string;
-      /** Format: date-time */
-      updatedAt: string;
-    };
-    GetCustomerLiquidityResponseDto: {
-      currency: string;
-      amount: number;
-    };
-    GetPairsResponseDto: {
-      /** @description Available trading pairs */
-      availableProducts: string[];
-      /** @description Available trading pairs */
-      pairs: string[];
-      /**
-       * @description Available options for each currency
-       * @example {
-       *   "USDC": {
-       *     "regular": [
-       *       "POLYGON",
-       *       "SOLANA",
-       *       "TRON"
-       *     ],
-       *     "preFund": [
-       *       "PRE_FUND_POLYGON",
-       *       "PRE_FUND_SOLANA",
-       *       "PRE_FUND_TRON"
-       *     ]
-       *   },
-       *   "USDT": {
-       *     "regular": [
-       *       "POLYGON",
-       *       "SOLANA",
-       *       "TRON"
-       *     ],
-       *     "preFund": [
-       *       "PRE_FUND_POLYGON",
-       *       "PRE_FUND_SOLANA",
-       *       "PRE_FUND_TRON"
-       *     ]
-       *   },
-       *   "USD": {
-       *     "regular": [
-       *       "WIRE",
-       *       "SWIFT"
-       *     ],
-       *     "preFund": [
-       *       "PRE_FUND"
-       *     ]
-       *   },
-       *   "COP": {
-       *     "regular": [
-       *       "PSE",
-       *       "BANK_TRANSFER"
-       *     ],
-       *     "preFund": [
-       *       "PRE_FUND"
-       *     ]
-       *   },
-       *   "MXN": {
-       *     "regular": [
-       *       "SPEI"
-       *     ],
-       *     "preFund": [
-       *       "PRE_FUND"
-       *     ]
-       *   }
-       * }
-       */
-      options: {
-        [key: string]: {
-          regular?: string[];
-          preFund?: string[];
+    schemas: {
+        PublicSignupDto: {
+            /** @example user@example.com */
+            email: string;
+            /** @example P@ssw0rd123! */
+            password: string;
         };
-      };
-    };
-    FindOneDocumentResponseDto: {
-      /** @example 4d23aa52-1b40-4584-a8ea-58aba6099c5c */
-      id: string;
-      /** @example Document Report */
-      title: string;
-      /** @example TRANSACTION_REPORT */
-      type: string;
-      /** @example PENDING */
-      status: string;
-      /**
-       * Format: date-time
-       * @example 2021-01-01T00:00:00.000Z
-       */
-      createdAt: string;
-      /**
-       * Format: date-time
-       * @example 2021-01-01T00:00:00.000Z
-       */
-      updatedAt: string;
-      /** @example https://example.com/document.pdf */
-      documentUrl: string;
-    };
-    FindingAllDocumentsResponseDto: {
-      documents: components["schemas"]["FindOneDocumentResponseDto"][];
-    };
-    SignMultipleDocumentsResponseDto: {
-      /** @example Documents signed successfully */
-      message: string;
-      /**
-       * @example [
-       *   "4d23aa52-1b40-4584-a8ea-58aba6099c5c"
-       * ]
-       */
-      documentsSigned: string[];
-      /**
-       * @example [
-       *   {
-       *     "id": "4d23aa52-1b40-4584-a8ea-58aba6099c5c",
-       *     "reason": "Document not found"
-       *   }
-       * ]
-       */
-      documentAlreadySignedOrNotFound: string[];
-    };
-    SignDocumentResponseDto: {
-      /** @example Document signed successfully */
-      message: string;
-      /** @example 4d23aa52-1b40-4584-a8ea-58aba6099c5c */
-      documentId: string;
-      /** @example https://example.com/document.pdf */
-      documentUrl: string;
-      /** @example PENDING */
-      status: string;
-    };
-    GenerateDocumentResponseDto: {
-      /** @example Documents generated successfully */
-      message: string;
-      /**
-       * @example [
-       *   "4d23aa52-1b40-4584-a8ea-58aba6099c5c"
-       * ]
-       */
-      documents: string[];
-    };
-    CompanyUserDocumentDto: {
-      /**
-       * @example NIT
-       * @enum {string}
-       */
-      type: "NIT" | "EIN" | "CNPJ" | "RFC" | "CUIT" | "USCC" | "RUT";
-      /** @example 123456 */
-      number: string;
-      /** @example CO */
-      issuedCountryCode: string;
-    };
-    PersonUserDocumentDto: {
-      /**
-       * @example PASSPORT
-       * @enum {string}
-       */
-      type: "PASSPORT" | "DRIVER_LICENSE" | "NUIP" | "RFC" | "SSN" | "CURP" | "CPF" | "INE" | "IFE" | "DNI" | "DUI" | "NIT" | "RUT" | "CHINESE_ID" | "BOLIVIAN_ID";
-      /**
-       * Format: alphanumeric
-       * @example GE04292393
-       */
-      number: string;
-      /** @example CO */
-      issuedCountryCode: string;
-      /** @example 1992-01-01 */
-      expeditionDate?: string;
-      /**
-       * @description Required if document type is INE
-       * @example 1111111111
-       */
-      cic?: string;
-      /** @description Required if document type is INE */
-      identificadorCiudadano?: string;
-      /**
-       * @description Required if document type is IFE
-       * @example 1111111111
-       */
-      ocr?: string;
-      /** @description Required if document type is IFE */
-      numeroEmision?: string;
-    };
-    PSEAccountDto: {
-      /** @description Required if companyName is not present */
-      firstName: string;
-      middleName?: string;
-      /** @description Required if companyName is not present */
-      lastName: string;
-      /** @description Required if firstName is not present */
-      companyName: string;
-      email: string;
-      phone: string;
-      accountNumber: string;
-      /** @description You can find the code on the bank list endpoint */
-      bankCode: string;
-      /** @enum {string} */
-      type: "savings" | "checking";
-      countryCode: string;
-      document: components["schemas"]["CompanyUserDocumentDto"] | components["schemas"]["PersonUserDocumentDto"];
-    };
-    SpeiAccountDto: {
-      /** @description Required if companyName is not present */
-      firstName: string;
-      middleName?: string;
-      /** @description Required if companyName is not present */
-      lastName: string;
-      /** @description Required if firstName is not present */
-      companyName: string;
-      phone: string;
-      email: string;
-      document: components["schemas"]["CompanyUserDocumentDto"] | components["schemas"]["PersonUserDocumentDto"];
-      clabe: string;
-      /**
-       * @description ClabeType is necessary only for clabes with format PHONE_NUMBER, DEBIT_CARD
-       * @enum {string}
-       */
-      clabeType?: "CLABE" | "DEBIT_CARD" | "PHONE_NUMBER";
-      /** @description You can find the code on the bank list endpoint. BankCode is required only for the following clabe types: PHONE_NUMBER, DEBIT_CARD */
-      bankCode?: string;
-      countryCode: string;
-    };
-    WalletAccountDto: {
-      /** @description Required if companyName is not present */
-      firstName: string;
-      middleName?: string;
-      /** @description Required if companyName is not present */
-      lastName: string;
-      /** @description Required if firstName is not present */
-      companyName: string;
-      phone: string;
-      email: string;
-      document: components["schemas"]["CompanyUserDocumentDto"] | components["schemas"]["PersonUserDocumentDto"];
-      currency: string;
-      network: string;
-      address: string;
-      countryCode: string;
-    };
-    ACHAccountDto: {
-      /** @description Required if companyName is not present */
-      firstName: string;
-      middleName?: string;
-      /** @description Required if companyName is not present */
-      lastName: string;
-      /** @description Required if firstName is not present */
-      companyName: string;
-      email: string;
-      phone: string;
-      bankName: string;
-      routingNumber: string;
-      accountNumber: string;
-      type: string;
-      document: components["schemas"]["CompanyUserDocumentDto"] | components["schemas"]["PersonUserDocumentDto"];
-      countryCode: string;
-    };
-    AccountAddressDto: {
-      street1: string;
-      street2: string;
-      zipCode: string;
-      city: string;
-      stateCode: string;
-      countryCode: string;
-    };
-    WIREAccountDto: {
-      /** @description Required if companyName is not present */
-      firstName: string;
-      middleName?: string;
-      /** @description Required if companyName is not present */
-      lastName: string;
-      /** @description Required if firstName is not present */
-      companyName: string;
-      email: string;
-      phone: string;
-      accountNumber: string;
-      routingNumber: string;
-      bankName: string;
-      bankAddress: components["schemas"]["AccountAddressDto"];
-      document: components["schemas"]["CompanyUserDocumentDto"] | components["schemas"]["PersonUserDocumentDto"];
-      countryCode: string;
-    };
-    TransfiyaAccountDto: {
-      /** @description Required if companyName is not present */
-      firstName: string;
-      middleName?: string;
-      /** @description Required if companyName is not present */
-      lastName: string;
-      /** @description Required if firstName is not present */
-      companyName: string;
-      email: string;
-      phone: string;
-      account: string;
-      /** @enum {string} */
-      type: "PHONE_NUMBER" | "WALLET";
-      countryCode: string;
-      document: components["schemas"]["CompanyUserDocumentDto"] | components["schemas"]["PersonUserDocumentDto"];
-    };
-    SwiftAccountDto: {
-      /** @description Required if companyName is not present */
-      firstName: string;
-      middleName?: string;
-      /** @description Required if companyName is not present */
-      lastName: string;
-      /** @description Required if firstName is not present */
-      companyName: string;
-      email: string;
-      phone: string;
-      accountNumber: string;
-      bankName: string;
-      /** @description SWIFT code (8-11 characters) */
-      swiftCode: string;
-      bankAddress: components["schemas"]["AccountAddressDto"];
-      document: components["schemas"]["CompanyUserDocumentDto"] | components["schemas"]["PersonUserDocumentDto"];
-      countryCode: string;
-    };
-    CreateAccountDto: {
-      /** @enum {string} */
-      type: "PSE" | "ACH" | "WIRE" | "WALLET" | "COELSA" | "SPEI" | "CUSTODIAL" | "TRANSFIYA" | "SWIFT";
-      userId: string;
-      data: components["schemas"]["PSEAccountDto"] | components["schemas"]["SpeiAccountDto"] | components["schemas"]["WalletAccountDto"] | components["schemas"]["WIREAccountDto"] | components["schemas"]["ACHAccountDto"] | components["schemas"]["TransfiyaAccountDto"] | components["schemas"]["SwiftAccountDto"];
-      /** @description A unique identifier used to identify your existing user. */
-      externalId: string;
-    };
-    CreateAccountResponseDto: {
-      id: string;
-      userId: string;
-      type: string;
-      status: string;
-      data: components["schemas"]["PSEAccountDto"] | components["schemas"]["SpeiAccountDto"] | components["schemas"]["WalletAccountDto"] | components["schemas"]["WIREAccountDto"] | components["schemas"]["ACHAccountDto"] | components["schemas"]["SwiftAccountDto"];
-      /** @description A unique identifier used to identify your existing user. */
-      externalId: string;
-      complianceUrl: string;
-      /** Format: date-time */
-      createdAt: string;
-      /** Format: date-time */
-      updatedAt: string;
-    };
-    PSEUpdateAccountDto: {
-      accountNumber?: string;
-      bankCode?: string;
-      type?: string;
-      document?: components["schemas"]["CompanyUserDocumentDto"] | components["schemas"]["PersonUserDocumentDto"];
-    };
-    SPEIUpdateAccountDto: {
-      document?: components["schemas"]["CompanyUserDocumentDto"] | components["schemas"]["PersonUserDocumentDto"];
-      clabe?: string;
-      clabeType?: string;
-    };
-    WALLETUpdateAccountDto: {
-      document?: components["schemas"]["CompanyUserDocumentDto"] | components["schemas"]["PersonUserDocumentDto"];
-      currency?: string;
-      network?: string;
-      address?: string;
-    };
-    SwiftUpdateAccountDto: {
-      document?: components["schemas"]["CompanyUserDocumentDto"] | components["schemas"]["PersonUserDocumentDto"];
-      accountNumber?: string;
-      /** @description SWIFT code (8-11 characters) */
-      swiftCode?: string;
-      bankName?: string;
-      bankAddress?: components["schemas"]["AccountAddressDto"];
-    };
-    UpdateAccountDto: {
-      type: string;
-      data: components["schemas"]["PSEUpdateAccountDto"] | components["schemas"]["SPEIUpdateAccountDto"] | components["schemas"]["WALLETUpdateAccountDto"] | components["schemas"]["SwiftUpdateAccountDto"];
-    };
-    UpdateAccountResponseDto: {
-      id: string;
-      userId: string;
-      type: string;
-      status: string;
-      data: components["schemas"]["PSEAccountDto"] | components["schemas"]["SpeiAccountDto"] | components["schemas"]["WalletAccountDto"] | components["schemas"]["SwiftAccountDto"];
-      /** @description A unique identifier used to identify your existing user. */
-      externalId: string;
-      /** Format: date-time */
-      createdAt: string;
-      /** Format: date-time */
-      updatedAt: string;
-    };
-    QueryAccountDataResponseDto: {
-      id: string;
-      userId: string;
-      type: string;
-      status: string;
-      data: components["schemas"]["PSEAccountDto"] | components["schemas"]["SpeiAccountDto"] | components["schemas"]["WalletAccountDto"] | components["schemas"]["SwiftAccountDto"];
-      /** Format: date-time */
-      createdAt: string;
-      /** Format: date-time */
-      updatedAt: string;
-    };
-    QueryAccountResponseDto: {
-      totalPage: number;
-      accounts: components["schemas"]["QueryAccountDataResponseDto"][];
-    };
-    CreateWebhookDto: {
-      /** @example https://mywebhook.com */
-      url: string;
-      /** @example GJD6cyf6xbc@bvx6rvu */
-      secret: string;
-      events: ("RAMP" | "USER" | "TRANSACTION" | "ACCOUNT" | "CUSTODIAL_ACCOUNT")[];
-    };
-    CreateWebhookResponseDto: {
-      /** @example 4d23aa52-1b40-4584-a8ea-58aba6099c5c */
-      id: string;
-      /** @example 8ffce092-b97a-48bd-9efa-24c66ac7fe13 */
-      customerId: string;
-      /** @example https://mywebhook.com */
-      url: string;
-      events: ("RAMP" | "USER" | "TRANSACTION" | "ACCOUNT" | "CUSTODIAL_ACCOUNT")[];
-      /** @example true */
-      active: boolean;
-      /**
-       * Format: date-time
-       * @example 2024-02-06T00:03:30.791Z
-       */
-      createdAt: string;
-      /**
-       * Format: date-time
-       * @example 2024-02-06T00:03:30.791Z
-       */
-      updatedAt: string;
-    };
-    UpdateWebhookDto: {
-      /** @example https://mywebhook.com */
-      url: string;
-      active: boolean;
-      /** @example GJD6cyf6xbc@bvx6rvu */
-      secret: string;
-      events: ("RAMP" | "USER" | "TRANSACTION" | "ACCOUNT" | "CUSTODIAL_ACCOUNT")[];
-    };
-    UpdateWebhookResponseDto: {
-      /** @example 4d23aa52-1b40-4584-a8ea-58aba6099c5c */
-      id: string;
-      /** @example 8ffce092-b97a-48bd-9efa-24c66ac7fe13 */
-      customerId: string;
-      /** @example https://mywebhook.com */
-      url: string;
-      events: ("RAMP" | "USER" | "TRANSACTION" | "ACCOUNT" | "CUSTODIAL_ACCOUNT")[];
-      /** @example true */
-      active: boolean;
-      /**
-       * Format: date-time
-       * @example 2024-02-06T00:03:30.791Z
-       */
-      createdAt: string;
-      /**
-       * Format: date-time
-       * @example 2024-02-06T00:03:30.791Z
-       */
-      updatedAt: string;
-    };
-    GetWebhookResponseDto: {
-      /** @example 4d23aa52-1b40-4584-a8ea-58aba6099c5c */
-      id: string;
-      /** @example 8ffce092-b97a-48bd-9efa-24c66ac7fe13 */
-      customerId: string;
-      /** @example https://mywebhook.com */
-      url: string;
-      events: ("RAMP" | "USER" | "TRANSACTION" | "ACCOUNT" | "CUSTODIAL_ACCOUNT")[];
-      /** @example true */
-      active: boolean;
-      /**
-       * Format: date-time
-       * @example 2024-02-06T00:03:30.791Z
-       */
-      createdAt: string;
-      /**
-       * Format: date-time
-       * @example 2024-02-06T00:03:30.791Z
-       */
-      updatedAt: string;
-    };
-    WebhookEvent: Record<string, never>;
-    UserAddressDto: {
-      /** @example 68528 Dwight Court */
-      street1: string;
-      /** @example Apt 488 */
-      street2?: string;
-      /** @example Fiorenze */
-      city: string;
-      /** @example New York */
-      state: string;
-      /** @example 48245000 */
-      zipCode: string;
-      /** @example CO */
-      countryCode: string;
-    };
-    InvestmentProfile: {
-      /**
-       * @example EMPLOYMENT
-       * @enum {string}
-       */
-      primarySourceOfFunds: "EMPLOYMENT" | "SAVINGS" | "WINNINGS" | "MARITAL" | "REAL_ESTATE" | "TRUST" | "INVESTMENT" | "OTHER" | "COMPANY" | "COMPANY_CAPITAL" | "LOAN" | "PRIVATE_CAPITAL" | "GRANT";
-      /** @example I work at Google */
-      primarySourceOfFundsDescription: string;
-      /**
-       * @example UPTO_10K
-       * @enum {string}
-       */
-      totalAssets: "UPTO_10K" | "TEN_TO_100K" | "ONEHUNDREDK_TO_1M" | "ONE_TO_10M" | "TEN_TO_50M" | "FIFTY_TO_250M" | "MORE_THAN_250M";
-      /**
-       * @example UPTO_10K
-       * @enum {string}
-       */
-      usdValueOfFiat: "UPTO_10K" | "TEN_TO_100K" | "ONEHUNDREDK_TO_1M" | "ONE_TO_10M" | "TEN_TO_50M" | "FIFTY_TO_250M" | "MORE_THAN_250M";
-      /**
-       * @example UPTO_5
-       * @enum {string}
-       */
-      monthlyDeposits: "UPTO_5" | "FIVE_TO_10" | "TEN_TO_25" | "MORE_THAN_25";
-      /**
-       * @example UPTO_5
-       * @enum {string}
-       */
-      monthlyWithdrawals: "UPTO_5" | "FIVE_TO_10" | "TEN_TO_25" | "MORE_THAN_25";
-      /**
-       * @example UPTO_1K
-       * @enum {string}
-       */
-      monthlyInvestmentDeposit: "UPTO_1K" | "ONE_TO_100K" | "ONEHUNDREDK_TO_1M" | "MILLION_TO_5M" | "MORE_THAN_5M";
-      /**
-       * @example UPTO_1K
-       * @enum {string}
-       */
-      monthlyInvestmentWithdrawal: "UPTO_1K" | "ONE_TO_100K" | "ONEHUNDREDK_TO_1M" | "MILLION_TO_5M" | "MORE_THAN_5M";
-      /**
-       * @example UPTO_1K
-       * @enum {string}
-       */
-      usdValueOfCrypto: "UPTO_1K" | "ONE_TO_100K" | "ONEHUNDREDK_TO_1M" | "MILLION_TO_5M" | "MORE_THAN_5M";
-      /**
-       * @example UPTO_5
-       * @enum {string}
-       */
-      monthlyCryptoDeposits: "UPTO_5" | "FIVE_TO_10" | "TEN_TO_25" | "MORE_THAN_25";
-      /**
-       * @example UPTO_5
-       * @enum {string}
-       */
-      monthlyCryptoWithdrawals: "UPTO_5" | "FIVE_TO_10" | "TEN_TO_25" | "MORE_THAN_25";
-      /**
-       * @example UPTO_1K
-       * @enum {string}
-       */
-      monthlyCryptoInvestmentDeposit: "UPTO_1K" | "ONE_TO_100K" | "ONEHUNDREDK_TO_1M" | "MILLION_TO_5M" | "MORE_THAN_5M";
-      /**
-       * @example UPTO_1K
-       * @enum {string}
-       */
-      monthlyCryptoInvestmentWithdrawal: "UPTO_1K" | "ONE_TO_100K" | "ONEHUNDREDK_TO_1M" | "MILLION_TO_5M" | "MORE_THAN_5M";
-    };
-    KycProfile: {
-      fundsSendReceiveJurisdictions: string[];
-      /** @example NONE */
-      engageInActivities: ("NONE" | "ADULT_ENTERTAINMENT" | "DRUGS" | "FIREARMS" | "GAMBLING" | "MARIJUANA" | "TUMBLING")[];
-    };
-    CreatePersonUserDto: {
-      /** @example John */
-      firstName: string;
-      /** @example Carlos */
-      middleName?: string;
-      /** @example Francisco */
-      lastName: string;
-      /** @example 1992-01-01 */
-      dateOfBirth: string;
-      /** @example example@test.com */
-      email: string;
-      /** @example +576015555555 */
-      phone: string;
-      address: components["schemas"]["UserAddressDto"];
-      document: components["schemas"]["PersonUserDocumentDto"];
-      /** @example CO */
-      nationality?: string;
-      /** @example CO */
-      citizenship?: string;
-      /**
-       * @example EMPLOYEE
-       * @enum {string}
-       */
-      employmentStatus?: "EMPLOYEE" | "SELF_EMPLOYED" | "RETIRED" | "UNEMPLOYED" | "OTHER";
-      /** @example Software Engineer */
-      employmentDescription?: string;
-      /** @example Google */
-      employerName?: string;
-      /** @example Software Engineer */
-      occupation?: string;
-      investmentProfile?: components["schemas"]["InvestmentProfile"];
-      kycProfile?: components["schemas"]["KycProfile"];
-    };
-    CompanyKycProfile: {
-      fundsSendReceiveJurisdictions: string[];
-      /** @example NONE */
-      engageInActivities: ("NONE" | "ADULT_ENTERTAINMENT" | "DRUGS" | "FIREARMS" | "GAMBLING" | "MARIJUANA" | "TUMBLING")[];
-      /**
-       * @example NONE
-       * @enum {string}
-       */
-      regulatedStatus: "REGULATED" | "REGISTERED" | "LICENSED" | "NONE" | "NOT_REQUIRED";
-      /** @example Electronic sales */
-      descriptionOfBusinessNature: string;
-    };
-    CreateCompanyUserDto: {
-      /** @example Gerlach, Baumbach and Bernhard */
-      companyName: string;
-      /** @example Babbleopia */
-      tradeName?: string;
-      /** @example 123456 */
-      registeredNumber?: string;
-      /** @enum {string} */
-      legalStructure?: "C_CORP_PRIVATE" | "C_CORP_PUBLIC" | "HNWI" | "LLC" | "LLP" | "LP" | "S_CORP" | "SOLE_PROP" | "TRUST" | "NON_PROFIT" | "OTHER";
-      description?: string;
-      establishedOn?: string;
-      phone?: string;
-      email?: string;
-      address: components["schemas"]["UserAddressDto"];
-      mainOwnerUser?: string;
-      ownerUsers?: string[];
-      naics?: string;
-      naicsDescription?: string;
-      document: components["schemas"]["CompanyUserDocumentDto"];
-      investmentProfile?: components["schemas"]["InvestmentProfile"];
-      kycProfile?: components["schemas"]["CompanyKycProfile"];
-    };
-    CreateUserDto: {
-      /**
-       * @example PERSON
-       * @enum {string}
-       */
-      type: "PERSON" | "COMPANY";
-      data: components["schemas"]["CreatePersonUserDto"] | components["schemas"]["CreateCompanyUserDto"];
-      /**
-       * @description A unique identifier used to identify your existing user.
-       * @example d00e4f43-2022-42f3-ba1c-dcf4c1dcd934
-       */
-      externalId?: string;
-    };
-    PersonUserDto: {
-      /** @example John */
-      firstName: string;
-      /** @example Carlos */
-      middleName?: string;
-      /** @example Francisco */
-      lastName: string;
-      /** @example 1992-01-01 */
-      dateOfBirth: string;
-      /** @example example@test.com */
-      email: string;
-      /** @example +576015555555 */
-      phone: string;
-      address: components["schemas"]["UserAddressDto"];
-      document: components["schemas"]["PersonUserDocumentDto"];
-      /** @example CO */
-      nationality?: string;
-      /** @example CO */
-      citizenship?: string;
-      /**
-       * @example EMPLOYEE
-       * @enum {string}
-       */
-      employmentStatus?: "EMPLOYEE" | "SELF_EMPLOYED" | "RETIRED" | "UNEMPLOYED" | "OTHER";
-      /** @example Software Engineer */
-      employmentDescription?: string;
-      /** @example Google */
-      employerName?: string;
-      /** @example Software Engineer */
-      occupation?: string;
-      investmentProfile?: components["schemas"]["InvestmentProfile"];
-      kycProfile?: components["schemas"]["KycProfile"];
-    };
-    CompanyUserDto: {
-      /** @example Gerlach, Baumbach and Bernhard */
-      companyName: string;
-      /** @example Babbleopia */
-      tradeName?: string;
-      /** @example 123456 */
-      registeredNumber?: string;
-      /** @enum {string} */
-      legalStructure?: "C_CORP_PRIVATE" | "C_CORP_PUBLIC" | "HNWI" | "LLC" | "LLP" | "LP" | "S_CORP" | "SOLE_PROP" | "TRUST" | "NON_PROFIT" | "OTHER";
-      description?: string;
-      establishedOn?: string;
-      phone?: string;
-      email?: string;
-      address: components["schemas"]["UserAddressDto"];
-      mainOwnerUser?: string;
-      ownerUsers?: string[];
-      naics?: string;
-      naicsDescription?: string;
-      document: components["schemas"]["CompanyUserDocumentDto"];
-      investmentProfile?: components["schemas"]["InvestmentProfile"];
-      kycProfile?: components["schemas"]["CompanyKycProfile"];
-    };
-    CreateUserResponseDto: {
-      /** @example 4d23aa52-1b40-4584-a8ea-58aba6099c5c */
-      id: string;
-      /**
-       * @example ACTIVE
-       * @enum {string}
-       */
-      status: "ACTIVE" | "PENDING" | "REJECTED";
-      /** @example 8ffce092-b97a-48bd-9efa-24c66ac7fe13 */
-      customerId: string;
-      /**
-       * @example PERSON
-       * @enum {string}
-       */
-      type: "PERSON" | "COMPANY";
-      data: components["schemas"]["PersonUserDto"] | components["schemas"]["CompanyUserDto"];
-      /**
-       * @description A unique identifier used to identify your existing user.
-       * @example d00e4f43-2022-42f3-ba1c-dcf4c1dcd934
-       */
-      externalId?: string;
-      /** @example https://kyc.example.com */
-      complianceUrl: string;
-      /**
-       * @example L0
-       * @enum {string}
-       */
-      accessLevel: "L0" | "L1" | "L2" | "L3" | "L4";
-      /** @description give you details about the compliance process */
-      note: string;
-      /** @example true */
-      active: boolean;
-      /**
-       * Format: date-time
-       * @example 2024-02-06T00:03:30.791Z
-       */
-      createdAt: string;
-      /**
-       * Format: date-time
-       * @example 2024-02-06T00:03:30.791Z
-       */
-      updatedAt: string;
-    };
-    GetUserQueryResponse: {
-      users: components["schemas"]["CreateUserResponseDto"][];
-      /** @example 1 */
-      totalPage: number;
-    };
-    GetUserByIdResponse: {
-      /** @example 4d23aa52-1b40-4584-a8ea-58aba6099c5c */
-      id: string;
-      /**
-       * @example ACTIVE
-       * @enum {string}
-       */
-      status: "ACTIVE" | "PENDING" | "REJECTED";
-      /** @example 8ffce092-b97a-48bd-9efa-24c66ac7fe13 */
-      customerId: string;
-      /**
-       * @example PERSON
-       * @enum {string}
-       */
-      type: "PERSON" | "COMPANY";
-      data: components["schemas"]["PersonUserDto"] | components["schemas"]["CompanyUserDto"];
-      /**
-       * @description A unique identifier used to identify your existing user.
-       * @example d00e4f43-2022-42f3-ba1c-dcf4c1dcd934
-       */
-      externalId?: string;
-      /** @example https://kyc.example.com */
-      complianceUrl: string;
-      /**
-       * @example L0
-       * @enum {string}
-       */
-      accessLevel: "L0" | "L1" | "L2" | "L3" | "L4";
-      /** @description give you details about the compliance process */
-      note: string;
-      /** @example true */
-      active: boolean;
-      /**
-       * Format: date-time
-       * @example 2024-02-06T00:03:30.791Z
-       */
-      createdAt: string;
-      /**
-       * Format: date-time
-       * @example 2024-02-06T00:03:30.791Z
-       */
-      updatedAt: string;
-    };
-    UploadPersonDocumentDto: {
-      /** Format: uuid */
-      userId: string;
-      /**
-       * @example CURP
-       * @enum {string}
-       */
-      documentType: "PROVE_OF_ADDRESS_BANK_STATEMENT" | "PROVE_OF_ADDRESS_UTILITY_BILL" | "PROVE_OF_ADDRESS_LEASE_AGREEMENT" | "SOURCE_OF_FUNDS_BANK_STATEMENT" | "SOURCE_OF_FUNDS_PAYSLIP" | "KYC_REPORT" | "PASSPORT" | "DRIVER_LICENSE" | "NUIP" | "RFC" | "SSN" | "CURP" | "CPF" | "INE" | "IFE" | "DNI" | "DUI" | "CHINESE_ID" | "BOLIVIAN_ID";
-      /**
-       * Format: binary
-       * @description Front document file
-       */
-      frontDocument: string;
-      /**
-       * Format: binary
-       * @description Back document file
-       */
-      backDocument?: string;
-    };
-    UploadBusinessDocumentDto: {
-      /** Format: uuid */
-      userId: string;
-      /**
-       * @example NIT
-       * @enum {string}
-       */
-      documentType: "PROVE_OF_ADDRESS_BANK_STATEMENT" | "PROVE_OF_ADDRESS_UTILITY_BILL" | "PROVE_OF_ADDRESS_LEASE_AGREEMENT" | "SOURCE_OF_FUNDS_BANK_STATEMENT" | "SOURCE_OF_FUNDS_PAYSLIP" | "PROOF_OF_COMPANY_FORMATION" | "ARTICLES_OF_INCORPORATION" | "INCORPORATION_DOCUMENTS" | "KYB_REPORT" | "NIT" | "RUT" | "OTHER" | "USCC";
-      /**
-       * Format: binary
-       * @description Front document file
-       */
-      frontDocument: string;
-      /**
-       * Format: binary
-       * @description Back document file
-       */
-      backDocument?: string;
-    };
-    ILevelUpdateInput: Record<string, never>;
-    ILevelDowngradeInput: Record<string, never>;
-    SavingsCustodialAccountDto: {
-      /** Format: UUID */
-      userId: string;
-      /** @description Accept terms and conditions */
-      acceptedTermsAndConditions: boolean;
-    };
-    SavingsAccountResponseDto: {
-      /** Format: uuid */
-      id: string;
-      /** Format: uuid */
-      userId: string;
-      /** @enum {string} */
-      status: "PENDING" | "COMPLETED" | "REJECTED";
-      /** Format: date-time */
-      createdAt: string;
-      /** Format: date-time */
-      updatedAt: string;
-    };
-    TransactionsDataReturn: {
-      /** @example 4d23aa52-1b40-4584-a8ea-58aba6099c5c */
-      id: string;
-      /** @example 8ffce092-b97a-48bd-9efa-24c66ac7fe13 */
-      customerId: string;
-      /** @example 9d23aa10-1b40-4584-a8ea-58aba6099c5c */
-      userId: string;
-      /** @example 2e200eb1-d89e-40a3-bb74-45ce3ba61e95 */
-      originAccountId: string;
-      /** @example f09c5ef6-c15c-4de5-b2dd-1a44d062dc7f */
-      destinationAccountId: string;
-      /** @example 322.1 */
-      amount: string;
-      /**
-       * @example DEPOSIT
-       * @enum {string}
-       */
-      type: "DEPOSIT" | "WITHDRAWAL";
-      /** @example USD */
-      currency: string;
-      /**
-       * Format: date-time
-       * @example 2024-02-06T00:03:30.791Z
-       */
-      createdAt: string;
-      /**
-       * Format: date-time
-       * @example 2024-02-06T00:03:30.791Z
-       */
-      updatedAt: string;
-    };
-    IGetTransactionsReturn: {
-      transactions: components["schemas"]["TransactionsDataReturn"][];
-      /** @example 1 */
-      totalPage: number;
-    };
-    SourceDataDto: {
-      savingsAccountId: string;
-    };
-    DestinationDataDto: {
-      savingsAccountId: string;
-      externalAccountId: string;
-    };
-    CreateWithdrawalDto: {
-      source: components["schemas"]["SourceDataDto"];
-      destination: components["schemas"]["DestinationDataDto"];
-      amount: number;
-      comment: string;
-    };
-    Source: {
-      currency: string;
-      custodialAccountId: string;
-    };
-    Destination: {
-      currency: string;
-      externalAccountId: string;
-    };
-    WithdrawalSavingsReturn: {
-      /** Format: uuid */
-      id: string;
-      /** @enum {string} */
-      status: "CREATED" | "PENDING" | "PROCESSING" | "CONFIRMED" | "REFUNDED" | "COMPLETED" | "CANCELED" | "EXPIRED" | "FAILED" | "ERROR" | "REJECTED";
-      amount: number;
-      /** Format: uuid */
-      userId: string;
-      /** @enum {string} */
-      type: "DEPOSIT" | "WITHDRAWAL";
-      source: components["schemas"]["Source"];
-      destination: components["schemas"]["Destination"];
-      /** Format: date-time */
-      createdAt: string;
-      /** Format: date-time */
-      updatedAt: string;
-    };
-    GetBalanceReturn: {
-      /** @example USD */
-      currency: string;
-      amount: number;
-    };
-    InstitutionAddressDto: {
-      /** @example Main Street1 */
-      street1: string;
-      /** @example New York */
-      city: string;
-      /** @example NJ */
-      state: string;
-      /** @example 12345 */
-      postalCode: string;
-      /** @example US */
-      countryCode: string;
-    };
-    GetDepositInstructionsReturn: {
-      /**
-       * @example ACH
-       * @enum {string}
-       */
-      type: "ACH" | "WIRE";
-      /** @example USD */
-      currency?: string;
-      /** @example Bank Name */
-      accountHolderName: string;
-      /** @example 111111111111 */
-      accountNumber: string;
-      /** @example 222222222 */
-      routingNumber: string;
-      /** @example A1AABCD */
-      memo?: string;
-      bankAddress?: components["schemas"]["InstitutionAddressDto"];
-      /** @example AABBCC3311DZEF */
-      depositMessage?: string;
-      /** @example KillB Bank Name */
-      bankBeneficiaryName?: string;
-    };
-    GetCryptoDepositInstructionsReturn: {
-      /** @example 0x */
-      address: string;
-      /** @example POLYGON */
-      network: string;
-      /** @example USDC */
-      currency: string;
-    };
-    CreateQuotationDto: {
-      /** @enum {string} */
-      fromCurrency: "MXN" | "COP" | "USD" | "USDC" | "USDT";
-      /** @enum {string} */
-      toCurrency: "MXN" | "COP" | "USDC" | "USDT" | "HKD" | "EUR" | "USD" | "PEN";
-      amount: number;
-      amountIsToCurrency: boolean;
-      /** @enum {string} */
-      cashInMethod: "SPEI" | "POLYGON" | "ERC20" | "PSE" | "PRE_FUND" | "PRE_FUND_POLYGON" | "PRE_FUND_ERC20" | "PRE_FUND_SOLANA" | "PRE_FUND_TRON" | "PRE_FUND_ARBITRUM" | "TRANSFIYA" | "SOLANA" | "BSC" | "TRON";
-      /** @enum {string} */
-      cashOutMethod: "SPEI" | "POLYGON" | "ERC20" | "PSE" | "TRANSFIYA" | "SOLANA" | "BSC" | "TRON" | "WIRE" | "ACH" | "CCI" | "SWIFT";
-      /**
-       * @description Flag to indicate if this is a fast pay quotation
-       * @default false
-       */
-      isFastPay: boolean;
-    };
-    CreateQuotationResponseDto: {
-      id: string;
-      /** @enum {string} */
-      fromCurrency: "MXN" | "COP" | "USD" | "USDC" | "USDT";
-      /** @enum {string} */
-      toCurrency: "MXN" | "COP" | "USDC" | "USDT" | "HKD" | "EUR" | "USD" | "PEN";
-      fromAmount: number;
-      toAmount: number;
-      rate: number;
-      spotPrice: number;
-      expiresAt: number;
-      /** @enum {string} */
-      cashInMethod: "SPEI" | "POLYGON" | "ERC20" | "PSE" | "PRE_FUND" | "PRE_FUND_POLYGON" | "PRE_FUND_ERC20" | "PRE_FUND_SOLANA" | "PRE_FUND_TRON" | "PRE_FUND_ARBITRUM" | "TRANSFIYA" | "SOLANA" | "BSC" | "TRON";
-      /** @enum {string} */
-      cashOutMethod: "SPEI" | "POLYGON" | "ERC20" | "PSE" | "TRANSFIYA" | "SOLANA" | "BSC" | "TRON" | "WIRE" | "ACH" | "CCI" | "SWIFT";
-      /** @description Flag to indicate if this is a fast pay quotation */
-      isFastPay: boolean;
-    };
-    UpdateQuotationDto: {
-      fromAmount: number;
-      toAmount: number;
-    };
-    SimulateQuotationResponseDto: {
-      /** @enum {string} */
-      fromCurrency: "MXN" | "COP" | "USD" | "USDC" | "USDT";
-      /** @enum {string} */
-      toCurrency: "MXN" | "COP" | "USDC" | "USDT" | "HKD" | "EUR" | "USD" | "PEN";
-      fromAmount: number;
-      toAmount: number;
-      rate: number;
-      /** @enum {string} */
-      cashInMethod: "SPEI" | "POLYGON" | "ERC20" | "PSE" | "PRE_FUND" | "PRE_FUND_POLYGON" | "PRE_FUND_ERC20" | "PRE_FUND_SOLANA" | "PRE_FUND_TRON" | "PRE_FUND_ARBITRUM" | "TRANSFIYA" | "SOLANA" | "BSC" | "TRON";
-      /** @enum {string} */
-      cashOutMethod: "SPEI" | "POLYGON" | "ERC20" | "PSE" | "TRANSFIYA" | "SOLANA" | "BSC" | "TRON" | "WIRE" | "ACH" | "CCI" | "SWIFT";
-    };
-    GetQuotationResponseDto: {
-      /** @enum {string} */
-      fromCurrency: "MXN" | "COP" | "USD" | "USDC" | "USDT";
-      /** @enum {string} */
-      toCurrency: "MXN" | "COP" | "USDC" | "USDT" | "HKD" | "EUR" | "USD" | "PEN";
-      amount: number;
-      amountIsToCurrency: boolean;
-      /** @enum {string} */
-      cashInMethod: "SPEI" | "POLYGON" | "ERC20" | "PSE" | "PRE_FUND" | "PRE_FUND_POLYGON" | "PRE_FUND_ERC20" | "PRE_FUND_SOLANA" | "PRE_FUND_TRON" | "PRE_FUND_ARBITRUM" | "TRANSFIYA" | "SOLANA" | "BSC" | "TRON";
-      /** @enum {string} */
-      cashOutMethod: "SPEI" | "POLYGON" | "ERC20" | "PSE" | "TRANSFIYA" | "SOLANA" | "BSC" | "TRON" | "WIRE" | "ACH" | "CCI" | "SWIFT";
-      /**
-       * @description Flag to indicate if this is a fast pay quotation
-       * @default false
-       */
-      isFastPay: boolean;
-    };
-    SPEIRefundInstruction: {
-      clabe: string;
-      /** @example Bruce Wayne */
-      beneficiary: string;
-    };
-    CryptoRefundInstruction: {
-      /**
-       * @example POLYGON
-       * @enum {string}
-       */
-      network: "POLYGON" | "SOLANA" | "BSC" | "TRON";
-      /** @example Ox */
-      address: string;
-      /**
-       * @example USDC
-       * @enum {string}
-       */
-      asset: "USDC" | "USDT";
-    };
-    CreateRampAccount: {
-      id: string;
-      amount: number;
-    };
-    CashInDetails: {
-      transfiyaAccount?: string;
-    };
-    RampDetails: {
-      cashIn?: components["schemas"]["CashInDetails"];
-    };
-    CreateRampInputDto: {
-      quotationId: string;
-      userId: string;
-      accountId?: string;
-      accounts?: components["schemas"]["CreateRampAccount"][];
-      /** @description You have to use the same method used in the quotation for the deposit */
-      refundInstructions?: components["schemas"]["SPEIRefundInstruction"] | components["schemas"]["CryptoRefundInstruction"];
-      /** @description You can send an external id to avoid duplicate ramps */
-      externalId?: string;
-      details?: components["schemas"]["RampDetails"];
-    };
-    ISPEIPaymentInfo: {
-      network: string;
-      Bank: string;
-      Beneficiary: string;
-      CLABE: string;
-      /** @description This code needs to be sent for KillB be able to identify the payment */
-      concepto: string;
-    };
-    ICOPPaymentInfo: {
-      url: string;
-    };
-    ICryptoPaymentInfo: {
-      network: string;
-      address: string;
-    };
-    RampDocumentResponseDto: {
-      documentType: string;
-      /** @description Path of the file stored in Google Cloud Storage */
-      filePath: string;
-      /** Format: date-time */
-      uploadedAt: string;
-    };
-    CreateRampResponseDto: {
-      id: string;
-      active: boolean;
-      /** @enum {string} */
-      fromCurrency: "MXN" | "COP" | "USD" | "USDC" | "USDT";
-      /** @enum {string} */
-      toCurrency: "MXN" | "COP" | "USDC" | "USDT" | "HKD" | "EUR" | "USD" | "PEN";
-      fromAmount: number;
-      toAmount: number;
-      quotationId: string;
-      userId: string;
-      /** @enum {string} */
-      cashInMethod: "SPEI" | "POLYGON" | "ERC20" | "PSE" | "PRE_FUND" | "PRE_FUND_POLYGON" | "PRE_FUND_ERC20" | "PRE_FUND_SOLANA" | "PRE_FUND_TRON" | "PRE_FUND_ARBITRUM" | "TRANSFIYA" | "SOLANA" | "BSC" | "TRON";
-      /** @enum {string} */
-      cashOutMethod: "SPEI" | "POLYGON" | "ERC20" | "PSE" | "TRANSFIYA" | "SOLANA" | "BSC" | "TRON" | "WIRE" | "ACH" | "CCI" | "SWIFT";
-      accountId: string;
-      accounts?: components["schemas"]["CreateRampAccount"][];
-      /** @enum {string} */
-      status: "CREATED" | "CASH_IN_REQUEST" | "CONVERSION_REQUEST" | "CASH_OUT_REQUEST" | "CASH_IN_REQUESTED" | "CONVERSION_REQUESTED" | "CASH_OUT_REQUESTED" | "CASH_IN_PENDING" | "CONVERSION_PENDING" | "CASH_OUT_PENDING" | "CASH_IN_PROCESSING" | "CONVERSION_PROCESSING" | "CASH_OUT_PROCESSING" | "CASH_IN_COMPLETED" | "CONVERSION_COMPLETED" | "CASH_OUT_COMPLETED" | "COMPLETED" | "CANCELED" | "FAILED" | "REJECTED" | "ERROR";
-      isPreFunded?: boolean;
-      paymentInfo?: (components["schemas"]["ISPEIPaymentInfo"] | components["schemas"]["ICOPPaymentInfo"] | components["schemas"]["ICryptoPaymentInfo"])[];
-      /** @description complement information about a transfer, like: Code error */
-      details?: string;
-      /** @description Proof of transfer, like: TxHash, url, etc. */
-      transferProof?: string;
-      /** @description External id to avoid duplicate ramps */
-      externalId?: string;
-      isFastPay?: boolean;
-      /** @enum {string} */
-      type: "ON" | "OFF";
-      documents?: components["schemas"]["RampDocumentResponseDto"][];
-      /** Format: date-time */
-      createdAt: string;
-      /** Format: date-time */
-      updatedAt: string;
-    };
-    PatchRampInputDto: {
-      accounts?: components["schemas"]["CreateRampAccount"][];
-    };
-    GetRampQueryResponseDto: {
-      ramps: components["schemas"]["CreateRampResponseDto"][];
-      totalPage: number;
-    };
-    GetRampByIdResponseDto: {
-      id: string;
-      active: boolean;
-      /** @enum {string} */
-      fromCurrency: "MXN" | "COP" | "USD" | "USDC" | "USDT";
-      /** @enum {string} */
-      toCurrency: "MXN" | "COP" | "USDC" | "USDT" | "HKD" | "EUR" | "USD" | "PEN";
-      fromAmount: number;
-      toAmount: number;
-      quotationId: string;
-      userId: string;
-      /** @enum {string} */
-      cashInMethod: "SPEI" | "POLYGON" | "ERC20" | "PSE" | "PRE_FUND" | "PRE_FUND_POLYGON" | "PRE_FUND_ERC20" | "PRE_FUND_SOLANA" | "PRE_FUND_TRON" | "PRE_FUND_ARBITRUM" | "TRANSFIYA" | "SOLANA" | "BSC" | "TRON";
-      /** @enum {string} */
-      cashOutMethod: "SPEI" | "POLYGON" | "ERC20" | "PSE" | "TRANSFIYA" | "SOLANA" | "BSC" | "TRON" | "WIRE" | "ACH" | "CCI" | "SWIFT";
-      accountId: string;
-      accounts?: components["schemas"]["CreateRampAccount"][];
-      /** @enum {string} */
-      status: "CREATED" | "CASH_IN_REQUEST" | "CONVERSION_REQUEST" | "CASH_OUT_REQUEST" | "CASH_IN_REQUESTED" | "CONVERSION_REQUESTED" | "CASH_OUT_REQUESTED" | "CASH_IN_PENDING" | "CONVERSION_PENDING" | "CASH_OUT_PENDING" | "CASH_IN_PROCESSING" | "CONVERSION_PROCESSING" | "CASH_OUT_PROCESSING" | "CASH_IN_COMPLETED" | "CONVERSION_COMPLETED" | "CASH_OUT_COMPLETED" | "COMPLETED" | "CANCELED" | "FAILED" | "REJECTED" | "ERROR";
-      isPreFunded?: boolean;
-      paymentInfo?: (components["schemas"]["ISPEIPaymentInfo"] | components["schemas"]["ICOPPaymentInfo"] | components["schemas"]["ICryptoPaymentInfo"])[];
-      /** @description complement information about a transfer, like: Code error */
-      details?: string;
-      /** @description Proof of transfer, like: TxHash, url, etc. */
-      transferProof?: string;
-      /** @description External id to avoid duplicate ramps */
-      externalId?: string;
-      isFastPay?: boolean;
-      /** @enum {string} */
-      type: "ON" | "OFF";
-      documents?: components["schemas"]["RampDocumentResponseDto"][];
-      /** Format: date-time */
-      createdAt: string;
-      /** Format: date-time */
-      updatedAt: string;
-    };
-    GetRampStatusResponseDto: Record<string, never>;
-    BackOfficeBatchFileCreate: Record<string, never>;
-    GetBanksResponseDto: {
-      /** @example 0001 */
-      code: string;
-      /** @example BANCOMEXT */
-      companyName: string;
-      /** @example MX */
-      countryCode: string;
-      /** @example BANCOMEXT */
-      tradeName: string;
-      /** Format: date-time */
-      updatedAt: string;
-      /** Format: date-time */
-      createdAt: string;
-      accountTypes: string[];
-      /** Format: uuid */
-      id: string;
-    };
-    FakerCashInDto: {
-      /** Format: uuid */
-      rampId: string;
-    };
-    FakerCashOutDto: {
-      /** Format: uuid */
-      rampId: string;
-    };
-    VirtualAccountItemDto: {
-      /**
-       * Format: uuid
-       * @example 123e4567-e89b-12d3-a456-426614174000
-       */
-      id: string;
-      /**
-       * Format: uuid
-       * @example 123e4567-e89b-12d3-a456-426614174000
-       */
-      customerId: string;
-      /**
-       * Format: uuid
-       * @example 123e4567-e89b-12d3-a456-426614174000
-       */
-      userId?: string;
-      /** @example WALLET */
-      type: string;
-      /** @example PRE_FUND */
-      subtype: string;
-      /**
-       * @example ACTIVE
-       * @enum {string}
-       */
-      status: "ACTIVE" | "PENDING" | "REJECTED" | "PROCESSING";
-      /** @description Wallet address */
-      address: string;
-      /**
-       * @example USDC
-       * @enum {string}
-       */
-      currency: "USD" | "USDC" | "USDT";
-      /**
-       * @example POLYGON
-       * @enum {string}
-       */
-      network: "POLYGON" | "ERC20" | "SOLANA" | "TRON" | "ARBITRUM" | "BSC";
-      /** @example true */
-      active: boolean;
-      /**
-       * Format: date-time
-       * @example 2024-01-01T00:00:00.000Z
-       */
-      createdAt: string;
-      /**
-       * Format: date-time
-       * @example 2024-01-01T00:00:00.000Z
-       */
-      updatedAt: string;
-    };
-    GetVirtualAccountsResponseDto: {
-      virtualAccounts: components["schemas"]["VirtualAccountItemDto"][];
-      /**
-       * @description Total number of virtual accounts
-       * @example 100
-       */
-      total: number;
-      /**
-       * @description Current page number
-       * @example 1
-       */
-      page: number;
-      /**
-       * @description Items per page
-       * @example 10
-       */
-      limit: number;
-      /**
-       * @description Total number of pages
-       * @example 10
-       */
-      totalPages: number;
-    };
-    CreatePreFundVirtualAccountDto: {
-      /**
-       * Format: uuid
-       * @example 123e4567-e89b-12d3-a456-426614174000
-       */
-      userId: string;
-      /**
-       * @example POLYGON
-       * @enum {string}
-       */
-      network: "POLYGON" | "ERC20" | "SOLANA" | "TRON" | "ARBITRUM" | "BSC";
-      /**
-       * @example USDC
-       * @enum {string}
-       */
-      currency: "USD" | "USDC" | "USDT";
-    };
-    CreatePreFundVirtualAccountResponseDto: {
-      /**
-       * Format: uuid
-       * @example 123e4567-e89b-12d3-a456-426614174000
-       */
-      id: string;
-      /** @example PRE_FUND */
-      type: string;
-      /** @description A wallet address */
-      address: string;
-      /**
-       * @example USDC
-       * @enum {string}
-       */
-      currency: "USD" | "USDC" | "USDT";
-      /**
-       * @example POLYGON
-       * @enum {string}
-       */
-      network: "POLYGON" | "ERC20" | "SOLANA" | "TRON" | "ARBITRUM" | "BSC";
-      active: boolean;
-      /**
-       * Format: date-time
-       * @example 2021-09-01T00:00:00.000Z
-       */
-      createdAt: string;
-      /**
-       * Format: date-time
-       * @example 2021-09-01T00:00:00.000Z
-       */
-      updatedAt: string;
-    };
-    CreateVirtualAccountWithdrawalDto: {
-      /**
-       * @description Amount to withdraw
-       * @example 100
-       */
-      amount: number;
-      /**
-       * Format: uuid
-       * @description Destination account ID
-       * @example 4d23aa52-1b40-4584-a8ea-58aba6099c5c
-       */
-      accountId: string;
-    };
-    VirtualAccountWithdrawalResponseDto: {
-      /** Format: uuid */
-      id: string;
-      /** Format: uuid */
-      virtualAccountId: string;
-      /** Format: uuid */
-      customerId: string;
-      /** Format: uuid */
-      userId: string;
-      amount: number;
-      currency: string;
-      network: string;
-      address: string;
-      /** @enum {string} */
-      status: "PENDING" | "PROCESSING" | "COMPLETED" | "FAILED" | "REJECTED";
-      transferId?: string;
-      transferProof?: string;
-      metadata: Record<string, never>;
-      active: boolean;
-      /** Format: date-time */
-      createdAt: string;
-      /** Format: date-time */
-      updatedAt: string;
-    };
-    WithdrawalItemDto: {
-      /** Format: uuid */
-      id: string;
-      /** Format: uuid */
-      virtualAccountId: string;
-      /** Format: uuid */
-      customerId: string;
-      /** Format: uuid */
-      userId: string;
-      amount: number;
-      currency: string;
-      network: string;
-      address: string;
-      /** @enum {string} */
-      status: "PENDING" | "PROCESSING" | "COMPLETED" | "FAILED" | "REJECTED";
-      transferId?: string;
-      transferProof?: string;
-      metadata: Record<string, never>;
-      /** Format: date-time */
-      createdAt: string;
-      /** Format: date-time */
-      updatedAt: string;
-    };
-    GetWithdrawalsResponseDto: {
-      withdrawals: components["schemas"]["WithdrawalItemDto"][];
-      total: number;
-      page: number;
-      limit: number;
-      totalPages: number;
-    };
-    GenerateAccessTokenRequestDto: {
-      /**
-       * @description User ID or Account ID
-       * @example 550e8400-e29b-41d4-a716-446655440000
-       */
-      id: string;
-      /**
-       * @description Type of ID provided (userId or accountId)
-       * @default userId
-       * @example userId
-       * @enum {string}
-       */
-      idType?: "userId" | "accountId";
-      /**
-       * @description Sumsub level name
-       * @example basic-kyc-level
-       */
-      levelName?: string;
-      /**
-       * @description Time to live in seconds
-       * @example 600
-       */
-      ttlInSecs?: number;
-    };
-    GenerateAccessTokenResponseDto: {
-      /**
-       * @description Access token for Sumsub SDK
-       * @example _act-b8ebfb63-5f24-4b89-9c08-000000000000
-       */
-      token: string;
-    };
-  };
-  responses: never;
-  parameters: never;
-  requestBodies: never;
-  headers: never;
-  pathItems: never;
+        LoginResponseDto: {
+            /** @example eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ1c2VyQGV4YW1wbGUuY29tIn0 */
+            accessToken: string;
+            /**
+             * @description Number in milliseconds
+             * @example 3600000
+             */
+            expiresIn: number;
+            /** @example eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJyZWZyZXNoIn0 */
+            refreshToken: string;
+        };
+        BadRequestArgument: {
+            /** @example email */
+            key: string;
+            /** @example invalid@email.com */
+            value: string;
+        };
+        BadRequestResponse: {
+            /** @example API_USER.0001 */
+            errorCode: string;
+            arguments: components["schemas"]["BadRequestArgument"][];
+            /**
+             * @example [
+             *       "User not found",
+             *       "Account not found"
+             *     ]
+             */
+            message: string[];
+            /** @example 400 */
+            statusCode: string;
+        };
+        InternalServerErrorResponse: {
+            /** @example 500 */
+            statusCode: string;
+            /**
+             * @example [
+             *       "Internal server error"
+             *     ]
+             */
+            message: string[];
+        };
+        LoginDto: {
+            /** @example user@example.com */
+            email: string;
+            /** @example P@ssw0rd123! */
+            password: string;
+        };
+        RefreshDto: {
+            /**
+             * @description Refresh token. For OTC origin, may be omitted when sent via the refreshToken cookie (request with credentials).
+             * @example eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJyZWZyZXNoIn0
+             */
+            refreshToken?: string;
+        };
+        RefreshResponseDto: {
+            /** @example eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJyZWZyZXNoIn0 */
+            refreshToken: string;
+            /** @example eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ1c2VyQGV4YW1wbGUuY29tIn0 */
+            accessToken: string;
+            /**
+             * @description Number in milliseconds
+             * @example 3600000
+             */
+            expiresIn: number;
+        };
+        MeResponseDto: {
+            /** @example e8d74b2f-86df-43b0-a9d9-72055a6b0432 */
+            id: string;
+            /** @example user@example.com */
+            email: string;
+            /** @example e8d74b2f-86df-43b0-a9d9-72055a6b0432 */
+            customerId: string;
+            /**
+             * @description Role IDs (UUIDs)
+             * @example [
+             *       "e8d74b2f-86df-43b0-a9d9-72055a6b0432"
+             *     ]
+             */
+            roles: string[];
+            /**
+             * @description Permission names
+             * @example [
+             *       "user:create",
+             *       "ramp:read"
+             *     ]
+             */
+            permissions: string[];
+            /** @example 2026-04-23T00:38:08.439Z */
+            createdAt: string;
+            /** @example 2026-04-23T00:38:08.439Z */
+            updatedAt: string;
+            /** @example true */
+            active: boolean;
+            /**
+             * @description Token issued-at (seconds)
+             * @example 1745366288
+             */
+            iat?: number;
+            /**
+             * @description Token expiration (seconds)
+             * @example 1745369888
+             */
+            exp?: number;
+            /**
+             * @description Origin: OTC or API
+             * @example API
+             */
+            origin?: string;
+            /**
+             * @description Customer name from token
+             * @example Acme Corp
+             */
+            customerName?: string;
+            /**
+             * @description Customer onboarding status from token
+             * @example COMPLETED
+             */
+            onboardingStatus?: string;
+        };
+        LoginWithOtpDto: {
+            /**
+             * @description OTP code from authenticator app
+             * @example 123456
+             */
+            otpCode: string;
+        };
+        LoginWithOtpCookieResponseDto: {
+            /** @example true */
+            success: boolean;
+            /**
+             * @description Number in milliseconds
+             * @example 3600000
+             */
+            expiresIn: number;
+            /** @example eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJyZWZyZXNoIn0 */
+            refreshToken: string;
+        };
+        ConfirmEmailResponseDto: {
+            /** @example Email confirmed successfully */
+            message: string;
+        };
+        EnableTwoFactorResponseDto: {
+            /** @example JBSWY3DPEHPK3PXP */
+            secret: string;
+            /** @example otpauth://totp/MyApp:user@example.com?secret=JBSWY3DPEHPK3PXP&issuer=MyApp */
+            otpauthUrl: string;
+        };
+        VerifyTwoFactorDto: {
+            /** @example 123456 */
+            otpCode: string;
+        };
+        VerifyTwoFactorResponseDto: {
+            /** @example Two-factor authentication enabled successfully */
+            message: string;
+        };
+        RequestDisableTwoFactorEmailResponseDto: {
+            /** @example Disable 2FA confirmation email sent successfully */
+            message: string;
+        };
+        DisableTwoFactorDto: {
+            /**
+             * @description OTP code for verification
+             * @example 123456
+             */
+            otpCode?: string;
+            /**
+             * @description Email confirmation token for verification
+             * @example eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ1c2VyQGV4YW1wbGUuY29tIn0
+             */
+            emailConfirmationToken?: string;
+        };
+        DisableTwoFactorResponseDto: {
+            /** @example Two-factor authentication disabled successfully */
+            message: string;
+        };
+        RequestPasswordResetDto: {
+            /**
+             * @description User email address
+             * @example user@example.com
+             */
+            email: string;
+        };
+        RequestPasswordResetResponseDto: {
+            /** @example Password reset email sent successfully */
+            message: string;
+        };
+        ResetPasswordDto: {
+            /**
+             * @description User email address
+             * @example user@example.com
+             */
+            email: string;
+            /**
+             * @description New password
+             * @example NewP@ssw0rd123!
+             */
+            newPassword: string;
+            /**
+             * @description OTP code for verification
+             * @example 123456
+             */
+            otpCode?: string;
+            /**
+             * @description Email confirmation token for verification
+             * @example eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ1c2VyQGV4YW1wbGUuY29tIn0
+             */
+            emailConfirmationToken?: string;
+        };
+        ResetPasswordResponseDto: {
+            /** @example Password reset successfully */
+            message: string;
+        };
+        ChangePasswordDto: {
+            /**
+             * @description Current password
+             * @example CurrentP@ssw0rd!
+             */
+            currentPassword: string;
+            /**
+             * @description New password
+             * @example NewP@ssw0rd123!
+             */
+            newPassword: string;
+            /**
+             * @description OTP code for verification (required if 2FA is enabled)
+             * @example 123456
+             */
+            otpCode?: string;
+        };
+        ChangePasswordResponseDto: {
+            /** @example Password changed successfully */
+            message: string;
+        };
+        InviteUserDto: {
+            /**
+             * @description Email address of the user to invite
+             * @example invite@example.com
+             */
+            email: string;
+            /**
+             * @description Roles to assign to the invited user
+             * @example [
+             *       "CUSTOMER"
+             *     ]
+             */
+            roles: "CUSTOMER"[];
+        };
+        InviteUserResponseDto: {
+            /** @example e8d74b2f-86df-43b0-a9d9-72055a6b0432 */
+            id: string;
+            /** @example e8d74b2f-86df-43b0-a9d9-72055a6b0432 */
+            customerId: string;
+            /** @example user@example.com */
+            email: string;
+            /** @example true */
+            active: boolean;
+            /**
+             * Format: date-time
+             * @example 2026-04-23T00:38:08.439Z
+             */
+            deletedAt: string;
+            /**
+             * Format: date-time
+             * @example 2026-04-23T00:38:08.439Z
+             */
+            createdAt: string;
+            /**
+             * Format: date-time
+             * @example 2026-04-23T00:38:08.439Z
+             */
+            updatedAt: string;
+            /** @example Invitation sent successfully */
+            message: string;
+        };
+        InvitedUserDto: {
+            /** @example e8d74b2f-86df-43b0-a9d9-72055a6b0432 */
+            id: string;
+            /** @example invite@example.com */
+            email: string;
+            /**
+             * @example PENDING
+             * @enum {string}
+             */
+            status: "PENDING" | "ACCEPTED";
+            /**
+             * @example [
+             *       "CUSTOMER"
+             *     ]
+             */
+            roles: string[];
+            /**
+             * Format: date-time
+             * @example 2026-04-23T00:38:08.439Z
+             */
+            createdAt: string;
+            /**
+             * Format: date-time
+             * @example 2026-04-23T00:38:08.439Z
+             */
+            updatedAt: string;
+        };
+        ListInvitedUsersResponseDto: {
+            users: components["schemas"]["InvitedUserDto"][];
+        };
+        LogoutResponseDto: {
+            /** @example true */
+            success: boolean;
+            /** @example Logged out successfully */
+            message: string;
+        };
+        AddressDto: {
+            /** @example 68528 Dwight Court */
+            street1: string;
+            /** @example Apt 488 */
+            street2?: string;
+            /** @example Fiorenze */
+            city: string;
+            /** @example New York */
+            state: string;
+            /** @example 48245000 */
+            zipCode: string;
+            /** @example CO */
+            countryCode: string;
+        };
+        CompanyDocumentDto: {
+            /**
+             * @example NIT
+             * @enum {string}
+             */
+            type: "NIT" | "EIN" | "CNPJ" | "RFC" | "CUIT" | "USCC" | "RUT";
+            /** @example 123456 */
+            number: string;
+            /** @example CO */
+            issuedCountryCode: string;
+        };
+        CreateCustomerDto: {
+            /** @example Acme Corp S.A.S. */
+            companyName: string;
+            /** @example Acme */
+            tradeName: string;
+            /** @example contact@acmecorp.com */
+            email: string;
+            /** @example +573001234567 */
+            phone: string;
+            address: components["schemas"]["AddressDto"];
+            document: components["schemas"]["CompanyDocumentDto"];
+        };
+        CreateCustomerResponseDto: {
+            /** @example e8d74b2f-86df-43b0-a9d9-72055a6b0432 */
+            id: string;
+            /** @example Acme Corp S.A.S. */
+            name: string;
+            /** @example 900123456 */
+            documentNumber: string;
+            /** @example NIT */
+            documentType: string;
+            strategiesByPair: Record<string, never>;
+            availableProducts: Record<string, never>;
+            /** @example true */
+            active: boolean;
+            /**
+             * Format: date-time
+             * @example 2026-04-23T00:38:08.439Z
+             */
+            deletedAt: string;
+            /**
+             * Format: date-time
+             * @example 2026-04-23T00:38:08.439Z
+             */
+            createdAt: string;
+            /**
+             * Format: date-time
+             * @example 2026-04-23T00:38:08.439Z
+             */
+            updatedAt: string;
+        };
+        GetCustomerProfileResponseDto: {
+            /** @example e8d74b2f-86df-43b0-a9d9-72055a6b0432 */
+            id: string;
+            /** @example true */
+            active: boolean;
+            /** @example https://compliance.example.com/customer/e8d74b2f */
+            complianceUrl?: string;
+            /**
+             * Format: date-time
+             * @example 2026-04-23T00:38:08.439Z
+             */
+            createdAt: string;
+            /** @example 900123456 */
+            documentNumber?: string;
+            /** @example NIT */
+            documentType?: string;
+            /** @example e8d74b2f-86df-43b0-a9d9-72055a6b0432 */
+            favoriteUserId?: string;
+            /** @example Acme Corp S.A.S. */
+            name: string;
+            /**
+             * @example ACTIVE
+             * @enum {string}
+             */
+            status: "ACTIVE" | "PENDING" | "REJECTED";
+            /**
+             * Format: date-time
+             * @example 2026-04-23T00:38:08.439Z
+             */
+            updatedAt: string;
+            /** @example Customer in good standing */
+            note?: string;
+        };
+        GetBalancesResponseDto: {
+            /** @example e8d74b2f-86df-43b0-a9d9-72055a6b0432 */
+            id: string;
+            /** @example e8d74b2f-86df-43b0-a9d9-72055a6b0432 */
+            customerId: string;
+            /** @example e8d74b2f-86df-43b0-a9d9-72055a6b0432 */
+            accountId: string;
+            /** @example USDC */
+            currency: string;
+            /** @example 8000 */
+            amount: string;
+            /** @example true */
+            active: boolean;
+            /**
+             * Format: date-time
+             * @example 2026-04-23T00:38:08.439Z
+             */
+            createdAt: string;
+            /**
+             * Format: date-time
+             * @example 2026-04-23T00:38:08.439Z
+             */
+            updatedAt: string;
+        };
+        CreatePreFundAccountDto: {
+            /**
+             * @example USDC
+             * @enum {string}
+             */
+            currency: "USD" | "USDC" | "USDT";
+            /**
+             * @example POLYGON
+             * @enum {string}
+             */
+            network: "POLYGON" | "ERC20" | "SOLANA" | "TRON" | "ARBITRUM" | "BSC";
+        };
+        CreatePreFundAccountResponseDto: {
+            /**
+             * Format: uuid
+             * @example 123e4567-e89b-12d3-a456-426614174000
+             */
+            id: string;
+            /** @example PRE_FUND */
+            type: string;
+            /**
+             * @description A wallet address
+             * @example 0x1234567890abcdef1234567890abcdef12345678
+             */
+            address: string;
+            /**
+             * @example USDC
+             * @enum {string}
+             */
+            currency: "USD" | "USDC" | "USDT";
+            /**
+             * @example POLYGON
+             * @enum {string}
+             */
+            network: "POLYGON" | "ERC20" | "SOLANA" | "TRON" | "ARBITRUM" | "BSC";
+            /** @example true */
+            active: boolean;
+            /**
+             * Format: date-time
+             * @example 2026-04-23T00:38:08.439Z
+             */
+            createdAt: string;
+            /**
+             * Format: date-time
+             * @example 2026-04-23T00:38:08.439Z
+             */
+            updatedAt: string;
+        };
+        GetCustomerLiquidityResponseDto: {
+            /** @example USDC */
+            currency: string;
+            /** @example 8000 */
+            amount: number;
+        };
+        StrategyDto: {
+            /**
+             * @description Source currency
+             * @example USDC
+             */
+            fromCurrency: string;
+            /**
+             * @description Target currency
+             * @example COP
+             */
+            toCurrency: string;
+            /**
+             * @description Cash-in method
+             * @example POLYGON
+             */
+            cashInMethod: string;
+            /**
+             * @description Cash-out method
+             * @example PSE
+             */
+            cashOutMethod: string;
+            /**
+             * @description Quotation expiration time in milliseconds
+             * @example 300000
+             */
+            expirationTimeInMs: number;
+            /**
+             * @description Minimum quote amount
+             * @example 10
+             */
+            minimumQuote: string;
+            /**
+             * @description Maximum quote amount
+             * @example 50000
+             */
+            MaximumQuote: string;
+            /**
+             * @description Fee percentage
+             * @example 0.5
+             */
+            fee: number;
+        };
+        GetPairsResponseDto: {
+            /** @description Available trading pairs */
+            availableProducts: string[];
+            /** @description Available trading pairs */
+            pairs: string[];
+            /**
+             * @description Available options for each currency
+             * @example {
+             *       "USDC": {
+             *         "regular": [
+             *           "POLYGON",
+             *           "SOLANA",
+             *           "TRON"
+             *         ],
+             *         "preFund": [
+             *           "PRE_FUND_POLYGON",
+             *           "PRE_FUND_SOLANA",
+             *           "PRE_FUND_TRON"
+             *         ]
+             *       },
+             *       "USDT": {
+             *         "regular": [
+             *           "POLYGON",
+             *           "SOLANA",
+             *           "TRON"
+             *         ],
+             *         "preFund": [
+             *           "PRE_FUND_POLYGON",
+             *           "PRE_FUND_SOLANA",
+             *           "PRE_FUND_TRON"
+             *         ]
+             *       },
+             *       "USD": {
+             *         "regular": [
+             *           "WIRE",
+             *           "SWIFT"
+             *         ],
+             *         "preFund": [
+             *           "PRE_FUND"
+             *         ]
+             *       },
+             *       "COP": {
+             *         "regular": [
+             *           "PSE",
+             *           "BANK_TRANSFER"
+             *         ],
+             *         "preFund": [
+             *           "PRE_FUND"
+             *         ]
+             *       },
+             *       "MXN": {
+             *         "regular": [
+             *           "SPEI"
+             *         ],
+             *         "preFund": [
+             *           "PRE_FUND"
+             *         ]
+             *       }
+             *     }
+             */
+            options: {
+                [key: string]: {
+                    regular?: string[];
+                    preFund?: string[];
+                };
+            };
+            /** @description Available strategies for currency pairs */
+            strategies: components["schemas"]["StrategyDto"][];
+        };
+        ConfigurePairDto: {
+            /**
+             * @description Source currency
+             * @example USDC
+             * @enum {string}
+             */
+            fromCurrency: "USDT" | "USDC" | "MXN" | "COP" | "USD";
+            /**
+             * @description Cash-in method
+             * @example PSE
+             * @enum {string}
+             */
+            cashInMethod: "PRE_FUND_POLYGON" | "PRE_FUND_TRON" | "PRE_FUND_SOLANA" | "POLYGON" | "SOLANA" | "ETHEREUM" | "TRON" | "PSE" | "SPEI" | "PRE_FUND";
+            /**
+             * @description Target currency
+             * @example COP
+             * @enum {string}
+             */
+            toCurrency: "COP" | "MXN" | "USDT" | "USDC" | "USD" | "CLP" | "PAB" | "DOP" | "BOB" | "GTQ" | "HNL" | "NIO" | "PYG";
+            /**
+             * @description Cash-out method
+             * @example PSE
+             * @enum {string}
+             */
+            cashOutMethod: "POLYGON" | "TRON" | "SOLANA" | "ETHEREUM" | "PSE" | "SPEI" | "ACH" | "ACH_BO" | "SPI_DO" | "ACH_PA" | "SPI_PY" | "ACH_NI" | "ACH_HN" | "ACH_GT" | "WIRE" | "SWIFT";
+        };
+        ConfigurePairResponseDto: {
+            /** @example Pair configured successfully */
+            message: string;
+            /** @example USDC_COP */
+            pair: string;
+            /** @example PSE */
+            method: string;
+        };
+        FindOneDocumentResponseDto: {
+            /** @example 4d23aa52-1b40-4584-a8ea-58aba6099c5c */
+            id: string;
+            /** @example Document Report */
+            title: string;
+            /** @example TRANSACTION_REPORT */
+            type: string;
+            /** @example PENDING */
+            status: string;
+            /**
+             * Format: date-time
+             * @example 2021-01-01T00:00:00.000Z
+             */
+            createdAt: string;
+            /**
+             * Format: date-time
+             * @example 2021-01-01T00:00:00.000Z
+             */
+            updatedAt: string;
+            /** @example https://example.com/document.pdf */
+            documentUrl: string;
+        };
+        FindingAllDocumentsResponseDto: {
+            documents: components["schemas"]["FindOneDocumentResponseDto"][];
+        };
+        SignMultipleDocumentsResponseDto: {
+            /** @example Documents signed successfully */
+            message: string;
+            /**
+             * @example [
+             *       "4d23aa52-1b40-4584-a8ea-58aba6099c5c"
+             *     ]
+             */
+            documentsSigned: string[];
+            /**
+             * @example [
+             *       {
+             *         "id": "4d23aa52-1b40-4584-a8ea-58aba6099c5c",
+             *         "reason": "Document not found"
+             *       }
+             *     ]
+             */
+            documentAlreadySignedOrNotFound: string[];
+        };
+        SignDocumentResponseDto: {
+            /** @example Document signed successfully */
+            message: string;
+            /** @example 4d23aa52-1b40-4584-a8ea-58aba6099c5c */
+            documentId: string;
+            /** @example https://example.com/document.pdf */
+            documentUrl: string;
+            /** @example PENDING */
+            status: string;
+        };
+        GenerateDocumentResponseDto: {
+            /** @example Documents generated successfully */
+            message: string;
+            /**
+             * @example [
+             *       "4d23aa52-1b40-4584-a8ea-58aba6099c5c"
+             *     ]
+             */
+            documents: string[];
+        };
+        PersonUserDocumentDto: {
+            /**
+             * @example PASSPORT
+             * @enum {string}
+             */
+            type: "PASSPORT" | "DRIVER_LICENSE" | "NUIP" | "RFC" | "SSN" | "CURP" | "CPF" | "INE" | "IFE" | "DNI" | "DUI" | "NIT" | "RUT" | "CHINESE_ID" | "BOLIVIAN_ID" | "CE";
+            /**
+             * Format: alphanumeric
+             * @example GE04292393
+             */
+            number: string;
+            /** @example CO */
+            issuedCountryCode: string;
+            /** @example 1992-01-01 */
+            expeditionDate?: string;
+            /**
+             * @description Required if document type is INE
+             * @example 1111111111
+             */
+            cic?: string;
+            /**
+             * @description Required if document type is INE
+             * @example 1234567890
+             */
+            identificadorCiudadano?: string;
+            /**
+             * @description Required if document type is IFE
+             * @example 1111111111
+             */
+            ocr?: string;
+            /**
+             * @description Required if document type is IFE
+             * @example 01
+             */
+            numeroEmision?: string;
+        };
+        InvestmentProfile: {
+            /**
+             * @example EMPLOYMENT
+             * @enum {string}
+             */
+            primarySourceOfFunds: "EMPLOYMENT" | "SAVINGS" | "WINNINGS" | "MARITAL" | "REAL_ESTATE" | "TRUST" | "INVESTMENT" | "OTHER" | "COMPANY" | "COMPANY_CAPITAL" | "LOAN" | "PRIVATE_CAPITAL" | "GRANT";
+            /** @example I work at Google */
+            primarySourceOfFundsDescription: string;
+            /**
+             * @example UPTO_10K
+             * @enum {string}
+             */
+            totalAssets: "UPTO_10K" | "TEN_TO_100K" | "ONEHUNDREDK_TO_1M" | "ONE_TO_10M" | "TEN_TO_50M" | "FIFTY_TO_250M" | "MORE_THAN_250M";
+            /**
+             * @example UPTO_10K
+             * @enum {string}
+             */
+            usdValueOfFiat: "UPTO_10K" | "TEN_TO_100K" | "ONEHUNDREDK_TO_1M" | "ONE_TO_10M" | "TEN_TO_50M" | "FIFTY_TO_250M" | "MORE_THAN_250M";
+            /**
+             * @example UPTO_5
+             * @enum {string}
+             */
+            monthlyDeposits: "UPTO_5" | "FIVE_TO_10" | "TEN_TO_25" | "MORE_THAN_25";
+            /**
+             * @example UPTO_5
+             * @enum {string}
+             */
+            monthlyWithdrawals: "UPTO_5" | "FIVE_TO_10" | "TEN_TO_25" | "MORE_THAN_25";
+            /**
+             * @example UPTO_1K
+             * @enum {string}
+             */
+            monthlyInvestmentDeposit: "UPTO_1K" | "ONE_TO_100K" | "ONEHUNDREDK_TO_1M" | "MILLION_TO_5M" | "MORE_THAN_5M";
+            /**
+             * @example UPTO_1K
+             * @enum {string}
+             */
+            monthlyInvestmentWithdrawal: "UPTO_1K" | "ONE_TO_100K" | "ONEHUNDREDK_TO_1M" | "MILLION_TO_5M" | "MORE_THAN_5M";
+            /**
+             * @example UPTO_1K
+             * @enum {string}
+             */
+            usdValueOfCrypto: "UPTO_1K" | "ONE_TO_100K" | "ONEHUNDREDK_TO_1M" | "MILLION_TO_5M" | "MORE_THAN_5M";
+            /**
+             * @example UPTO_5
+             * @enum {string}
+             */
+            monthlyCryptoDeposits: "UPTO_5" | "FIVE_TO_10" | "TEN_TO_25" | "MORE_THAN_25";
+            /**
+             * @example UPTO_5
+             * @enum {string}
+             */
+            monthlyCryptoWithdrawals: "UPTO_5" | "FIVE_TO_10" | "TEN_TO_25" | "MORE_THAN_25";
+            /**
+             * @example UPTO_1K
+             * @enum {string}
+             */
+            monthlyCryptoInvestmentDeposit: "UPTO_1K" | "ONE_TO_100K" | "ONEHUNDREDK_TO_1M" | "MILLION_TO_5M" | "MORE_THAN_5M";
+            /**
+             * @example UPTO_1K
+             * @enum {string}
+             */
+            monthlyCryptoInvestmentWithdrawal: "UPTO_1K" | "ONE_TO_100K" | "ONEHUNDREDK_TO_1M" | "MILLION_TO_5M" | "MORE_THAN_5M";
+        };
+        KycProfile: {
+            fundsSendReceiveJurisdictions: string[];
+            /** @example NONE */
+            engageInActivities: ("NONE" | "ADULT_ENTERTAINMENT" | "DRUGS" | "FIREARMS" | "GAMBLING" | "MARIJUANA" | "TUMBLING")[];
+        };
+        UpdatePersonUserDto: {
+            /** @example John */
+            firstName?: string;
+            /** @example Carlos */
+            middleName?: string;
+            /** @example Francisco */
+            lastName?: string;
+            /** @example 1992-01-01 */
+            dateOfBirth?: string;
+            /** @example example@test.com */
+            email?: string;
+            /** @example +576015555555 */
+            phone?: string;
+            address?: components["schemas"]["AddressDto"];
+            document?: components["schemas"]["PersonUserDocumentDto"];
+            /** @example CO */
+            nationality?: string;
+            /** @example CO */
+            citizenship?: string;
+            /**
+             * @example EMPLOYEE
+             * @enum {string}
+             */
+            employmentStatus?: "EMPLOYEE" | "SELF_EMPLOYED" | "RETIRED" | "UNEMPLOYED" | "OTHER";
+            /** @example Software Engineer */
+            employmentDescription?: string;
+            /** @example Google */
+            employerName?: string;
+            /** @example Software Engineer */
+            occupation?: string;
+            investmentProfile?: components["schemas"]["InvestmentProfile"];
+            kycProfile?: components["schemas"]["KycProfile"];
+        };
+        CompanyUserDocumentDto: {
+            /**
+             * @example NIT
+             * @enum {string}
+             */
+            type: "NIT" | "EIN" | "CNPJ" | "RFC" | "CUIT" | "USCC" | "RUT";
+            /** @example 123456 */
+            number: string;
+            /** @example CO */
+            issuedCountryCode: string;
+        };
+        CompanyKycProfile: {
+            fundsSendReceiveJurisdictions: string[];
+            /** @example NONE */
+            engageInActivities: ("NONE" | "ADULT_ENTERTAINMENT" | "DRUGS" | "FIREARMS" | "GAMBLING" | "MARIJUANA" | "TUMBLING")[];
+            /**
+             * @example NONE
+             * @enum {string}
+             */
+            regulatedStatus: "REGULATED" | "REGISTERED" | "LICENSED" | "NONE" | "NOT_REQUIRED";
+            /** @example Electronic sales */
+            descriptionOfBusinessNature: string;
+        };
+        UpdateCompanyUserDto: {
+            /** @example Gerlach, Baumbach and Bernhard */
+            companyName?: string;
+            /** @example Babbleopia */
+            tradeName?: string;
+            /** @example 123456 */
+            registeredNumber?: string;
+            /**
+             * @example LLC
+             * @enum {string}
+             */
+            legalStructure?: "C_CORP_PRIVATE" | "C_CORP_PUBLIC" | "HNWI" | "LLC" | "LLP" | "LP" | "S_CORP" | "SOLE_PROP" | "TRUST" | "NON_PROFIT" | "OTHER";
+            /** @example Digital payments and financial services company */
+            description?: string;
+            /** @example 2010-05-15 */
+            establishedOn?: string;
+            /** @example +576015555555 */
+            phone?: string;
+            /** @example company@example.com */
+            email?: string;
+            address?: components["schemas"]["AddressDto"];
+            /** @example e8d74b2f-86df-43b0-a9d9-72055a6b0432 */
+            mainOwnerUser?: string;
+            /**
+             * @example [
+             *       "e8d74b2f-86df-43b0-a9d9-72055a6b0432"
+             *     ]
+             */
+            ownerUsers?: string[];
+            /** @example 522390 */
+            naics?: string;
+            /** @example Other Activities Related to Credit Intermediation */
+            naicsDescription?: string;
+            document?: components["schemas"]["CompanyUserDocumentDto"];
+            investmentProfile?: components["schemas"]["InvestmentProfile"];
+            kycProfile?: components["schemas"]["CompanyKycProfile"];
+            /** @example 12-3456789 */
+            ein?: string;
+        };
+        CreatePersonUserDto: {
+            /** @example John */
+            firstName: string;
+            /** @example Carlos */
+            middleName?: string;
+            /** @example Francisco */
+            lastName: string;
+            /** @example 1992-01-01 */
+            dateOfBirth: string;
+            /** @example example@test.com */
+            email: string;
+            /** @example +576015555555 */
+            phone: string;
+            address: components["schemas"]["AddressDto"];
+            document: components["schemas"]["PersonUserDocumentDto"];
+            /** @example CO */
+            nationality?: string;
+            /** @example CO */
+            citizenship?: string;
+            /**
+             * @example EMPLOYEE
+             * @enum {string}
+             */
+            employmentStatus?: "EMPLOYEE" | "SELF_EMPLOYED" | "RETIRED" | "UNEMPLOYED" | "OTHER";
+            /** @example Software Engineer */
+            employmentDescription?: string;
+            /** @example Google */
+            employerName?: string;
+            /** @example Software Engineer */
+            occupation?: string;
+            investmentProfile?: components["schemas"]["InvestmentProfile"];
+            kycProfile?: components["schemas"]["KycProfile"];
+        };
+        CreateCompanyUserDto: {
+            /** @example Gerlach, Baumbach and Bernhard */
+            companyName: string;
+            /** @example Babbleopia */
+            tradeName?: string;
+            /** @example 123456 */
+            registeredNumber?: string;
+            /**
+             * @example LLC
+             * @enum {string}
+             */
+            legalStructure?: "C_CORP_PRIVATE" | "C_CORP_PUBLIC" | "HNWI" | "LLC" | "LLP" | "LP" | "S_CORP" | "SOLE_PROP" | "TRUST" | "NON_PROFIT" | "OTHER";
+            /** @example Digital payments and financial services company */
+            description?: string;
+            /** @example 2010-05-15 */
+            establishedOn?: string;
+            /** @example +576015555555 */
+            phone?: string;
+            /** @example company@example.com */
+            email?: string;
+            address: components["schemas"]["AddressDto"];
+            /** @example e8d74b2f-86df-43b0-a9d9-72055a6b0432 */
+            mainOwnerUser?: string;
+            /**
+             * @example [
+             *       "e8d74b2f-86df-43b0-a9d9-72055a6b0432"
+             *     ]
+             */
+            ownerUsers?: string[];
+            /** @example 522390 */
+            naics?: string;
+            /** @example Other Activities Related to Credit Intermediation */
+            naicsDescription?: string;
+            document: components["schemas"]["CompanyUserDocumentDto"];
+            investmentProfile?: components["schemas"]["InvestmentProfile"];
+            kycProfile?: components["schemas"]["CompanyKycProfile"];
+        };
+        CreateUserDto: {
+            /**
+             * @example PERSON
+             * @enum {string}
+             */
+            type: "PERSON" | "COMPANY";
+            data: components["schemas"]["CreatePersonUserDto"] | components["schemas"]["CreateCompanyUserDto"];
+            /**
+             * @description A unique identifier used to identify your existing user.
+             * @example d00e4f43-2022-42f3-ba1c-dcf4c1dcd934
+             */
+            externalId?: string;
+        };
+        PersonUserDto: {
+            /** @example John */
+            firstName: string;
+            /** @example Carlos */
+            middleName?: string;
+            /** @example Francisco */
+            lastName: string;
+            /** @example 1992-01-01 */
+            dateOfBirth: string;
+            /** @example example@test.com */
+            email: string;
+            /** @example +576015555555 */
+            phone: string;
+            address: components["schemas"]["AddressDto"];
+            document: components["schemas"]["PersonUserDocumentDto"];
+            /** @example CO */
+            nationality?: string;
+            /** @example CO */
+            citizenship?: string;
+            /**
+             * @example EMPLOYEE
+             * @enum {string}
+             */
+            employmentStatus?: "EMPLOYEE" | "SELF_EMPLOYED" | "RETIRED" | "UNEMPLOYED" | "OTHER";
+            /** @example Software Engineer */
+            employmentDescription?: string;
+            /** @example Google */
+            employerName?: string;
+            /** @example Software Engineer */
+            occupation?: string;
+            investmentProfile?: components["schemas"]["InvestmentProfile"];
+            kycProfile?: components["schemas"]["KycProfile"];
+        };
+        CompanyUserDto: {
+            /** @example Gerlach, Baumbach and Bernhard */
+            companyName: string;
+            /** @example Babbleopia */
+            tradeName?: string;
+            /** @example 123456 */
+            registeredNumber?: string;
+            /**
+             * @example LLC
+             * @enum {string}
+             */
+            legalStructure?: "C_CORP_PRIVATE" | "C_CORP_PUBLIC" | "HNWI" | "LLC" | "LLP" | "LP" | "S_CORP" | "SOLE_PROP" | "TRUST" | "NON_PROFIT" | "OTHER";
+            /** @example Digital payments and financial services company */
+            description?: string;
+            /** @example 2010-05-15 */
+            establishedOn?: string;
+            /** @example +576015555555 */
+            phone?: string;
+            /** @example company@example.com */
+            email?: string;
+            address: components["schemas"]["AddressDto"];
+            /** @example e8d74b2f-86df-43b0-a9d9-72055a6b0432 */
+            mainOwnerUser?: string;
+            /**
+             * @example [
+             *       "e8d74b2f-86df-43b0-a9d9-72055a6b0432"
+             *     ]
+             */
+            ownerUsers?: string[];
+            /** @example 522390 */
+            naics?: string;
+            /** @example Other Activities Related to Credit Intermediation */
+            naicsDescription?: string;
+            document: components["schemas"]["CompanyUserDocumentDto"];
+            investmentProfile?: components["schemas"]["InvestmentProfile"];
+            kycProfile?: components["schemas"]["CompanyKycProfile"];
+        };
+        CreateUserResponseDto: {
+            /** @example 4d23aa52-1b40-4584-a8ea-58aba6099c5c */
+            id: string;
+            /**
+             * @example ACTIVE
+             * @enum {string}
+             */
+            status: "ACTIVE" | "PENDING" | "REJECTED";
+            /** @example 8ffce092-b97a-48bd-9efa-24c66ac7fe13 */
+            customerId: string;
+            /**
+             * @example PERSON
+             * @enum {string}
+             */
+            type: "PERSON" | "COMPANY";
+            data: components["schemas"]["PersonUserDto"] | components["schemas"]["CompanyUserDto"];
+            /**
+             * @description A unique identifier used to identify your existing user.
+             * @example d00e4f43-2022-42f3-ba1c-dcf4c1dcd934
+             */
+            externalId?: string;
+            /** @example https://kyc.example.com */
+            complianceUrl: string;
+            /**
+             * @example L0
+             * @enum {string}
+             */
+            accessLevel: "L0" | "L1" | "L2" | "L3" | "L4";
+            /**
+             * @description give you details about the compliance process
+             * @example Identity verification completed successfully.
+             */
+            note: string;
+            /** @example true */
+            active: boolean;
+            /**
+             * Format: date-time
+             * @example 2024-02-06T00:03:30.791Z
+             */
+            createdAt: string;
+            /**
+             * Format: date-time
+             * @example 2024-02-06T00:03:30.791Z
+             */
+            updatedAt: string;
+        };
+        SetFavoriteUserDto: {
+            /**
+             * @description User ID to set as favorite. Omit this field or set to null to remove favorite user.
+             * @example e8d74b2f-86df-43b0-a9d9-72055a6b0432
+             */
+            userId?: string | null;
+        };
+        SetFavoriteUserResponseDto: {
+            /** @example e8d74b2f-86df-43b0-a9d9-72055a6b0432 */
+            id: string;
+            /** @example a1b2c3d4-e5f6-7890-abcd-ef1234567890 */
+            favoriteUserId: string | null;
+            /**
+             * Format: date-time
+             * @example 2026-04-23T00:38:08.439Z
+             */
+            updatedAt: string;
+        };
+        GetUserQueryResponse: {
+            users: components["schemas"]["CreateUserResponseDto"][];
+            /** @example 1 */
+            totalPage: number;
+        };
+        GetUserByIdResponse: {
+            /** @example 4d23aa52-1b40-4584-a8ea-58aba6099c5c */
+            id: string;
+            /**
+             * @example ACTIVE
+             * @enum {string}
+             */
+            status: "ACTIVE" | "PENDING" | "REJECTED";
+            /** @example 8ffce092-b97a-48bd-9efa-24c66ac7fe13 */
+            customerId: string;
+            /**
+             * @example PERSON
+             * @enum {string}
+             */
+            type: "PERSON" | "COMPANY";
+            data: components["schemas"]["PersonUserDto"] | components["schemas"]["CompanyUserDto"];
+            /**
+             * @description A unique identifier used to identify your existing user.
+             * @example d00e4f43-2022-42f3-ba1c-dcf4c1dcd934
+             */
+            externalId?: string;
+            /** @example https://kyc.example.com */
+            complianceUrl: string;
+            /**
+             * @example L0
+             * @enum {string}
+             */
+            accessLevel: "L0" | "L1" | "L2" | "L3" | "L4";
+            /**
+             * @description give you details about the compliance process
+             * @example Identity verification completed successfully.
+             */
+            note: string;
+            /** @example true */
+            active: boolean;
+            /**
+             * Format: date-time
+             * @example 2024-02-06T00:03:30.791Z
+             */
+            createdAt: string;
+            /**
+             * Format: date-time
+             * @example 2024-02-06T00:03:30.791Z
+             */
+            updatedAt: string;
+        };
+        GetFavoriteUserResponseDto: {
+            /** @example e8d74b2f-86df-43b0-a9d9-72055a6b0432 */
+            favoriteUserId: string | null;
+            favoriteUser: components["schemas"]["GetUserByIdResponse"] | null;
+        };
+        UploadPersonDocumentDto: {
+            /**
+             * Format: uuid
+             * @example e8d74b2f-86df-43b0-a9d9-72055a6b0432
+             */
+            userId: string;
+            /**
+             * @example CURP
+             * @enum {string}
+             */
+            documentType: "PROVE_OF_ADDRESS_BANK_STATEMENT" | "PROVE_OF_ADDRESS_UTILITY_BILL" | "PROVE_OF_ADDRESS_LEASE_AGREEMENT" | "SOURCE_OF_FUNDS_BANK_STATEMENT" | "SOURCE_OF_FUNDS_PAYSLIP" | "KYC_REPORT" | "PASSPORT" | "DRIVER_LICENSE" | "NUIP" | "RFC" | "SSN" | "CURP" | "CPF" | "INE" | "IFE" | "DNI" | "DUI" | "CHINESE_ID" | "BOLIVIAN_ID" | "CE";
+            /**
+             * Format: binary
+             * @description Front document file
+             */
+            frontDocument: string;
+            /**
+             * Format: binary
+             * @description Back document file
+             */
+            backDocument?: string;
+        };
+        UploadBusinessDocumentDto: {
+            /**
+             * Format: uuid
+             * @example e8d74b2f-86df-43b0-a9d9-72055a6b0432
+             */
+            userId: string;
+            /**
+             * @example NIT
+             * @enum {string}
+             */
+            documentType: "PROVE_OF_ADDRESS_BANK_STATEMENT" | "PROVE_OF_ADDRESS_UTILITY_BILL" | "PROVE_OF_ADDRESS_LEASE_AGREEMENT" | "SOURCE_OF_FUNDS_BANK_STATEMENT" | "SOURCE_OF_FUNDS_PAYSLIP" | "PROOF_OF_COMPANY_FORMATION" | "ARTICLES_OF_INCORPORATION" | "INCORPORATION_DOCUMENTS" | "KYB_REPORT" | "NIT" | "RUT" | "OTHER" | "USCC";
+            /**
+             * Format: binary
+             * @description Front document file
+             */
+            frontDocument: string;
+            /**
+             * Format: binary
+             * @description Back document file
+             */
+            backDocument?: string;
+        };
+        ILevelUpdateInput: Record<string, never>;
+        ILevelDowngradeInput: Record<string, never>;
+        CreateWebhookDto: {
+            /** @example https://mywebhook.com */
+            url: string;
+            /** @example GJD6cyf6xbc@bvx6rvu */
+            secret: string;
+            events: ("RAMP" | "USER" | "TRANSACTION" | "ACCOUNT" | "CUSTODIAL_ACCOUNT" | "PAYOUT")[];
+        };
+        CreateWebhookResponseDto: {
+            /** @example 4d23aa52-1b40-4584-a8ea-58aba6099c5c */
+            id: string;
+            /** @example 8ffce092-b97a-48bd-9efa-24c66ac7fe13 */
+            customerId: string;
+            /** @example https://mywebhook.com */
+            url: string;
+            events: ("RAMP" | "USER" | "TRANSACTION" | "ACCOUNT" | "CUSTODIAL_ACCOUNT" | "PAYOUT")[];
+            /** @example true */
+            active: boolean;
+            /**
+             * Format: date-time
+             * @example 2024-02-06T00:03:30.791Z
+             */
+            createdAt: string;
+            /**
+             * Format: date-time
+             * @example 2024-02-06T00:03:30.791Z
+             */
+            updatedAt: string;
+        };
+        UpdateWebhookDto: {
+            /** @example https://mywebhook.com */
+            url?: string;
+            /** @example true */
+            active: boolean;
+            /** @example GJD6cyf6xbc@bvx6rvu */
+            secret: string;
+            events: ("RAMP" | "USER" | "TRANSACTION" | "ACCOUNT" | "CUSTODIAL_ACCOUNT" | "PAYOUT")[];
+        };
+        UpdateWebhookResponseDto: {
+            /** @example 4d23aa52-1b40-4584-a8ea-58aba6099c5c */
+            id: string;
+            /** @example 8ffce092-b97a-48bd-9efa-24c66ac7fe13 */
+            customerId: string;
+            /** @example https://mywebhook.com */
+            url: string;
+            events: ("RAMP" | "USER" | "TRANSACTION" | "ACCOUNT" | "CUSTODIAL_ACCOUNT" | "PAYOUT")[];
+            /** @example true */
+            active: boolean;
+            /**
+             * Format: date-time
+             * @example 2024-02-06T00:03:30.791Z
+             */
+            createdAt: string;
+            /**
+             * Format: date-time
+             * @example 2024-02-06T00:03:30.791Z
+             */
+            updatedAt: string;
+        };
+        GetWebhookResponseDto: {
+            /** @example 4d23aa52-1b40-4584-a8ea-58aba6099c5c */
+            id: string;
+            /** @example 8ffce092-b97a-48bd-9efa-24c66ac7fe13 */
+            customerId: string;
+            /** @example https://mywebhook.com */
+            url: string;
+            events: ("RAMP" | "USER" | "TRANSACTION" | "ACCOUNT" | "CUSTODIAL_ACCOUNT" | "PAYOUT")[];
+            /** @example true */
+            active: boolean;
+            /**
+             * Format: date-time
+             * @example 2024-02-06T00:03:30.791Z
+             */
+            createdAt: string;
+            /**
+             * Format: date-time
+             * @example 2024-02-06T00:03:30.791Z
+             */
+            updatedAt: string;
+        };
+        WebhookEvent: Record<string, never>;
+        PSEAccountDto: {
+            /**
+             * @description Required if companyName is not present
+             * @example John
+             */
+            firstName?: string;
+            /** @example Carlos */
+            middleName?: string;
+            /**
+             * @description Required if companyName is not present
+             * @example Doe
+             */
+            lastName?: string;
+            /**
+             * @description Required if firstName is not present
+             * @example Acme Corp
+             */
+            companyName?: string;
+            /** @example john.doe@example.com */
+            email: string;
+            /** @example +576015555555 */
+            phone: string;
+            document: components["schemas"]["CompanyUserDocumentDto"] | components["schemas"]["PersonUserDocumentDto"];
+            /** @example 10203049 */
+            accountNumber: string;
+            /**
+             * @description You can find the code on the bank list endpoint
+             * @example 001
+             */
+            bankCode: string;
+            /**
+             * @example checking
+             * @enum {string}
+             */
+            type: "savings" | "checking";
+            /** @example CO */
+            countryCode: string;
+        };
+        SpeiAccountDto: {
+            /**
+             * @description Required if companyName is not present
+             * @example John
+             */
+            firstName?: string;
+            /** @example Carlos */
+            middleName?: string;
+            /**
+             * @description Required if companyName is not present
+             * @example Doe
+             */
+            lastName?: string;
+            /**
+             * @description Required if firstName is not present
+             * @example Acme Corp
+             */
+            companyName?: string;
+            /** @example +576015555555 */
+            phone: string;
+            /** @example john.doe@example.com */
+            email: string;
+            document: components["schemas"]["CompanyUserDocumentDto"] | components["schemas"]["PersonUserDocumentDto"];
+            /** @example 646180157000000004 */
+            clabe: string;
+            /**
+             * @description ClabeType is necessary only for clabes with format PHONE_NUMBER, DEBIT_CARD
+             * @example CLABE
+             * @enum {string}
+             */
+            clabeType?: "CLABE" | "DEBIT_CARD" | "PHONE_NUMBER";
+            /**
+             * @description You can find the code on the bank list endpoint. BankCode is required only for the following clabe types: PHONE_NUMBER, DEBIT_CARD
+             * @example 001
+             */
+            bankCode?: string;
+            /** @example MX */
+            countryCode: string;
+        };
+        PixAccountDto: {
+            /**
+             * @description Required if companyName is not present
+             * @example John
+             */
+            firstName?: string;
+            /** @example Carlos */
+            middleName?: string;
+            /**
+             * @description Required if companyName is not present
+             * @example Doe
+             */
+            lastName?: string;
+            /**
+             * @description Required if firstName is not present
+             * @example Acme Corp
+             */
+            companyName?: string;
+            /** @example +576015555555 */
+            phone: string;
+            /** @example john.doe@example.com */
+            email: string;
+            document: components["schemas"]["CompanyUserDocumentDto"] | components["schemas"]["PersonUserDocumentDto"];
+            /**
+             * @description PIX key type: CPF, CNPJ, EMAIL, PHONE, or RANDOM
+             * @example CPF
+             * @enum {string}
+             */
+            pixKeyType: "CPF" | "CNPJ" | "EMAIL" | "PHONE" | "RANDOM";
+            /**
+             * @description PIX key value; format depends on pixKeyType
+             * @example 12345678901
+             */
+            pixKey: string;
+            /**
+             * @description Country code for PIX (Brazil)
+             * @example BR
+             */
+            countryCode: string;
+        };
+        CciAccountDto: {
+            /**
+             * @description Required if companyName is not present
+             * @example John
+             */
+            firstName?: string;
+            /** @example Carlos */
+            middleName?: string;
+            /**
+             * @description Required if companyName is not present
+             * @example Doe
+             */
+            lastName?: string;
+            /**
+             * @description Required if firstName is not present
+             * @example Acme Corp
+             */
+            companyName?: string;
+            /** @example +576015555555 */
+            phone: string;
+            /** @example john.doe@example.com */
+            email: string;
+            document: components["schemas"]["CompanyUserDocumentDto"] | components["schemas"]["PersonUserDocumentDto"];
+            /**
+             * @description Peruvian Código de Cuenta Interbancario (20 digits)
+             * @example 00219200000000123456
+             */
+            cci: string;
+            /**
+             * @description Country code for CCI (Peru or Chile)
+             * @example PE
+             */
+            countryCode: string;
+        };
+        SinpeAccountDto: {
+            /**
+             * @description Required if companyName is not present
+             * @example John
+             */
+            firstName?: string;
+            /** @example Carlos */
+            middleName?: string;
+            /**
+             * @description Required if companyName is not present
+             * @example Doe
+             */
+            lastName?: string;
+            /**
+             * @description Required if firstName is not present
+             * @example Acme Corp
+             */
+            companyName?: string;
+            /** @example +576015555555 */
+            phone: string;
+            /** @example john.doe@example.com */
+            email: string;
+            document: components["schemas"]["CompanyUserDocumentDto"] | components["schemas"]["PersonUserDocumentDto"];
+            /**
+             * @description Costa Rica SINPE account number (22 chars: CR + 20 digits)
+             * @example CR04011400007316288640
+             */
+            accountNumber: string;
+            /**
+             * @description Bank code for Costa Rica
+             * @example 0114
+             */
+            bankCode: string;
+            /**
+             * @description Bank name
+             * @example Banco Nacional de Costa Rica
+             */
+            bankName?: string;
+            /**
+             * @description Account type: savings or checking
+             * @example savings
+             * @enum {string}
+             */
+            type: "savings" | "checking";
+            /**
+             * @description Country code for SINPE (Costa Rica)
+             * @example CR
+             */
+            countryCode: string;
+        };
+        SpiAccountDto: {
+            /**
+             * @description Required if companyName is not present
+             * @example John
+             */
+            firstName?: string;
+            /** @example Carlos */
+            middleName?: string;
+            /**
+             * @description Required if companyName is not present
+             * @example Doe
+             */
+            lastName?: string;
+            /**
+             * @description Required if firstName is not present
+             * @example Acme Corp
+             */
+            companyName?: string;
+            /** @example +576015555555 */
+            phone: string;
+            /** @example john.doe@example.com */
+            email: string;
+            document: components["schemas"]["CompanyUserDocumentDto"] | components["schemas"]["PersonUserDocumentDto"];
+            /**
+             * @description Uruguay bank account number (2-14 digits)
+             * @example 123456
+             */
+            accountNumber: string;
+            /**
+             * @description Bank code (must exist in bank list for country UY)
+             * @example 001
+             */
+            bankCode: string;
+            /**
+             * @example savings
+             * @enum {string}
+             */
+            type: "savings" | "checking";
+            /**
+             * @description Country code for SPI (Uruguay)
+             * @example UY
+             */
+            countryCode: string;
+        };
+        SpiPyAccountDto: {
+            /**
+             * @description Required if companyName is not present
+             * @example John
+             */
+            firstName?: string;
+            /** @example Carlos */
+            middleName?: string;
+            /**
+             * @description Required if companyName is not present
+             * @example Doe
+             */
+            lastName?: string;
+            /**
+             * @description Required if firstName is not present
+             * @example Acme Corp
+             */
+            companyName?: string;
+            /** @example +576015555555 */
+            phone: string;
+            /** @example john.doe@example.com */
+            email: string;
+            document: components["schemas"]["CompanyUserDocumentDto"] | components["schemas"]["PersonUserDocumentDto"];
+            /**
+             * @description Paraguay bank account number (2-14 digits)
+             * @example 123456
+             */
+            accountNumber: string;
+            /**
+             * @description Bank code (must exist in bank list for country PY)
+             * @example 001
+             */
+            bankCode: string;
+            /**
+             * @example savings
+             * @enum {string}
+             */
+            type: "savings" | "checking";
+            /**
+             * @description Country code for SPI (Paraguay)
+             * @example PY
+             */
+            countryCode: string;
+        };
+        SpiDoAccountDto: {
+            /**
+             * @description Required if companyName is not present
+             * @example John
+             */
+            firstName?: string;
+            /** @example Carlos */
+            middleName?: string;
+            /**
+             * @description Required if companyName is not present
+             * @example Doe
+             */
+            lastName?: string;
+            /**
+             * @description Required if firstName is not present
+             * @example Acme Corp
+             */
+            companyName?: string;
+            /** @example john.doe@example.com */
+            email: string;
+            document: components["schemas"]["CompanyUserDocumentDto"] | components["schemas"]["PersonUserDocumentDto"];
+            /**
+             * @description How the account is identified: bank account, document, phone, or alias
+             * @example ACCOUNT
+             * @enum {string}
+             */
+            identifierType: "ACCOUNT" | "DOCUMENT" | "PHONE" | "ALIAS";
+            /**
+             * @description Required when identifierType is ACCOUNT
+             * @example 001
+             */
+            bankCode: string;
+            /**
+             * @description Required when identifierType is ACCOUNT
+             * @example 10234567
+             */
+            accountNumber: string;
+            /**
+             * @example savings
+             * @enum {string}
+             */
+            type?: "savings" | "checking";
+            /**
+             * @description Required when identifierType is PHONE
+             * @example +18091234567
+             */
+            phone: string;
+            /**
+             * @description Required when identifierType is ALIAS
+             * @example mi-alias-cuenta
+             */
+            alias: string;
+            /**
+             * @description Country code for SPI Dominicana (Dominican Republic)
+             * @example DO
+             */
+            countryCode: string;
+        };
+        WalletAccountDto: {
+            /**
+             * @description Required if companyName is not present
+             * @example John
+             */
+            firstName?: string;
+            /** @example Carlos */
+            middleName?: string;
+            /**
+             * @description Required if companyName is not present
+             * @example Doe
+             */
+            lastName?: string;
+            /**
+             * @description Required if firstName is not present
+             * @example Acme Corp
+             */
+            companyName?: string;
+            /** @example +576015555555 */
+            phone: string;
+            /** @example john.doe@example.com */
+            email: string;
+            document: components["schemas"]["CompanyUserDocumentDto"] | components["schemas"]["PersonUserDocumentDto"];
+            /**
+             * @example USDC
+             * @enum {string}
+             */
+            currency: "USDC" | "USDT" | "BTC";
+            /**
+             * @example POLYGON
+             * @enum {string}
+             */
+            network: "POLYGON" | "SOLANA" | "BSC" | "TRON";
+            /** @example 0x742d35Cc6634C0532925a3b8D5a4C3F2e2B7e4d */
+            address: string;
+            /** @example US */
+            countryCode?: string;
+        };
+        ACHAccountDto: {
+            /**
+             * @description Required if companyName is not present
+             * @example John
+             */
+            firstName?: string;
+            /** @example Carlos */
+            middleName?: string;
+            /**
+             * @description Required if companyName is not present
+             * @example Doe
+             */
+            lastName?: string;
+            /**
+             * @description Required if firstName is not present
+             * @example Acme Corp
+             */
+            companyName?: string;
+            /** @example john.doe@example.com */
+            email: string;
+            /** @example +576015555555 */
+            phone: string;
+            document: components["schemas"]["CompanyUserDocumentDto"] | components["schemas"]["PersonUserDocumentDto"];
+            /** @example Bank of America */
+            bankName: string;
+            /** @example 1029382 */
+            routingNumber: string;
+            /** @example 102938283 */
+            accountNumber: string;
+            /**
+             * @example checking
+             * @enum {string}
+             */
+            type: "savings" | "checking";
+            /** @example CO */
+            countryCode: string;
+        };
+        ACHHnAccountDto: {
+            /**
+             * @description Required if companyName is not present
+             * @example John
+             */
+            firstName?: string;
+            /** @example Carlos */
+            middleName?: string;
+            /**
+             * @description Required if companyName is not present
+             * @example Doe
+             */
+            lastName?: string;
+            /**
+             * @description Required if firstName is not present
+             * @example Acme Corp
+             */
+            companyName?: string;
+            /** @example john.doe@example.com */
+            email: string;
+            /** @example +576015555555 */
+            phone: string;
+            document: components["schemas"]["CompanyUserDocumentDto"] | components["schemas"]["PersonUserDocumentDto"];
+            /** @example Banco Atlántida */
+            bankName: string;
+            /** @example 10234567 */
+            accountNumber: string;
+            /**
+             * @description You can find the code on the bank list endpoint
+             * @example 001
+             */
+            bankCode: string;
+            /**
+             * @example savings
+             * @enum {string}
+             */
+            type: "savings" | "checking";
+            /**
+             * @description Country code for Honduras ACH (HN)
+             * @example HN
+             */
+            countryCode: string;
+        };
+        ACHSvAccountDto: {
+            /**
+             * @description Required if companyName is not present
+             * @example John
+             */
+            firstName?: string;
+            /** @example Carlos */
+            middleName?: string;
+            /**
+             * @description Required if companyName is not present
+             * @example Doe
+             */
+            lastName?: string;
+            /**
+             * @description Required if firstName is not present
+             * @example Acme Corp
+             */
+            companyName?: string;
+            /** @example john.doe@example.com */
+            email: string;
+            /** @example +576015555555 */
+            phone: string;
+            document: components["schemas"]["CompanyUserDocumentDto"] | components["schemas"]["PersonUserDocumentDto"];
+            /** @example Banco Agrícola */
+            bankName: string;
+            /** @example 10234567 */
+            accountNumber: string;
+            /**
+             * @description You can find the code on the bank list endpoint
+             * @example 001
+             */
+            bankCode: string;
+            /**
+             * @example savings
+             * @enum {string}
+             */
+            type: "savings" | "checking";
+            /**
+             * @description Country code for El Salvador ACH (SV)
+             * @example SV
+             */
+            countryCode: string;
+        };
+        ACHNiAccountDto: {
+            /**
+             * @description Required if companyName is not present
+             * @example John
+             */
+            firstName?: string;
+            /** @example Carlos */
+            middleName?: string;
+            /**
+             * @description Required if companyName is not present
+             * @example Doe
+             */
+            lastName?: string;
+            /**
+             * @description Required if firstName is not present
+             * @example Acme Corp
+             */
+            companyName?: string;
+            /** @example john.doe@example.com */
+            email: string;
+            /** @example +576015555555 */
+            phone: string;
+            document: components["schemas"]["CompanyUserDocumentDto"] | components["schemas"]["PersonUserDocumentDto"];
+            /** @example Banpro */
+            bankName: string;
+            /** @example 10234567 */
+            accountNumber: string;
+            /**
+             * @description You can find the code on the bank list endpoint
+             * @example 001
+             */
+            bankCode: string;
+            /**
+             * @example savings
+             * @enum {string}
+             */
+            type: "savings" | "checking";
+            /**
+             * @description Country code for Nicaragua ACH (NI)
+             * @example NI
+             */
+            countryCode: string;
+        };
+        ACHGtAccountDto: {
+            /**
+             * @description Required if companyName is not present
+             * @example John
+             */
+            firstName?: string;
+            /** @example Carlos */
+            middleName?: string;
+            /**
+             * @description Required if companyName is not present
+             * @example Doe
+             */
+            lastName?: string;
+            /**
+             * @description Required if firstName is not present
+             * @example Acme Corp
+             */
+            companyName?: string;
+            /** @example john.doe@example.com */
+            email: string;
+            /** @example +576015555555 */
+            phone: string;
+            document: components["schemas"]["CompanyUserDocumentDto"] | components["schemas"]["PersonUserDocumentDto"];
+            /** @example Banco Industrial */
+            bankName: string;
+            /** @example 10234567 */
+            accountNumber: string;
+            /**
+             * @description You can find the code on the bank list endpoint
+             * @example 001
+             */
+            bankCode: string;
+            /**
+             * @example savings
+             * @enum {string}
+             */
+            type: "savings" | "checking";
+            /**
+             * @description Country code for Guatemala ACH (GT)
+             * @example GT
+             */
+            countryCode: string;
+        };
+        ACHPaAccountDto: {
+            /**
+             * @description Required if companyName is not present
+             * @example John
+             */
+            firstName?: string;
+            /** @example Carlos */
+            middleName?: string;
+            /**
+             * @description Required if companyName is not present
+             * @example Doe
+             */
+            lastName?: string;
+            /**
+             * @description Required if firstName is not present
+             * @example Acme Corp
+             */
+            companyName?: string;
+            /** @example john.doe@example.com */
+            email: string;
+            /** @example +576015555555 */
+            phone: string;
+            document: components["schemas"]["CompanyUserDocumentDto"] | components["schemas"]["PersonUserDocumentDto"];
+            /** @example 10234567 */
+            accountNumber: string;
+            /**
+             * @description You can find the code on the bank list endpoint
+             * @example 001
+             */
+            bankCode: string;
+            /**
+             * @example savings
+             * @enum {string}
+             */
+            type: "savings" | "checking";
+            /**
+             * @description Country code for Panama ACH (PA)
+             * @example PA
+             */
+            countryCode: string;
+        };
+        ACHBoAccountDto: {
+            /**
+             * @description Required if companyName is not present
+             * @example John
+             */
+            firstName?: string;
+            /** @example Carlos */
+            middleName?: string;
+            /**
+             * @description Required if companyName is not present
+             * @example Doe
+             */
+            lastName?: string;
+            /**
+             * @description Required if firstName is not present
+             * @example Acme Corp
+             */
+            companyName?: string;
+            /** @example john.doe@example.com */
+            email: string;
+            /** @example +576015555555 */
+            phone: string;
+            document: components["schemas"]["CompanyUserDocumentDto"] | components["schemas"]["PersonUserDocumentDto"];
+            /** @example 10234567 */
+            accountNumber: string;
+            /**
+             * @description You can find the code on the bank list endpoint
+             * @example 001
+             */
+            bankCode: string;
+            /**
+             * @example savings
+             * @enum {string}
+             */
+            type: "savings" | "checking";
+            /**
+             * @description Country code for Bolivia ACH (BO)
+             * @example BO
+             */
+            countryCode: string;
+        };
+        WIREAccountDto: {
+            /**
+             * @description Required if companyName is not present
+             * @example John
+             */
+            firstName?: string;
+            /** @example Carlos */
+            middleName?: string;
+            /**
+             * @description Required if companyName is not present
+             * @example Doe
+             */
+            lastName?: string;
+            /**
+             * @description Required if firstName is not present
+             * @example Acme Corp
+             */
+            companyName?: string;
+            /** @example john.doe@example.com */
+            email: string;
+            /** @example +576015555555 */
+            phone: string;
+            document: components["schemas"]["CompanyUserDocumentDto"] | components["schemas"]["PersonUserDocumentDto"];
+            /** @example 123456789 */
+            accountNumber: string;
+            /** @example 021000021 */
+            routingNumber: string;
+            /** @example Chase Bank */
+            bankName: string;
+            bankAddress: components["schemas"]["AddressDto"];
+            /** @example US */
+            countryCode: string;
+        };
+        TransfiyaAccountDto: {
+            /**
+             * @description Required if companyName is not present
+             * @example John
+             */
+            firstName?: string;
+            /** @example Carlos */
+            middleName?: string;
+            /**
+             * @description Required if companyName is not present
+             * @example Doe
+             */
+            lastName?: string;
+            /**
+             * @description Required if firstName is not present
+             * @example Acme Corp
+             */
+            companyName?: string;
+            /** @example john.doe@example.com */
+            email: string;
+            /** @example +576015555555 */
+            phone: string;
+            document: components["schemas"]["CompanyUserDocumentDto"] | components["schemas"]["PersonUserDocumentDto"];
+            /** @example +573001234567 */
+            account: string;
+            /**
+             * @example PHONE_NUMBER
+             * @enum {string}
+             */
+            type: "PHONE_NUMBER" | "WALLET";
+            /** @example CO */
+            countryCode: string;
+        };
+        SwiftAccountDto: {
+            /**
+             * @description Required if companyName is not present
+             * @example John
+             */
+            firstName?: string;
+            /** @example Carlos */
+            middleName?: string;
+            /**
+             * @description Required if companyName is not present
+             * @example Doe
+             */
+            lastName?: string;
+            /**
+             * @description Required if firstName is not present
+             * @example Acme Corp
+             */
+            companyName?: string;
+            /** @example john.doe@example.com */
+            email: string;
+            /** @example +576015555555 */
+            phone: string;
+            document: components["schemas"]["CompanyUserDocumentDto"] | components["schemas"]["PersonUserDocumentDto"];
+            /** @example 123456789 */
+            accountNumber: string;
+            /** @example BBVA */
+            bankName: string;
+            /**
+             * @description SWIFT code (8-11 characters)
+             * @example BBVAESMMXXX
+             */
+            swiftCode: string;
+            bankAddress: components["schemas"]["AddressDto"];
+            /** @example ES */
+            countryCode: string;
+        };
+        BrebAccountDto: {
+            /**
+             * @description Required if companyName is not present
+             * @example John
+             */
+            firstName?: string;
+            /** @example Carlos */
+            middleName?: string;
+            /**
+             * @description Required if companyName is not present
+             * @example Doe
+             */
+            lastName?: string;
+            /**
+             * @description Required if firstName is not present
+             * @example Acme Corp
+             */
+            companyName?: string;
+            /** @example john.doe@example.com */
+            email: string;
+            /** @example +576015555555 */
+            phone: string;
+            document: components["schemas"]["CompanyUserDocumentDto"] | components["schemas"]["PersonUserDocumentDto"];
+            /**
+             * @description BREB alias type (national ID, phone, email, etc.)
+             * @example NATIONAL_ID
+             * @enum {string}
+             */
+            aliasType: "NATIONAL_ID" | "PHONE" | "EMAIL" | "ALPHANUMERIC" | "BUSINESS_ID";
+            /**
+             * @description BREB alias value
+             * @example 1234567890
+             */
+            alias: string;
+            /**
+             * @description Country code for BREB (Colombia only)
+             * @example CO
+             */
+            countryCode: string;
+        };
+        AccountDocumentDto: {
+            /** @example 12345678 */
+            number: string;
+            /**
+             * @example NATIONAL_IDENTITY_CARD
+             * @enum {string}
+             */
+            type: "NATIONAL_IDENTITY_CARD" | "PASSPORT" | "DRIVER_LICENSE" | "NIT" | "RFC" | "CURP" | "INE" | "USCC" | "RUT" | "CEDULA";
+            /** @example CO */
+            issuedCountryCode: string;
+        };
+        CoelsaAccountDto: {
+            /** @example Juan */
+            firstName: string;
+            /** @example García */
+            lastName: string;
+            /** @example +5491112345678 */
+            phone: string;
+            /** @example juan.garcia@example.com */
+            email: string;
+            /** @example 0000003100012345678901 */
+            cvu: string;
+            /** @example AR */
+            countryCode: string;
+            document: components["schemas"]["AccountDocumentDto"];
+        };
+        CreateAccountDto: {
+            /**
+             * @example PSE
+             * @enum {string}
+             */
+            type: "PSE" | "ACH" | "ACH_HN" | "ACH_SV" | "ACH_NI" | "ACH_GT" | "ACH_PA" | "ACH_BO" | "WIRE" | "WALLET" | "COELSA" | "BREB" | "SPEI" | "PIX" | "CCI" | "CUSTODIAL" | "TRANSFIYA" | "SWIFT" | "SPI" | "SPI_PY" | "SPI_DO" | "SINPE";
+            /** @example 7f0a8ad6-29a1-4a66-a6c4-8bb398eb78d1 */
+            userId?: string;
+            data: components["schemas"]["PSEAccountDto"] | components["schemas"]["SpeiAccountDto"] | components["schemas"]["WalletAccountDto"] | components["schemas"]["WIREAccountDto"] | components["schemas"]["ACHAccountDto"] | components["schemas"]["ACHHnAccountDto"] | components["schemas"]["ACHSvAccountDto"] | components["schemas"]["ACHNiAccountDto"] | components["schemas"]["ACHGtAccountDto"] | components["schemas"]["ACHPaAccountDto"] | components["schemas"]["ACHBoAccountDto"] | components["schemas"]["TransfiyaAccountDto"] | components["schemas"]["SwiftAccountDto"] | components["schemas"]["PixAccountDto"] | components["schemas"]["CciAccountDto"] | components["schemas"]["SinpeAccountDto"] | components["schemas"]["SpiAccountDto"] | components["schemas"]["SpiPyAccountDto"] | components["schemas"]["SpiDoAccountDto"] | components["schemas"]["BrebAccountDto"];
+            /**
+             * @description A unique identifier used to identify your existing user.
+             * @example d00e4f43-2022-42f3-ba1c-dcf4c1dcd934
+             */
+            externalId?: string;
+        };
+        CreateAccountResponseDto: {
+            /** @example e8d74b2f-86df-43b0-a9d9-72055a6b0432 */
+            id: string;
+            /** @example 7f0a8ad6-29a1-4a66-a6c4-8bb398eb78d1 */
+            userId: string;
+            /** @example PSE */
+            type: string;
+            /** @example ACTIVE */
+            status: string;
+            data: components["schemas"]["PSEAccountDto"] | components["schemas"]["SpeiAccountDto"] | components["schemas"]["WalletAccountDto"] | components["schemas"]["WIREAccountDto"] | components["schemas"]["ACHAccountDto"] | components["schemas"]["ACHHnAccountDto"] | components["schemas"]["ACHSvAccountDto"] | components["schemas"]["ACHNiAccountDto"] | components["schemas"]["ACHGtAccountDto"] | components["schemas"]["ACHPaAccountDto"] | components["schemas"]["ACHBoAccountDto"] | components["schemas"]["SwiftAccountDto"] | components["schemas"]["PixAccountDto"] | components["schemas"]["CciAccountDto"] | components["schemas"]["SinpeAccountDto"] | components["schemas"]["CoelsaAccountDto"] | components["schemas"]["SpiAccountDto"] | components["schemas"]["SpiPyAccountDto"] | components["schemas"]["SpiDoAccountDto"] | components["schemas"]["BrebAccountDto"];
+            /**
+             * @description A unique identifier used to identify your existing user.
+             * @example d00e4f43-2022-42f3-ba1c-dcf4c1dcd934
+             */
+            externalId: string;
+            /** @example https://sumsub.com/review/12345 */
+            complianceUrl: string;
+            /**
+             * Format: date-time
+             * @example 2026-04-23T00:38:08.439Z
+             */
+            createdAt: string;
+            /**
+             * Format: date-time
+             * @example 2026-04-23T00:38:08.439Z
+             */
+            updatedAt: string;
+        };
+        PSEUpdateAccountDto: {
+            /** @example 1234567890 */
+            accountNumber?: string;
+            /** @example 001 */
+            bankCode?: string;
+            /** @example savings */
+            type?: string;
+            document?: components["schemas"]["CompanyUserDocumentDto"] | components["schemas"]["PersonUserDocumentDto"];
+        };
+        SPEIUpdateAccountDto: {
+            document?: components["schemas"]["CompanyUserDocumentDto"] | components["schemas"]["PersonUserDocumentDto"];
+            /** @example 032180000118359719 */
+            clabe?: string;
+            /** @example CLABE */
+            clabeType?: string;
+        };
+        WALLETUpdateAccountDto: {
+            document?: components["schemas"]["CompanyUserDocumentDto"] | components["schemas"]["PersonUserDocumentDto"];
+            /** @example USDC */
+            currency?: string;
+            /** @example POLYGON */
+            network?: string;
+            /** @example 0xAbCd1234567890abcdef1234567890abcdef1234 */
+            address?: string;
+        };
+        ACHUpdateAccountDto: {
+            /** @example 021000021 */
+            routingNumber: string;
+            /** @example 1234567890 */
+            accountNumber: string;
+            document?: components["schemas"]["CompanyUserDocumentDto"] | components["schemas"]["PersonUserDocumentDto"];
+            /** @example checking */
+            type: string;
+        };
+        ACHHnUpdateAccountDto: {
+            /** @example 1234567890 */
+            accountNumber?: string;
+            /** @example 001 */
+            bankCode?: string;
+            document?: components["schemas"]["CompanyUserDocumentDto"] | components["schemas"]["PersonUserDocumentDto"];
+            /** @example savings */
+            type: string;
+        };
+        ACHSvUpdateAccountDto: {
+            /** @example 1234567890 */
+            accountNumber?: string;
+            /** @example 001 */
+            bankCode?: string;
+            document?: components["schemas"]["CompanyUserDocumentDto"] | components["schemas"]["PersonUserDocumentDto"];
+            /** @example savings */
+            type: string;
+        };
+        ACHNiUpdateAccountDto: {
+            /** @example 1234567890 */
+            accountNumber?: string;
+            /** @example 001 */
+            bankCode?: string;
+            document?: components["schemas"]["CompanyUserDocumentDto"] | components["schemas"]["PersonUserDocumentDto"];
+            /** @example savings */
+            type: string;
+        };
+        ACHGtUpdateAccountDto: {
+            /** @example 1234567890 */
+            accountNumber?: string;
+            /** @example 001 */
+            bankCode?: string;
+            document?: components["schemas"]["CompanyUserDocumentDto"] | components["schemas"]["PersonUserDocumentDto"];
+            /** @example savings */
+            type: string;
+        };
+        ACHPaUpdateAccountDto: {
+            /** @example 1234567890 */
+            accountNumber?: string;
+            /** @example 001 */
+            bankCode?: string;
+            document?: components["schemas"]["CompanyUserDocumentDto"] | components["schemas"]["PersonUserDocumentDto"];
+            /** @example savings */
+            type: string;
+        };
+        ACHBoUpdateAccountDto: {
+            /** @example 1234567890 */
+            accountNumber?: string;
+            /** @example 001 */
+            bankCode?: string;
+            document?: components["schemas"]["CompanyUserDocumentDto"] | components["schemas"]["PersonUserDocumentDto"];
+            /** @example savings */
+            type: string;
+        };
+        SwiftUpdateAccountDto: {
+            document?: components["schemas"]["CompanyUserDocumentDto"] | components["schemas"]["PersonUserDocumentDto"];
+            /** @example 1234567890 */
+            accountNumber?: string;
+            /**
+             * @description SWIFT code (8-11 characters)
+             * @example BOFAUS3N
+             */
+            swiftCode?: string;
+            /** @example Bank of America */
+            bankName?: string;
+            bankAddress?: components["schemas"]["AddressDto"];
+        };
+        PixUpdateAccountDto: {
+            document?: components["schemas"]["CompanyUserDocumentDto"] | components["schemas"]["PersonUserDocumentDto"];
+            /**
+             * @example CPF
+             * @enum {string}
+             */
+            pixKeyType?: "CPF" | "CNPJ" | "EMAIL" | "PHONE" | "RANDOM";
+            /**
+             * @description PIX key value
+             * @example 12345678901
+             */
+            pixKey?: string;
+        };
+        CciUpdateAccountDto: {
+            document?: components["schemas"]["CompanyUserDocumentDto"] | components["schemas"]["PersonUserDocumentDto"];
+            /**
+             * @description Peruvian Código de Cuenta Interbancario (20 digits)
+             * @example 00219100130020136943
+             */
+            cci?: string;
+        };
+        SinpeUpdateAccountDto: {
+            document?: components["schemas"]["CompanyUserDocumentDto"] | components["schemas"]["PersonUserDocumentDto"];
+            /**
+             * @description Costa Rica SINPE account number (22 chars: CR + 20 digits)
+             * @example CR04011400007316288640
+             */
+            accountNumber?: string;
+            /**
+             * @description Bank code for Costa Rica
+             * @example 0011
+             */
+            bankCode?: string;
+            /** @example savings */
+            type?: string;
+        };
+        COELSAUpdateAccountDto: {
+            document?: components["schemas"]["CompanyUserDocumentDto"] | components["schemas"]["PersonUserDocumentDto"];
+            /** @example 0000003100025695 */
+            cvu?: string;
+        };
+        BrebUpdateAccountDto: {
+            document?: components["schemas"]["CompanyUserDocumentDto"] | components["schemas"]["PersonUserDocumentDto"];
+            /**
+             * @example NATIONAL_ID
+             * @enum {string}
+             */
+            aliasType?: "NATIONAL_ID" | "PHONE" | "EMAIL" | "ALPHANUMERIC" | "BUSINESS_ID";
+            /**
+             * @description BREB alias value
+             * @example john.doe
+             */
+            alias?: string;
+        };
+        SpiUpdateAccountDto: {
+            document?: components["schemas"]["CompanyUserDocumentDto"] | components["schemas"]["PersonUserDocumentDto"];
+            /**
+             * @description Uruguay bank account number (2-14 digits)
+             * @example 1234567890
+             */
+            accountNumber?: string;
+            /**
+             * @description Bank code (must exist in bank list for country UY)
+             * @example 001
+             */
+            bankCode?: string;
+            /** @example savings */
+            type?: string;
+        };
+        SpiPyUpdateAccountDto: {
+            document?: components["schemas"]["CompanyUserDocumentDto"] | components["schemas"]["PersonUserDocumentDto"];
+            /**
+             * @description Paraguay bank account number (2-14 digits)
+             * @example 1234567890
+             */
+            accountNumber?: string;
+            /**
+             * @description Bank code (must exist in bank list for country PY)
+             * @example 001
+             */
+            bankCode?: string;
+            /** @example savings */
+            type?: string;
+        };
+        SpiDoUpdateAccountDto: {
+            document?: components["schemas"]["CompanyUserDocumentDto"] | components["schemas"]["PersonUserDocumentDto"];
+            /**
+             * @description Bank code (when identifierType is ACCOUNT)
+             * @example 001
+             */
+            bankCode?: string;
+            /**
+             * @description Account number (when identifierType is ACCOUNT)
+             * @example 1234567890
+             */
+            accountNumber?: string;
+            /** @example savings */
+            type?: string;
+            /**
+             * @description Phone (when identifierType is PHONE)
+             * @example +18096345678
+             */
+            phone?: string;
+            /**
+             * @description Alias (when identifierType is ALIAS)
+             * @example john.doe
+             */
+            alias?: string;
+        };
+        UpdateAccountDto: {
+            /** @example PSE */
+            type: string;
+            data: components["schemas"]["PSEUpdateAccountDto"] | components["schemas"]["SPEIUpdateAccountDto"] | components["schemas"]["WALLETUpdateAccountDto"] | components["schemas"]["SwiftUpdateAccountDto"] | components["schemas"]["PixUpdateAccountDto"] | components["schemas"]["ACHHnUpdateAccountDto"] | components["schemas"]["ACHSvUpdateAccountDto"] | components["schemas"]["ACHNiUpdateAccountDto"] | components["schemas"]["ACHGtUpdateAccountDto"] | components["schemas"]["ACHPaUpdateAccountDto"] | components["schemas"]["ACHBoUpdateAccountDto"] | components["schemas"]["CciUpdateAccountDto"] | components["schemas"]["SinpeUpdateAccountDto"] | components["schemas"]["COELSAUpdateAccountDto"] | components["schemas"]["BrebUpdateAccountDto"] | components["schemas"]["SpiUpdateAccountDto"] | components["schemas"]["SpiPyUpdateAccountDto"] | components["schemas"]["SpiDoUpdateAccountDto"];
+        };
+        UpdateAccountResponseDto: {
+            /** @example e8d74b2f-86df-43b0-a9d9-72055a6b0432 */
+            id: string;
+            /** @example e8d74b2f-86df-43b0-a9d9-72055a6b0432 */
+            userId: string;
+            /** @example PSE */
+            type: string;
+            /** @example ACTIVE */
+            status: string;
+            data: components["schemas"]["PSEAccountDto"] | components["schemas"]["SpeiAccountDto"] | components["schemas"]["WalletAccountDto"] | components["schemas"]["SwiftAccountDto"] | components["schemas"]["PixAccountDto"] | components["schemas"]["CciAccountDto"] | components["schemas"]["SinpeAccountDto"] | components["schemas"]["CoelsaAccountDto"] | components["schemas"]["SpiAccountDto"] | components["schemas"]["SpiPyAccountDto"] | components["schemas"]["SpiDoAccountDto"] | components["schemas"]["BrebAccountDto"] | components["schemas"]["ACHHnAccountDto"] | components["schemas"]["ACHSvAccountDto"] | components["schemas"]["ACHNiAccountDto"] | components["schemas"]["ACHPaAccountDto"];
+            /**
+             * @description A unique identifier used to identify your existing user.
+             * @example my-external-ref-001
+             */
+            externalId: string;
+            /**
+             * Format: date-time
+             * @example 2026-04-23T00:38:08.439Z
+             */
+            createdAt: string;
+            /**
+             * Format: date-time
+             * @example 2026-04-23T00:38:08.439Z
+             */
+            updatedAt: string;
+        };
+        QueryAccountDataResponseDto: {
+            /** @example e8d74b2f-86df-43b0-a9d9-72055a6b0432 */
+            id: string;
+            /** @example 7f0a8ad6-29a1-4a66-a6c4-8bb398eb78d1 */
+            userId: string;
+            /** @example PSE */
+            type: string;
+            /** @example ACTIVE */
+            status: string;
+            data: components["schemas"]["PSEAccountDto"] | components["schemas"]["SpeiAccountDto"] | components["schemas"]["WalletAccountDto"] | components["schemas"]["SwiftAccountDto"] | components["schemas"]["PixAccountDto"] | components["schemas"]["CciAccountDto"] | components["schemas"]["ACHHnAccountDto"] | components["schemas"]["SpiAccountDto"] | components["schemas"]["SpiPyAccountDto"] | components["schemas"]["SpiDoAccountDto"];
+            /**
+             * Format: date-time
+             * @example 2026-04-23T00:38:08.439Z
+             */
+            createdAt: string;
+            /**
+             * Format: date-time
+             * @example 2026-04-23T00:38:08.439Z
+             */
+            updatedAt: string;
+        };
+        QueryAccountResponseDto: {
+            /** @example 1 */
+            totalPage: number;
+            accounts: components["schemas"]["QueryAccountDataResponseDto"][];
+        };
+        BulkBeneficiaryJobResponseDto: {
+            /** @example e8d74b2f-86df-43b0-a9d9-72055a6b0432 */
+            jobId: string;
+            /**
+             * @example PENDING
+             * @enum {string}
+             */
+            status: "PENDING" | "PROCESSING" | "COMPLETED" | "FAILED";
+            /** @example Bulk beneficiary job created successfully */
+            message: string;
+        };
+        BulkBeneficiaryRowDto: {
+            /**
+             * @description Row number in Excel file
+             * @example 2
+             */
+            rowNumber: number;
+            /**
+             * @example PERSON
+             * @enum {string}
+             */
+            entityType: "PERSON" | "COMPANY";
+            /** @example John */
+            firstName?: string;
+            /** @example Carlos */
+            middleName?: string;
+            /** @example Doe */
+            lastName?: string;
+            /** @example Acme Corp */
+            companyName?: string;
+            /** @example john.doe@example.com */
+            email: string;
+            /** @example +576015555555 */
+            phone: string;
+            /**
+             * @example PSE
+             * @enum {string}
+             */
+            accountType: "PSE" | "ACH" | "ACH_HN" | "ACH_SV" | "ACH_NI" | "ACH_GT" | "ACH_PA" | "ACH_BO" | "WIRE" | "WALLET" | "COELSA" | "BREB" | "SPEI" | "PIX" | "CCI" | "CUSTODIAL" | "TRANSFIYA" | "SWIFT" | "SPI" | "SPI_PY" | "SPI_DO" | "SINPE";
+            /**
+             * @example PASSPORT
+             * @enum {string}
+             */
+            personDocumentType?: "PASSPORT" | "DRIVER_LICENSE" | "NUIP" | "RFC" | "SSN" | "CURP" | "CPF" | "INE" | "IFE" | "DNI" | "DUI" | "NIT" | "RUT" | "CHINESE_ID" | "BOLIVIAN_ID" | "CE";
+            /**
+             * @example NIT
+             * @enum {string}
+             */
+            companyDocumentType?: "NIT" | "EIN" | "CNPJ" | "RFC" | "CUIT" | "USCC" | "RUT";
+            /** @example 123456789 */
+            documentNumber: string;
+            /** @example CO */
+            documentIssuedCountryCode: string;
+            /** @example 001 */
+            bankCode?: string;
+            /** @example 1234567890 */
+            accountNumber?: string;
+            /** @example CLABE123456789012345 */
+            clabe?: string;
+            /**
+             * @example savings
+             * @enum {string}
+             */
+            bankAccountType?: "savings" | "checking";
+            /** @example CO */
+            countryCode: string;
+            /** @example external-id-123 */
+            externalId?: string;
+            /** @example 021000021 */
+            routingNumber?: string;
+            /** @example Banco de Bogotá */
+            bankName?: string;
+            /** @example BOFAUS3N */
+            swiftCode?: string;
+            /**
+             * @description IBAN. ACH_SV (El Salvador), ACH_HN (Honduras) and ACH_NI (Nicaragua) use accountNumber, bankCode and type instead.
+             * @example GB29NWBK60161331926819
+             */
+            iban?: string;
+            /** @example 123 Main St, Bogotá, Colombia */
+            address?: string;
+            /** @example USDC */
+            currency?: string;
+            /** @example POLYGON */
+            network?: string;
+            /** @example 0000003100025695 */
+            cvu?: string;
+            /**
+             * @example NATIONAL_ID
+             * @enum {string}
+             */
+            aliasType?: "NATIONAL_ID" | "PHONE" | "EMAIL" | "ALPHANUMERIC" | "BUSINESS_ID";
+            /** @example john.doe */
+            alias?: string;
+            /** @example 100 Wall Street */
+            bankAddressStreet1?: string;
+            /** @example Suite 500 */
+            bankAddressStreet2?: string;
+            /** @example New York */
+            bankAddressCity?: string;
+            /** @example NY */
+            bankAddressState?: string;
+            /** @example 10005 */
+            bankAddressZipCode?: string;
+            /** @example US */
+            bankAddressCountryCode?: string;
+            /** @example 3001234567 */
+            account?: string;
+            /** @example SAVINGS */
+            transfiyaAccountType?: string;
+            /** @example CLABE */
+            clabeType?: string;
+            /**
+             * @example CPF
+             * @enum {string}
+             */
+            pixKeyType?: "CPF" | "CNPJ" | "EMAIL" | "PHONE" | "RANDOM";
+            /** @example 12345678901 */
+            pixKey?: string;
+            /**
+             * @description 20-digit Peruvian CCI
+             * @example 12345678901234567890
+             */
+            cci?: string;
+        };
+        BulkBeneficiaryResultDto: {
+            /** @example 2 */
+            rowNumber: number;
+            /**
+             * @example SUCCESS
+             * @enum {string}
+             */
+            status: "SUCCESS" | "ERROR";
+            /** @example e8d74b2f-86df-43b0-a9d9-72055a6b0432 */
+            accountId?: string;
+            /** @example https://compliance.example.com/review/e8d74b2f */
+            complianceUrl?: string;
+            /** @example Account already exists for this user */
+            error?: string;
+            /** @example Sheet1 */
+            sheetName?: string;
+            originalRowData?: components["schemas"]["BulkBeneficiaryRowDto"];
+        };
+        BulkBeneficiaryStatusDto: {
+            /** @example e8d74b2f-86df-43b0-a9d9-72055a6b0432 */
+            jobId: string;
+            /**
+             * @example COMPLETED
+             * @enum {string}
+             */
+            status: "PENDING" | "PROCESSING" | "COMPLETED" | "FAILED";
+            /** @example 100 */
+            totalRows: number;
+            /** @example 100 */
+            processedRows: number;
+            /** @example 98 */
+            successCount: number;
+            /** @example 2 */
+            errorCount: number;
+            results: components["schemas"]["BulkBeneficiaryResultDto"][];
+            /** @example https://storage.example.com/results/job-e8d74b2f.xlsx */
+            resultsFileUrl?: string;
+            /** @example Partial failure during processing */
+            error?: string;
+            /**
+             * Format: date-time
+             * @example 2026-04-23T00:38:08.439Z
+             */
+            createdAt: string;
+            /**
+             * Format: date-time
+             * @example 2026-04-23T00:38:08.439Z
+             */
+            updatedAt: string;
+        };
+        CreateRoleDto: {
+            /** @example ADMIN */
+            name: string;
+            /** @example Administrator role with full access */
+            description?: string;
+            /** @example [] */
+            permissionIds?: string[];
+        };
+        PermissionResponseDto: {
+            /** @example e8d74b2f-86df-43b0-a9d9-72055a6b0432 */
+            id: string;
+            /** @example user:create */
+            name: string;
+            /** @example user */
+            resource: string;
+            /** @example create */
+            action: string;
+            /** @example Permission to create users */
+            description: string;
+            /** @example true */
+            active: boolean;
+            /**
+             * Format: date-time
+             * @example 2026-04-23T00:38:08.439Z
+             */
+            createdAt: string;
+            /**
+             * Format: date-time
+             * @example 2026-04-23T00:38:08.439Z
+             */
+            updatedAt: string;
+        };
+        RoleResponseDto: {
+            /** @example e8d74b2f-86df-43b0-a9d9-72055a6b0432 */
+            id: string;
+            /** @example ADMIN */
+            name: string;
+            /** @example Administrator role with full access */
+            description: string;
+            permissions: components["schemas"]["PermissionResponseDto"][];
+            /** @example true */
+            active: boolean;
+            /**
+             * Format: date-time
+             * @example 2026-04-23T00:38:08.439Z
+             */
+            createdAt: string;
+            /**
+             * Format: date-time
+             * @example 2026-04-23T00:38:08.439Z
+             */
+            updatedAt: string;
+        };
+        UpdateRoleDto: {
+            /** @example ADMIN */
+            name?: string;
+            /** @example Administrator role with full access */
+            description?: string;
+            /** @example [] */
+            permissionIds?: string[];
+            /** @example true */
+            active?: boolean;
+        };
+        CreatePermissionDto: {
+            /** @example user:create */
+            name: string;
+            /** @example user */
+            resource: string;
+            /** @example create */
+            action: string;
+            /** @example Permission to create users */
+            description?: string;
+        };
+        UpdatePermissionDto: {
+            /** @example user:create */
+            name?: string;
+            /** @example user */
+            resource?: string;
+            /** @example create */
+            action?: string;
+            /** @example Permission to create users */
+            description?: string;
+            /** @example true */
+            active?: boolean;
+        };
+        SnapshotResponseDto: {
+            /** @example e8d74b2f-86df-43b0-a9d9-72055a6b0432 */
+            id: string;
+            /** @example e8d74b2f-86df-43b0-a9d9-72055a6b0432 */
+            roleId: string;
+            /** @example ADMIN */
+            roleName: string;
+            /**
+             * @example {
+             *       "name": "ADMIN",
+             *       "permissions": [
+             *         "user:create"
+             *       ]
+             *     }
+             */
+            snapshotData: Record<string, never>;
+            /**
+             * @example create
+             * @enum {string}
+             */
+            changeType: "create" | "update" | "delete";
+            /** @example e8d74b2f-86df-43b0-a9d9-72055a6b0432 */
+            changedBy: string;
+            /** @example Initial role creation */
+            reason: string;
+            /**
+             * Format: date-time
+             * @example 2026-04-23T00:38:08.439Z
+             */
+            createdAt: string;
+        };
+        CreateSnapshotDto: {
+            /** @example e8d74b2f-86df-43b0-a9d9-72055a6b0432 */
+            roleId: string;
+            /**
+             * @example create
+             * @enum {string}
+             */
+            changeType: "create" | "update" | "delete";
+            /** @example Initial role creation */
+            reason?: string;
+        };
+        SavingsCustodialAccountDto: {
+            /**
+             * Format: UUID
+             * @example e8d74b2f-86df-43b0-a9d9-72055a6b0432
+             */
+            userId: string;
+            /**
+             * @description Accept terms and conditions
+             * @example true
+             */
+            acceptedTermsAndConditions: boolean;
+        };
+        SavingsAccountResponseDto: {
+            /**
+             * Format: uuid
+             * @example e8d74b2f-86df-43b0-a9d9-72055a6b0432
+             */
+            id: string;
+            /**
+             * Format: uuid
+             * @example e8d74b2f-86df-43b0-a9d9-72055a6b0432
+             */
+            userId: string;
+            /**
+             * @example PENDING
+             * @enum {string}
+             */
+            status: "PENDING" | "COMPLETED" | "REJECTED";
+            /**
+             * Format: date-time
+             * @example 2026-04-23T00:38:08.439Z
+             */
+            createdAt: string;
+            /**
+             * Format: date-time
+             * @example 2026-04-23T00:38:08.439Z
+             */
+            updatedAt: string;
+        };
+        TransactionsDataReturn: {
+            /** @example 4d23aa52-1b40-4584-a8ea-58aba6099c5c */
+            id: string;
+            /** @example 8ffce092-b97a-48bd-9efa-24c66ac7fe13 */
+            customerId: string;
+            /** @example 9d23aa10-1b40-4584-a8ea-58aba6099c5c */
+            userId: string;
+            /** @example 2e200eb1-d89e-40a3-bb74-45ce3ba61e95 */
+            originAccountId: string;
+            /** @example f09c5ef6-c15c-4de5-b2dd-1a44d062dc7f */
+            destinationAccountId: string;
+            /** @example 322.1 */
+            amount: string;
+            /**
+             * @example DEPOSIT
+             * @enum {string}
+             */
+            type: "DEPOSIT" | "WITHDRAWAL";
+            /** @example USD */
+            currency: string;
+            /**
+             * Format: date-time
+             * @example 2024-02-06T00:03:30.791Z
+             */
+            createdAt: string;
+            /**
+             * Format: date-time
+             * @example 2024-02-06T00:03:30.791Z
+             */
+            updatedAt: string;
+        };
+        IGetTransactionsReturn: {
+            transactions: components["schemas"]["TransactionsDataReturn"][];
+            /** @example 1 */
+            totalPage: number;
+        };
+        SourceDataDto: {
+            /** @example e8d74b2f-86df-43b0-a9d9-72055a6b0432 */
+            savingsAccountId: string;
+        };
+        DestinationDataDto: {
+            /** @example e8d74b2f-86df-43b0-a9d9-72055a6b0432 */
+            savingsAccountId: string;
+            /** @example e8d74b2f-86df-43b0-a9d9-72055a6b0432 */
+            externalAccountId: string;
+        };
+        CreateWithdrawalDto: {
+            source: components["schemas"]["SourceDataDto"] & components["schemas"]["SourceDataDto"];
+            destination: components["schemas"]["DestinationDataDto"] & components["schemas"]["DestinationDataDto"];
+            /** @example 100 */
+            amount: number;
+            /** @example Monthly withdrawal */
+            comment: string;
+        };
+        Source: {
+            /** @example USD */
+            currency: string;
+            /** @example e8d74b2f-86df-43b0-a9d9-72055a6b0432 */
+            custodialAccountId: string;
+        };
+        Destination: {
+            /** @example USD */
+            currency: string;
+            /** @example e8d74b2f-86df-43b0-a9d9-72055a6b0432 */
+            externalAccountId: string;
+        };
+        WithdrawalSavingsReturn: {
+            /**
+             * Format: uuid
+             * @example e8d74b2f-86df-43b0-a9d9-72055a6b0432
+             */
+            id: string;
+            /**
+             * @example CREATED
+             * @enum {string}
+             */
+            status: "CREATED" | "PENDING" | "PROCESSING" | "CONFIRMED" | "REFUNDED" | "COMPLETED" | "CANCELED" | "EXPIRED" | "FAILED" | "ERROR" | "REJECTED";
+            /** @example 100 */
+            amount: number;
+            /**
+             * Format: uuid
+             * @example e8d74b2f-86df-43b0-a9d9-72055a6b0432
+             */
+            userId: string;
+            /**
+             * @example WITHDRAWAL
+             * @enum {string}
+             */
+            type: "DEPOSIT" | "WITHDRAWAL";
+            source: components["schemas"]["Source"];
+            /** @example null */
+            destination: components["schemas"]["Destination"];
+            /**
+             * Format: date-time
+             * @example 2026-04-23T00:38:08.439Z
+             */
+            createdAt: string;
+            /**
+             * Format: date-time
+             * @example 2026-04-23T00:38:08.439Z
+             */
+            updatedAt: string;
+        };
+        GetBalanceReturn: {
+            /** @example USD */
+            currency: string;
+            /** @example 250.75 */
+            amount: number;
+        };
+        GetDepositInstructionsReturn: {
+            /**
+             * @example ACH
+             * @enum {string}
+             */
+            type: "ACH" | "WIRE";
+            /** @example USD */
+            currency?: string;
+            /** @example Bank Name */
+            accountHolderName: string;
+            /** @example 111111111111 */
+            accountNumber: string;
+            /** @example 222222222 */
+            routingNumber: string;
+            /** @example A1AABCD */
+            memo?: string;
+            bankAddress?: components["schemas"]["AddressDto"] & components["schemas"]["AddressDto"];
+            /** @example AABBCC3311DZEF */
+            depositMessage?: string;
+            /** @example KillB Bank Name */
+            bankBeneficiaryName?: string;
+        };
+        GetCryptoDepositInstructionsReturn: {
+            /** @example 0x */
+            address: string;
+            /** @example POLYGON */
+            network: string;
+            /** @example USDC */
+            currency: string;
+        };
+        CreateQuotationDto: {
+            /**
+             * @example COP
+             * @enum {string}
+             */
+            fromCurrency: "MXN" | "COP" | "USD" | "USDC" | "USDT";
+            /**
+             * @example USDC
+             * @enum {string}
+             */
+            toCurrency: "MXN" | "COP" | "USDC" | "USDT" | "HKD" | "EUR" | "USD" | "PEN" | "BRL" | "ARS" | "CLP" | "CRC" | "GTQ" | "HNL" | "NIO" | "PAB" | "DOP" | "BOB" | "GYD" | "PYG" | "UYU";
+            /** @example 8000 */
+            amount: number;
+            /** @example false */
+            amountIsToCurrency: boolean;
+            /**
+             * @example PSE
+             * @enum {string}
+             */
+            cashInMethod: "SPEI" | "POLYGON" | "ERC20" | "PSE" | "PRE_FUND" | "PRE_FUND_POLYGON" | "PRE_FUND_ERC20" | "PRE_FUND_SOLANA" | "PRE_FUND_TRON" | "PRE_FUND_ARBITRUM" | "TRANSFIYA" | "SOLANA" | "BSC" | "TRON";
+            /**
+             * @example POLYGON
+             * @enum {string}
+             */
+            cashOutMethod: "SPEI" | "POLYGON" | "ERC20" | "PSE" | "TRANSFIYA" | "SOLANA" | "BSC" | "TRON" | "WIRE" | "ACH" | "ACH_BO" | "SPI_DO" | "ACH_PA" | "ACH_GT" | "ACH_HN" | "ACH_NI" | "ACH_SV" | "CCI" | "COELSA" | "PIX" | "SINPE" | "SPI" | "SPI_PY" | "SWIFT" | "BREB";
+            /**
+             * @description Flag to indicate if this is a fast pay quotation
+             * @default false
+             * @example false
+             */
+            isFastPay: boolean;
+        };
+        CreateQuotationResponseDto: {
+            /** @example e8d74b2f-86df-43b0-a9d9-72055a6b0432 */
+            id: string;
+            /**
+             * @example COP
+             * @enum {string}
+             */
+            fromCurrency: "MXN" | "COP" | "USD" | "USDC" | "USDT";
+            /**
+             * @example USDC
+             * @enum {string}
+             */
+            toCurrency: "MXN" | "COP" | "USDC" | "USDT" | "HKD" | "EUR" | "USD" | "PEN" | "BRL" | "ARS" | "CLP" | "CRC" | "GTQ" | "HNL" | "NIO" | "PAB" | "DOP" | "BOB" | "GYD" | "PYG" | "UYU";
+            /** @example 8000 */
+            fromAmount: number;
+            /** @example 2.5 */
+            toAmount: number;
+            /** @example 0.0003125 */
+            rate: number;
+            /** @example 0.00031 */
+            spotPrice: number;
+            /** @example 1745368688 */
+            expiresAt: number;
+            /**
+             * @example PSE
+             * @enum {string}
+             */
+            cashInMethod: "SPEI" | "POLYGON" | "ERC20" | "PSE" | "PRE_FUND" | "PRE_FUND_POLYGON" | "PRE_FUND_ERC20" | "PRE_FUND_SOLANA" | "PRE_FUND_TRON" | "PRE_FUND_ARBITRUM" | "TRANSFIYA" | "SOLANA" | "BSC" | "TRON";
+            /**
+             * @example POLYGON
+             * @enum {string}
+             */
+            cashOutMethod: "SPEI" | "POLYGON" | "ERC20" | "PSE" | "TRANSFIYA" | "SOLANA" | "BSC" | "TRON" | "WIRE" | "ACH" | "ACH_BO" | "SPI_DO" | "ACH_PA" | "ACH_GT" | "ACH_HN" | "ACH_NI" | "ACH_SV" | "CCI" | "COELSA" | "PIX" | "SINPE" | "SPI" | "SPI_PY" | "SWIFT" | "BREB";
+            /**
+             * @description Flag to indicate if this is a fast pay quotation
+             * @example false
+             */
+            isFastPay: boolean;
+            /** @description Fast-pay markup in basis points (0 if not applicable) */
+            fastPayBps?: number;
+            /**
+             * @description Post-fund tier breakdown (when the strategy accepts post-fund). Present only for PRE_FUND quotes.
+             * @example {
+             *       "tierName": "Tier 1",
+             *       "feePercentage": 0.001,
+             *       "feeAmountUsd": 1
+             *     }
+             */
+            postFundTier?: Record<string, never>;
+        };
+        UpdateQuotationDto: {
+            /** @example 8000 */
+            fromAmount: number;
+            /** @example 2.5 */
+            toAmount: number;
+        };
+        SimulateQuotationResponseDto: {
+            /**
+             * @example COP
+             * @enum {string}
+             */
+            fromCurrency: "MXN" | "COP" | "USD" | "USDC" | "USDT";
+            /**
+             * @example USDC
+             * @enum {string}
+             */
+            toCurrency: "MXN" | "COP" | "USDC" | "USDT" | "HKD" | "EUR" | "USD" | "PEN" | "BRL" | "ARS" | "CLP" | "CRC" | "GTQ" | "HNL" | "NIO" | "PAB" | "DOP" | "BOB" | "GYD" | "PYG" | "UYU";
+            /** @example 8000 */
+            fromAmount: number;
+            /** @example 2.5 */
+            toAmount: number;
+            /** @example 0.0003125 */
+            rate: number;
+            /**
+             * @example PSE
+             * @enum {string}
+             */
+            cashInMethod: "SPEI" | "POLYGON" | "ERC20" | "PSE" | "PRE_FUND" | "PRE_FUND_POLYGON" | "PRE_FUND_ERC20" | "PRE_FUND_SOLANA" | "PRE_FUND_TRON" | "PRE_FUND_ARBITRUM" | "TRANSFIYA" | "SOLANA" | "BSC" | "TRON";
+            /**
+             * @example POLYGON
+             * @enum {string}
+             */
+            cashOutMethod: "SPEI" | "POLYGON" | "ERC20" | "PSE" | "TRANSFIYA" | "SOLANA" | "BSC" | "TRON" | "WIRE" | "ACH" | "ACH_BO" | "SPI_DO" | "ACH_PA" | "ACH_GT" | "ACH_HN" | "ACH_NI" | "ACH_SV" | "CCI" | "COELSA" | "PIX" | "SINPE" | "SPI" | "SPI_PY" | "SWIFT" | "BREB";
+        };
+        GetQuotationResponseDto: {
+            /**
+             * @example COP
+             * @enum {string}
+             */
+            fromCurrency: "MXN" | "COP" | "USD" | "USDC" | "USDT";
+            /**
+             * @example USDC
+             * @enum {string}
+             */
+            toCurrency: "MXN" | "COP" | "USDC" | "USDT" | "HKD" | "EUR" | "USD" | "PEN" | "BRL" | "ARS" | "CLP" | "CRC" | "GTQ" | "HNL" | "NIO" | "PAB" | "DOP" | "BOB" | "GYD" | "PYG" | "UYU";
+            /** @example 8000 */
+            amount: number;
+            /** @example false */
+            amountIsToCurrency: boolean;
+            /**
+             * @example PSE
+             * @enum {string}
+             */
+            cashInMethod: "SPEI" | "POLYGON" | "ERC20" | "PSE" | "PRE_FUND" | "PRE_FUND_POLYGON" | "PRE_FUND_ERC20" | "PRE_FUND_SOLANA" | "PRE_FUND_TRON" | "PRE_FUND_ARBITRUM" | "TRANSFIYA" | "SOLANA" | "BSC" | "TRON";
+            /**
+             * @example POLYGON
+             * @enum {string}
+             */
+            cashOutMethod: "SPEI" | "POLYGON" | "ERC20" | "PSE" | "TRANSFIYA" | "SOLANA" | "BSC" | "TRON" | "WIRE" | "ACH" | "ACH_BO" | "SPI_DO" | "ACH_PA" | "ACH_GT" | "ACH_HN" | "ACH_NI" | "ACH_SV" | "CCI" | "COELSA" | "PIX" | "SINPE" | "SPI" | "SPI_PY" | "SWIFT" | "BREB";
+            /**
+             * @description Flag to indicate if this is a fast pay quotation
+             * @default false
+             * @example false
+             */
+            isFastPay: boolean;
+        };
+        SPEIRefundInstruction: {
+            /** @example 032180000118359719 */
+            clabe: string;
+            /** @example Bruce Wayne */
+            beneficiary: string;
+        };
+        CryptoRefundInstruction: {
+            /**
+             * @example POLYGON
+             * @enum {string}
+             */
+            network: "POLYGON" | "SOLANA" | "BSC" | "TRON";
+            /** @example Ox */
+            address: string;
+            /**
+             * @example USDC
+             * @enum {string}
+             */
+            asset: "USDC" | "USDT";
+        };
+        CreateRampAccount: {
+            /** @example e8d74b2f-86df-43b0-a9d9-72055a6b0432 */
+            id: string;
+            /** @example 8000 */
+            amount: number;
+        };
+        CashInDetails: {
+            /** @example 3001234567 */
+            transfiyaAccount?: string;
+        };
+        RampDetails: {
+            /** @example null */
+            cashIn?: components["schemas"]["CashInDetails"];
+        };
+        CreateRampInputDto: {
+            /** @example e8d74b2f-86df-43b0-a9d9-72055a6b0432 */
+            quotationId: string;
+            /** @example e8d74b2f-86df-43b0-a9d9-72055a6b0432 */
+            userId: string;
+            /** @example e8d74b2f-86df-43b0-a9d9-72055a6b0432 */
+            accountId?: string;
+            accounts?: components["schemas"]["CreateRampAccount"][];
+            /** @description You have to use the same method used in the quotation for the deposit */
+            refundInstructions?: components["schemas"]["SPEIRefundInstruction"] | components["schemas"]["CryptoRefundInstruction"];
+            /**
+             * @description You can send an external id to avoid duplicate ramps
+             * @example my-external-ref-001
+             */
+            externalId?: string;
+            /** @example null */
+            details?: components["schemas"]["RampDetails"];
+        };
+        ISPEIPaymentInfo: {
+            /** @example SPEI */
+            network: string;
+            /** @example BBVA Mexico */
+            Bank: string;
+            /** @example KillB Fintech SA de CV */
+            Beneficiary: string;
+            /** @example 032180000118359719 */
+            CLABE: string;
+            /**
+             * @description This code needs to be sent for KillB be able to identify the payment
+             * @example KILLB-REF-00123
+             */
+            concepto: string;
+        };
+        ICOPPaymentInfo: {
+            /** @example https://payments.example.com/pay/abc123 */
+            url: string;
+        };
+        ICryptoPaymentInfo: {
+            /** @example POLYGON */
+            network: string;
+            /** @example 0x1234567890abcdef1234567890abcdef12345678 */
+            address: string;
+        };
+        RampDocumentResponseDto: {
+            /** @example SOURCE_OF_FUNDS */
+            documentType: string;
+            /**
+             * @description Path of the file stored in Google Cloud Storage
+             * @example ramps/e8d74b2f-86df-43b0-a9d9-72055a6b0432/SOURCE_OF_FUNDS.pdf
+             */
+            filePath: string;
+            /**
+             * Format: date-time
+             * @example 2026-04-23T00:38:08.439Z
+             */
+            uploadedAt: string;
+        };
+        CreateRampResponseDto: {
+            /** @example e8d74b2f-86df-43b0-a9d9-72055a6b0432 */
+            id: string;
+            /** @example true */
+            active: boolean;
+            /**
+             * @example COP
+             * @enum {string}
+             */
+            fromCurrency: "MXN" | "COP" | "USD" | "USDC" | "USDT";
+            /**
+             * @example USDC
+             * @enum {string}
+             */
+            toCurrency: "MXN" | "COP" | "USDC" | "USDT" | "HKD" | "EUR" | "USD" | "PEN" | "BRL" | "ARS" | "CLP" | "CRC" | "GTQ" | "HNL" | "NIO" | "PAB" | "DOP" | "BOB" | "GYD" | "PYG" | "UYU";
+            /** @example 8000 */
+            fromAmount: number;
+            /** @example 2.5 */
+            toAmount: number;
+            /** @example e8d74b2f-86df-43b0-a9d9-72055a6b0432 */
+            quotationId: string;
+            /** @example e8d74b2f-86df-43b0-a9d9-72055a6b0432 */
+            userId: string;
+            /**
+             * @example PSE
+             * @enum {string}
+             */
+            cashInMethod: "SPEI" | "POLYGON" | "ERC20" | "PSE" | "PRE_FUND" | "PRE_FUND_POLYGON" | "PRE_FUND_ERC20" | "PRE_FUND_SOLANA" | "PRE_FUND_TRON" | "PRE_FUND_ARBITRUM" | "TRANSFIYA" | "SOLANA" | "BSC" | "TRON";
+            /**
+             * @example POLYGON
+             * @enum {string}
+             */
+            cashOutMethod: "SPEI" | "POLYGON" | "ERC20" | "PSE" | "TRANSFIYA" | "SOLANA" | "BSC" | "TRON" | "WIRE" | "ACH" | "ACH_BO" | "SPI_DO" | "ACH_PA" | "ACH_GT" | "ACH_HN" | "ACH_NI" | "ACH_SV" | "CCI" | "COELSA" | "PIX" | "SINPE" | "SPI" | "SPI_PY" | "SWIFT" | "BREB";
+            /** @example e8d74b2f-86df-43b0-a9d9-72055a6b0432 */
+            accountId: string;
+            accounts?: components["schemas"]["CreateRampAccount"][];
+            /**
+             * @example CREATED
+             * @enum {string}
+             */
+            status: "CREATED" | "CASH_IN_REQUEST" | "CONVERSION_REQUEST" | "CASH_OUT_REQUEST" | "CASH_IN_REQUESTED" | "CONVERSION_REQUESTED" | "CASH_OUT_REQUESTED" | "CASH_IN_PENDING" | "CONVERSION_PENDING" | "CASH_OUT_PENDING" | "CASH_IN_PROCESSING" | "CONVERSION_PROCESSING" | "CASH_OUT_PROCESSING" | "CASH_IN_COMPLETED" | "CONVERSION_COMPLETED" | "CASH_OUT_COMPLETED" | "COMPLETED" | "CANCELED" | "FAILED" | "REJECTED" | "ERROR" | "REVIEW_NEEDED" | "EXPIRED";
+            /** @example false */
+            isPreFunded?: boolean;
+            paymentInfo?: (components["schemas"]["ISPEIPaymentInfo"] | components["schemas"]["ICOPPaymentInfo"] | components["schemas"]["ICryptoPaymentInfo"])[];
+            /**
+             * @description complement information about a transfer, like: Code error
+             * @example Insufficient funds
+             */
+            details?: string;
+            /**
+             * @description Proof of transfer, like: TxHash, url, etc.
+             * @example 0xabc123def456abc123def456abc123def456abc123def456abc123def456abc1
+             */
+            transferProof?: string;
+            /**
+             * @description External id to avoid duplicate ramps
+             * @example my-external-ref-001
+             */
+            externalId?: string;
+            /** @example false */
+            isFastPay?: boolean;
+            /**
+             * @example ON
+             * @enum {string}
+             */
+            type: "ON" | "OFF";
+            documents?: components["schemas"]["RampDocumentResponseDto"][];
+            /**
+             * Format: date-time
+             * @example 2026-04-23T00:38:08.439Z
+             */
+            createdAt: string;
+            /**
+             * Format: date-time
+             * @example 2026-04-23T00:38:08.439Z
+             */
+            updatedAt: string;
+        };
+        PatchRampInputDto: {
+            accounts?: components["schemas"]["CreateRampAccount"][];
+        };
+        GetRampQueryResponseDto: {
+            ramps: components["schemas"]["CreateRampResponseDto"][];
+            /** @example 5 */
+            totalPage: number;
+        };
+        GetRampByIdResponseDto: {
+            /** @example e8d74b2f-86df-43b0-a9d9-72055a6b0432 */
+            id: string;
+            /** @example true */
+            active: boolean;
+            /**
+             * @example COP
+             * @enum {string}
+             */
+            fromCurrency: "MXN" | "COP" | "USD" | "USDC" | "USDT";
+            /**
+             * @example USDC
+             * @enum {string}
+             */
+            toCurrency: "MXN" | "COP" | "USDC" | "USDT" | "HKD" | "EUR" | "USD" | "PEN" | "BRL" | "ARS" | "CLP" | "CRC" | "GTQ" | "HNL" | "NIO" | "PAB" | "DOP" | "BOB" | "GYD" | "PYG" | "UYU";
+            /** @example 8000 */
+            fromAmount: number;
+            /** @example 2.5 */
+            toAmount: number;
+            /** @example e8d74b2f-86df-43b0-a9d9-72055a6b0432 */
+            quotationId: string;
+            /** @example e8d74b2f-86df-43b0-a9d9-72055a6b0432 */
+            userId: string;
+            /**
+             * @example PSE
+             * @enum {string}
+             */
+            cashInMethod: "SPEI" | "POLYGON" | "ERC20" | "PSE" | "PRE_FUND" | "PRE_FUND_POLYGON" | "PRE_FUND_ERC20" | "PRE_FUND_SOLANA" | "PRE_FUND_TRON" | "PRE_FUND_ARBITRUM" | "TRANSFIYA" | "SOLANA" | "BSC" | "TRON";
+            /**
+             * @example POLYGON
+             * @enum {string}
+             */
+            cashOutMethod: "SPEI" | "POLYGON" | "ERC20" | "PSE" | "TRANSFIYA" | "SOLANA" | "BSC" | "TRON" | "WIRE" | "ACH" | "ACH_BO" | "SPI_DO" | "ACH_PA" | "ACH_GT" | "ACH_HN" | "ACH_NI" | "ACH_SV" | "CCI" | "COELSA" | "PIX" | "SINPE" | "SPI" | "SPI_PY" | "SWIFT" | "BREB";
+            /** @example e8d74b2f-86df-43b0-a9d9-72055a6b0432 */
+            accountId: string;
+            accounts?: components["schemas"]["CreateRampAccount"][];
+            /**
+             * @example CREATED
+             * @enum {string}
+             */
+            status: "CREATED" | "CASH_IN_REQUEST" | "CONVERSION_REQUEST" | "CASH_OUT_REQUEST" | "CASH_IN_REQUESTED" | "CONVERSION_REQUESTED" | "CASH_OUT_REQUESTED" | "CASH_IN_PENDING" | "CONVERSION_PENDING" | "CASH_OUT_PENDING" | "CASH_IN_PROCESSING" | "CONVERSION_PROCESSING" | "CASH_OUT_PROCESSING" | "CASH_IN_COMPLETED" | "CONVERSION_COMPLETED" | "CASH_OUT_COMPLETED" | "COMPLETED" | "CANCELED" | "FAILED" | "REJECTED" | "ERROR" | "REVIEW_NEEDED" | "EXPIRED";
+            /** @example false */
+            isPreFunded?: boolean;
+            paymentInfo?: (components["schemas"]["ISPEIPaymentInfo"] | components["schemas"]["ICOPPaymentInfo"] | components["schemas"]["ICryptoPaymentInfo"])[];
+            /**
+             * @description complement information about a transfer, like: Code error
+             * @example Insufficient funds
+             */
+            details?: string;
+            /**
+             * @description Proof of transfer, like: TxHash, url, etc.
+             * @example 0xabc123def456abc123def456abc123def456abc123def456abc123def456abc1
+             */
+            transferProof?: string;
+            /**
+             * @description External id to avoid duplicate ramps
+             * @example my-external-ref-001
+             */
+            externalId?: string;
+            /** @example false */
+            isFastPay?: boolean;
+            /**
+             * @example ON
+             * @enum {string}
+             */
+            type: "ON" | "OFF";
+            documents?: components["schemas"]["RampDocumentResponseDto"][];
+            /**
+             * Format: date-time
+             * @example 2026-04-23T00:38:08.439Z
+             */
+            createdAt: string;
+            /**
+             * Format: date-time
+             * @example 2026-04-23T00:38:08.439Z
+             */
+            updatedAt: string;
+        };
+        GetRampStatusResponseDto: Record<string, never>;
+        BackOfficeBatchFileCreate: Record<string, never>;
+        GetBanksResponseDto: {
+            /** @example 0001 */
+            code: string;
+            /** @example BANCOMEXT */
+            companyName: string;
+            /** @example MX */
+            countryCode: string;
+            /** @example BANCOMEXT */
+            tradeName: string;
+            /**
+             * Format: date-time
+             * @example 2026-04-23T00:38:08.439Z
+             */
+            updatedAt: string;
+            /**
+             * Format: date-time
+             * @example 2026-04-23T00:38:08.439Z
+             */
+            createdAt: string;
+            /** @example [] */
+            accountTypes: string[];
+            /**
+             * Format: uuid
+             * @example e8d74b2f-86df-43b0-a9d9-72055a6b0432
+             */
+            id: string;
+        };
+        FakerCashInDto: {
+            /** Format: uuid */
+            rampId: string;
+        };
+        FakerCashOutDto: {
+            /** Format: uuid */
+            rampId: string;
+        };
+        VirtualAccountItemDto: {
+            /**
+             * Format: uuid
+             * @example 123e4567-e89b-12d3-a456-426614174000
+             */
+            id: string;
+            /**
+             * Format: uuid
+             * @example 123e4567-e89b-12d3-a456-426614174000
+             */
+            customerId: string;
+            /**
+             * Format: uuid
+             * @example 123e4567-e89b-12d3-a456-426614174000
+             */
+            userId?: string;
+            /** @example WALLET */
+            type: string;
+            /** @example PRE_FUND */
+            subtype: string;
+            /**
+             * @example ACTIVE
+             * @enum {string}
+             */
+            status: "ACTIVE" | "PENDING" | "REJECTED" | "PROCESSING";
+            /**
+             * @description Wallet address
+             * @example 0x1234567890abcdef1234567890abcdef12345678
+             */
+            address: string;
+            /**
+             * @example USDC
+             * @enum {string}
+             */
+            currency: "USD" | "USDC" | "USDT";
+            /**
+             * @example POLYGON
+             * @enum {string}
+             */
+            network: "POLYGON" | "ERC20" | "SOLANA" | "TRON" | "ARBITRUM" | "BSC";
+            /** @example true */
+            active: boolean;
+            /**
+             * Format: date-time
+             * @example 2024-01-01T00:00:00.000Z
+             */
+            createdAt: string;
+            /**
+             * Format: date-time
+             * @example 2024-01-01T00:00:00.000Z
+             */
+            updatedAt: string;
+        };
+        GetVirtualAccountsResponseDto: {
+            virtualAccounts: components["schemas"]["VirtualAccountItemDto"][];
+            /**
+             * @description Total number of virtual accounts
+             * @example 100
+             */
+            total: number;
+            /**
+             * @description Current page number
+             * @example 1
+             */
+            page: number;
+            /**
+             * @description Items per page
+             * @example 10
+             */
+            limit: number;
+            /**
+             * @description Total number of pages
+             * @example 10
+             */
+            totalPages: number;
+        };
+        CreatePreFundVirtualAccountDto: {
+            /**
+             * Format: uuid
+             * @example 123e4567-e89b-12d3-a456-426614174000
+             */
+            userId: string;
+            /**
+             * @example POLYGON
+             * @enum {string}
+             */
+            network: "POLYGON" | "ERC20" | "SOLANA" | "TRON" | "ARBITRUM" | "BSC";
+            /**
+             * @example USDC
+             * @enum {string}
+             */
+            currency: "USD" | "USDC" | "USDT";
+        };
+        CreatePreFundVirtualAccountResponseDto: {
+            /**
+             * Format: uuid
+             * @example 123e4567-e89b-12d3-a456-426614174000
+             */
+            id: string;
+            /** @example PRE_FUND */
+            type: string;
+            /**
+             * @description A wallet address
+             * @example 0x1234567890abcdef1234567890abcdef12345678
+             */
+            address: string;
+            /**
+             * @example USDC
+             * @enum {string}
+             */
+            currency: "USD" | "USDC" | "USDT";
+            /**
+             * @example POLYGON
+             * @enum {string}
+             */
+            network: "POLYGON" | "ERC20" | "SOLANA" | "TRON" | "ARBITRUM" | "BSC";
+            /** @example true */
+            active: boolean;
+            /**
+             * Format: date-time
+             * @example 2021-09-01T00:00:00.000Z
+             */
+            createdAt: string;
+            /**
+             * Format: date-time
+             * @example 2021-09-01T00:00:00.000Z
+             */
+            updatedAt: string;
+        };
+        CreateVirtualAccountWithdrawalDto: {
+            /**
+             * @description Amount to withdraw
+             * @example 100
+             */
+            amount: number;
+            /**
+             * Format: uuid
+             * @description Destination account ID
+             * @example 4d23aa52-1b40-4584-a8ea-58aba6099c5c
+             */
+            accountId: string;
+        };
+        VirtualAccountWithdrawalResponseDto: {
+            /**
+             * Format: uuid
+             * @example e8d74b2f-86df-43b0-a9d9-72055a6b0432
+             */
+            id: string;
+            /**
+             * Format: uuid
+             * @example e8d74b2f-86df-43b0-a9d9-72055a6b0432
+             */
+            virtualAccountId: string;
+            /**
+             * Format: uuid
+             * @example e8d74b2f-86df-43b0-a9d9-72055a6b0432
+             */
+            customerId: string;
+            /**
+             * Format: uuid
+             * @example e8d74b2f-86df-43b0-a9d9-72055a6b0432
+             */
+            userId: string;
+            /** @example 8000 */
+            amount: number;
+            /** @example USDC */
+            currency: string;
+            /** @example POLYGON */
+            network: string;
+            /** @example 0x1234567890abcdef1234567890abcdef12345678 */
+            address: string;
+            /**
+             * @example PENDING
+             * @enum {string}
+             */
+            status: "PENDING" | "PROCESSING" | "COMPLETED" | "FAILED" | "REJECTED";
+            /** @example txn_abc123xyz */
+            transferId?: string;
+            /** @example https://polygonscan.com/tx/0xabc123 */
+            transferProof?: string;
+            /** @example {} */
+            metadata: Record<string, never>;
+            /** @example true */
+            active: boolean;
+            /**
+             * Format: date-time
+             * @example 2026-04-23T00:38:08.439Z
+             */
+            createdAt: string;
+            /**
+             * Format: date-time
+             * @example 2026-04-23T00:38:08.439Z
+             */
+            updatedAt: string;
+        };
+        WithdrawalItemDto: {
+            /**
+             * Format: uuid
+             * @example e8d74b2f-86df-43b0-a9d9-72055a6b0432
+             */
+            id: string;
+            /**
+             * Format: uuid
+             * @example e8d74b2f-86df-43b0-a9d9-72055a6b0432
+             */
+            virtualAccountId: string;
+            /**
+             * Format: uuid
+             * @example e8d74b2f-86df-43b0-a9d9-72055a6b0432
+             */
+            customerId: string;
+            /**
+             * Format: uuid
+             * @example e8d74b2f-86df-43b0-a9d9-72055a6b0432
+             */
+            userId: string;
+            /** @example 8000 */
+            amount: number;
+            /** @example USDC */
+            currency: string;
+            /** @example POLYGON */
+            network: string;
+            /** @example 0x1234567890abcdef1234567890abcdef12345678 */
+            address: string;
+            /**
+             * @example PENDING
+             * @enum {string}
+             */
+            status: "PENDING" | "PROCESSING" | "COMPLETED" | "FAILED" | "REJECTED";
+            /** @example txn_abc123xyz */
+            transferId?: string;
+            /** @example https://polygonscan.com/tx/0xabc123 */
+            transferProof?: string;
+            /** @example {} */
+            metadata: Record<string, never>;
+            /**
+             * Format: date-time
+             * @example 2026-04-23T00:38:08.439Z
+             */
+            createdAt: string;
+            /**
+             * Format: date-time
+             * @example 2026-04-23T00:38:08.439Z
+             */
+            updatedAt: string;
+        };
+        GetWithdrawalsResponseDto: {
+            withdrawals: components["schemas"]["WithdrawalItemDto"][];
+            /** @example 100 */
+            total: number;
+            /** @example 1 */
+            page: number;
+            /** @example 10 */
+            limit: number;
+            /** @example 10 */
+            totalPages: number;
+        };
+        GenerateAccessTokenRequestDto: {
+            /**
+             * @description User ID or Account ID
+             * @example 550e8400-e29b-41d4-a716-446655440000
+             */
+            id: string;
+            /**
+             * @description Type of ID provided (userId or accountId)
+             * @default userId
+             * @example userId
+             * @enum {string}
+             */
+            idType: "userId" | "accountId";
+            /**
+             * @description Sumsub level name
+             * @example basic-kyc-level
+             */
+            levelName?: string;
+            /**
+             * @description Time to live in seconds
+             * @example 600
+             */
+            ttlInSecs?: number;
+        };
+        GenerateAccessTokenResponseDto: {
+            /**
+             * @description Access token for Sumsub SDK
+             * @example _act-b8ebfb63-5f24-4b89-9c08-000000000000
+             */
+            token: string;
+        };
+        BeneficiaryDto: {
+            /**
+             * @example BANK
+             * @enum {string}
+             */
+            type: "BANK" | "BREB";
+            account: components["schemas"]["PSEAccountDto"] | components["schemas"]["BrebAccountDto"];
+        };
+        CreatePayoutInputDto: {
+            /** @example e8d74b2f-86df-43b0-a9d9-72055a6b0432 */
+            preFundAccountId: string;
+            /** @example 8000 */
+            amount: number;
+            beneficiary: components["schemas"]["BeneficiaryDto"];
+            /**
+             * @description identifier used to identify your existing payouts
+             * @example d00e4f43-2022-42f3-ba1c-dcf4c1dcd934
+             */
+            externalId?: string;
+        };
+        CreatePayoutResponseDto: {
+            /** @example e8d74b2f-86df-43b0-a9d9-72055a6b0432 */
+            id: string;
+            /** @example 8000 */
+            amount: number;
+            /**
+             * @example COP
+             * @enum {string}
+             */
+            currency: "COP";
+            beneficiary: components["schemas"]["BeneficiaryDto"];
+            /**
+             * @example CASH_IN_CREATED
+             * @enum {string}
+             */
+            status: "CREATED" | "COMPLETED" | "FAILED" | "ERROR" | "REFUNDED" | "CASH_IN_CREATED" | "CASH_IN_REQUEST" | "CASH_IN_REQUESTED" | "CASH_IN_PENDING" | "CASH_IN_PROCESSING" | "CASH_IN_COMPLETED" | "CASH_IN_CANCELED" | "CASH_IN_REJECTED" | "CASH_IN_FAILED" | "CASH_IN_ERROR" | "KYT_OUT_CREATE" | "KYT_OUT_PENDING" | "KYT_OUT_PROCESSING" | "KYT_OUT_COMPLETED" | "KYT_OUT_FAILED" | "CASH_OUT_CREATE" | "CASH_OUT_CREATED" | "CASH_OUT_REQUEST" | "CASH_OUT_REQUESTED" | "CASH_OUT_PENDING" | "CASH_OUT_PENDING_FILE" | "CASH_OUT_PROCESSING" | "CASH_OUT_COMPLETED" | "CASH_OUT_CANCELED" | "CASH_OUT_FAILED" | "CASH_OUT_ERROR" | "REFUND_CREATE" | "REFUND_CREATED" | "REFUND_REQUEST" | "REFUND_REQUESTED" | "REFUND_PENDING" | "REFUND_PROCESSING" | "REFUND_COMPLETED" | "REFUND_FAILED";
+            /**
+             * @description Notes about issues or observations related to the payout
+             * @example Payment processed successfully
+             */
+            details?: string;
+            /**
+             * @description Proof of payment for the payout transfer
+             * @example https://example.com/proof.pdf
+             */
+            transferProof?: string;
+            /** @example d00e4f43-2022-42f3-ba1c-dcf4c1dcd934 */
+            externalId?: string;
+            /**
+             * Format: date-time
+             * @example 2026-04-23T00:38:08.439Z
+             */
+            createdAt: string;
+            /**
+             * Format: date-time
+             * @example 2026-04-23T00:38:08.439Z
+             */
+            updatedAt: string;
+        };
+        GetPayoutQueryResponseDto: {
+            payouts: components["schemas"]["CreatePayoutResponseDto"][];
+            /** @example 5 */
+            totalPage: number;
+        };
+    };
+    responses: never;
+    parameters: never;
+    requestBodies: never;
+    headers: never;
+    pathItems: never;
 }
-
 export type $defs = Record<string, never>;
-
-export type external = Record<string, never>;
-
 export interface operations {
-
-  /**
-   * Generate an access token
-   * @description Guide for the Auth can be found in [Auths](https://killbapi.stoplight.io/docs/killb-v2/92fb466bf5e4b).
-   */
-  AuthController_login: {
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["LoginDto"];
-      };
-    };
-    responses: {
-      201: {
-        content: {
-          "application/json": components["schemas"]["LoginResponseDto"];
-        };
-      };
-      400: {
-        content: {
-          "application/json": components["schemas"]["BadRequestResponse"];
-        };
-      };
-      500: {
-        content: {
-          "application/json": components["schemas"]["InternalServerErrorResponse"];
-        };
-      };
-    };
-  };
-  /**
-   * Options
-   * @description Options method
-   */
-  options0: {
-    responses: {
-      /** @description Successful response */
-      200: {
-        content: never;
-      };
-    };
-  };
-  /**
-   * Refresh an access token
-   * @description Guide for the Auth can be found in [Auths](https://killbapi.stoplight.io/docs/killb-v2/92fb466bf5e4b).
-   */
-  AuthController_refresh: {
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["RefreshDto"];
-      };
-    };
-    responses: {
-      201: {
-        content: {
-          "application/json": components["schemas"]["RefreshResponseDto"];
-        };
-      };
-      400: {
-        content: {
-          "application/json": components["schemas"]["BadRequestResponse"];
-        };
-      };
-      500: {
-        content: {
-          "application/json": components["schemas"]["InternalServerErrorResponse"];
-        };
-      };
-    };
-  };
-  /**
-   * Options
-   * @description Options method
-   */
-  options1: {
-    responses: {
-      /** @description Successful response */
-      200: {
-        content: never;
-      };
-    };
-  };
-  /** Verify a otp */
-  AuthController_verifyOtp: {
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["VerifyOtpDto"];
-      };
-    };
-    responses: {
-      400: {
-        content: {
-          "application/json": components["schemas"]["BadRequestResponse"];
-        };
-      };
-      500: {
-        content: {
-          "application/json": components["schemas"]["InternalServerErrorResponse"];
-        };
-      };
-    };
-  };
-  /**
-   * Options
-   * @description Options method
-   */
-  options2: {
-    responses: {
-      /** @description Successful response */
-      200: {
-        content: never;
-      };
-    };
-  };
-  /** Get customer balances */
-  CustomerController_getBalances: {
-    responses: {
-      200: {
-        content: {
-          "application/json": components["schemas"]["GetBalancesResponseDto"][];
-        };
-      };
-      400: {
-        content: {
-          "application/json": components["schemas"]["BadRequestResponse"];
-        };
-      };
-      500: {
-        content: {
-          "application/json": components["schemas"]["InternalServerErrorResponse"];
-        };
-      };
-    };
-  };
-  /**
-   * Options
-   * @description Options method
-   */
-  options3: {
-    responses: {
-      /** @description Successful response */
-      200: {
-        content: never;
-      };
-    };
-  };
-  /** Create a pre-fund wallet */
-  CustomerController_createPreFundAccount: {
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["CreatePreFundAccountDto"];
-      };
-    };
-    responses: {
-      201: {
-        content: {
-          "application/json": components["schemas"]["CreatePreFundAccountResponseDto"];
-        };
-      };
-      400: {
-        content: {
-          "application/json": components["schemas"]["BadRequestResponse"];
-        };
-      };
-      500: {
-        content: {
-          "application/json": components["schemas"]["InternalServerErrorResponse"];
-        };
-      };
-    };
-  };
-  /**
-   * Options
-   * @description Options method
-   */
-  options4: {
-    responses: {
-      /** @description Successful response */
-      200: {
-        content: never;
-      };
-    };
-  };
-  /** Get customer liquidities */
-  CustomerController_getLiquidity: {
-    responses: {
-      200: {
-        content: {
-          "application/json": components["schemas"]["GetCustomerLiquidityResponseDto"][];
-        };
-      };
-      400: {
-        content: {
-          "application/json": components["schemas"]["BadRequestResponse"];
-        };
-      };
-      500: {
-        content: {
-          "application/json": components["schemas"]["InternalServerErrorResponse"];
-        };
-      };
-    };
-  };
-  /**
-   * Options
-   * @description Options method
-   */
-  options5: {
-    responses: {
-      /** @description Successful response */
-      200: {
-        content: never;
-      };
-    };
-  };
-  /** Get all available pairs and options */
-  CustomerController_getPairs: {
-    responses: {
-      200: {
-        content: {
-          "application/json": components["schemas"]["GetPairsResponseDto"];
-        };
-      };
-      400: {
-        content: {
-          "application/json": components["schemas"]["BadRequestResponse"];
-        };
-      };
-      500: {
-        content: {
-          "application/json": components["schemas"]["InternalServerErrorResponse"];
-        };
-      };
-    };
-  };
-  /**
-   * Options
-   * @description Options method
-   */
-  options6: {
-    responses: {
-      /** @description Successful response */
-      200: {
-        content: never;
-      };
-    };
-  };
-  /** Get all documents for a customer */
-  ClickAndSignController_findAll: {
-    parameters: {
-      query: {
-        customerId: string;
-      };
-    };
-    responses: {
-      201: {
-        content: {
-          "application/json": components["schemas"]["FindingAllDocumentsResponseDto"];
-        };
-      };
-      400: {
-        content: {
-          "application/json": components["schemas"]["BadRequestResponse"];
-        };
-      };
-      500: {
-        content: {
-          "application/json": components["schemas"]["InternalServerErrorResponse"];
-        };
-      };
-    };
-  };
-  /**
-   * Options
-   * @description Options method
-   */
-  options7: {
-    parameters: {
-      query: {
-        customerId: string;
-      };
-    };
-    responses: {
-      /** @description Successful response */
-      200: {
-        content: never;
-      };
-    };
-  };
-  /** Get a document by id */
-  ClickAndSignController_findOne: {
-    parameters: {
-      query: {
-        customerId: string;
-      };
-      path: {
-        id: string;
-      };
-    };
-    responses: {
-      201: {
-        content: {
-          "application/json": components["schemas"]["FindOneDocumentResponseDto"];
-        };
-      };
-      400: {
-        content: {
-          "application/json": components["schemas"]["BadRequestResponse"];
-        };
-      };
-      500: {
-        content: {
-          "application/json": components["schemas"]["InternalServerErrorResponse"];
-        };
-      };
-    };
-  };
-  /**
-   * Options
-   * @description Options method
-   */
-  options8: {
-    parameters: {
-      query: {
-        customerId: string;
-      };
-      path: {
-        id: string;
-      };
-    };
-    responses: {
-      /** @description Successful response */
-      200: {
-        content: never;
-      };
-    };
-  };
-  /** Sign multiple documents */
-  ClickAndSignController_signMultiple: {
-    responses: {
-      201: {
-        content: {
-          "application/json": components["schemas"]["SignMultipleDocumentsResponseDto"];
-        };
-      };
-      400: {
-        content: {
-          "application/json": components["schemas"]["BadRequestResponse"];
-        };
-      };
-      500: {
-        content: {
-          "application/json": components["schemas"]["InternalServerErrorResponse"];
-        };
-      };
-    };
-  };
-  /**
-   * Options
-   * @description Options method
-   */
-  options9: {
-    responses: {
-      /** @description Successful response */
-      200: {
-        content: never;
-      };
-    };
-  };
-  /** Sign a document */
-  ClickAndSignController_sign: {
-    parameters: {
-      path: {
-        id: string;
-      };
-    };
-    responses: {
-      /** @description Document signed successfully */
-      200: {
-        content: never;
-      };
-      201: {
-        content: {
-          "application/json": components["schemas"]["SignDocumentResponseDto"];
-        };
-      };
-      400: {
-        content: {
-          "application/json": components["schemas"]["BadRequestResponse"];
-        };
-      };
-      500: {
-        content: {
-          "application/json": components["schemas"]["InternalServerErrorResponse"];
-        };
-      };
-    };
-  };
-  /**
-   * Options
-   * @description Options method
-   */
-  options10: {
-    parameters: {
-      path: {
-        id: string;
-      };
-    };
-    responses: {
-      /** @description Successful response */
-      200: {
-        content: never;
-      };
-    };
-  };
-  /** Generate transfer report document for customer signature */
-  ClickAndSignController_generateTransactionDocument: {
-    parameters: {
-      path: {
-        customerId: string;
-      };
-    };
-    responses: {
-      /** @description Document generated successfully */
-      201: {
-        content: {
-          "application/json": components["schemas"]["GenerateDocumentResponseDto"];
-        };
-      };
-      400: {
-        content: {
-          "application/json": components["schemas"]["BadRequestResponse"];
-        };
-      };
-      500: {
-        content: {
-          "application/json": components["schemas"]["InternalServerErrorResponse"];
-        };
-      };
-    };
-  };
-  /**
-   * Options
-   * @description Options method
-   */
-  options11: {
-    parameters: {
-      path: {
-        customerId: string;
-      };
-    };
-    responses: {
-      /** @description Successful response */
-      200: {
-        content: never;
-      };
-    };
-  };
-  /** Get Accounts */
-  AccountController_queryAccount: {
-    parameters: {
-      query?: {
-        ids?: string;
-        userId?: string;
-        type?: "PSE" | "ACH" | "WIRE" | "WALLET" | "COELSA" | "SPEI" | "CUSTODIAL" | "TRANSFIYA" | "SWIFT";
-        accountNumber?: string;
-        routingNumber?: string;
-        address?: string;
-        clabe?: string;
-        cvu?: string;
-        /** @description Filter by first name */
-        firstName?: string;
-        /** @description Filter by middle name */
-        middleName?: string;
-        /** @description Filter by last name */
-        lastName?: string;
-        /** @description Filter by company name */
-        companyName?: string;
-        /** @description Filter by email */
-        email?: string;
-        limit?: number;
-        page?: number;
-      };
-    };
-    responses: {
-      201: {
-        content: {
-          "application/json": components["schemas"]["QueryAccountResponseDto"];
-        };
-      };
-      400: {
-        content: {
-          "application/json": components["schemas"]["BadRequestResponse"];
-        };
-      };
-      500: {
-        content: {
-          "application/json": components["schemas"]["InternalServerErrorResponse"];
-        };
-      };
-    };
-  };
-  /** Create Account */
-  AccountController_create: {
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["CreateAccountDto"];
-      };
-    };
-    responses: {
-      201: {
-        content: {
-          "application/json": components["schemas"]["CreateAccountResponseDto"];
-        };
-      };
-      400: {
-        content: {
-          "application/json": components["schemas"]["BadRequestResponse"];
-        };
-      };
-      500: {
-        content: {
-          "application/json": components["schemas"]["InternalServerErrorResponse"];
-        };
-      };
-    };
-  };
-  /**
-   * Options
-   * @description Options method
-   */
-  options12: {
-    responses: {
-      /** @description Successful response */
-      200: {
-        content: never;
-      };
-    };
-  };
-  /** Get Account by id */
-  AccountController_getOne: {
-    parameters: {
-      path: {
-        id: string;
-      };
-    };
-    responses: {
-      201: {
-        content: {
-          "application/json": components["schemas"]["CreateAccountResponseDto"];
-        };
-      };
-      400: {
-        content: {
-          "application/json": components["schemas"]["BadRequestResponse"];
-        };
-      };
-      500: {
-        content: {
-          "application/json": components["schemas"]["InternalServerErrorResponse"];
-        };
-      };
-    };
-  };
-  /** Delete Account */
-  AccountController_delete: {
-    parameters: {
-      path: {
-        id: string;
-      };
-    };
-    responses: {
-      200: {
-        content: never;
-      };
-      400: {
-        content: {
-          "application/json": components["schemas"]["BadRequestResponse"];
-        };
-      };
-      500: {
-        content: {
-          "application/json": components["schemas"]["InternalServerErrorResponse"];
-        };
-      };
-    };
-  };
-  /**
-   * Options
-   * @description Options method
-   */
-  options13: {
-    parameters: {
-      path: {
-        id: string;
-      };
-    };
-    responses: {
-      /** @description Successful response */
-      200: {
-        content: never;
-      };
-    };
-  };
-  /** Update Account */
-  AccountController_update: {
-    parameters: {
-      path: {
-        id: string;
-      };
-    };
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["UpdateAccountDto"];
-      };
-    };
-    responses: {
-      201: {
-        content: {
-          "application/json": components["schemas"]["UpdateAccountResponseDto"];
-        };
-      };
-      400: {
-        content: {
-          "application/json": components["schemas"]["BadRequestResponse"];
-        };
-      };
-      500: {
-        content: {
-          "application/json": components["schemas"]["InternalServerErrorResponse"];
-        };
-      };
-    };
-  };
-  /** Get Accounts by UserId */
-  AccountController_getByUserId: {
-    parameters: {
-      path: {
-        userId: string;
-      };
-    };
-    responses: {
-      201: {
-        content: {
-          "application/json": components["schemas"]["CreateAccountResponseDto"][];
-        };
-      };
-      400: {
-        content: {
-          "application/json": components["schemas"]["BadRequestResponse"];
-        };
-      };
-      500: {
-        content: {
-          "application/json": components["schemas"]["InternalServerErrorResponse"];
-        };
-      };
-    };
-  };
-  /**
-   * Options
-   * @description Options method
-   */
-  options14: {
-    parameters: {
-      path: {
-        userId: string;
-      };
-    };
-    responses: {
-      /** @description Successful response */
-      200: {
-        content: never;
-      };
-    };
-  };
-  /**
-   * Get webhook config
-   * @description Endpoint responsible for return a webhook config configured. For more information, examples and how works see here: [Webhook Documentation](/docs/Webhooks.md)
-   */
-  WebhookController_get: {
-    responses: {
-      200: {
-        content: {
-          "application/json": components["schemas"]["GetWebhookResponseDto"];
-        };
-      };
-      400: {
-        content: {
-          "application/json": components["schemas"]["BadRequestResponse"];
-        };
-      };
-      500: {
-        content: {
-          "application/json": components["schemas"]["InternalServerErrorResponse"];
-        };
-      };
-    };
-  };
-  /**
-   * Create a webhook config.
-   * @description Create a webhook config. For more information, examples and how works see here: [Webhook Documentation](/docs/Webhooks.md)
-   */
-  WebhookController_create: {
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["CreateWebhookDto"];
-      };
-    };
-    responses: {
-      201: {
-        content: {
-          "application/json": components["schemas"]["CreateWebhookResponseDto"];
-        };
-      };
-      400: {
-        content: {
-          "application/json": components["schemas"]["BadRequestResponse"];
-        };
-      };
-      500: {
-        content: {
-          "application/json": components["schemas"]["InternalServerErrorResponse"];
-        };
-      };
-    };
-  };
-  /**
-   * Delete webhook config
-   * @description Endpoint responsible for REMOVE the webhook config. For more information, examples and how works see here: [Webhook Documentation](/docs/Webhooks.md)
-   */
-  WebhookController_delete: {
-    responses: {
-      200: {
-        content: never;
-      };
-      400: {
-        content: {
-          "application/json": components["schemas"]["BadRequestResponse"];
-        };
-      };
-      500: {
-        content: {
-          "application/json": components["schemas"]["InternalServerErrorResponse"];
-        };
-      };
-    };
-  };
-  /**
-   * Options
-   * @description Options method
-   */
-  options15: {
-    responses: {
-      /** @description Successful response */
-      200: {
-        content: never;
-      };
-    };
-  };
-  /**
-   * Update webhook config
-   * @description Endpoint responsible for UPDATE webhook config. For more information, examples and how works see here: [Webhook Documentation](/docs/Webhooks.md)
-   */
-  WebhookController_update: {
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["UpdateWebhookDto"];
-      };
-    };
-    responses: {
-      200: {
-        content: {
-          "application/json": components["schemas"]["UpdateWebhookResponseDto"];
-        };
-      };
-      400: {
-        content: {
-          "application/json": components["schemas"]["BadRequestResponse"];
-        };
-      };
-      500: {
-        content: {
-          "application/json": components["schemas"]["InternalServerErrorResponse"];
-        };
-      };
-    };
-  };
-  /** Get users */
-  UserController_get: {
-    parameters: {
-      query: {
-        limit?: number;
-        page?: number;
-        id?: string;
-        firstName?: string;
-        middleName?: string;
-        dateOfBirth?: string;
-        /** @description A unique identifier used to identify your existing user. */
-        externalId?: string;
-        companyName?: string;
-        tradeName?: string;
-        legalStructure?: string;
-        description?: string;
-        establishedOn?: string;
-        phone?: string;
-        email?: string;
-        mainOwnerUser?: string;
-        ownerUsers?: string[];
-        naics?: string;
-        naicsDescription?: string;
-        customerId?: string;
-        type: "PERSON" | "COMPANY";
-      };
-    };
-    responses: {
-      200: {
-        content: {
-          "application/json": components["schemas"]["GetUserQueryResponse"];
-        };
-      };
-      400: {
-        content: {
-          "application/json": components["schemas"]["BadRequestResponse"];
-        };
-      };
-      500: {
-        content: {
-          "application/json": components["schemas"]["InternalServerErrorResponse"];
-        };
-      };
-    };
-  };
-  /** Create a user */
-  UserController_create: {
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["CreateUserDto"];
-      };
-    };
-    responses: {
-      201: {
-        content: {
-          "application/json": components["schemas"]["CreateUserResponseDto"];
-        };
-      };
-      400: {
-        content: {
-          "application/json": components["schemas"]["BadRequestResponse"];
-        };
-      };
-      500: {
-        content: {
-          "application/json": components["schemas"]["InternalServerErrorResponse"];
-        };
-      };
-    };
-  };
-  /**
-   * Options
-   * @description Options method
-   */
-  options16: {
-    responses: {
-      /** @description Successful response */
-      200: {
-        content: never;
-      };
-    };
-  };
-  /** Get users by ID */
-  UserController_getById: {
-    parameters: {
-      path: {
-        id: string;
-      };
-    };
-    responses: {
-      200: {
-        content: {
-          "application/json": components["schemas"]["GetUserByIdResponse"];
-        };
-      };
-      400: {
-        content: {
-          "application/json": components["schemas"]["BadRequestResponse"];
-        };
-      };
-      500: {
-        content: {
-          "application/json": components["schemas"]["InternalServerErrorResponse"];
-        };
-      };
-    };
-  };
-  /** Delete user */
-  UserController_delete: {
-    parameters: {
-      path: {
-        id: string;
-      };
-    };
-    responses: {
-      200: {
-        content: never;
-      };
-      400: {
-        content: {
-          "application/json": components["schemas"]["BadRequestResponse"];
-        };
-      };
-      500: {
-        content: {
-          "application/json": components["schemas"]["InternalServerErrorResponse"];
-        };
-      };
-    };
-  };
-  /**
-   * Options
-   * @description Options method
-   */
-  options17: {
-    parameters: {
-      path: {
-        id: string;
-      };
-    };
-    responses: {
-      /** @description Successful response */
-      200: {
-        content: never;
-      };
-    };
-  };
-  /** Update user */
-  UserController_update: {
-    parameters: {
-      path: {
-        id: string;
-      };
-    };
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["CreatePersonUserDto"] | components["schemas"]["CreateCompanyUserDto"];
-      };
-    };
-    responses: {
-      200: {
-        content: {
-          "application/json": components["schemas"]["CreateUserResponseDto"];
-        };
-      };
-      400: {
-        content: {
-          "application/json": components["schemas"]["BadRequestResponse"];
-        };
-      };
-      500: {
-        content: {
-          "application/json": components["schemas"]["InternalServerErrorResponse"];
-        };
-      };
-    };
-  };
-  /** Add person user document */
-  UserController_uploadDocumentPerson: {
-    requestBody: {
-      content: {
-        "multipart/form-data": components["schemas"]["UploadPersonDocumentDto"];
-      };
-    };
-    responses: {
-      201: {
-        content: never;
-      };
-      400: {
-        content: {
-          "application/json": components["schemas"]["BadRequestResponse"];
-        };
-      };
-      500: {
-        content: {
-          "application/json": components["schemas"]["InternalServerErrorResponse"];
-        };
-      };
-    };
-  };
-  /**
-   * Options
-   * @description Options method
-   */
-  options18: {
-    responses: {
-      /** @description Successful response */
-      200: {
-        content: never;
-      };
-    };
-  };
-  /** Add company user document */
-  UserController_uploadDocumentBusiness: {
-    requestBody: {
-      content: {
-        "multipart/form-data": components["schemas"]["UploadBusinessDocumentDto"];
-      };
-    };
-    responses: {
-      201: {
-        content: never;
-      };
-      400: {
-        content: {
-          "application/json": components["schemas"]["BadRequestResponse"];
-        };
-      };
-      500: {
-        content: {
-          "application/json": components["schemas"]["InternalServerErrorResponse"];
-        };
-      };
-    };
-  };
-  /**
-   * Options
-   * @description Options method
-   */
-  options19: {
-    responses: {
-      /** @description Successful response */
-      200: {
-        content: never;
-      };
-    };
-  };
-  /** Create savings account */
-  SavingsController_onboard: {
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["SavingsCustodialAccountDto"];
-      };
-    };
-    responses: {
-      201: {
-        content: {
-          "application/json": components["schemas"]["SavingsAccountResponseDto"];
-        };
-      };
-      400: {
-        content: {
-          "application/json": components["schemas"]["BadRequestResponse"];
-        };
-      };
-      500: {
-        content: {
-          "application/json": components["schemas"]["InternalServerErrorResponse"];
-        };
-      };
-    };
-  };
-  /**
-   * Options
-   * @description Options method
-   */
-  options20: {
-    responses: {
-      /** @description Successful response */
-      200: {
-        content: never;
-      };
-    };
-  };
-  /** Get transactions */
-  SavingsController_getTransactions: {
-    parameters: {
-      query?: {
-        limit?: number;
-        page?: number;
-        id?: string;
-        destinationAccountId?: string;
-        originAccountId?: string;
-        userId?: string;
-        type?: string;
-      };
-    };
-    responses: {
-      200: {
-        content: {
-          "application/json": components["schemas"]["IGetTransactionsReturn"];
-        };
-      };
-      400: {
-        content: {
-          "application/json": components["schemas"]["BadRequestResponse"];
-        };
-      };
-      500: {
-        content: {
-          "application/json": components["schemas"]["InternalServerErrorResponse"];
-        };
-      };
-    };
-  };
-  /**
-   * Options
-   * @description Options method
-   */
-  options21: {
-    parameters: {
-      query?: {
-        limit?: number;
-        page?: number;
-        id?: string;
-        destinationAccountId?: string;
-        originAccountId?: string;
-        userId?: string;
-        type?: string;
-      };
-    };
-    responses: {
-      /** @description Successful response */
-      200: {
-        content: never;
-      };
-    };
-  };
-  /** Get savings account */
-  SavingsController_getOnboard: {
-    parameters: {
-      path: {
-        id: string;
-      };
-    };
-    responses: {
-      201: {
-        content: {
-          "application/json": components["schemas"]["SavingsAccountResponseDto"];
-        };
-      };
-      400: {
-        content: {
-          "application/json": components["schemas"]["BadRequestResponse"];
-        };
-      };
-      500: {
-        content: {
-          "application/json": components["schemas"]["InternalServerErrorResponse"];
-        };
-      };
-    };
-  };
-  /**
-   * Options
-   * @description Options method
-   */
-  options22: {
-    parameters: {
-      path: {
-        id: string;
-      };
-    };
-    responses: {
-      /** @description Successful response */
-      200: {
-        content: never;
-      };
-    };
-  };
-  /** Create withdrawal */
-  SavingsController_withdrawal: {
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["CreateWithdrawalDto"];
-      };
-    };
-    responses: {
-      201: {
-        content: {
-          "application/json": components["schemas"]["WithdrawalSavingsReturn"];
-        };
-      };
-      400: {
-        content: {
-          "application/json": components["schemas"]["BadRequestResponse"];
-        };
-      };
-      500: {
-        content: {
-          "application/json": components["schemas"]["InternalServerErrorResponse"];
-        };
-      };
-    };
-  };
-  /**
-   * Options
-   * @description Options method
-   */
-  options23: {
-    responses: {
-      /** @description Successful response */
-      200: {
-        content: never;
-      };
-    };
-  };
-  /** Get balance */
-  SavingsController_getBalance: {
-    parameters: {
-      path: {
-        id: string;
-      };
-    };
-    responses: {
-      200: {
-        content: {
-          "application/json": components["schemas"]["GetBalanceReturn"];
-        };
-      };
-      400: {
-        content: {
-          "application/json": components["schemas"]["BadRequestResponse"];
-        };
-      };
-      500: {
-        content: {
-          "application/json": components["schemas"]["InternalServerErrorResponse"];
-        };
-      };
-    };
-  };
-  /**
-   * Options
-   * @description Options method
-   */
-  options24: {
-    parameters: {
-      path: {
-        id: string;
-      };
-    };
-    responses: {
-      /** @description Successful response */
-      200: {
-        content: never;
-      };
-    };
-  };
-  /** Get banking deposit instructions */
-  SavingsController_getDepositInstructions: {
-    parameters: {
-      path: {
-        id: string;
-        type: "ACH" | "WIRE";
-      };
-    };
-    responses: {
-      200: {
-        content: {
-          "application/json": components["schemas"]["GetDepositInstructionsReturn"];
-        };
-      };
-      400: {
-        content: {
-          "application/json": components["schemas"]["BadRequestResponse"];
-        };
-      };
-      500: {
-        content: {
-          "application/json": components["schemas"]["InternalServerErrorResponse"];
-        };
-      };
-    };
-  };
-  /**
-   * Options
-   * @description Options method
-   */
-  options25: {
-    parameters: {
-      path: {
-        id: string;
-        type: "ACH" | "WIRE";
-      };
-    };
-    responses: {
-      /** @description Successful response */
-      200: {
-        content: never;
-      };
-    };
-  };
-  /** Get crypto deposit instructions */
-  SavingsController_getWalletAddress: {
-    parameters: {
-      path: {
-        id: string;
-      };
-    };
-    responses: {
-      201: {
-        content: {
-          "application/json": components["schemas"]["GetCryptoDepositInstructionsReturn"];
-        };
-      };
-      400: {
-        content: {
-          "application/json": components["schemas"]["BadRequestResponse"];
-        };
-      };
-      500: {
-        content: {
-          "application/json": components["schemas"]["InternalServerErrorResponse"];
-        };
-      };
-    };
-  };
-  /**
-   * Options
-   * @description Options method
-   */
-  options26: {
-    parameters: {
-      path: {
-        id: string;
-      };
-    };
-    responses: {
-      /** @description Successful response */
-      200: {
-        content: never;
-      };
-    };
-  };
-  /**
-   * Create Quotation
-   * @description Create a new quotation
-   */
-  QuotationController_create: {
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["CreateQuotationDto"];
-      };
-    };
-    responses: {
-      201: {
-        content: {
-          "application/json": components["schemas"]["CreateQuotationResponseDto"];
-        };
-      };
-      400: {
-        content: {
-          "application/json": components["schemas"]["BadRequestResponse"];
-        };
-      };
-      500: {
-        content: {
-          "application/json": components["schemas"]["InternalServerErrorResponse"];
-        };
-      };
-    };
-  };
-  /**
-   * Options
-   * @description Options method
-   */
-  options27: {
-    responses: {
-      /** @description Successful response */
-      200: {
-        content: never;
-      };
-    };
-  };
-  /**
-   * Get Quotation
-   * @description Get a quotation by id
-   */
-  QuotationController_getById: {
-    parameters: {
-      path: {
-        id: string;
-      };
-    };
-    responses: {
-      201: {
-        content: {
-          "application/json": components["schemas"]["GetQuotationResponseDto"];
-        };
-      };
-      400: {
-        content: {
-          "application/json": components["schemas"]["BadRequestResponse"];
-        };
-      };
-      500: {
-        content: {
-          "application/json": components["schemas"]["InternalServerErrorResponse"];
-        };
-      };
-    };
-  };
-  /**
-   * Options
-   * @description Options method
-   */
-  options28: {
-    parameters: {
-      path: {
-        id: string;
-      };
-    };
-    responses: {
-      /** @description Successful response */
-      200: {
-        content: never;
-      };
-    };
-  };
-  /**
-   * Update Quotation
-   * @description Update a new quotation
-   */
-  QuotationController_update: {
-    parameters: {
-      path: {
-        id: string;
-      };
-    };
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["UpdateQuotationDto"];
-      };
-    };
-    responses: {
-      201: {
-        content: {
-          "application/json": components["schemas"]["CreateQuotationResponseDto"];
-        };
-      };
-      400: {
-        content: {
-          "application/json": components["schemas"]["BadRequestResponse"];
-        };
-      };
-      500: {
-        content: {
-          "application/json": components["schemas"]["InternalServerErrorResponse"];
-        };
-      };
-    };
-  };
-  /**
-   * Simulate a Quotation
-   * @description Generate just a simulation of a quote
-   */
-  QuotationController_simulation: {
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["CreateQuotationDto"];
-      };
-    };
-    responses: {
-      201: {
-        content: {
-          "application/json": components["schemas"]["SimulateQuotationResponseDto"];
-        };
-      };
-      400: {
-        content: {
-          "application/json": components["schemas"]["BadRequestResponse"];
-        };
-      };
-      500: {
-        content: {
-          "application/json": components["schemas"]["InternalServerErrorResponse"];
-        };
-      };
-    };
-  };
-  /**
-   * Options
-   * @description Options method
-   */
-  options29: {
-    responses: {
-      /** @description Successful response */
-      200: {
-        content: never;
-      };
-    };
-  };
-  /**
-   * Query Ramps
-   * @description This endpoint is responsible for getting the Ramp list. For more details about this endpoint, see here [Ramps](https://killbapi.stoplight.io/docs/killb-v2/71722efcded7f)
-   */
-  RampsController_getQuery: {
-    parameters: {
-      query?: {
-        limit?: number;
-        page?: number;
-        id?: string;
-        /** @description A unique identifier used to identify your existing user. */
-        externalId?: string;
-        status?: string;
-      };
-    };
-    responses: {
-      200: {
-        content: {
-          "application/json": components["schemas"]["GetRampQueryResponseDto"];
-        };
-      };
-      400: {
-        content: {
-          "application/json": components["schemas"]["BadRequestResponse"];
-        };
-      };
-      500: {
-        content: {
-          "application/json": components["schemas"]["InternalServerErrorResponse"];
-        };
-      };
-    };
-  };
-  /**
-   * Create Ramps
-   * @description This endpoint is responsible for executing the Ramp (On or/and Off). For more details about this endpoint, see here [Ramps](https://killbapi.stoplight.io/docs/killb-v2/71722efcded7f)
-   */
-  RampsController_create: {
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["CreateRampInputDto"];
-      };
-    };
-    responses: {
-      201: {
-        content: {
-          "application/json": components["schemas"]["CreateRampResponseDto"];
-        };
-      };
-      400: {
-        content: {
-          "application/json": components["schemas"]["BadRequestResponse"];
-        };
-      };
-      500: {
-        content: {
-          "application/json": components["schemas"]["InternalServerErrorResponse"];
-        };
-      };
-    };
-  };
-  /**
-   * Options
-   * @description Options method
-   */
-  options30: {
-    responses: {
-      /** @description Successful response */
-      200: {
-        content: never;
-      };
-    };
-  };
-  /**
-   * Get Ramp by id
-   * @description This endpoint is responsible for getting the Ramp by id. For more details about this endpoint, see here [Ramps](https://killbapi.stoplight.io/docs/killb-v2/71722efcded7f)
-   */
-  RampsController_getById: {
-    parameters: {
-      path: {
-        id: string;
-      };
-    };
-    responses: {
-      200: {
-        content: {
-          "application/json": components["schemas"]["GetRampByIdResponseDto"];
-        };
-      };
-      400: {
-        content: {
-          "application/json": components["schemas"]["BadRequestResponse"];
-        };
-      };
-      500: {
-        content: {
-          "application/json": components["schemas"]["InternalServerErrorResponse"];
-        };
-      };
-    };
-  };
-  /**
-   * Options
-   * @description Options method
-   */
-  options31: {
-    parameters: {
-      path: {
-        id: string;
-      };
-    };
-    responses: {
-      /** @description Successful response */
-      200: {
-        content: never;
-      };
-    };
-  };
-  /**
-   * Update Ramp
-   * @description This endpoint is responsible for executing the Ramp (On or/and Off). For more details about this endpoint, see here [Ramps](https://killbapi.stoplight.io/docs/killb-v2/71722efcded7f)
-   */
-  RampsController_update: {
-    parameters: {
-      path: {
-        id: string;
-      };
-    };
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["PatchRampInputDto"];
-      };
-    };
-    responses: {
-      201: {
-        content: {
-          "application/json": components["schemas"]["CreateRampResponseDto"];
-        };
-      };
-      400: {
-        content: {
-          "application/json": components["schemas"]["BadRequestResponse"];
-        };
-      };
-      500: {
-        content: {
-          "application/json": components["schemas"]["InternalServerErrorResponse"];
-        };
-      };
-    };
-  };
-  /**
-   * Upload ramp document
-   * @description Attach a PDF document to an existing ramp transfer.
-   */
-  RampsController_uploadDocument: {
-    parameters: {
-      path: {
-        id: string;
-      };
-    };
-    requestBody: {
-      content: {
-        "multipart/form-data": {
-          documentType: string;
-          /** Format: binary */
-          file: string;
-        };
-      };
-    };
-    responses: {
-      201: {
-        content: {
-          "application/json": components["schemas"]["RampDocumentResponseDto"];
-        };
-      };
-      400: {
-        content: {
-          "application/json": components["schemas"]["BadRequestResponse"];
-        };
-      };
-      500: {
-        content: {
-          "application/json": components["schemas"]["InternalServerErrorResponse"];
-        };
-      };
-    };
-  };
-  /**
-   * Options
-   * @description Options method
-   */
-  options32: {
-    parameters: {
-      path: {
-        id: string;
-      };
-    };
-    responses: {
-      /** @description Successful response */
-      200: {
-        content: never;
-      };
-    };
-  };
-  /**
-   * Get ramp status history
-   * @description This endpoint is responsible for getting the Ramp status history. For more details about this endpoint, see here [Ramps](https://killbapi.stoplight.io/docs/killb-v2/71722efcded7f)
-   */
-  RampsController_getStatusHistoryById: {
-    parameters: {
-      path: {
-        id: string;
-      };
-    };
-    responses: {
-      200: {
-        content: {
-          "application/json": components["schemas"]["GetRampStatusResponseDto"];
-        };
-      };
-      400: {
-        content: {
-          "application/json": components["schemas"]["BadRequestResponse"];
-        };
-      };
-      500: {
-        content: {
-          "application/json": components["schemas"]["InternalServerErrorResponse"];
-        };
-      };
-    };
-  };
-  /**
-   * Options
-   * @description Options method
-   */
-  options33: {
-    parameters: {
-      path: {
-        id: string;
-      };
-    };
-    responses: {
-      /** @description Successful response */
-      200: {
-        content: never;
-      };
-    };
-  };
-  /**
-   * Get Ramp Receipt in HTML
-   * @description This endpoint is return an HTML receipt for the Ramp.
-   */
-  RampsController_getReceipt: {
-    parameters: {
-      path: {
-        id: string;
-      };
-    };
-    responses: {
-      200: {
-        content: never;
-      };
-    };
-  };
-  /**
-   * Options
-   * @description Options method
-   */
-  options34: {
-    parameters: {
-      path: {
-        id: string;
-      };
-    };
-    responses: {
-      /** @description Successful response */
-      200: {
-        content: never;
-      };
-    };
-  };
-  /**
-   * Get Ramp Receipt in JSON
-   * @description This endpoint is return an JSON receipt for the Ramp.
-   */
-  RampsController_getJsonReceipt: {
-    parameters: {
-      path: {
-        id: string;
-      };
-    };
-    responses: {
-      200: {
-        content: never;
-      };
-    };
-  };
-  /**
-   * Options
-   * @description Options method
-   */
-  options35: {
-    parameters: {
-      path: {
-        id: string;
-      };
-    };
-    responses: {
-      /** @description Successful response */
-      200: {
-        content: never;
-      };
-    };
-  };
-  /**
-   * Get Ramp Receipt in PDF format
-   * @description This endpoint is return a receipt in PDF format.
-   */
-  RampsController_getFile: {
-    parameters: {
-      path: {
-        id: string;
-      };
-    };
-    responses: {
-      200: {
-        content: never;
-      };
-    };
-  };
-  /**
-   * Options
-   * @description Options method
-   */
-  options36: {
-    parameters: {
-      path: {
-        id: string;
-      };
-    };
-    responses: {
-      /** @description Successful response */
-      200: {
-        content: never;
-      };
-    };
-  };
-  /** Get Bank list by countryCode */
-  BankController_get: {
-    parameters: {
-      query: {
-        countryCode: string;
-      };
-    };
-    responses: {
-      200: {
-        content: {
-          "application/json": components["schemas"]["GetBanksResponseDto"];
-        };
-      };
-      400: {
-        content: {
-          "application/json": components["schemas"]["BadRequestResponse"];
-        };
-      };
-      500: {
-        content: {
-          "application/json": components["schemas"]["InternalServerErrorResponse"];
-        };
-      };
-    };
-  };
-  /**
-   * Options
-   * @description Options method
-   */
-  options37: {
-    parameters: {
-      query: {
-        countryCode: string;
-      };
-    };
-    responses: {
-      /** @description Successful response */
-      200: {
-        content: never;
-      };
-    };
-  };
-  /**
-   * Fake cash-in (SANDBOX)
-   * @description This endpoint is responsible for faking a cash-in.
-   */
-  FakerController_fakeMxnCashIn: {
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["FakerCashInDto"];
-      };
-    };
-    responses: {
-      201: {
-        content: never;
-      };
-      400: {
-        content: {
-          "application/json": components["schemas"]["BadRequestResponse"];
-        };
-      };
-      500: {
-        content: {
-          "application/json": components["schemas"]["InternalServerErrorResponse"];
-        };
-      };
-    };
-  };
-  /**
-   * Options
-   * @description Options method
-   */
-  options38: {
-    responses: {
-      /** @description Successful response */
-      200: {
-        content: never;
-      };
-    };
-  };
-  /**
-   * Fake cash-out confirmation (SANDBOX)
-   * @description This endpoint is responsible for faking a cash-out confirmation.
-   */
-  FakerController_fakeCashOut: {
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["FakerCashOutDto"];
-      };
-    };
-    responses: {
-      201: {
-        content: never;
-      };
-      400: {
-        content: {
-          "application/json": components["schemas"]["BadRequestResponse"];
-        };
-      };
-      500: {
-        content: {
-          "application/json": components["schemas"]["InternalServerErrorResponse"];
-        };
-      };
-    };
-  };
-  /**
-   * Options
-   * @description Options method
-   */
-  options39: {
-    responses: {
-      /** @description Successful response */
-      200: {
-        content: never;
-      };
-    };
-  };
-  /** Get all virtual accounts */
-  VirtualAccountsController_getVirtualAccounts: {
-    parameters: {
-      query?: {
-        /** @description Page number */
-        page?: number;
-        /** @description Items per page */
-        limit?: number;
-        /** @description Filter by account status */
-        status?: "ACTIVE" | "PENDING" | "REJECTED" | "PROCESSING";
-        /** @description Filter by network */
-        network?: "POLYGON" | "ERC20" | "SOLANA" | "TRON" | "ARBITRUM" | "BSC";
-        /** @description Filter by currency */
-        currency?: "USD" | "USDC" | "USDT";
-        /** @description Filter by user ID */
-        userId?: string;
-        /** @description Filter by start date */
-        startDate?: string;
-        /** @description Filter by end date */
-        endDate?: string;
-      };
-    };
-    responses: {
-      200: {
-        content: {
-          "application/json": components["schemas"]["GetVirtualAccountsResponseDto"];
-        };
-      };
-      400: {
-        content: {
-          "application/json": components["schemas"]["BadRequestResponse"];
-        };
-      };
-      500: {
-        content: {
-          "application/json": components["schemas"]["InternalServerErrorResponse"];
-        };
-      };
-    };
-  };
-  /** Create virtual account */
-  VirtualAccountsController_createVirtualAccount: {
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["CreatePreFundVirtualAccountDto"];
-      };
-    };
-    responses: {
-      201: {
-        content: {
-          "application/json": components["schemas"]["CreatePreFundVirtualAccountResponseDto"];
-        };
-      };
-      400: {
-        content: {
-          "application/json": components["schemas"]["BadRequestResponse"];
-        };
-      };
-      500: {
-        content: {
-          "application/json": components["schemas"]["InternalServerErrorResponse"];
-        };
-      };
-    };
-  };
-  /**
-   * Options
-   * @description Options method
-   */
-  options40: {
-    parameters: {
-      query?: {
-        /** @description Page number */
-        page?: number;
-        /** @description Items per page */
-        limit?: number;
-        /** @description Filter by account status */
-        status?: "ACTIVE" | "PENDING" | "REJECTED" | "PROCESSING";
-        /** @description Filter by network */
-        network?: "POLYGON" | "ERC20" | "SOLANA" | "TRON" | "ARBITRUM" | "BSC";
-        /** @description Filter by currency */
-        currency?: "USD" | "USDC" | "USDT";
-        /** @description Filter by user ID */
-        userId?: string;
-        /** @description Filter by start date */
-        startDate?: string;
-        /** @description Filter by end date */
-        endDate?: string;
-      };
-    };
-    responses: {
-      /** @description Successful response */
-      200: {
-        content: never;
-      };
-    };
-  };
-  /** Get withdrawals from virtual account */
-  VirtualAccountsController_getWithdrawals: {
-    parameters: {
-      query?: {
-        /** @description Withdrawal status filter */
-        status?: "PENDING" | "PROCESSING" | "COMPLETED" | "FAILED" | "REJECTED";
-        /** @description Filter by start date */
-        startDate?: string;
-        /** @description Filter by end date */
-        endDate?: string;
-        /** @description Page number */
-        page?: number;
-        /** @description Items per page */
-        limit?: number;
-      };
-      path: {
-        id: string;
-      };
-    };
-    responses: {
-      200: {
-        content: {
-          "application/json": components["schemas"]["GetWithdrawalsResponseDto"];
-        };
-      };
-      400: {
-        content: {
-          "application/json": components["schemas"]["BadRequestResponse"];
-        };
-      };
-      /** @description Virtual account not found */
-      404: {
-        content: never;
-      };
-      500: {
-        content: {
-          "application/json": components["schemas"]["InternalServerErrorResponse"];
-        };
-      };
-    };
-  };
-  /** Create withdrawal from virtual account */
-  VirtualAccountsController_createWithdrawal: {
-    parameters: {
-      path: {
-        id: string;
-      };
-    };
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["CreateVirtualAccountWithdrawalDto"];
-      };
-    };
-    responses: {
-      201: {
-        content: {
-          "application/json": components["schemas"]["VirtualAccountWithdrawalResponseDto"];
-        };
-      };
-      400: {
-        content: {
-          "application/json": components["schemas"]["BadRequestResponse"];
-        };
-      };
-      /** @description Virtual account not found */
-      404: {
-        content: never;
-      };
-      500: {
-        content: {
-          "application/json": components["schemas"]["InternalServerErrorResponse"];
-        };
-      };
-    };
-  };
-  /**
-   * Options
-   * @description Options method
-   */
-  options41: {
-    parameters: {
-      path: {
-        id: string;
-      };
-    };
-    responses: {
-      /** @description Successful response */
-      200: {
-        content: never;
-      };
-    };
-  };
-  /** Get all withdrawals from all virtual accounts */
-  VirtualAccountsController_getAllWithdrawals: {
-    parameters: {
-      query?: {
-        /** @description Withdrawal status filter */
-        status?: "PENDING" | "PROCESSING" | "COMPLETED" | "FAILED" | "REJECTED";
-        /** @description Filter by start date */
-        startDate?: string;
-        /** @description Filter by end date */
-        endDate?: string;
-        /** @description Page number */
-        page?: number;
-        /** @description Items per page */
-        limit?: number;
-      };
-    };
-    responses: {
-      200: {
-        content: {
-          "application/json": components["schemas"]["GetWithdrawalsResponseDto"];
-        };
-      };
-      400: {
-        content: {
-          "application/json": components["schemas"]["BadRequestResponse"];
-        };
-      };
-      500: {
-        content: {
-          "application/json": components["schemas"]["InternalServerErrorResponse"];
-        };
-      };
-    };
-  };
-  /**
-   * Options
-   * @description Options method
-   */
-  options42: {
-    parameters: {
-      query?: {
-        /** @description Withdrawal status filter */
-        status?: "PENDING" | "PROCESSING" | "COMPLETED" | "FAILED" | "REJECTED";
-        /** @description Filter by start date */
-        startDate?: string;
-        /** @description Filter by end date */
-        endDate?: string;
-        /** @description Page number */
-        page?: number;
-        /** @description Items per page */
-        limit?: number;
-      };
-    };
-    responses: {
-      /** @description Successful response */
-      200: {
-        content: never;
-      };
-    };
-  };
-  /** Generate Sumsub access token */
-  ComplianceController_generateAccessToken: {
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["GenerateAccessTokenRequestDto"];
-      };
-    };
-    responses: {
-      201: {
-        content: {
-          "application/json": components["schemas"]["GenerateAccessTokenResponseDto"];
-        };
-      };
-      400: {
-        content: {
-          "application/json": components["schemas"]["BadRequestResponse"];
-        };
-      };
-      500: {
-        content: {
-          "application/json": components["schemas"]["InternalServerErrorResponse"];
-        };
-      };
-    };
-  };
-  /**
-   * Options
-   * @description Options method
-   */
-  options43: {
-    responses: {
-      /** @description Successful response */
-      200: {
-        content: never;
-      };
-    };
-  };
-  /**
-   * Open API JSON
-   * @description API JSON schema with all endpoints
-   */
-  getApiJson: {
-    responses: {
-      /** @description Return the OpenAPI JSON */
-      200: {
-        content: {
-          "application/json": Record<string, never>;
-        };
-      };
-    };
-  };
-  /**
-   * Options
-   * @description Options method
-   */
-  options44: {
-    responses: {
-      /** @description Successful response */
-      200: {
-        content: never;
-      };
-    };
-  };
+    AuthController_publicSignup: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["PublicSignupDto"];
+            };
+        };
+        responses: {
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["LoginResponseDto"];
+                };
+            };
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BadRequestResponse"];
+                };
+            };
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["InternalServerErrorResponse"];
+                };
+            };
+        };
+    };
+    options0: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    AuthController_login: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["LoginDto"];
+            };
+        };
+        responses: {
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["LoginResponseDto"];
+                };
+            };
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BadRequestResponse"];
+                };
+            };
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["InternalServerErrorResponse"];
+                };
+            };
+        };
+    };
+    options1: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    AuthController_refresh: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["RefreshDto"];
+            };
+        };
+        responses: {
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["RefreshResponseDto"];
+                };
+            };
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BadRequestResponse"];
+                };
+            };
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["InternalServerErrorResponse"];
+                };
+            };
+        };
+    };
+    options2: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    AuthController_me: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["MeResponseDto"];
+                };
+            };
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BadRequestResponse"];
+                };
+            };
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["InternalServerErrorResponse"];
+                };
+            };
+        };
+    };
+    options3: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    AuthController_loginWithOtp: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["LoginWithOtpDto"];
+            };
+        };
+        responses: {
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["LoginWithOtpCookieResponseDto"];
+                };
+            };
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BadRequestResponse"];
+                };
+            };
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["InternalServerErrorResponse"];
+                };
+            };
+        };
+    };
+    options4: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    AuthController_confirmEmail: {
+        parameters: {
+            query: {
+                token: string;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ConfirmEmailResponseDto"];
+                };
+            };
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BadRequestResponse"];
+                };
+            };
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["InternalServerErrorResponse"];
+                };
+            };
+        };
+    };
+    options5: {
+        parameters: {
+            query: {
+                token: string;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    AuthController_enableTwoFactor: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["EnableTwoFactorResponseDto"];
+                };
+            };
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BadRequestResponse"];
+                };
+            };
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["InternalServerErrorResponse"];
+                };
+            };
+        };
+    };
+    options6: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    AuthController_verifyTwoFactor: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["VerifyTwoFactorDto"];
+            };
+        };
+        responses: {
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["VerifyTwoFactorResponseDto"];
+                };
+            };
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BadRequestResponse"];
+                };
+            };
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["InternalServerErrorResponse"];
+                };
+            };
+        };
+    };
+    options7: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    AuthController_requestDisableTwoFactorEmail: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["RequestDisableTwoFactorEmailResponseDto"];
+                };
+            };
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BadRequestResponse"];
+                };
+            };
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["InternalServerErrorResponse"];
+                };
+            };
+        };
+    };
+    options8: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    AuthController_disableTwoFactor: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["DisableTwoFactorDto"];
+            };
+        };
+        responses: {
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["DisableTwoFactorResponseDto"];
+                };
+            };
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BadRequestResponse"];
+                };
+            };
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["InternalServerErrorResponse"];
+                };
+            };
+        };
+    };
+    options9: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    AuthController_requestPasswordReset: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["RequestPasswordResetDto"];
+            };
+        };
+        responses: {
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["RequestPasswordResetResponseDto"];
+                };
+            };
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BadRequestResponse"];
+                };
+            };
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["InternalServerErrorResponse"];
+                };
+            };
+        };
+    };
+    options10: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    AuthController_resetPassword: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ResetPasswordDto"];
+            };
+        };
+        responses: {
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ResetPasswordResponseDto"];
+                };
+            };
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BadRequestResponse"];
+                };
+            };
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["InternalServerErrorResponse"];
+                };
+            };
+        };
+    };
+    options11: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    AuthController_changePassword: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ChangePasswordDto"];
+            };
+        };
+        responses: {
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ChangePasswordResponseDto"];
+                };
+            };
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BadRequestResponse"];
+                };
+            };
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["InternalServerErrorResponse"];
+                };
+            };
+        };
+    };
+    options12: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    AuthController_listInvitedUsers: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ListInvitedUsersResponseDto"];
+                };
+            };
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BadRequestResponse"];
+                };
+            };
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["InternalServerErrorResponse"];
+                };
+            };
+        };
+    };
+    AuthController_inviteUser: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["InviteUserDto"];
+            };
+        };
+        responses: {
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["InviteUserResponseDto"];
+                };
+            };
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BadRequestResponse"];
+                };
+            };
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["InternalServerErrorResponse"];
+                };
+            };
+        };
+    };
+    options13: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    AuthController_logout: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["LogoutResponseDto"];
+                };
+            };
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BadRequestResponse"];
+                };
+            };
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["InternalServerErrorResponse"];
+                };
+            };
+        };
+    };
+    options14: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    CustomerController_create: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["CreateCustomerDto"];
+            };
+        };
+        responses: {
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["CreateCustomerResponseDto"];
+                };
+            };
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BadRequestResponse"];
+                };
+            };
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["InternalServerErrorResponse"];
+                };
+            };
+        };
+    };
+    options15: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    CustomerController_getProfile: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["GetCustomerProfileResponseDto"];
+                };
+            };
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BadRequestResponse"];
+                };
+            };
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["InternalServerErrorResponse"];
+                };
+            };
+        };
+    };
+    options16: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    CustomerController_getBalances: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["GetBalancesResponseDto"][];
+                };
+            };
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BadRequestResponse"];
+                };
+            };
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["InternalServerErrorResponse"];
+                };
+            };
+        };
+    };
+    options17: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    CustomerController_createPreFundAccount: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["CreatePreFundAccountDto"];
+            };
+        };
+        responses: {
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["CreatePreFundAccountResponseDto"];
+                };
+            };
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BadRequestResponse"];
+                };
+            };
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["InternalServerErrorResponse"];
+                };
+            };
+        };
+    };
+    options18: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    CustomerController_getLiquidity: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["GetCustomerLiquidityResponseDto"][];
+                };
+            };
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BadRequestResponse"];
+                };
+            };
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["InternalServerErrorResponse"];
+                };
+            };
+        };
+    };
+    options19: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    CustomerController_getPairs: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["GetPairsResponseDto"];
+                };
+            };
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BadRequestResponse"];
+                };
+            };
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["InternalServerErrorResponse"];
+                };
+            };
+        };
+    };
+    options20: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    CustomerController_configurePair: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ConfigurePairDto"];
+            };
+        };
+        responses: {
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ConfigurePairResponseDto"];
+                };
+            };
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BadRequestResponse"];
+                };
+            };
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["InternalServerErrorResponse"];
+                };
+            };
+        };
+    };
+    options21: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    ClickAndSignController_findAll: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["FindingAllDocumentsResponseDto"];
+                };
+            };
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BadRequestResponse"];
+                };
+            };
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["InternalServerErrorResponse"];
+                };
+            };
+        };
+    };
+    options22: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    ClickAndSignController_findOne: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["FindOneDocumentResponseDto"];
+                };
+            };
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BadRequestResponse"];
+                };
+            };
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["InternalServerErrorResponse"];
+                };
+            };
+        };
+    };
+    options23: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    ClickAndSignController_signMultiple: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SignMultipleDocumentsResponseDto"];
+                };
+            };
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BadRequestResponse"];
+                };
+            };
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["InternalServerErrorResponse"];
+                };
+            };
+        };
+    };
+    options24: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    ClickAndSignController_sign: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Document signed successfully */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SignDocumentResponseDto"];
+                };
+            };
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BadRequestResponse"];
+                };
+            };
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["InternalServerErrorResponse"];
+                };
+            };
+        };
+    };
+    options25: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    ClickAndSignController_generateTransactionDocument: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                customerId: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Document generated successfully */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["GenerateDocumentResponseDto"];
+                };
+            };
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BadRequestResponse"];
+                };
+            };
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["InternalServerErrorResponse"];
+                };
+            };
+        };
+    };
+    options26: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                customerId: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    UserController_get: {
+        parameters: {
+            query: {
+                limit?: number;
+                page?: number;
+                id?: string;
+                firstName?: string;
+                middleName?: string;
+                lastName?: string;
+                dateOfBirth?: string;
+                /** @description A unique identifier used to identify your existing user. */
+                externalId?: string;
+                companyName?: string;
+                tradeName?: string;
+                legalStructure?: string;
+                description?: string;
+                establishedOn?: string;
+                phone?: string;
+                email?: string;
+                mainOwnerUser?: string;
+                ownerUsers?: string[];
+                naics?: string;
+                naicsDescription?: string;
+                customerId?: string;
+                type: "PERSON" | "COMPANY";
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["GetUserQueryResponse"];
+                };
+            };
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BadRequestResponse"];
+                };
+            };
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["InternalServerErrorResponse"];
+                };
+            };
+        };
+    };
+    UserController_create: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["CreateUserDto"];
+            };
+        };
+        responses: {
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["CreateUserResponseDto"];
+                };
+            };
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BadRequestResponse"];
+                };
+            };
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["InternalServerErrorResponse"];
+                };
+            };
+        };
+    };
+    options27: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    UserController_getFavoriteUser: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["GetFavoriteUserResponseDto"];
+                };
+            };
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BadRequestResponse"];
+                };
+            };
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["InternalServerErrorResponse"];
+                };
+            };
+        };
+    };
+    options28: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    UserController_setFavoriteUser: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["SetFavoriteUserDto"];
+            };
+        };
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SetFavoriteUserResponseDto"];
+                };
+            };
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BadRequestResponse"];
+                };
+            };
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["InternalServerErrorResponse"];
+                };
+            };
+        };
+    };
+    UserController_getById: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["GetUserByIdResponse"];
+                };
+            };
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BadRequestResponse"];
+                };
+            };
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["InternalServerErrorResponse"];
+                };
+            };
+        };
+    };
+    UserController_delete: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BadRequestResponse"];
+                };
+            };
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["InternalServerErrorResponse"];
+                };
+            };
+        };
+    };
+    options29: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    UserController_update: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["UpdatePersonUserDto"] | components["schemas"]["UpdateCompanyUserDto"];
+            };
+        };
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["CreateUserResponseDto"];
+                };
+            };
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BadRequestResponse"];
+                };
+            };
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["InternalServerErrorResponse"];
+                };
+            };
+        };
+    };
+    UserController_uploadDocumentPerson: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "multipart/form-data": components["schemas"]["UploadPersonDocumentDto"];
+            };
+        };
+        responses: {
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BadRequestResponse"];
+                };
+            };
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["InternalServerErrorResponse"];
+                };
+            };
+        };
+    };
+    options30: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    UserController_uploadDocumentBusiness: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "multipart/form-data": components["schemas"]["UploadBusinessDocumentDto"];
+            };
+        };
+        responses: {
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BadRequestResponse"];
+                };
+            };
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["InternalServerErrorResponse"];
+                };
+            };
+        };
+    };
+    options31: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    WebhookController_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["GetWebhookResponseDto"];
+                };
+            };
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BadRequestResponse"];
+                };
+            };
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["InternalServerErrorResponse"];
+                };
+            };
+        };
+    };
+    WebhookController_create: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["CreateWebhookDto"];
+            };
+        };
+        responses: {
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["CreateWebhookResponseDto"];
+                };
+            };
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BadRequestResponse"];
+                };
+            };
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["InternalServerErrorResponse"];
+                };
+            };
+        };
+    };
+    WebhookController_delete: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BadRequestResponse"];
+                };
+            };
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["InternalServerErrorResponse"];
+                };
+            };
+        };
+    };
+    options32: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    WebhookController_update: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["UpdateWebhookDto"];
+            };
+        };
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["UpdateWebhookResponseDto"];
+                };
+            };
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BadRequestResponse"];
+                };
+            };
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["InternalServerErrorResponse"];
+                };
+            };
+        };
+    };
+    AccountController_queryAccount: {
+        parameters: {
+            query?: {
+                ids?: string;
+                userId?: string;
+                type?: "PSE" | "ACH" | "ACH_HN" | "ACH_SV" | "ACH_NI" | "ACH_GT" | "ACH_PA" | "ACH_BO" | "WIRE" | "WALLET" | "COELSA" | "BREB" | "SPEI" | "PIX" | "CCI" | "CUSTODIAL" | "TRANSFIYA" | "SWIFT" | "SPI" | "SPI_PY" | "SPI_DO" | "SINPE";
+                accountNumber?: string;
+                routingNumber?: string;
+                address?: string;
+                clabe?: string;
+                /** @description Filter by CCI (20-digit Peruvian interbank code) */
+                cci?: string;
+                cvu?: string;
+                /** @description Filter by first name */
+                firstName?: string;
+                /** @description Filter by middle name */
+                middleName?: string;
+                /** @description Filter by last name */
+                lastName?: string;
+                /** @description Filter by company name */
+                companyName?: string;
+                /** @description Filter by email */
+                email?: string;
+                limit?: number;
+                page?: number;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QueryAccountResponseDto"];
+                };
+            };
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BadRequestResponse"];
+                };
+            };
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["InternalServerErrorResponse"];
+                };
+            };
+        };
+    };
+    AccountController_create: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["CreateAccountDto"];
+            };
+        };
+        responses: {
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["CreateAccountResponseDto"];
+                };
+            };
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BadRequestResponse"];
+                };
+            };
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["InternalServerErrorResponse"];
+                };
+            };
+        };
+    };
+    options33: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    AccountController_getOne: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["CreateAccountResponseDto"];
+                };
+            };
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BadRequestResponse"];
+                };
+            };
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["InternalServerErrorResponse"];
+                };
+            };
+        };
+    };
+    AccountController_delete: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BadRequestResponse"];
+                };
+            };
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["InternalServerErrorResponse"];
+                };
+            };
+        };
+    };
+    options34: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    AccountController_update: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["UpdateAccountDto"];
+            };
+        };
+        responses: {
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["UpdateAccountResponseDto"];
+                };
+            };
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BadRequestResponse"];
+                };
+            };
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["InternalServerErrorResponse"];
+                };
+            };
+        };
+    };
+    AccountController_getByUserId: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                userId: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["CreateAccountResponseDto"][];
+                };
+            };
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BadRequestResponse"];
+                };
+            };
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["InternalServerErrorResponse"];
+                };
+            };
+        };
+    };
+    options35: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                userId: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    AccountController_exportAccounts: {
+        parameters: {
+            query?: {
+                /** @description Comma-separated list of account types to export (PSE, SPEI, PIX, CCI, SINPE, WALLET, ACH, ACH_HN, ACH_SV, ACH_NI, ACH_GT, ACH_PA, ACH_BO, WIRE, SWIFT, COELSA, BREB, TRANSFIYA, SPI, SPI_PY, SPI_DO) */
+                type?: string;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description XLSX file download */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet": string;
+                };
+            };
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BadRequestResponse"];
+                };
+            };
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["InternalServerErrorResponse"];
+                };
+            };
+        };
+    };
+    options36: {
+        parameters: {
+            query?: {
+                /** @description Comma-separated list of account types to export (PSE, SPEI, PIX, CCI, SINPE, WALLET, ACH, ACH_HN, ACH_SV, ACH_NI, ACH_GT, ACH_PA, ACH_BO, WIRE, SWIFT, COELSA, BREB, TRANSFIYA, SPI, SPI_PY, SPI_DO) */
+                type?: string;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    AccountController_downloadTemplate: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Excel template file */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet": string;
+                };
+            };
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BadRequestResponse"];
+                };
+            };
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["InternalServerErrorResponse"];
+                };
+            };
+        };
+    };
+    options37: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    AccountController_uploadBulkBeneficiaries: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "multipart/form-data": {
+                    /** Format: binary */
+                    file?: string;
+                };
+            };
+        };
+        responses: {
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BulkBeneficiaryJobResponseDto"];
+                };
+            };
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BadRequestResponse"];
+                };
+            };
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["InternalServerErrorResponse"];
+                };
+            };
+        };
+    };
+    options38: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    AccountController_getBulkUploadStatus: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                jobId: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BulkBeneficiaryStatusDto"];
+                };
+            };
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BadRequestResponse"];
+                };
+            };
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["InternalServerErrorResponse"];
+                };
+            };
+        };
+    };
+    options39: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                jobId: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    RoleController_findAll: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["RoleResponseDto"][];
+                };
+            };
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["InternalServerErrorResponse"];
+                };
+            };
+        };
+    };
+    RoleController_create: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["CreateRoleDto"];
+            };
+        };
+        responses: {
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["RoleResponseDto"];
+                };
+            };
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BadRequestResponse"];
+                };
+            };
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["InternalServerErrorResponse"];
+                };
+            };
+        };
+    };
+    options40: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    RoleController_findOne: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["RoleResponseDto"];
+                };
+            };
+            /** @description Role not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["InternalServerErrorResponse"];
+                };
+            };
+        };
+    };
+    RoleController_update: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["UpdateRoleDto"];
+            };
+        };
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["RoleResponseDto"];
+                };
+            };
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BadRequestResponse"];
+                };
+            };
+            /** @description Role not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["InternalServerErrorResponse"];
+                };
+            };
+        };
+    };
+    RoleController_delete: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BadRequestResponse"];
+                };
+            };
+            /** @description Role not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["InternalServerErrorResponse"];
+                };
+            };
+        };
+    };
+    options41: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    RoleController_getRolePermissions: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["PermissionResponseDto"][];
+                };
+            };
+            /** @description Role not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["InternalServerErrorResponse"];
+                };
+            };
+        };
+    };
+    RoleController_assignPermissions: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["RoleResponseDto"];
+                };
+            };
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BadRequestResponse"];
+                };
+            };
+            /** @description Role not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["InternalServerErrorResponse"];
+                };
+            };
+        };
+    };
+    RoleController_removePermissions: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["RoleResponseDto"];
+                };
+            };
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BadRequestResponse"];
+                };
+            };
+            /** @description Role not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["InternalServerErrorResponse"];
+                };
+            };
+        };
+    };
+    options42: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    PermissionController_findAll: {
+        parameters: {
+            query: {
+                resource: string;
+                active: string;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["PermissionResponseDto"][];
+                };
+            };
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["InternalServerErrorResponse"];
+                };
+            };
+        };
+    };
+    PermissionController_create: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["CreatePermissionDto"];
+            };
+        };
+        responses: {
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["PermissionResponseDto"];
+                };
+            };
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BadRequestResponse"];
+                };
+            };
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["InternalServerErrorResponse"];
+                };
+            };
+        };
+    };
+    options43: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    PermissionController_findOne: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["PermissionResponseDto"];
+                };
+            };
+            /** @description Permission not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["InternalServerErrorResponse"];
+                };
+            };
+        };
+    };
+    PermissionController_update: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["UpdatePermissionDto"];
+            };
+        };
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["PermissionResponseDto"];
+                };
+            };
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BadRequestResponse"];
+                };
+            };
+            /** @description Permission not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["InternalServerErrorResponse"];
+                };
+            };
+        };
+    };
+    PermissionController_delete: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Permission not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["InternalServerErrorResponse"];
+                };
+            };
+        };
+    };
+    options44: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    PermissionController_findByResource: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                resource: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["PermissionResponseDto"][];
+                };
+            };
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["InternalServerErrorResponse"];
+                };
+            };
+        };
+    };
+    options45: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                resource: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    RoleSnapshotController_getSnapshotsByRole: {
+        parameters: {
+            query: {
+                limit: number;
+            };
+            header?: never;
+            path: {
+                roleId: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SnapshotResponseDto"][];
+                };
+            };
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BadRequestResponse"];
+                };
+            };
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["InternalServerErrorResponse"];
+                };
+            };
+        };
+    };
+    options46: {
+        parameters: {
+            query: {
+                limit: number;
+            };
+            header?: never;
+            path: {
+                roleId: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    RoleSnapshotController_getSnapshot: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SnapshotResponseDto"];
+                };
+            };
+            /** @description Role snapshot not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["InternalServerErrorResponse"];
+                };
+            };
+        };
+    };
+    options47: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    RoleSnapshotController_createSnapshot: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["CreateSnapshotDto"];
+            };
+        };
+        responses: {
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SnapshotResponseDto"];
+                };
+            };
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BadRequestResponse"];
+                };
+            };
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["InternalServerErrorResponse"];
+                };
+            };
+        };
+    };
+    options48: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    SavingsController_onboard: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["SavingsCustodialAccountDto"];
+            };
+        };
+        responses: {
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SavingsAccountResponseDto"];
+                };
+            };
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BadRequestResponse"];
+                };
+            };
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["InternalServerErrorResponse"];
+                };
+            };
+        };
+    };
+    options49: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    SavingsController_getTransactions: {
+        parameters: {
+            query?: {
+                limit?: number;
+                page?: number;
+                id?: string;
+                destinationAccountId?: string;
+                originAccountId?: string;
+                userId?: string;
+                type?: string;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["IGetTransactionsReturn"];
+                };
+            };
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BadRequestResponse"];
+                };
+            };
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["InternalServerErrorResponse"];
+                };
+            };
+        };
+    };
+    options50: {
+        parameters: {
+            query?: {
+                limit?: number;
+                page?: number;
+                id?: string;
+                destinationAccountId?: string;
+                originAccountId?: string;
+                userId?: string;
+                type?: string;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    SavingsController_getOnboard: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SavingsAccountResponseDto"];
+                };
+            };
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BadRequestResponse"];
+                };
+            };
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["InternalServerErrorResponse"];
+                };
+            };
+        };
+    };
+    options51: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    SavingsController_withdrawal: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["CreateWithdrawalDto"];
+            };
+        };
+        responses: {
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["WithdrawalSavingsReturn"];
+                };
+            };
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BadRequestResponse"];
+                };
+            };
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["InternalServerErrorResponse"];
+                };
+            };
+        };
+    };
+    options52: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    SavingsController_getBalance: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["GetBalanceReturn"];
+                };
+            };
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BadRequestResponse"];
+                };
+            };
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["InternalServerErrorResponse"];
+                };
+            };
+        };
+    };
+    options53: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    SavingsController_getDepositInstructions: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+                type: "ACH" | "WIRE";
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["GetDepositInstructionsReturn"];
+                };
+            };
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BadRequestResponse"];
+                };
+            };
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["InternalServerErrorResponse"];
+                };
+            };
+        };
+    };
+    options54: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+                type: "ACH" | "WIRE";
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    SavingsController_getWalletAddress: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["GetCryptoDepositInstructionsReturn"];
+                };
+            };
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BadRequestResponse"];
+                };
+            };
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["InternalServerErrorResponse"];
+                };
+            };
+        };
+    };
+    options55: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    QuotationController_create: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["CreateQuotationDto"];
+            };
+        };
+        responses: {
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["CreateQuotationResponseDto"];
+                };
+            };
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BadRequestResponse"];
+                };
+            };
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["InternalServerErrorResponse"];
+                };
+            };
+        };
+    };
+    options56: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    QuotationController_getById: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["GetQuotationResponseDto"];
+                };
+            };
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BadRequestResponse"];
+                };
+            };
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["InternalServerErrorResponse"];
+                };
+            };
+        };
+    };
+    options57: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    QuotationController_update: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["UpdateQuotationDto"];
+            };
+        };
+        responses: {
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["CreateQuotationResponseDto"];
+                };
+            };
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BadRequestResponse"];
+                };
+            };
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["InternalServerErrorResponse"];
+                };
+            };
+        };
+    };
+    QuotationController_simulation: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["CreateQuotationDto"];
+            };
+        };
+        responses: {
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SimulateQuotationResponseDto"];
+                };
+            };
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BadRequestResponse"];
+                };
+            };
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["InternalServerErrorResponse"];
+                };
+            };
+        };
+    };
+    options58: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    RampsController_getQuery: {
+        parameters: {
+            query?: {
+                limit?: number;
+                page?: number;
+                id?: string;
+                /** @description A unique identifier used to identify your existing user. */
+                externalId?: string;
+                status?: string;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["GetRampQueryResponseDto"];
+                };
+            };
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BadRequestResponse"];
+                };
+            };
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["InternalServerErrorResponse"];
+                };
+            };
+        };
+    };
+    RampsController_create: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["CreateRampInputDto"];
+            };
+        };
+        responses: {
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["CreateRampResponseDto"];
+                };
+            };
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BadRequestResponse"];
+                };
+            };
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["InternalServerErrorResponse"];
+                };
+            };
+        };
+    };
+    options59: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    RampsController_getById: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["GetRampByIdResponseDto"];
+                };
+            };
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BadRequestResponse"];
+                };
+            };
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["InternalServerErrorResponse"];
+                };
+            };
+        };
+    };
+    options60: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    RampsController_update: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["PatchRampInputDto"];
+            };
+        };
+        responses: {
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["CreateRampResponseDto"];
+                };
+            };
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BadRequestResponse"];
+                };
+            };
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["InternalServerErrorResponse"];
+                };
+            };
+        };
+    };
+    RampsController_uploadDocument: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "multipart/form-data": {
+                    documentType: string;
+                    /** Format: binary */
+                    file: string;
+                };
+            };
+        };
+        responses: {
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["RampDocumentResponseDto"];
+                };
+            };
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BadRequestResponse"];
+                };
+            };
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["InternalServerErrorResponse"];
+                };
+            };
+        };
+    };
+    options61: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    RampsController_getStatusHistoryById: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["GetRampStatusResponseDto"];
+                };
+            };
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BadRequestResponse"];
+                };
+            };
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["InternalServerErrorResponse"];
+                };
+            };
+        };
+    };
+    options62: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    RampsController_getJsonReceipt: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    options63: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    BankController_get: {
+        parameters: {
+            query: {
+                countryCode: string;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["GetBanksResponseDto"];
+                };
+            };
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BadRequestResponse"];
+                };
+            };
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["InternalServerErrorResponse"];
+                };
+            };
+        };
+    };
+    options64: {
+        parameters: {
+            query: {
+                countryCode: string;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    FakerController_fakeMxnCashIn: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["FakerCashInDto"];
+            };
+        };
+        responses: {
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BadRequestResponse"];
+                };
+            };
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["InternalServerErrorResponse"];
+                };
+            };
+        };
+    };
+    options65: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    FakerController_fakeCashOut: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["FakerCashOutDto"];
+            };
+        };
+        responses: {
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BadRequestResponse"];
+                };
+            };
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["InternalServerErrorResponse"];
+                };
+            };
+        };
+    };
+    options66: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    VirtualAccountsController_getVirtualAccounts: {
+        parameters: {
+            query?: {
+                /** @description Page number */
+                page?: number;
+                /** @description Items per page */
+                limit?: number;
+                /** @description Filter by account status */
+                status?: "ACTIVE" | "PENDING" | "REJECTED" | "PROCESSING";
+                /** @description Filter by network */
+                network?: "POLYGON" | "ERC20" | "SOLANA" | "TRON" | "ARBITRUM" | "BSC";
+                /** @description Filter by currency */
+                currency?: "USD" | "USDC" | "USDT";
+                /** @description Filter by user ID */
+                userId?: string;
+                /** @description Filter by start date */
+                startDate?: string;
+                /** @description Filter by end date */
+                endDate?: string;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["GetVirtualAccountsResponseDto"];
+                };
+            };
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BadRequestResponse"];
+                };
+            };
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["InternalServerErrorResponse"];
+                };
+            };
+        };
+    };
+    VirtualAccountsController_createVirtualAccount: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["CreatePreFundVirtualAccountDto"];
+            };
+        };
+        responses: {
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["CreatePreFundVirtualAccountResponseDto"];
+                };
+            };
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BadRequestResponse"];
+                };
+            };
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["InternalServerErrorResponse"];
+                };
+            };
+        };
+    };
+    options67: {
+        parameters: {
+            query?: {
+                /** @description Page number */
+                page?: number;
+                /** @description Items per page */
+                limit?: number;
+                /** @description Filter by account status */
+                status?: "ACTIVE" | "PENDING" | "REJECTED" | "PROCESSING";
+                /** @description Filter by network */
+                network?: "POLYGON" | "ERC20" | "SOLANA" | "TRON" | "ARBITRUM" | "BSC";
+                /** @description Filter by currency */
+                currency?: "USD" | "USDC" | "USDT";
+                /** @description Filter by user ID */
+                userId?: string;
+                /** @description Filter by start date */
+                startDate?: string;
+                /** @description Filter by end date */
+                endDate?: string;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    VirtualAccountsController_getWithdrawals: {
+        parameters: {
+            query?: {
+                /** @description Withdrawal status filter */
+                status?: "PENDING" | "PROCESSING" | "COMPLETED" | "FAILED" | "REJECTED";
+                /** @description Filter by start date */
+                startDate?: string;
+                /** @description Filter by end date */
+                endDate?: string;
+                /** @description Page number */
+                page?: number;
+                /** @description Items per page */
+                limit?: number;
+            };
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["GetWithdrawalsResponseDto"];
+                };
+            };
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BadRequestResponse"];
+                };
+            };
+            /** @description Virtual account not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["InternalServerErrorResponse"];
+                };
+            };
+        };
+    };
+    VirtualAccountsController_createWithdrawal: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["CreateVirtualAccountWithdrawalDto"];
+            };
+        };
+        responses: {
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["VirtualAccountWithdrawalResponseDto"];
+                };
+            };
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BadRequestResponse"];
+                };
+            };
+            /** @description Virtual account not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["InternalServerErrorResponse"];
+                };
+            };
+        };
+    };
+    options68: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    VirtualAccountsController_getAllWithdrawals: {
+        parameters: {
+            query?: {
+                /** @description Withdrawal status filter */
+                status?: "PENDING" | "PROCESSING" | "COMPLETED" | "FAILED" | "REJECTED";
+                /** @description Filter by start date */
+                startDate?: string;
+                /** @description Filter by end date */
+                endDate?: string;
+                /** @description Page number */
+                page?: number;
+                /** @description Items per page */
+                limit?: number;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["GetWithdrawalsResponseDto"];
+                };
+            };
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BadRequestResponse"];
+                };
+            };
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["InternalServerErrorResponse"];
+                };
+            };
+        };
+    };
+    options69: {
+        parameters: {
+            query?: {
+                /** @description Withdrawal status filter */
+                status?: "PENDING" | "PROCESSING" | "COMPLETED" | "FAILED" | "REJECTED";
+                /** @description Filter by start date */
+                startDate?: string;
+                /** @description Filter by end date */
+                endDate?: string;
+                /** @description Page number */
+                page?: number;
+                /** @description Items per page */
+                limit?: number;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    ComplianceController_generateAccessToken: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["GenerateAccessTokenRequestDto"];
+            };
+        };
+        responses: {
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["GenerateAccessTokenResponseDto"];
+                };
+            };
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BadRequestResponse"];
+                };
+            };
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["InternalServerErrorResponse"];
+                };
+            };
+        };
+    };
+    options70: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    PayoutController_getQuery: {
+        parameters: {
+            query?: {
+                limit?: number;
+                page?: number;
+                id?: string;
+                externalId?: string;
+                status?: string;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["GetPayoutQueryResponseDto"];
+                };
+            };
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BadRequestResponse"];
+                };
+            };
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["InternalServerErrorResponse"];
+                };
+            };
+        };
+    };
+    PayoutController_create: {
+        parameters: {
+            query?: never;
+            header?: {
+                /** @description Unique key to ensure idempotent request handling. If a request with the same key was already processed, the cached response is returned. */
+                "Idempotency-Key"?: string;
+            };
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["CreatePayoutInputDto"];
+            };
+        };
+        responses: {
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["CreatePayoutResponseDto"];
+                };
+            };
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BadRequestResponse"];
+                };
+            };
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["InternalServerErrorResponse"];
+                };
+            };
+        };
+    };
+    options71: {
+        parameters: {
+            query?: never;
+            header?: {
+                /** @description Unique key to ensure idempotent request handling. If a request with the same key was already processed, the cached response is returned. */
+                "Idempotency-Key"?: string;
+            };
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    PayoutController_getById: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["CreatePayoutResponseDto"];
+                };
+            };
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BadRequestResponse"];
+                };
+            };
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["InternalServerErrorResponse"];
+                };
+            };
+        };
+    };
+    options72: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    getApiJson: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Return the OpenAPI JSON */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": Record<string, never>;
+                };
+            };
+        };
+    };
+    options73: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
 }
