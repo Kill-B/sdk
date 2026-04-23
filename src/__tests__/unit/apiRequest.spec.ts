@@ -74,7 +74,7 @@ describe('ApiRequest', () => {
       const mockResponse = {
         data: {
           accessToken: 'test-access-token',
-          expiresIn: Date.now() + 10000
+          expiresIn: 3600000
         }
       };
 

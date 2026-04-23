@@ -6,6 +6,7 @@ import { Ramps } from './ramps';
 import { Webhook } from './webhook';
 import { Savings } from './savings';
 import { Customer } from './customer';
+import { Payout } from './payout';
 
 /**
  * The Client class is the main entry point for interacting with the various services.
@@ -36,6 +37,7 @@ export class Client {
   public webhook: Webhook;
   public savings: Savings;
   public customer: Customer;
+  public payout: Payout;
 
   /**
    * Creates a new Client instance.
@@ -51,5 +53,6 @@ export class Client {
     this.webhook = new Webhook(this.config);
     this.savings = new Savings(this.config);
     this.customer = new Customer(this.config);
+    this.payout = new Payout(this.config);
   }
 }
