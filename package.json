@@ -69,6 +69,21 @@
     "axios": "1.16.1"
   },
   "overrides": {
-    "lodash-es": "4.18.0"
+    "lodash-es": "4.17.23",
+    "glob@7.2.3": {
+      "minimatch": "3.1.3"
+    },
+    "test-exclude": {
+      "minimatch": "3.1.3"
+    },
+    "anymatch": {
+      "picomatch": "2.3.2"
+    },
+    "micromatch": {
+      "picomatch": "2.3.2"
+    },
+    "readdirp": {
+      "picomatch": "2.3.2"
+    }
   }
 }
