@@ -70,7 +70,7 @@
   },
   "overrides": {
     "axios": "1.19.0",
-    "lodash-es": "4.17.23",
+    "lodash-es": "4.18.0",
     "anymatch": {
       "picomatch": "2.3.2"
     },
