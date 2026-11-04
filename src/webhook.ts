@@ -1,5 +1,5 @@
 import { ApiRequest } from './apiRequest';
-import { createHash } from 'crypto';
+import { createHash, createHmac, timingSafeEqual } from 'crypto';
 import { IncomingHttpHeaders } from 'http';
 import { components } from './types';
 
@@ -68,10 +68,12 @@ export class Webhook extends ApiRequest {
   }
 
   /**
-   * Validates a webhook event.
+   * Validates a webhook event with the legacy `x-signature-sha256` header.
    *
-   * This method checks if the provided body and headers match the expected signature.
-   * The signature is calculated using the webhook secret and the body of the event.
+   * The signature is the SHA-256 of the JSON body followed by `_` and the webhook secret.
+   *
+   * @deprecated Use {@link Webhook.verifySignature}, which checks the HMAC `X-KillB-Signature`
+   * header against the raw body and rejects replayed requests.
    *
    * @param body - The body of the webhook event.
    * @param headers - The headers of the webhook event.
@@ -81,7 +83,66 @@ export class Webhook extends ApiRequest {
     const hash = createHash('sha256')
       .update(`${JSON.stringify(body)}_${this.config.credentials.webhookSecret}`)
       .digest('hex');
-    const hashSignature = headers['x-signature-sha256'];
-    return hash === hashSignature;
+    return safeEqual(hash, headerValue(headers, 'x-signature-sha256'));
+  }
+
+  /**
+   * Verifies the `X-KillB-Signature` header of a webhook request.
+   *
+   * The header is `t=<unix seconds>,v1=<signature>`, where the signature is the lowercase hex
+   * HMAC-SHA256 of `t + "." + rawBody` keyed with the webhook secret
+   * (`config.credentials.webhookSecret`).
+   *
+   * Pass the body exactly as received (for example with `express.raw({ type: 'application/json' })`),
+   * not a parsed and re-serialized object.
+   *
+   * @param rawBody - The raw request body, as a string or Buffer.
+   * @param headers - The request headers.
+   * @param options.toleranceSeconds - Maximum age of the signature timestamp, in either direction. Default 300.
+   * @param options.now - Current time in milliseconds, for tests. Default `Date.now()`.
+   * @returns `true` when a `v1` signature matches and the timestamp is within the tolerance.
+   * @throws Error when no webhook secret is configured.
+   */
+  public verifySignature(
+    rawBody: string | Buffer,
+    headers: IncomingHttpHeaders,
+    options: { toleranceSeconds?: number; now?: number } = {},
+  ): boolean {
+    const secret = this.config.credentials.webhookSecret;
+    if (!secret) throw new Error('credentials.webhookSecret is required to verify webhook signatures');
+
+    const header = headerValue(headers, 'x-killb-signature');
+    if (!header) return false;
+
+    const parts = header.split(',').map((part) => {
+      const index = part.indexOf('=');
+      return index === -1 ? ['', ''] : [part.slice(0, index).trim(), part.slice(index + 1).trim()];
+    });
+    const timestamps = parts.filter(([key]) => key === 't').map(([, value]) => value);
+    const signatures = parts.filter(([key]) => key === 'v1').map(([, value]) => value);
+    if (timestamps.length !== 1 || signatures.length === 0) return false;
+
+    const timestamp = timestamps[0] as string;
+    if (!/^\d+$/.test(timestamp)) return false;
+    const toleranceSeconds = options.toleranceSeconds ?? DEFAULT_TOLERANCE_SECONDS;
+    const nowSeconds = (options.now ?? Date.now()) / 1000;
+    if (Math.abs(nowSeconds - Number(timestamp)) > toleranceSeconds) return false;
+
+    const expected = createHmac('sha256', secret).update(`${timestamp}.`).update(rawBody).digest('hex');
+    return signatures.some((signature) => safeEqual(expected, signature));
   }
 }
+
+const DEFAULT_TOLERANCE_SECONDS = 300;
+
+const headerValue = (headers: IncomingHttpHeaders, name: string): string | undefined => {
+  const value = headers[name];
+  return typeof value === 'string' ? value : undefined;
+};
+
+const safeEqual = (expected: string, received: string | undefined): boolean => {
+  if (received === undefined) return false;
+  const a = Buffer.from(expected);
+  const b = Buffer.from(received);
+  return a.length === b.length && timingSafeEqual(a, b);
+};
