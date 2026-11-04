@@ -54,7 +54,7 @@ export class Ramps extends ApiRequest {
    */
   public async getById(id: string): Promise<components['schemas']['CreateRampResponseDto']> {
     await this.authenticateCheck();
-    const response = await this.api.get<components['schemas']['CreateRampResponseDto']>(`api/vramps/${id}`);
+    const response = await this.api.get<components['schemas']['CreateRampResponseDto']>(`api/v2/ramps/${id}`);
     return response.data;
   }
 }

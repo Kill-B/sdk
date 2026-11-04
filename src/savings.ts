@@ -34,14 +34,15 @@ export class Savings extends ApiRequest {
   /**
    * Retrieves the balance of a savings account by its ID.
    *
-   * This method sends a GET request to the '/savings/{id}/balances' endpoint.
+   * This method sends a GET request to the '/savings/{id}/balance' endpoint.
    *
    * @param id - The ID of the savings account to retrieve the balance for.
    * @returns A promise that resolves to the balance data of the savings account, conforming to the 'GetBalanceReturn' schema.
    */
   public async getBalance(id: string): Promise<components['schemas']['GetBalanceReturn']> {
     await this.authenticateCheck();
-    return this.api.get(`api/v2/savings/${id}/balances`);
+    const response = await this.api.get<components['schemas']['GetBalanceReturn']>(`api/v2/savings/${id}/balance`);
+    return response.data;
   }
 
   /**
