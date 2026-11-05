@@ -40,7 +40,7 @@ export class Ramps extends ApiRequest {
     query?: paths['/api/v2/ramps']['get']['parameters']['query'],
   ): Promise<components['schemas']['GetRampQueryResponseDto']> {
     await this.authenticateCheck();
-    const queryParams = '?' + new URLSearchParams((query as any) || {}).toString();
+    const queryParams = '?' + new URLSearchParams((query as Record<string, string>) || {}).toString();
     const response = await this.api.get<components['schemas']['GetRampQueryResponseDto']>(`api/v2/ramps${queryParams}`);
     return response.data;
   }

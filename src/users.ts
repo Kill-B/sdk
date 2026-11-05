@@ -72,7 +72,7 @@ export class Users extends ApiRequest {
     query?: paths['/api/v2/users']['get']['parameters']['query'],
   ): Promise<components['schemas']['GetUserQueryResponse']> {
     await this.authenticateCheck();
-    const queryParams = '?' + new URLSearchParams((query as Record<string, any>) || {}).toString();
+    const queryParams = '?' + new URLSearchParams((query as unknown as Record<string, string>) || {}).toString();
     const response = await this.api.get(`api/v2/users${queryParams}`);
     return response.data;
   }
@@ -107,7 +107,7 @@ export class Users extends ApiRequest {
     form.append('userId', input.userId);
     form.append('documentType', input.documentType);
     form.append('frontDocument', input.frontDocument);
-    input.backDocument ? form.append('backDocument', input.backDocument) : null;
+    if (input.backDocument) form.append('backDocument', input.backDocument);
     const response = await this.api.post('api/v2/users/person/document', form);
     return response.data;
   }
@@ -128,7 +128,7 @@ export class Users extends ApiRequest {
     form.append('userId', input.userId);
     form.append('documentType', input.documentType);
     form.append('frontDocument', input.frontDocument);
-    input.backDocument ? form.append('backDocument', input.backDocument) : null;
+    if (input.backDocument) form.append('backDocument', input.backDocument);
     const response = await this.api.post('api/v2/users/company/document', form);
     return response.data;
   }

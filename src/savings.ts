@@ -73,6 +73,7 @@ export class Savings extends ApiRequest {
    */
   public async getTransactions(
     query?: paths['/api/v2/savings/transactions']['get']['parameters']['query'],
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any -- public return type; narrowing it would break consumers' builds
   ): Promise<any> {
     await this.authenticateCheck();
     const queryParams = '?' + new URLSearchParams((query as Record<string, string>) || {}).toString();

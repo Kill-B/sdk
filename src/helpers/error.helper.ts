@@ -6,6 +6,7 @@ export class KillBError extends Error {
   path: string;
   status?: HttpStatus;
   errorCode?: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any -- public field; narrowing it would break consumers' builds
   details?: any;
 
   constructor(input: { path: string; data: unknown; isAuthentic?: boolean }) {
@@ -24,6 +25,6 @@ export class KillBError extends Error {
       this.details = response?.message || {};
     }
 
-    process.env.DEBUG === 'true' && console.error(this);
+    if (process.env.DEBUG === 'true') console.error(this);
   }
 }

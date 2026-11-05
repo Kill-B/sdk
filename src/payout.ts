@@ -5,7 +5,7 @@ import { CreatePayoutInput, CreatePayoutResponse, GetPayoutQueryResponse } from 
 export class Payout extends ApiRequest {
   public async list(query?: paths['/api/v2/payouts']['get']['parameters']['query']): Promise<GetPayoutQueryResponse> {
     await this.authenticateCheck();
-    const queryParams = '?' + new URLSearchParams((query as Record<string, any>) || {}).toString();
+    const queryParams = '?' + new URLSearchParams((query as Record<string, string>) || {}).toString();
     const response = await this.api.get<GetPayoutQueryResponse>(`api/v2/payouts${queryParams}`);
     return response.data;
   }

@@ -83,7 +83,7 @@ export class Webhook extends ApiRequest {
    * @param headers - The headers of the webhook event.
    * @returns A boolean indicating whether the event is valid.
    */
-  public validateEvent(body: any, headers: IncomingHttpHeaders): boolean {
+  public validateEvent(body: unknown, headers: IncomingHttpHeaders): boolean {
     const hash = createHash('sha256')
       .update(`${JSON.stringify(body)}_${this.config.credentials.webhookSecret}`)
       .digest('hex');

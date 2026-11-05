@@ -78,8 +78,7 @@ describe('ApiRequest', () => {
         },
       };
 
-      // @ts-ignore
-      const requestSpy = jest.spyOn(apiRequest.api, 'post').mockResolvedValueOnce(mockResponse);
+      const requestSpy = jest.spyOn((apiRequest as any).api, 'post').mockResolvedValueOnce(mockResponse);
 
       await (apiRequest as any).authenticate();
 
@@ -98,8 +97,7 @@ describe('ApiRequest', () => {
 
       const mockError = new Error('Invalid credentials');
 
-      // @ts-ignore
-      jest.spyOn(apiRequest.api, 'post').mockRejectedValueOnce(mockError);
+      jest.spyOn((apiRequest as any).api, 'post').mockRejectedValueOnce(mockError);
 
       await expect((apiRequest as any).authenticate()).rejects.toThrow(mockError);
     });
@@ -115,8 +113,7 @@ describe('ApiRequest', () => {
         },
       });
       const authResponse = { accessToken: 'test', expiresIn: 3600000 };
-      // @ts-ignore
-      const requestSpy = jest.spyOn(apiRequest.api as any, 'post').mockResolvedValueOnce({ data: authResponse });
+      const requestSpy = jest.spyOn((apiRequest as any).api, 'post').mockResolvedValueOnce({ data: authResponse });
       const authenticateSpy = jest.spyOn(apiRequest as any, 'authenticate');
       const response = await (apiRequest as any).authenticate();
       expect(response).toEqual(authResponse);
