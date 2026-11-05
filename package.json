@@ -15,7 +15,11 @@
     "test": "jest --logHeapUsage --runInBand",
     "test:ci": "npm test -- --coverage --silent --noStackTrace",
     "test:dev": "npm test --watch",
-    "semantic-release": "semantic-release"
+    "semantic-release": "semantic-release",
+    "lint": "eslint . --max-warnings 0",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
   },
   "repository": {
     "type": "git",
@@ -31,16 +35,15 @@
   },
   "homepage": "https://github.com/Kill-B/sdk#readme",
   "devDependencies": {
+    "@eslint/js": "10.0.1",
     "@faker-js/faker": "10.5.0",
+    "@killb/code-style": "1.0.1",
     "@types/jest": "30.0.0",
-    "@typescript-eslint/eslint-plugin": "8.65.0",
     "dotenv": "17.4.2",
-    "eslint": "10.8.0",
-    "eslint-config-prettier": "10.1.8",
-    "eslint-plugin-prettier": "5.5.6",
+    "eslint": "10.14.0",
     "jest": "30.4.2",
     "openapi-typescript": "7.13.0",
-    "prettier": "3.9.6",
+    "prettier": "3.9.10",
     "semantic-release": "25.0.8",
     "ts-jest": "29.4.12",
     "ts-node-dev": "2.0.0",
@@ -80,5 +83,6 @@
     "readdirp": {
       "picomatch": "2.3.2"
     }
-  }
+  },
+  "prettier": "@killb/code-style/prettier"
 }

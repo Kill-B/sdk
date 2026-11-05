@@ -2,7 +2,6 @@ import { ApiRequest } from './apiRequest';
 import { components, paths } from './types';
 
 export class Savings extends ApiRequest {
-
   /**
    * Creates a new savings account.
    *
@@ -12,7 +11,9 @@ export class Savings extends ApiRequest {
    * @param body - The data for the new savings account. Should conform to the 'SavingsCustodialAccountDto' schema.
    * @returns A promise that resolves to the created savings account data, conforming to the 'SavingsAccountResponseDto' schema.
    */
-  public async create(body: components['schemas']['SavingsCustodialAccountDto']): Promise<components['schemas']['SavingsAccountResponseDto']> {
+  public async create(
+    body: components['schemas']['SavingsCustodialAccountDto'],
+  ): Promise<components['schemas']['SavingsAccountResponseDto']> {
     await this.authenticateCheck();
     const response = await this.api.post('api/v2/savings', body);
     return response.data;
@@ -54,7 +55,9 @@ export class Savings extends ApiRequest {
    * @param body - The data for the new withdrawal. Should conform to the 'CreateWithdrawalDto' schema.
    * @returns A promise that resolves to the created withdrawal data, conforming to the 'WithdrawalSavingsReturn' schema.
    */
-  public async createWithdrawal(body: components['schemas']['CreateWithdrawalDto']): Promise<components['schemas']['WithdrawalSavingsReturn']> {
+  public async createWithdrawal(
+    body: components['schemas']['CreateWithdrawalDto'],
+  ): Promise<components['schemas']['WithdrawalSavingsReturn']> {
     await this.authenticateCheck();
     const response = await this.api.post('api/v2/savings/withdrawal', body);
     return response.data;
@@ -68,9 +71,12 @@ export class Savings extends ApiRequest {
    * @param query - The query parameters for the GET request. Optional.
    * @returns A promise that resolves to the transactions data of the savings account, conforming to the 'getTransactionsReturn' schema.
    */
-  public async getTransactions(query?: paths["/api/v2/savings/transactions"]["get"]['parameters']['query']): Promise<any> {
+  public async getTransactions(
+    query?: paths['/api/v2/savings/transactions']['get']['parameters']['query'],
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any -- public return type; narrowing it would break consumers' builds
+  ): Promise<any> {
     await this.authenticateCheck();
-    const queryParams = '?' + new URLSearchParams(query as Record<string, string> || {}).toString();
+    const queryParams = '?' + new URLSearchParams((query as Record<string, string>) || {}).toString();
     return this.api.get(`api/v2/savings/transactions${queryParams}`);
   }
 
@@ -83,7 +89,10 @@ export class Savings extends ApiRequest {
    * @param method - The deposit method. Can be either 'ACH' or 'WIRE'.
    * @returns A promise that resolves to the deposit instructions data of the savings account, conforming to either the 'GetDepositInstructionsACHReturn' or 'GetDepositInstructionsWireReturn' schema, depending on the method.
    */
-  public async getBankingDepositInstructions(id: string, method: 'ACH' | 'WIRE'): Promise<components['schemas']['GetDepositInstructionsReturn']> {
+  public async getBankingDepositInstructions(
+    id: string,
+    method: 'ACH' | 'WIRE',
+  ): Promise<components['schemas']['GetDepositInstructionsReturn']> {
     await this.authenticateCheck();
     return this.api.get(`api/v2/savings/${id}/deposit-instructions/${method}`);
   }
@@ -96,7 +105,9 @@ export class Savings extends ApiRequest {
    * @param id - The ID of the savings account to retrieve the crypto deposit instructions for.
    * @returns A promise that resolves to the crypto deposit instructions data of the savings account, conforming to the 'GetCryptoDepositInstructionsReturn' schema.
    */
-  public async getCryptoDepositInstructions(id: string): Promise<components['schemas']['GetCryptoDepositInstructionsReturn']> {
+  public async getCryptoDepositInstructions(
+    id: string,
+  ): Promise<components['schemas']['GetCryptoDepositInstructionsReturn']> {
     await this.authenticateCheck();
     return this.api.get(`api/v2/savings/${id}/crypto-deposit-instructions`);
   }

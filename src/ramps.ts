@@ -11,7 +11,6 @@ import { components, paths } from './types';
  * @extends {ApiRequest}
  */
 export class Ramps extends ApiRequest {
-
   /**
    * Creates a new ramp.
    *
@@ -21,7 +20,9 @@ export class Ramps extends ApiRequest {
    * @param body - The data for the new ramp. Should conform to the 'CreateRampInputDto' schema.
    * @returns A promise that resolves to the created ramp data, conforming to the 'CreateRampResponseDto' schema.
    */
-  public async create(body: components['schemas']['CreateRampInputDto']): Promise<components['schemas']['CreateRampResponseDto']> {
+  public async create(
+    body: components['schemas']['CreateRampInputDto'],
+  ): Promise<components['schemas']['CreateRampResponseDto']> {
     await this.authenticateCheck();
     const response = await this.api.post<components['schemas']['CreateRampResponseDto']>('api/v2/ramps', body);
     return response.data;
@@ -35,9 +36,11 @@ export class Ramps extends ApiRequest {
    * @param query - The query parameters for the GET request. Optional.
    * @returns A promise that resolves to the list of ramps, conforming to the 'GetRampQueryResponseDto' schema.
    */
-  public async list(query?: paths["/api/v2/ramps"]["get"]['parameters']['query']): Promise<components['schemas']['GetRampQueryResponseDto']> {
+  public async list(
+    query?: paths['/api/v2/ramps']['get']['parameters']['query'],
+  ): Promise<components['schemas']['GetRampQueryResponseDto']> {
     await this.authenticateCheck();
-    const queryParams = '?' + new URLSearchParams(query as any || {}).toString();
+    const queryParams = '?' + new URLSearchParams((query as Record<string, string>) || {}).toString();
     const response = await this.api.get<components['schemas']['GetRampQueryResponseDto']>(`api/v2/ramps${queryParams}`);
     return response.data;
   }

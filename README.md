@@ -4,13 +4,15 @@ Welcome to the KillB SDK! This is an open-source project designed to facilitate 
 
 ## Installation
 
-This project uses npm for package management. To install the project: 
+This project uses npm for package management. To install the project:
 
 ```bash
 npm install @killb/sdk
 ```
+
 ## Quickstart
-Here's a quick guide on how to use the SDK: 
+
+Here's a quick guide on how to use the SDK:
 
 ```typescript
 import { Client, Config } from './src/client';
@@ -31,6 +33,7 @@ const accounts = client.accounts;
 ```
 
 ## API Overview
+
 This project provides the following services:  
 **Users**: Provides access to user-related operations.
 **Accounts**: Provides access to account-related operations.
@@ -40,8 +43,8 @@ This project provides the following services:
 **Savings**: Provides access to savings-related operations.
 Each service is instantiated with the same configuration object, which is passed to the Client constructor.
 
-
 ## Verifying webhooks
+
 Every webhook carries an `X-KillB-Signature` header (`t=<unix seconds>,v1=<HMAC-SHA256>`). Verify it against the raw body, exactly as received, with the webhook secret set in `credentials.webhookSecret`:
 
 ```typescript
@@ -60,10 +63,13 @@ app.post('/webhooks/killb', express.raw({ type: 'application/json' }), (req, res
 Signatures older than 5 minutes are rejected; pass `{ toleranceSeconds }` as the third argument to change it. `validateEvent`, which checks the legacy `x-signature-sha256` header, is deprecated.
 
 ## API Reference
+
 Feel free to take a look at our API docs. You can find them [here](https://killbapi.stoplight.io/docs/killb-v2).
 
 ## Contributing
+
 Contributions are welcome.
 
 ## License
+
 This project is open source and available under the [MIT](LICENSE) License

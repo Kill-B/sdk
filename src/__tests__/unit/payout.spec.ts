@@ -2,7 +2,7 @@ import { Payout } from '../../payout';
 
 const config = {
   testEnv: true,
-  credentials: { email: 'test@test.com', password: 'test-password' }
+  credentials: { email: 'test@test.com', password: 'test-password' },
 };
 
 const authResponse = { accessToken: 'test-token', expiresIn: 3600000 };

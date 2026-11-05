@@ -1,4 +1,5 @@
-import axios, { AxiosInstance, AxiosError } from 'axios';
+import axios, { AxiosError, AxiosInstance } from 'axios';
+
 import { KillBError } from './helpers';
 import { Config } from './types';
 let accessToken: string;
@@ -24,14 +25,14 @@ export class ApiRequest {
       baseURL: this.setHost(input.testEnv),
       timeout: 30000,
       headers: {
-        ...(accessToken ? { 'Authorization': `Bearer ${accessToken}` } : {}),
+        ...(accessToken ? { Authorization: `Bearer ${accessToken}` } : {}),
       },
     });
     this.api.interceptors.response.use(
-      (response) => response,
+      response => response,
       (error: AxiosError) => {
-        throw new KillBError({path: error.request.path, data: error})
-      }
+        throw new KillBError({ path: error.request.path, data: error });
+      },
     );
   }
 
@@ -40,7 +41,7 @@ export class ApiRequest {
    *
    * @returns The environment of the API.
    */
-  get env () {
+  get env() {
     return this.config.testEnv ? 'SANDBOX' : 'PRODUCTION';
   }
 
@@ -51,7 +52,7 @@ export class ApiRequest {
    * @returns The host URL of the API.
    */
   private setHost(testEnv: boolean): string {
-    if(testEnv) {
+    if (testEnv) {
       return 'https://teste-94u93qnn.uc.gateway.dev';
     }
     return 'https://killb.app';
@@ -79,14 +80,14 @@ export class ApiRequest {
       baseURL: this.setHost(this.config.testEnv),
       timeout: 30000,
       headers: {
-        'Authorization': `Bearer ${accessToken}`,
+        Authorization: `Bearer ${accessToken}`,
       },
-    })
+    });
     this.api.interceptors.response.use(
-      (response) => response,
+      response => response,
       (error: AxiosError) => {
-        throw new KillBError({path: error.request.path, data: error})
-      }
+        throw new KillBError({ path: error.request.path, data: error });
+      },
     );
 
     return response.data;
@@ -101,11 +102,7 @@ export class ApiRequest {
    * @throws Will throw an error if the server responds with an error during re-authentication.
    */
   protected async authenticateCheck() {
-    if (
-      !accessToken ||
-      !expiresAt ||
-      expiresAt < new Date().getTime()
-    ) {
+    if (!accessToken || !expiresAt || expiresAt < new Date().getTime()) {
       await this.authenticate();
       return;
     }

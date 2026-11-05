@@ -1,12 +1,12 @@
-import { Users } from './users';
-import { Config } from './types';
 import { Accounts } from './accounts';
-import { Quotation } from './quotation';
-import { Ramps } from './ramps';
-import { Webhook } from './webhook';
-import { Savings } from './savings';
 import { Customer } from './customer';
 import { Payout } from './payout';
+import { Quotation } from './quotation';
+import { Ramps } from './ramps';
+import { Savings } from './savings';
+import { Config } from './types';
+import { Users } from './users';
+import { Webhook } from './webhook';
 
 /**
  * The Client class is the main entry point for interacting with the various services.

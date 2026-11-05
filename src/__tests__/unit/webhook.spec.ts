@@ -1,4 +1,5 @@
 import { createHash, createHmac } from 'crypto';
+
 import { Webhook } from '../../webhook';
 
 const secret = 'test-webhook-secret';
