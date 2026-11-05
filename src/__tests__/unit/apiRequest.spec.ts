@@ -8,8 +8,8 @@ describe('ApiRequest', () => {
       testEnv: true,
       credentials: {
         email: 'test@test.com',
-        password: 'test-password'
-      }
+        password: 'test-password',
+      },
     });
   });
 
@@ -23,8 +23,8 @@ describe('ApiRequest', () => {
         testEnv: false,
         credentials: {
           email: 'test@test.com',
-          password: 'test-password'
-        }
+          password: 'test-password',
+        },
       });
 
       expect(apiRequest.env).toEqual('PRODUCTION');
@@ -37,8 +37,8 @@ describe('ApiRequest', () => {
         testEnv: true,
         credentials: {
           email: 'test@test.com',
-          password: 'test-password'
-        }
+          password: 'test-password',
+        },
       });
 
       const result = (apiRequest as any).setHost(true);
@@ -51,8 +51,8 @@ describe('ApiRequest', () => {
         testEnv: false,
         credentials: {
           email: 'test@test.com',
-          password: 'test-password'
-        }
+          password: 'test-password',
+        },
       });
 
       const result = (apiRequest as any).setHost(false);
@@ -67,20 +67,19 @@ describe('ApiRequest', () => {
         testEnv: true,
         credentials: {
           email: 'test@test.com',
-          password: 'test-password'
-        }
+          password: 'test-password',
+        },
       });
 
       const mockResponse = {
         data: {
           accessToken: 'test-access-token',
-          expiresIn: 3600000
-        }
+          expiresIn: 3600000,
+        },
       };
 
       // @ts-ignore
       const requestSpy = jest.spyOn(apiRequest.api, 'post').mockResolvedValueOnce(mockResponse);
-
 
       await (apiRequest as any).authenticate();
 
@@ -93,8 +92,8 @@ describe('ApiRequest', () => {
         testEnv: true,
         credentials: {
           email: 'test@test.com',
-          password: 'wrong-password'
-        }
+          password: 'wrong-password',
+        },
       });
 
       const mockError = new Error('Invalid credentials');
@@ -112,10 +111,10 @@ describe('ApiRequest', () => {
         testEnv: true,
         credentials: {
           email: 'test@test.com',
-          password: 'test-password'
-        }
+          password: 'test-password',
+        },
       });
-      const authResponse = {  accessToken: 'test', expiresIn: 3600000 };
+      const authResponse = { accessToken: 'test', expiresIn: 3600000 };
       // @ts-ignore
       const requestSpy = jest.spyOn(apiRequest.api as any, 'post').mockResolvedValueOnce({ data: authResponse });
       const authenticateSpy = jest.spyOn(apiRequest as any, 'authenticate');

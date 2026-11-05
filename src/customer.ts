@@ -2,7 +2,6 @@ import { ApiRequest } from './apiRequest';
 import { components } from './types';
 
 export class Customer extends ApiRequest {
-
   /**
    * Retrieves the balances for the customer.
    *

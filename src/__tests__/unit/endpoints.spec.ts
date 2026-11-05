@@ -4,7 +4,7 @@ import { Savings } from '../../savings';
 
 const config = {
   testEnv: true,
-  credentials: { email: 'test@test.com', password: 'test-password' }
+  credentials: { email: 'test@test.com', password: 'test-password' },
 };
 
 describe('endpoint paths', () => {

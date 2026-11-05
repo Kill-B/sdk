@@ -9,9 +9,7 @@
     "declaration": true,
     "declarationMap": true,
     "allowSyntheticDefaultImports": true,
-    "noUncheckedIndexedAccess": true,
+    "noUncheckedIndexedAccess": true
   },
-  "files": [
-    "./src/index.ts"
-  ],
+  "files": ["./src/index.ts"]
 }

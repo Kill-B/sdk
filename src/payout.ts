@@ -3,9 +3,9 @@ import { paths } from './types';
 import { CreatePayoutInput, CreatePayoutResponse, GetPayoutQueryResponse } from './types';
 
 export class Payout extends ApiRequest {
-  public async list(query?: paths["/api/v2/payouts"]["get"]["parameters"]["query"]): Promise<GetPayoutQueryResponse> {
+  public async list(query?: paths['/api/v2/payouts']['get']['parameters']['query']): Promise<GetPayoutQueryResponse> {
     await this.authenticateCheck();
-    const queryParams = '?' + new URLSearchParams(query as Record<string, any> || {}).toString();
+    const queryParams = '?' + new URLSearchParams((query as Record<string, any>) || {}).toString();
     const response = await this.api.get<GetPayoutQueryResponse>(`api/v2/payouts${queryParams}`);
     return response.data;
   }

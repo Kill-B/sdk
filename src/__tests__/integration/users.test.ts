@@ -1,5 +1,6 @@
-import { Client } from '../../client';
 import { faker } from '@faker-js/faker';
+
+import { Client } from '../../client';
 import { components } from '../../types';
 
 describe('createUser', () => {
@@ -11,14 +12,14 @@ describe('createUser', () => {
       credentials: {
         email: 'invalid_email@killb.com',
         password: 'invalid_password',
-      }
+      },
     });
     const users = client.users;
 
     await expect(users.create(userInput)).rejects.toMatchObject({
       status: 400,
       errorCode: 'INVALID.INPUT',
-      details: [ 'password is not strong enough' ],
+      details: ['password is not strong enough'],
     });
   });
 
@@ -28,7 +29,7 @@ describe('createUser', () => {
       credentials: {
         email: process.env.EMAIL as string,
         password: process.env.PASSWORD as string,
-      }
+      },
     });
 
     const userInput: components['schemas']['CreateUserDto'] = {
@@ -48,11 +49,10 @@ describe('createUser', () => {
         },
         document: {
           type: 'PASSPORT',
-          number: faker.number.hex({ min: 9, max: 15}),
+          number: faker.number.hex({ min: 9, max: 15 }),
           issuedCountryCode: 'CO',
-
         },
-      }
+      },
     };
 
     const users = client.users.create(userInput);
@@ -60,6 +60,5 @@ describe('createUser', () => {
     await expect(users).resolves.toMatchObject({
       id: expect.any(String),
     });
-
-  })
+  });
 });

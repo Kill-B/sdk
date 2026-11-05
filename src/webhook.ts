@@ -1,6 +1,7 @@
-import { ApiRequest } from './apiRequest';
 import { createHash, createHmac, timingSafeEqual } from 'crypto';
 import { IncomingHttpHeaders } from 'http';
+
+import { ApiRequest } from './apiRequest';
 import { components } from './types';
 
 /**
@@ -10,7 +11,6 @@ import { components } from './types';
  * It provides methods to create, update, delete, get, and validate webhooks.
  */
 export class Webhook extends ApiRequest {
-
   /**
    * Creates a new webhook.
    *
@@ -20,7 +20,9 @@ export class Webhook extends ApiRequest {
    * @param body - The data for the new webhook. Should conform to the 'CreateWebhookDto' schema.
    * @returns A promise that resolves to the created webhook data, conforming to the 'CreateWebhookResponseDto' schema.
    */
-  public async create(body: components['schemas']['CreateWebhookDto']): Promise<components['schemas']['CreateWebhookResponseDto']> {
+  public async create(
+    body: components['schemas']['CreateWebhookDto'],
+  ): Promise<components['schemas']['CreateWebhookResponseDto']> {
     await this.authenticateCheck();
     const response = await this.api.post<components['schemas']['CreateWebhookResponseDto']>('api/v2/webhooks', body);
     return response.data;
@@ -35,7 +37,9 @@ export class Webhook extends ApiRequest {
    * @param body - The data for the webhook update. Should conform to the 'UpdateWebhookDto' schema.
    * @returns A promise that resolves to the updated webhook data, conforming to the 'UpdateWebhookResponseDto' schema.
    */
-  public async update(body: components['schemas']['UpdateWebhookDto']): Promise<components['schemas']['UpdateWebhookResponseDto']> {
+  public async update(
+    body: components['schemas']['UpdateWebhookDto'],
+  ): Promise<components['schemas']['UpdateWebhookResponseDto']> {
     await this.authenticateCheck();
     const response = await this.api.patch(`api/v2/webhooks`, body);
     return response.data;
@@ -114,7 +118,7 @@ export class Webhook extends ApiRequest {
     const header = headerValue(headers, 'x-killb-signature');
     if (!header) return false;
 
-    const parts = header.split(',').map((part) => {
+    const parts = header.split(',').map(part => {
       const index = part.indexOf('=');
       return index === -1 ? ['', ''] : [part.slice(0, index).trim(), part.slice(index + 1).trim()];
     });
@@ -129,7 +133,7 @@ export class Webhook extends ApiRequest {
     if (Math.abs(nowSeconds - Number(timestamp)) > toleranceSeconds) return false;
 
     const expected = createHmac('sha256', secret).update(`${timestamp}.`).update(rawBody).digest('hex');
-    return signatures.some((signature) => safeEqual(expected, signature));
+    return signatures.some(signature => safeEqual(expected, signature));
   }
 }
 

@@ -11,7 +11,6 @@ import { components, CreateAccountInput, CreateAccountResponse } from './types';
  * @extends {ApiRequest}
  */
 export class Accounts extends ApiRequest {
-
   /**
    * Simulates a quotation.
    *
@@ -37,7 +36,10 @@ export class Accounts extends ApiRequest {
    * @param body - The data for the account update. Should conform to the 'UpdateAccountResponseDto' schema.
    * @returns A promise that resolves to the updated account data, conforming to the 'CreateAccountResponseDto' schema.
    */
-  public async update(id: string, body: components['schemas']['UpdateAccountResponseDto']): Promise<components['schemas']['CreateAccountResponseDto']> {
+  public async update(
+    id: string,
+    body: components['schemas']['UpdateAccountResponseDto'],
+  ): Promise<components['schemas']['CreateAccountResponseDto']> {
     await this.authenticateCheck();
     const response = await this.api.patch(`api/v2/accounts/${id}`, body);
     return response.data;
@@ -95,10 +97,14 @@ export class Accounts extends ApiRequest {
    * @param code - The code of the specific bank to be retrieved.
    * @returns A promise that resolves to the bank data conforming to the 'GetBanksResponseDto' schema, or undefined if no bank with the provided code is found.
    */
-  public async getBankByCountry(countryCode: string, code: string): Promise<components['schemas']['GetBanksResponseDto'] | undefined> {
+  public async getBankByCountry(
+    countryCode: string,
+    code: string,
+  ): Promise<components['schemas']['GetBanksResponseDto'] | undefined> {
     await this.authenticateCheck();
-    const response = await this.api.get<components['schemas']['GetBanksResponseDto'][]>(`api/v2/banks?countryCode=${countryCode}`);
-    return response.data.find((bank) => bank.code === code);
+    const response = await this.api.get<components['schemas']['GetBanksResponseDto'][]>(
+      `api/v2/banks?countryCode=${countryCode}`,
+    );
+    return response.data.find(bank => bank.code === code);
   }
-
 }

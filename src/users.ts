@@ -11,7 +11,6 @@ import { components, paths } from './types';
  * @extends {ApiRequest}
  */
 export class Users extends ApiRequest {
-
   /**
    * Creates a new user.
    *
@@ -21,7 +20,9 @@ export class Users extends ApiRequest {
    * @param body - The data for the new user. Should conform to the 'CreateUserDto' schema.
    * @returns A promise that resolves to the created user data, conforming to the 'CreateUserResponseDto' schema.
    */
-  public async create(body: components['schemas']['CreateUserDto']): Promise<components['schemas']['CreateUserResponseDto']> {
+  public async create(
+    body: components['schemas']['CreateUserDto'],
+  ): Promise<components['schemas']['CreateUserResponseDto']> {
     await this.authenticateCheck();
     const response = await this.api.post<components['schemas']['CreateUserResponseDto']>('api/v2/users', body);
     return response.data;
@@ -37,9 +38,12 @@ export class Users extends ApiRequest {
    * @param body - The data for the user update. Should conform to either the 'CreatePersonUserDto' or 'CreateCompanyUserDto' schema.
    * @returns A promise that resolves to the updated user data, conforming to the 'CreateUserResponseDto' schema.
    */
-  public async update(id: string, body: components['schemas']['CreatePersonUserDto'] | components['schemas']['CreateCompanyUserDto']): Promise<components['schemas']['CreateUserResponseDto']> {
+  public async update(
+    id: string,
+    body: components['schemas']['CreatePersonUserDto'] | components['schemas']['CreateCompanyUserDto'],
+  ): Promise<components['schemas']['CreateUserResponseDto']> {
     await this.authenticateCheck();
-    const response = await  this.api.patch(`api/v2/users/${id}`, body);
+    const response = await this.api.patch(`api/v2/users/${id}`, body);
     return response.data;
   }
 
@@ -64,10 +68,12 @@ export class Users extends ApiRequest {
    * @param query - The query parameters for the GET request. Optional.
    * @returns A promise that resolves to the list of users, conforming to the 'GetUserQueryResponse' schema.
    */
-  public async list(query?:  paths["/api/v2/users"]["get"]['parameters']['query']): Promise<components['schemas']['GetUserQueryResponse']> {
+  public async list(
+    query?: paths['/api/v2/users']['get']['parameters']['query'],
+  ): Promise<components['schemas']['GetUserQueryResponse']> {
     await this.authenticateCheck();
-    const queryParams = '?' + new URLSearchParams(query as Record<string, any> || {}).toString();
-    const response = await  this.api.get(`api/v2/users${queryParams}`);
+    const queryParams = '?' + new URLSearchParams((query as Record<string, any>) || {}).toString();
+    const response = await this.api.get(`api/v2/users${queryParams}`);
     return response.data;
   }
 
@@ -77,7 +83,9 @@ export class Users extends ApiRequest {
    * @param {paths["/api/v2/users/{id}"]["get"]['parameters']['path']['id']} id - The unique identifier of the user.
    * @return {Promise<components['schemas']['GetUserByIdResponse']>} A promise resolving to the user's information.
    */
-  public async getById(id: paths["/api/v2/users/{id}"]["get"]['parameters']['path']['id']): Promise<components['schemas']['GetUserByIdResponse']> {
+  public async getById(
+    id: paths['/api/v2/users/{id}']['get']['parameters']['path']['id'],
+  ): Promise<components['schemas']['GetUserByIdResponse']> {
     await this.authenticateCheck();
     const response = await this.api.get(`api/v2/users/${id}`);
     return response.data;
@@ -100,7 +108,7 @@ export class Users extends ApiRequest {
     form.append('documentType', input.documentType);
     form.append('frontDocument', input.frontDocument);
     input.backDocument ? form.append('backDocument', input.backDocument) : null;
-    const response =  await this.api.post('api/v2/users/person/document', form);
+    const response = await this.api.post('api/v2/users/person/document', form);
     return response.data;
   }
 

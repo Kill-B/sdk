@@ -11,7 +11,6 @@ import { components } from './types';
  * @extends {ApiRequest}
  */
 export class Quotation extends ApiRequest {
-
   /**
    * Creates a new quotation.
    *
@@ -21,9 +20,14 @@ export class Quotation extends ApiRequest {
    * @param body - The data for the new quotation. Should conform to the 'CreateQuotationDto' schema.
    * @returns A promise that resolves to the created quotation data, conforming to the 'CreateQuotationResponseDto' schema.
    */
-  public async create(body: components['schemas']['CreateQuotationDto']): Promise<components['schemas']['CreateQuotationResponseDto']> {
+  public async create(
+    body: components['schemas']['CreateQuotationDto'],
+  ): Promise<components['schemas']['CreateQuotationResponseDto']> {
     await this.authenticateCheck();
-    const response = await this.api.post<components['schemas']['CreateQuotationResponseDto']>('api/v2/quotations', body);
+    const response = await this.api.post<components['schemas']['CreateQuotationResponseDto']>(
+      'api/v2/quotations',
+      body,
+    );
     return response.data;
   }
 
@@ -36,9 +40,14 @@ export class Quotation extends ApiRequest {
    * @param body - The data for the quotation simulation. Should conform to the 'CreateQuotationDto' schema.
    * @returns A promise that resolves to the simulated quotation data, conforming to the 'SimulateQuotationResponseDto' schema.
    */
-  public async simulation(body: components['schemas']['CreateQuotationDto']): Promise<components['schemas']['SimulateQuotationResponseDto']> {
+  public async simulation(
+    body: components['schemas']['CreateQuotationDto'],
+  ): Promise<components['schemas']['SimulateQuotationResponseDto']> {
     await this.authenticateCheck();
-    const response = await this.api.post<components['schemas']['SimulateQuotationResponseDto']>('api/v2/quotations/simulation', body);
+    const response = await this.api.post<components['schemas']['SimulateQuotationResponseDto']>(
+      'api/v2/quotations/simulation',
+      body,
+    );
     return response.data;
   }
 
