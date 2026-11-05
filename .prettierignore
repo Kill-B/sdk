@@ -1,0 +1,4 @@
+lib/
+coverage/
+src/types/schema.ts
+package-lock.json
